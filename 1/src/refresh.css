@@ -40,11 +40,10 @@ body {
 .h-display {
   margin: 0;
   font-weight: 600;
-  font-size: clamp(2rem, 1rem + 3.5vw, 4.6rem);
+  font-size: clamp(2rem, 1.1rem + 2.6vw, 3.9rem);
   letter-spacing: -0.02em;
-  line-height: 1.02;
+  line-height: 1.04;
   text-wrap: balance;
-  max-width: 16ch;
 }
 .h-display em,
 .hm-quote em,
@@ -87,15 +86,18 @@ body {
 .hero { padding-top: 24px; padding-bottom: 48px; min-height: min(82vh, 680px); display: flex; align-items: center; }
 .hero .wrap { width: 100%; }
 .hero-top {
-  grid-template-columns: 1.1fr .9fr;
-  gap: 56px;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 64px;
   align-items: center;
   margin-bottom: 0;
 }
 /* Even, deliberate rhythm — flex gap is the single source of vertical spacing,
    so children must not add their own (UA) margins on top of it. */
-.hero-meta { gap: 20px; padding-top: 0; }
+.hero-meta { gap: 20px; padding-top: 0; min-width: 0; }
 .hero-meta > * { margin: 0; }
+/* Heading must never spill past its grid track into the manifest card —
+   min-width:0 lets the track shrink, max-width:100% + wrapping keep text in. */
+.h-display { max-width: 100%; overflow-wrap: break-word; }
 .hero-foot { display: none; }
 .hero-cta { margin-top: 8px; }
 .hero .lead { font-size: clamp(1.04rem, .94rem + .42vw, 1.24rem); max-width: 46ch; }
