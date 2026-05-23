@@ -1,0 +1,421 @@
+/* ─── Refresh pass — overrides styles.css for the cut-down landing ─── */
+
+/* 1. Type system: Spectral (serif display) + IBM Plex Sans (body) + IBM Plex Mono */
+:root {
+  --font-display: "Spectral", Georgia, "Times New Roman", serif;
+  --font-body:    "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+  --font-mono:    "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --font-serif:   "Spectral", Georgia, serif;
+}
+[data-fontpair="modern"],
+[data-fontpair="contrast"],
+[data-fontpair="book"],
+[data-fontpair="mono"] {
+  --font-display: "Spectral", Georgia, "Times New Roman", serif;
+  --font-body:    "IBM Plex Sans", system-ui, sans-serif;
+}
+
+body {
+  font-feature-settings: normal;
+}
+
+/* Display headings — serif with italic emphasis */
+.h-display, .h1, .h2, .h3,
+.dir .name,
+.face-name, .step .ttl,
+.event-title, .ed-month, .ed-day,
+.faq-list summary,
+.cta-banner h2,
+.app-h, .word .a, .word .b,
+.rc-card-title, .rc-card-meta dd,
+.kc-latin, .kc-dir-name,
+.brand,
+.lm-label,
+.face-q, .testi blockquote,
+.dir-title {
+  font-family: var(--font-display);
+  font-feature-settings: "ss01";
+}
+
+.h-display {
+  font-weight: 600;
+  font-size: clamp(2rem, 1.3rem + 1.8vw, 3.4rem);
+  letter-spacing: -0.016em;
+  line-height: 1.04;
+  text-wrap: balance;
+  max-width: 16ch;
+}
+.h-display em,
+.hm-quote em,
+.hm-yes em {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--accent);
+  font-feature-settings: "ss01";
+}
+
+.h1 {
+  font-weight: 600;
+  font-size: clamp(2rem, 1.4rem + 2.4vw, 3.4rem);
+  letter-spacing: -0.014em;
+  line-height: 1.05;
+}
+
+/* Brand mark — keep sans for the disc */
+.brand .mark { font-family: var(--font-body); font-weight: 700; }
+.brand > span:last-child { font-family: var(--font-display); font-weight: 600; letter-spacing: -0.004em; }
+
+/* Buttons — sans, tighter */
+.btn {
+  font-family: var(--font-body);
+  font-weight: 500;
+  letter-spacing: -0.004em;
+}
+
+/* Nav links */
+.nav-links a { font-family: var(--font-body); letter-spacing: -0.002em; }
+.nav-cta { font-family: var(--font-body); font-weight: 500; }
+
+
+/* 2. Hero — tighter, fits CTA in first screen */
+.hero { padding-top: 24px; padding-bottom: 32px; min-height: calc(100svh - 64px); display: flex; align-items: center; }
+.hero .wrap { width: 100%; }
+.hero-top {
+  grid-template-columns: 1.15fr .85fr;
+  gap: 48px;
+  align-items: center;
+  margin-bottom: 0;
+}
+.hero-meta { gap: 18px; padding-top: 0; }
+.hero-foot { display: none; }
+.hero-cta { margin-top: 4px; }
+.hero .lead { font-size: clamp(1rem, .92rem + .35vw, 1.18rem); }
+
+/* Hero manifest aside (replaces stock-photo mosaic) */
+.hero-manifest {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 28px 30px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  position: relative;
+}
+.hero-manifest::before {
+  content: "";
+  position: absolute;
+  top: -1px; left: 30px;
+  width: 48px; height: 3px;
+  background: var(--accent);
+}
+.hm-eyebrow {
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.hm-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+.hm-list li {
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+  line-height: 1.3;
+  color: var(--ink);
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  text-wrap: pretty;
+}
+.hm-list li em {
+  font-style: italic;
+  color: var(--accent);
+  font-weight: 500;
+}
+.hm-yes {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  width: 14px;
+  flex-shrink: 0;
+  line-height: 1;
+  color: var(--accent);
+}
+
+@media (max-width: 920px) {
+  .hero { min-height: 0; padding-top: 32px; padding-bottom: 40px; }
+  .hero-top { grid-template-columns: 1fr; gap: 32px; }
+}
+
+
+/* 3. Direction cards — typographic, no SVG glyphs */
+.dir-grid {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+@media (max-width: 1100px) { .dir-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px)  { .dir-grid { grid-template-columns: 1fr; } }
+
+.dir {
+  padding: 24px 24px 20px;
+  min-height: 280px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 0;
+  transition: border-color .25s, transform .25s, background .25s;
+}
+.dir > .num {
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  letter-spacing: .18em;
+  color: var(--ink-3);
+  align-self: start;
+}
+.dir-glyph {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px 0 14px;
+  pointer-events: none;
+}
+.dir-glyph span {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(5rem, 4rem + 3vw, 7rem);
+  line-height: .82;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+  background: linear-gradient(180deg, var(--ink) 0%, var(--ink) 65%, var(--accent) 65%, var(--accent) 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: transform .35s cubic-bezier(.18,.74,.22,1);
+}
+.dir:hover .dir-glyph span { transform: translateY(-2px); }
+
+.dir-body { display: flex; flex-direction: column; gap: 8px; }
+.dir-cat {
+  font-family: var(--font-mono);
+  font-size: .66rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.dir .name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.4rem;
+  letter-spacing: -0.012em;
+  line-height: 1.05;
+  margin: 0;
+}
+.dir .desc {
+  font-family: var(--font-body);
+  font-size: .88rem;
+  color: var(--ink-2);
+  line-height: 1.45;
+  margin: 4px 0 0;
+  text-wrap: pretty;
+}
+.dir .meta {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dir .meta .cat {
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  letter-spacing: .12em;
+  color: var(--ink-3);
+  text-transform: uppercase;
+}
+.dir .meta .cnt {
+  font-family: var(--font-mono);
+  font-size: .9rem;
+  color: var(--ink-3);
+}
+a.dir:hover .meta .cnt { color: var(--accent); transform: translateX(3px); }
+.dir .meta .cnt { transition: transform .2s, color .2s; }
+
+/* Active vs. forming */
+.dir.is-soon { opacity: .82; }
+.dir.is-soon::after {
+  content: "формируется";
+  position: absolute;
+  top: 22px; right: 24px;
+  font-family: var(--font-mono);
+  font-size: .6rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  background: transparent;
+  border: 0;
+  padding: 0;
+  border-radius: 0;
+}
+
+/* Active direction (Неглинка) — subtle accent */
+a.dir:not(.is-soon) {
+  border-color: var(--ink);
+  position: relative;
+}
+a.dir:not(.is-soon)::after {
+  content: "идёт набор";
+  position: absolute;
+  top: 22px; right: 24px;
+  font-family: var(--font-mono);
+  font-size: .6rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+a.dir:not(.is-soon):hover { transform: translateY(-2px); }
+
+.dir-note {
+  margin: 32px 0 0;
+  padding: 18px 22px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font-size: .92rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+  max-width: 720px;
+}
+.dir-note .mono {
+  display: inline-block;
+  margin-right: 8px;
+  color: var(--ink);
+  font-weight: 500;
+}
+
+
+/* 4. Event banner — keep but adjust type */
+.ed-day {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: -0.02em;
+}
+.event-title { font-weight: 600; letter-spacing: -0.014em; }
+.event-title .dim { font-style: italic; font-weight: 400; }
+
+
+/* 5. Method steps — adjust */
+.step .ttl { font-weight: 600; letter-spacing: -0.008em; }
+
+
+/* 6. FAQ summary — serif */
+.faq-list summary { font-weight: 500; letter-spacing: -0.008em; }
+
+
+/* 7. CTA — serif headline */
+.cta-banner h2 { font-weight: 600; letter-spacing: -0.012em; }
+
+
+/* 8. Section breathing */
+section { padding-top: calc(88px * var(--dens)); padding-bottom: calc(88px * var(--dens)); }
+section.tight { padding-top: calc(48px * var(--dens)); padding-bottom: calc(48px * var(--dens)); }
+.sec-head { margin-bottom: 40px; }
+
+
+/* 9. Hero pill — sans for "26 сентября", no wrap */
+.hero-pill b { font-family: var(--font-body); font-weight: 600; }
+.hero-pill { white-space: nowrap; }
+
+/* Nav layout — keep on one line on common widths */
+.brand { white-space: nowrap; flex-shrink: 0; }
+.nav-links { gap: 22px; }
+.nav-links a { white-space: nowrap; }
+@media (max-width: 1080px) {
+  .nav-links { gap: 18px; }
+  .nav-links a { font-size: .88rem; }
+}
+@media (max-width: 960px) {
+  .nav-links a:not(.nav-cta):nth-child(3) { display: none; }
+}
+
+
+/* 10. Eyebrow → keep mono but slightly smaller */
+.eyebrow { font-size: .68rem; letter-spacing: .18em; }
+
+
+/* 11. Footer brand */
+.foot h4 { font-family: var(--font-body); }
+
+
+/* 12. Drop heavy reveal on everything but key elements is handled in HTML */
+
+
+/* 13. Опорный круг — фрейминг через новую типографику */
+#cross { background: var(--bg); }
+#cross .h1 em {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--accent);
+}
+.cross-note {
+  margin: 32px auto 0;
+  padding: 18px 22px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: .94rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+  max-width: 640px;
+  text-align: center;
+  text-wrap: pretty;
+}
+.cross-note .mono {
+  display: inline-block;
+  margin-right: 8px;
+  color: var(--ink);
+  font-weight: 500;
+}
+.cross-note em {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--accent);
+  font-size: 1.04em;
+}
+
+/* Тоньше визуально — карточки опоры с серифным заголовком */
+.rc-card-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: .04em;
+}
+.rc-card-meta dd {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* Центральный круг без фотографии — больше воздуха для SVG */
+.rc-center { min-height: 220px; }
+.rc-svg { max-width: 220px; max-height: 220px; }
+
+/* Подвал круга — серифный италик */
+.rc-foot {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-style: italic;
+  font-size: 1.15rem;
+  letter-spacing: -0.008em;
+}
+.rc-foot-r { font-style: normal; font-weight: 600; color: var(--ink); }

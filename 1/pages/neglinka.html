@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Неглинка — Русская Ясна</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../src/styles.css"/>
+</head>
+<body data-palette="iney" data-fontpair="modern" data-density="regular" data-screen-label="Неглинка">
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav-row">
+    <a class="brand" href="../index.html">
+      <span class="mark">Я</span>
+      <span>Русская Ясна</span>
+    </a>
+    <nav class="nav-links">
+      <a href="../index.html#manifest">О проекте</a>
+      <a href="../index.html#directions">Направления</a>
+      <a href="../index.html#graph">Связи</a>
+      <a href="../index.html#faq">Вопросы</a>
+      <a class="nav-cta" href="#join">Вступить</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ─── DIR HERO ─────────────────────────────────────────────────── -->
+<section class="dir-hero">
+  <div class="wrap">
+    <a class="dir-back" href="../index.html#directions">
+      <span>← </span><span>ВСЕ НАПРАВЛЕНИЯ</span>
+      <span class="mono" style="color:var(--ink-3);margin-left:14px">01 / 08</span>
+    </a>
+
+    <div class="dir-hero-row">
+      <div>
+        <div class="row" style="gap:10px;margin-bottom:20px">
+          <span class="chip warm">● Набор открыт</span>
+          <span class="chip">История</span>
+          <span class="chip">Москва + Онлайн</span>
+        </div>
+        <h1 class="dir-title">Неглинка</h1>
+        <p class="dir-sub">Проясняем историю и&nbsp;географию России — гуляем по&nbsp;Москве, читаем то, что&nbsp;зашифровано в&nbsp;её&nbsp;улицах, фасадах и&nbsp;названиях.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#join">Оставить заявку <span class="arr">→</span></a>
+          <a class="btn btn-ghost" href="#program">Программа на месяц</a>
+        </div>
+      </div>
+      <div class="dir-stats" aria-label="Статистика">
+        <div class="dir-stat"><div class="lbl">Участников</div><div class="val">204<small>+</small></div></div>
+        <div class="dir-stat"><div class="lbl">Лет работы</div><div class="val">8</div></div>
+        <div class="dir-stat"><div class="lbl">Прогулок в&nbsp;год</div><div class="val">38</div></div>
+        <div class="dir-stat"><div class="lbl">Координаторов</div><div class="val">3</div></div>
+      </div>
+    </div>
+
+    <div class="strip" style="margin-top:32px;max-width:max-content">
+      <span class="dot"></span>
+      <span><b style="font-weight:600">Ближайшая прогулка:</b>&nbsp; 14 июня · Замоскворечье. Сбор у м. Третьяковская в 11:00.</span>
+      <a href="#program" class="mono" style="color:var(--accent);text-transform:uppercase;letter-spacing:.08em;font-size:.72rem">Записаться →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── DASHBOARD ─────────────────────────────────────────────────── -->
+<section style="padding-top:40px">
+  <div class="wrap">
+
+    <!-- LEAD: about + about-2 + research focus -->
+    <div class="grid" style="grid-template-columns:1.4fr 1fr; gap:32px;">
+      <article class="panel" style="grid-column:1 / -1">
+        <div class="panel-head">
+          <h3>Что делаем</h3>
+          <span class="sub">Формат · 4 типа встреч</span>
+        </div>
+        <div style="padding:24px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px" id="formats">
+          <div>
+            <div class="mono" style="color:var(--accent);letter-spacing:.12em;margin-bottom:10px">01 · ПРОГУЛКА</div>
+            <h4 style="font-family:var(--font-display);font-weight:600;margin:0 0 8px;font-size:1.05rem">Натурные уроки</h4>
+            <p style="margin:0;font-size:.88rem;color:var(--ink-2);line-height:1.5">Маршрут 2–3 часа, 8–15 человек, разбор на месте.</p>
+          </div>
+          <div>
+            <div class="mono" style="color:var(--accent);letter-spacing:.12em;margin-bottom:10px">02 · ЛАБОРАТОРИЯ</div>
+            <h4 style="font-family:var(--font-display);font-weight:600;margin:0 0 8px;font-size:1.05rem">Кабинетные разборы</h4>
+            <p style="margin:0;font-size:.88rem;color:var(--ink-2);line-height:1.5">Работа с картами, источниками, архивами.</p>
+          </div>
+          <div>
+            <div class="mono" style="color:var(--accent);letter-spacing:.12em;margin-bottom:10px">03 · ОНЛАЙН</div>
+            <h4 style="font-family:var(--font-display);font-weight:600;margin:0 0 8px;font-size:1.05rem">Видеолекции и&nbsp;разборы</h4>
+            <p style="margin:0;font-size:.88rem;color:var(--ink-2);line-height:1.5">Для тех, кто не в Москве. Запись + обсуждение.</p>
+          </div>
+          <div>
+            <div class="mono" style="color:var(--accent);letter-spacing:.12em;margin-bottom:10px">04 · ИЗДАНИЯ</div>
+            <h4 style="font-family:var(--font-display);font-weight:600;margin:0 0 8px;font-size:1.05rem">Заметки участников</h4>
+            <p style="margin:0;font-size:.88rem;color:var(--ink-2);line-height:1.5">Свои тексты публикуем в общем альманахе.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- DASH MAIN -->
+    <div class="dash">
+      <!-- LEFT: program -->
+      <div class="col" style="gap:24px">
+        <article class="panel" id="program">
+          <div class="panel-head">
+            <h3>Программа на ближайший месяц</h3>
+            <span class="sub">Июнь 2026 · 5 встреч</span>
+          </div>
+          <div class="panel-body">
+            <div class="ev">
+              <div class="date"><span class="d">14</span><span class="m">июн · сб</span></div>
+              <div class="body">
+                <h4>Замоскворечье: купеческая Москва</h4>
+                <p>Маршрут от Третьяковской до Полянки. Разбираем планировку, читаем фасады, заходим в Климентовский переулок.</p>
+                <div class="tags"><span class="tag">ПРОГУЛКА</span><span class="tag">·</span><span class="tag">3 ЧАСА</span><span class="tag">·</span><span class="tag">12 МЕСТ ИЗ 15</span></div>
+              </div>
+              <div class="ept">11:00<br/><span style="color:var(--accent)">записаться →</span></div>
+            </div>
+            <div class="ev">
+              <div class="date"><span class="d">19</span><span class="m">июн · чт</span></div>
+              <div class="body">
+                <h4>Кабинет: карта Москвы 1739&nbsp;г.</h4>
+                <p>Сравниваем «Мичуринский план» с современной картой. Что осталось от старой Москвы — и где её можно увидеть сегодня.</p>
+                <div class="tags"><span class="tag">ЛАБОРАТОРИЯ</span><span class="tag">·</span><span class="tag">ОНЛАЙН ZOOM</span><span class="tag">·</span><span class="tag">19:30</span></div>
+              </div>
+              <div class="ept">19:30<br/><span style="color:var(--accent)">записаться →</span></div>
+            </div>
+            <div class="ev">
+              <div class="date"><span class="d">22</span><span class="m">июн · вс</span></div>
+              <div class="body">
+                <h4>Кремль: 20 башен и звёзды</h4>
+                <p>Совместный разбор с Астроневодом. Проверяем гипотезу о соответствии плана Кремля картам неба XV века.</p>
+                <div class="tags"><span class="tag">КОЛЛАБ</span><span class="tag">·</span><span class="tag">АСТРОНЕВОД</span><span class="tag">·</span><span class="tag">10 МЕСТ</span></div>
+              </div>
+              <div class="ept">10:00<br/><span style="color:var(--accent)">записаться →</span></div>
+            </div>
+            <div class="ev">
+              <div class="date"><span class="d">26</span><span class="m">июн · чт</span></div>
+              <div class="body">
+                <h4>Открытая встреча: «Зачем мне Неглинка?»</h4>
+                <p>Для новых участников. Расскажем о методе, покажем материалы, ответим на вопросы. Свободно, без записи.</p>
+                <div class="tags"><span class="tag">ОТКРЫТАЯ</span><span class="tag">·</span><span class="tag">БЕСПЛАТНО</span><span class="tag">·</span><span class="tag">ОНЛАЙН</span></div>
+              </div>
+              <div class="ept">20:00<br/><span style="color:var(--accent)">записаться →</span></div>
+            </div>
+            <div class="ev past">
+              <div class="date"><span class="d">07</span><span class="m">июн · сб</span></div>
+              <div class="body">
+                <h4>Маросейка и Покровка: купеческий город</h4>
+                <p>Прошедшая встреча. Запись и фотоотчёт уже в канале.</p>
+                <div class="tags"><span class="tag">ЗАВЕРШЕНО</span><span class="tag">·</span><span class="tag">15 ЧЕЛОВЕК</span></div>
+              </div>
+              <div class="ept" style="color:var(--ink-3)">отчёт →</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <h3>Текущие исследования</h3>
+            <span class="sub">Открытые гипотезы · 4 темы</span>
+          </div>
+          <div class="res-grid">
+            <div class="res">
+              <div class="st"><span class="stat"></span><span class="sl">ИДЁТ · 3-Й МЕСЯЦ</span></div>
+              <h4 class="t">Топонимы рек: Неглинная, Яуза, Москва</h4>
+              <p class="m">Прослеживаем дофинно-угорские и славянские пласты в названиях рек центра.</p>
+              <div class="ft"><span>6 участников</span><span>→</span></div>
+            </div>
+            <div class="res">
+              <div class="st"><span class="stat"></span><span class="sl">ИДЁТ · 1-Й МЕСЯЦ</span></div>
+              <h4 class="t">Кремль и созвездия Северного полушария</h4>
+              <p class="m">Сверяем расположение 20 башен с картами неба XV—XVII веков.</p>
+              <div class="ft"><span>11 участников · с Астроневодом</span><span>→</span></div>
+            </div>
+            <div class="res">
+              <div class="st"><span class="stat idle"></span><span class="sl">НАБИРАЕМ ГРУППУ</span></div>
+              <h4 class="t">«Слободская» Москва: ремесленные топонимы</h4>
+              <p class="m">Гончарная, Кузнецкая, Мясницкая — где границы и что осталось.</p>
+              <div class="ft"><span>3 / 8 человек</span><span>→</span></div>
+            </div>
+            <div class="res">
+              <div class="st"><span class="stat done"></span><span class="sl">ЗАВЕРШЕНО · ОТЧЁТ</span></div>
+              <h4 class="t">Замоскворечье как «зеркало» центра</h4>
+              <p class="m">Опубликовано в альманахе «Ясна», вып. 7. Текст 8 600 слов.</p>
+              <div class="ft"><span>Открытый отчёт</span><span>→</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <h3>Материалы</h3>
+            <span class="sub">Подкаст · Текст · Видео</span>
+          </div>
+          <div class="panel-body">
+            <a class="mat" href="#">
+              <span class="kind podcast">P</span>
+              <div class="ti">
+                <h5>Откуда взялась Москва? Разбор трёх версий</h5>
+                <p>Подкаст · с историком А. Зориным · вып. 24</p>
+              </div>
+              <span class="dur">52 мин</span>
+            </a>
+            <a class="mat" href="#">
+              <span class="kind text">Т</span>
+              <div class="ti">
+                <h5>Заметки о фасадах Маросейки</h5>
+                <p>Текст · Е. Петрова · 12 фото</p>
+              </div>
+              <span class="dur">10 мин чт.</span>
+            </a>
+            <a class="mat" href="#">
+              <span class="kind video">В</span>
+              <div class="ti">
+                <h5>Карта Мичурина 1739 — что осталось сегодня</h5>
+                <p>Видеоразбор · разбор лаборатории</p>
+              </div>
+              <span class="dur">34 мин</span>
+            </a>
+            <a class="mat" href="#">
+              <span class="kind text">Т</span>
+              <div class="ti">
+                <h5>Альманах «Ясна», выпуск 7</h5>
+                <p>PDF · 12 текстов участников · 2026</p>
+              </div>
+              <span class="dur">PDF</span>
+            </a>
+          </div>
+        </article>
+      </div>
+
+      <!-- RIGHT: sidebar -->
+      <div class="col" style="gap:24px">
+        <article class="panel">
+          <div class="panel-head">
+            <h3>Координаторы</h3>
+            <span class="sub">3 человека</span>
+          </div>
+          <div class="panel-body" style="padding:0">
+            <div class="coord">
+              <div class="av">АЗ</div>
+              <div class="info"><b>Алексей Зорин</b><p>Куратор маршрутов · 8 лет</p></div>
+              <a class="link" href="#">TG →</a>
+            </div>
+            <div class="coord">
+              <div class="av" style="background:linear-gradient(135deg,var(--accent-2),var(--accent))">ЕП</div>
+              <div class="info"><b>Елена Петрова</b><p>Архивы и тексты · 5 лет</p></div>
+              <a class="link" href="#">TG →</a>
+            </div>
+            <div class="coord">
+              <div class="av" style="background:linear-gradient(135deg,#5a4a36,var(--accent))">МК</div>
+              <div class="info"><b>Михаил Курбатов</b><p>Картография · 3 года</p></div>
+              <a class="link" href="#">TG →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <h3>Как присоединиться</h3>
+            <span class="sub">3 шага · бесплатно</span>
+          </div>
+          <div class="panel-body" style="padding:22px 24px;display:flex;flex-direction:column;gap:18px">
+            <div style="display:flex;gap:14px;align-items:flex-start">
+              <span class="mono" style="color:var(--accent);letter-spacing:.12em;flex-shrink:0">I</span>
+              <div>
+                <div style="font-family:var(--font-display);font-weight:600;font-size:1rem;margin-bottom:4px">Подпишитесь на канал</div>
+                <p style="margin:0;font-size:.86rem;color:var(--ink-2);line-height:1.5">Telegram-канал «Неглинка» — анонсы и материалы.</p>
+              </div>
+            </div>
+            <div style="display:flex;gap:14px;align-items:flex-start">
+              <span class="mono" style="color:var(--accent);letter-spacing:.12em;flex-shrink:0">II</span>
+              <div>
+                <div style="font-family:var(--font-display);font-weight:600;font-size:1rem;margin-bottom:4px">Приходите на открытую встречу</div>
+                <p style="margin:0;font-size:.86rem;color:var(--ink-2);line-height:1.5">Ежемесячно. Бесплатно. Можно просто послушать.</p>
+              </div>
+            </div>
+            <div style="display:flex;gap:14px;align-items:flex-start">
+              <span class="mono" style="color:var(--accent);letter-spacing:.12em;flex-shrink:0">III</span>
+              <div>
+                <div style="font-family:var(--font-display);font-weight:600;font-size:1rem;margin-bottom:4px">Оставьте заявку</div>
+                <p style="margin:0;font-size:.86rem;color:var(--ink-2);line-height:1.5">Координатор добавит вас в группу за 2–3&nbsp;дня.</p>
+              </div>
+            </div>
+            <a class="btn btn-primary" href="#join" style="margin-top:6px;justify-content:center">Оставить заявку <span class="arr">→</span></a>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <h3>География</h3>
+            <span class="sub">Москва + удалённо</span>
+          </div>
+          <div style="padding:22px 24px;display:flex;flex-direction:column;gap:14px">
+            <div style="display:flex;justify-content:space-between;font-size:.92rem">
+              <span class="dim">Очные прогулки</span>
+              <b style="font-family:var(--font-display)">Москва</b>
+            </div>
+            <div style="height:1px;background:var(--line)"></div>
+            <div style="display:flex;justify-content:space-between;font-size:.92rem">
+              <span class="dim">Видеоразборы</span>
+              <b style="font-family:var(--font-display)">Онлайн</b>
+            </div>
+            <div style="height:1px;background:var(--line)"></div>
+            <div style="display:flex;justify-content:space-between;font-size:.92rem">
+              <span class="dim">Архивные источники</span>
+              <b style="font-family:var(--font-display)">Доступ всем</b>
+            </div>
+            <div style="height:1px;background:var(--line)"></div>
+            <div style="display:flex;justify-content:space-between;font-size:.92rem">
+              <span class="dim">Альманах</span>
+              <b style="font-family:var(--font-display)">PDF + печать</b>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <h3>Цены</h3>
+            <span class="sub">Прозрачно</span>
+          </div>
+          <div style="padding:22px 24px">
+            <div style="display:grid;grid-template-columns:1fr auto;row-gap:12px;column-gap:14px;align-items:baseline">
+              <span class="dim" style="font-size:.92rem">Канал, открытые встречи, материалы</span>
+              <b style="font-family:var(--font-display)">бесплатно</b>
+              <span class="dim" style="font-size:.92rem">Натурные прогулки</span>
+              <b style="font-family:var(--font-display)">800–1500 ₽</b>
+              <span class="dim" style="font-size:.92rem">Спецкурсы (3–6 встреч)</span>
+              <b style="font-family:var(--font-display)">от 3000 ₽</b>
+              <span class="dim" style="font-size:.92rem">Альманах в&nbsp;печати</span>
+              <b style="font-family:var(--font-display)">500 ₽</b>
+            </div>
+            <p class="muted" style="font-size:.78rem;margin:14px 0 0;line-height:1.5">Цены указаны в анонсах каждой встречи. Есть льготные места.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── RELATED ──────────────────────────────────────────────────── -->
+<section style="background:var(--bg-deep)">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="ttl">
+        <div class="eyebrow">Связанные направления</div>
+        <h2 class="h2" style="margin-top:14px">С чем Неглинка пересекается</h2>
+      </div>
+      <a class="btn btn-ghost" href="../index.html#graph">Полная карта связей <span class="arr">→</span></a>
+    </div>
+    <div class="rel-grid">
+      <a class="rel" href="#">
+        <span class="bond">↔ архитектура и небо</span>
+        <span class="nm">Астроневод</span>
+        <p>План Кремля и карты неба — общий проект на 6 месяцев. Совместные прогулки и кабинетные разборы.</p>
+      </a>
+      <a class="rel" href="#">
+        <span class="bond">↔ Москва, прогулки</span>
+        <span class="nm">Ясные маршруты</span>
+        <p>Маршруты по Замоскворечью и Китай-городу. Часто проводим совместные выходы и обмен материалами.</p>
+      </a>
+      <a class="rel" href="#">
+        <span class="bond">↔ имена улиц</span>
+        <span class="nm">Извод</span>
+        <p>Этимология топонимов: Маросейка, Полянка, Якиманка. Разборы языка и истории в одной встрече.</p>
+      </a>
+      <a class="rel" href="#">
+        <span class="bond">↔ городские праздники</span>
+        <span class="nm">Праздники</span>
+        <p>Где и как праздновали в старой Москве — открываем места, связанные с календарём народных торжеств.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA ──────────────────────────────────────────────────────── -->
+<section id="join">
+  <div class="wrap">
+    <div class="cta-banner">
+      <div>
+        <div class="eyebrow">Присоединиться к Неглинке</div>
+        <h2 style="margin-top:14px">Москва, которую вы не&nbsp;видели</h2>
+        <p style="margin-top:18px">Оставьте заявку — координатор добавит вас в группу за 2–3 дня. Первая открытая встреча — бесплатно, без обязательств.</p>
+      </div>
+      <div class="acts">
+        <a class="btn btn-primary" href="#">Оставить заявку <span class="arr">→</span></a>
+        <a class="btn btn-ghost" href="https://t.me/russkaya_yasna" target="_blank">Канал в Telegram</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand" style="margin-bottom:14px">
+          <span class="mark">Я</span>
+          <span>Русская Ясна</span>
+        </div>
+        <p class="dim" style="font-size:.92rem;line-height:1.5;max-width:38ch;margin:0">
+          Открытое сообщество исследователей русского языка, истории и культуры.
+        </p>
+      </div>
+      <div>
+        <h4>Направления</h4>
+        <ul>
+          <li><a href="neglinka.html">Неглинка</a></li>
+          <li><a href="#">ЛитПроСвет</a></li>
+          <li><a href="#">Астроневод</a></li>
+          <li><a href="#">Праздники</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Ещё</h4>
+        <ul>
+          <li><a href="#">Джива</a></li>
+          <li><a href="#">Ясные маршруты</a></li>
+          <li><a href="#">Извод</a></li>
+          <li><a href="#">Ясна-Школа</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Контакты</h4>
+        <ul>
+          <li><a href="mailto:hi@russkaya-yasna.ru">hi@russkaya-yasna.ru</a></li>
+          <li><a href="https://t.me/russkaya_yasna">@russkaya_yasna</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Русская Ясна</span>
+      <span class="mono">v.2026</span>
+    </div>
+  </div>
+</footer>
+
+<!-- React + Babel for tweaks -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<div id="tweaks-root"></div>
+<script type="text/babel" src="../src/tweaks-panel.jsx"></script>
+<script type="text/babel" src="../src/tweaks-app.jsx"></script>
+
+</body>
+</html>
