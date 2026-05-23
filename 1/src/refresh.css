@@ -38,10 +38,11 @@ body {
 }
 
 .h-display {
+  margin: 0;
   font-weight: 600;
-  font-size: clamp(2rem, 1.3rem + 1.8vw, 3.4rem);
-  letter-spacing: -0.016em;
-  line-height: 1.04;
+  font-size: clamp(2rem, 1rem + 3.5vw, 4.6rem);
+  letter-spacing: -0.02em;
+  line-height: 1.02;
   text-wrap: balance;
   max-width: 16ch;
 }
@@ -74,22 +75,30 @@ body {
 
 /* Nav links */
 .nav-links a { font-family: var(--font-body); letter-spacing: -0.002em; }
-.nav-cta { font-family: var(--font-body); font-weight: 500; }
+/* Scoped to beat `.nav-links a` specificity — otherwise the pill's label
+   inherits --ink-2 and goes dark-on-dark against its --ink background. */
+.nav-links a.nav-cta,
+.nav-links a.nav-cta:hover { font-family: var(--font-body); font-weight: 500; color: var(--bg); }
 
 
 /* 2. Hero — tighter, fits CTA in first screen */
-.hero { padding-top: 24px; padding-bottom: 32px; min-height: calc(100svh - 64px); display: flex; align-items: center; }
+/* Cap the height so a short hero isn't lost in a full-viewport cavern,
+   while still filling most of the first screen on laptops. */
+.hero { padding-top: 24px; padding-bottom: 48px; min-height: min(82vh, 680px); display: flex; align-items: center; }
 .hero .wrap { width: 100%; }
 .hero-top {
-  grid-template-columns: 1.15fr .85fr;
-  gap: 48px;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 56px;
   align-items: center;
   margin-bottom: 0;
 }
-.hero-meta { gap: 18px; padding-top: 0; }
+/* Even, deliberate rhythm — flex gap is the single source of vertical spacing,
+   so children must not add their own (UA) margins on top of it. */
+.hero-meta { gap: 20px; padding-top: 0; }
+.hero-meta > * { margin: 0; }
 .hero-foot { display: none; }
-.hero-cta { margin-top: 4px; }
-.hero .lead { font-size: clamp(1rem, .92rem + .35vw, 1.18rem); }
+.hero-cta { margin-top: 8px; }
+.hero .lead { font-size: clamp(1.04rem, .94rem + .42vw, 1.24rem); max-width: 46ch; }
 
 /* Hero manifest aside (replaces stock-photo mosaic) */
 .hero-manifest {
