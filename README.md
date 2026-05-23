@@ -10,12 +10,10 @@
 .
 ├── index.html              ← редирект на 1/index.html (для GitHub Pages)
 ├── .nojekyll               ← отключить Jekyll-обработку
-├── 1/                      ← актуальная версия сайта
-│   ├── index.html          ← главная
-│   ├── pages/neglinka.html ← страница направления «Неглинка»
-│   ├── src/                ← стили + JSX-компоненты
-│   └── scraps/, uploads/   ← растровые материалы
-└── yasna3 design/          ← старая версия (архив)
+└── 1/                      ← сайт
+    ├── index.html          ← главная
+    ├── pages/neglinka.html ← страница направления «Неглинка»
+    └── src/                ← styles.css, refresh.css, interactive.jsx (диаграмма «Четыре опоры»)
 ```
 
 ## Локальный запуск
