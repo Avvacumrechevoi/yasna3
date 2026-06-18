@@ -430,3 +430,83 @@ section.tight { padding-top: calc(48px * var(--dens)); padding-bottom: calc(48px
   letter-spacing: -0.008em;
 }
 .rc-foot-r { font-style: normal; font-weight: 600; color: var(--ink); }
+
+
+/* ─── Direction page: logo plate + kicker (Граника) ───────────────── */
+.dir-hero-id {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+.dir-hero-id .dir-title { margin: 0; }
+/* Let the title/kicker column shrink so a long kicker wraps instead of
+   forcing the hero wider than the viewport (horizontal overflow on mobile). */
+.dir-hero-id > :not(.dir-logo) { min-width: 0; }
+.dir-kicker { overflow-wrap: break-word; }
+.dir-logo {
+  width: 116px; height: 116px;
+  flex-shrink: 0;
+  border-radius: 22px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  display: grid; place-items: center;
+  overflow: hidden;
+  box-shadow: 0 2px 16px rgba(26,23,20,.06);
+}
+.dir-logo img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.dir-kicker {
+  font-family: var(--font-mono);
+  font-size: .76rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-top: 10px;
+}
+@media (max-width: 560px) {
+  .dir-logo { width: 76px; height: 76px; border-radius: 16px; }
+  .dir-hero-id { gap: 16px; }
+}
+
+/* "Для кого" rows */
+.for-row {
+  display: flex; gap: 10px; align-items: baseline;
+  font-size: .92rem; line-height: 1.4; color: var(--ink);
+}
+.for-mark { color: var(--accent); flex-shrink: 0; font-size: .8rem; }
+@media (max-width: 560px) {
+  .for-row { font-size: .88rem; }
+}
+
+/* Inline 4-column "Чем занимаемся / Что делаем" panel (#formats) — the inline
+   repeat(4,1fr) doesn't collapse, so on mobile the columns clip inside the
+   panel and their min-content width pushes the page into horizontal overflow.
+   Collapse to 2 / 1 columns on smaller screens (overrides the inline style). */
+@media (max-width: 760px) { #formats { grid-template-columns: repeat(2, 1fr) !important; } }
+@media (max-width: 440px) { #formats { grid-template-columns: 1fr !important; } }
+
+/* Mobile overflow fix (applies to Неглинка + Граника dashboards): grid/flex
+   children default to min-width:auto = min-content, so long event/material text
+   forces the column — and the whole page — wider than the viewport. Let them
+   shrink so the text wraps instead. */
+.dash, .dash > .col { min-width: 0; }
+.ev .body, .mat .ti { min-width: 0; }
+
+/* ─── Direction card: logo glyph + leader line ────────────────────── */
+.dir-glyph.has-logo {
+  padding: 6px 0 12px;
+}
+.dir-glyph.has-logo img {
+  width: 76px; height: 76px;
+  object-fit: contain;
+  display: block;
+}
+.dir-lead {
+  font-family: var(--font-mono);
+  font-size: .7rem;
+  letter-spacing: .03em;
+  color: var(--ink-3);
+  margin-top: 12px;
+}
+.dir-lead b { color: var(--ink-2); font-weight: 500; }
