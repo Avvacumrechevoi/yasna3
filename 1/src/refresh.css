@@ -540,3 +540,15 @@ section.tight { padding-top: calc(48px * var(--dens)); padding-bottom: calc(48px
   object-fit: contain;
 }
 .dir.is-wordmark .name { display: none; }
+
+
+/* ─── Tile logo (Ясна-Школа) — colored emblem on its own background,
+   shown as a rounded app-icon-style badge. ───────────────────────────── */
+.dir-glyph.has-tile { padding: 6px 0 12px; }
+.dir-glyph.has-tile img {
+  width: 76px;
+  height: 76px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 2px 10px rgba(26,23,20,.10);
+}
