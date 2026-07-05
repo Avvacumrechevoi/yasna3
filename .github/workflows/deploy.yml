@@ -1,10 +1,13 @@
 # Деплой сайта на GitHub Pages.
 #
 # Зачем явный workflow вместо встроенного «deploy from branch»:
-# встроенный пайплайн дважды падал на шаге Deploy без внятной ошибки
-# (05.07.2026, коммиты 8c80eb0 и f76f7f5) и его нельзя перезапустить
-# из репозитория. Этот workflow перезапускается кнопкой Re-run
-# и вручную через вкладку Actions → Deploy → Run workflow.
+# встроенный пайплайн падал на шаге Deploy без внятной ошибки и его
+# нельзя перезапустить из репозитория (05–06.07.2026).
+#
+# Почему два джоба: артефакт «github-pages» создаётся один раз в build;
+# при повторном запуске упавшего deploy артефакт не пересоздаётся.
+# (В одноджобной схеме re-run загружал второй артефакт с тем же именем,
+# и deploy-pages падал: «Multiple artifacts named github-pages».)
 name: Deploy to GitHub Pages
 
 on:
@@ -23,10 +26,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -40,6 +40,16 @@ jobs:
         with:
           path: .
 
+  deploy:
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          error_count: 15
+          reporting_interval: 10000
