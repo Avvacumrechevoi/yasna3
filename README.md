@@ -2,39 +2,81 @@
 
 Открытое сообщество исследователей русского языка, истории и культуры.
 
-**Демо:** https://avvacumrechevoi.github.io/yasna3/
+**Прод:** https://avvacumrechevoi.github.io/yasna3/
 
 ## Структура
 
 ```
 .
-├── index.html              ← редирект на 1/index.html (для GitHub Pages)
-├── .nojekyll               ← отключить Jekyll-обработку
-└── 1/                      ← сайт
-    ├── index.html          ← главная
-    ├── pages/neglinka.html ← страница направления «Неглинка»
-    └── src/                ← styles.css, refresh.css, interactive.jsx (диаграмма «Четыре опоры»)
+├── .github/workflows/deploy.yml  ← деплой на GitHub Pages (Actions)
+├── index.html                    ← редирект на 1/index.html
+├── 404.html                      ← страница «не найдено»
+├── .nojekyll
+└── 1/                            ← сайт
+    ├── index.html                ← главная: герой, Обращение, 9 направлений, метод, FAQ
+    ├── pages/
+    │   ├── neglinka.html         ← Неглинка (история · Москва)
+    │   ├── granika.html          ← Граника (архитектура · Москва)
+    │   └── alexandria.html       ← Александрия (раскладки · СПб)
+    └── src/
+        ├── styles.css            ← базовая тема (палитры, сетки, панели)
+        ├── refresh.css           ← поверх styles.css: типографика, карточки,
+        │                            компоненты страниц управлений (см. низ файла)
+        ├── interactive.jsx       ← React-диаграмма «Четыре опоры» (главная)
+        ├── img/                  ← логотипы направлений + фото (alexandria/)
+        └── video/                ← сжатые ролики (≤ 100 МБ на файл — лимит GitHub)
 ```
+
+## Как добавить новое направление (чек-лист)
+
+1. **Логотип** → `1/src/img/<имя>.png` (512×512, прозрачный фон, если эмблема).
+2. **Карточка на главной** (`1/index.html`, блок `#directions`):
+   скопируйте существующую `<a class="dir">` (активная, со ссылкой) или
+   `<div class="dir is-soon">` (статус «формируется»). Виды логотипа в карточке:
+   - `.dir-glyph has-logo` — квадратная эмблема (Неглинка, Граника);
+   - `.dir-glyph has-wordmark` + класс `is-wordmark` на карточке — словесный
+     логотип, скрывает дублирующий текст-заголовок (ЛитПроСвет);
+   - `.dir-glyph has-tile` — цветная плашка-бейдж (Ясна-Школа);
+   - `.dir-glyph` + `<span>Б</span>` — буквенный глиф, если логотипа нет.
+3. **Страница** → скопируйте `1/pages/granika.html` (простая) или
+   `alexandria.html` (с фото-галереей и видео) и наполните. Страницы собраны
+   из готовых классов — inline-стили не нужны:
+   - `.fmt-grid / .fmt-num / .fmt-title / .fmt-desc` — «Чем занимаемся»;
+   - `.about-body / .about-text / .mission-box / .mission-text /
+     .label-accent / .label-muted / .unique-text` — «О направлении»;
+   - `.join-body / .join-step / .join-num / .join-title / .join-desc /
+     .join-cta` — «Как присоединиться»;
+   - `.kv-list / .kv-row / .kv-val / .kv-line` — панель «Формат»;
+   - `.photo-grid` — галерея фото; `.video-box` — блок с вертикальным видео;
+   - `.voice / .voice-by` — отзывы; `.coord` — люди.
+4. **Перелинковка**: футеры всех страниц + related-блоки (`.rel-grid`) +
+   счётчик направлений в текстах главной («девять» → обновить) + FAQ.
+5. **Медиа**: фото ужимайте до ≤1200px по длинной стороне (jpeg q≈82);
+   видео — H.264/AAC, вертикаль 540×960 достаточно, файл держите ≤ 20 МБ.
+
+## Деплой
+
+Пуш в `main` → GitHub Actions «Deploy to GitHub Pages» (~1–2 мин).
+
+- Статус: вкладка **Actions** в репозитории.
+- Упал деплой → откройте упавший ран → **Re-run failed jobs**.
+  Можно запустить вручную: Actions → Deploy to GitHub Pages → **Run workflow**.
+- История: до 07.2026 деплой шёл встроенным пайплайном «deploy from branch»;
+  он дважды падал на шаге Deploy без объяснений и не перезапускался — поэтому
+  переведён на явный workflow (`.github/workflows/deploy.yml`), а в настройках
+  Pages выставлен `build_type: workflow`.
 
 ## Локальный запуск
 
-Откройте `1/index.html` через любой статический сервер — `file://`
-не подходит, потому что `image-slot.js` использует `fetch`.
-
 ```bash
-cd 1 && python3 -m http.server 8000
-# затем http://localhost:8000
+cd 1 && python3 -m http.server 8000   # затем http://localhost:8000
 ```
 
-## Что починено в этом аудите
+`file://` не подходит: главная тянет React с CDN и шрифты Google Fonts.
 
-- Удалены недействительные SRI-хеши на React/ReactDOM/Babel — из-за них
-  браузер блокировал все интерактивные React-компоненты (созвездие Лебедя,
-  Quiz, диаграмма «Четыре опоры»).
-- Перешли с `*.development.js` на `*.production.min.js` для React.
-- `pages/neglinka.html` подтянут к новой типографике (Spectral + IBM Plex)
-  и подключает `refresh.css`.
-- Битые якоря `#manifest`, `#graph` в nav заменены на реальные `#event`,
-  `#method`, `#directions`.
-- В корень добавлен `index.html` с редиректом и `.nojekyll` —
-  чтобы GitHub Pages корректно отдал сайт.
+## Договорённости
+
+- Тексты страниц управлений берутся из анкет («Страница управления», 19 пунктов).
+- Не публикуйте фото людей в деликатных ситуациях без их согласия.
+- Названия направлений и руководителей сверяйте с реестром проекта
+  (proekt_den_yasna.xlsx → «Участники управлений»).

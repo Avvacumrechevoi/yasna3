@@ -98,7 +98,6 @@ body {
 /* Heading must never spill past its grid track into the manifest card —
    min-width:0 lets the track shrink, max-width:100% + wrapping keep text in. */
 .h-display { max-width: 100%; overflow-wrap: break-word; }
-.hero-foot { display: none; }
 .hero-cta { margin-top: 8px; }
 .hero .lead { font-size: clamp(1.04rem, .94rem + .42vw, 1.24rem); max-width: 46ch; }
 
@@ -294,35 +293,6 @@ a.dir:not(.is-soon)::after {
 }
 a.dir:not(.is-soon):hover { transform: translateY(-2px); }
 
-.dir-note {
-  margin: 32px 0 0;
-  padding: 18px 22px;
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  font-size: .92rem;
-  line-height: 1.5;
-  color: var(--ink-2);
-  max-width: 720px;
-}
-.dir-note .mono {
-  display: inline-block;
-  margin-right: 8px;
-  color: var(--ink);
-  font-weight: 500;
-}
-
-
-/* 4. Event banner — keep but adjust type */
-.ed-day {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-style: italic;
-  letter-spacing: -0.02em;
-}
-.event-title { font-weight: 600; letter-spacing: -0.014em; }
-.event-title .dim { font-style: italic; font-weight: 400; }
-
 
 /* 5. Method steps — adjust */
 .step .ttl { font-weight: 600; letter-spacing: -0.008em; }
@@ -480,12 +450,8 @@ section.tight { padding-top: calc(48px * var(--dens)); padding-bottom: calc(48px
   .for-row { font-size: .88rem; }
 }
 
-/* Inline 4-column "Чем занимаемся / Что делаем" panel (#formats) — the inline
-   repeat(4,1fr) doesn't collapse, so on mobile the columns clip inside the
-   panel and their min-content width pushes the page into horizontal overflow.
-   Collapse to 2 / 1 columns on smaller screens (overrides the inline style). */
-@media (max-width: 760px) { #formats { grid-template-columns: repeat(2, 1fr) !important; } }
-@media (max-width: 440px) { #formats { grid-template-columns: 1fr !important; } }
+/* (моб. коллапс сетки «Чем занимаемся» — см. .fmt-grid в разделе
+   «Компоненты страниц управлений» внизу файла) */
 
 /* Mobile overflow fix (applies to Неглинка + Граника dashboards): grid/flex
    children default to min-width:auto = min-content, so long event/material text
@@ -698,3 +664,78 @@ section.tight { padding-top: calc(48px * var(--dens)); padding-bottom: calc(48px
   .appeal-invoc { margin-bottom: 28px; }
   .appeal-accent { margin: 28px auto; }
 }
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   КОМПОНЕНТЫ СТРАНИЦ УПРАВЛЕНИЙ
+   Единые классы вместо inline-стилей. Используются на neglinka /
+   granika / alexandria. Новую страницу управления собирайте из них.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Сетка «Чем занимаемся» — 4 формата работы */
+.fmt-grid {
+  padding: 24px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+@media (max-width: 760px) { .fmt-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 440px) { .fmt-grid { grid-template-columns: 1fr; } }
+.fmt-num {
+  font-family: var(--font-mono);
+  color: var(--accent);
+  letter-spacing: .12em;
+  margin-bottom: 10px;
+}
+.fmt-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+}
+.fmt-desc { margin: 0; font-size: .88rem; color: var(--ink-2); line-height: 1.5; }
+
+/* Панель «О направлении» */
+.about-body { padding: 24px; display: flex; flex-direction: column; gap: 18px; }
+.about-text { margin: 0; font-size: 1.02rem; line-height: 1.6; color: var(--ink); }
+.mission-box { padding: 18px 20px; background: var(--bg-deep); border-radius: var(--radius); }
+.mission-text {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.12rem;
+  line-height: 1.4;
+  font-style: italic;
+}
+.unique-text { margin: 0; font-size: .94rem; line-height: 1.55; color: var(--ink-2); }
+.label-accent, .label-muted {
+  font-family: var(--font-mono);
+  letter-spacing: .12em;
+  font-size: .7rem;
+  margin-bottom: 8px;
+}
+.label-accent { color: var(--accent); }
+.label-muted { color: var(--ink-3); }
+
+/* Панель «Как присоединиться» — шаги I/II/III */
+.join-body { padding: 22px 24px; display: flex; flex-direction: column; gap: 18px; }
+.join-step { display: flex; gap: 14px; align-items: flex-start; }
+.join-num {
+  font-family: var(--font-mono);
+  color: var(--accent);
+  letter-spacing: .12em;
+  flex-shrink: 0;
+}
+.join-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+.join-desc { margin: 0; font-size: .86rem; color: var(--ink-2); line-height: 1.5; }
+.join-cta { margin-top: 6px; justify-content: center; }
+
+/* Панель «Формат» — строки ключ-значение */
+.kv-list { padding: 22px 24px; display: flex; flex-direction: column; gap: 14px; }
+.kv-row { display: flex; justify-content: space-between; gap: 16px; font-size: .92rem; }
+.kv-row .kv-val { font-family: var(--font-display); text-align: right; }
+.kv-line { height: 1px; background: var(--line); }
