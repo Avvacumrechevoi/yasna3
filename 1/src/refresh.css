@@ -739,3 +739,100 @@ section.tight { padding-top: calc(48px * var(--dens)); padding-bottom: calc(48px
 .kv-row { display: flex; justify-content: space-between; gap: 16px; font-size: .92rem; }
 .kv-row .kv-val { font-family: var(--font-display); text-align: right; }
 .kv-line { height: 1px; background: var(--line); }
+
+
+/* ─── День Ясны — событийный блок под Обращением ──────────────────── */
+.day-banner {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: clamp(28px, 5vw, 64px);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: clamp(28px, 5vw, 56px);
+}
+@media (max-width: 920px) { .day-banner { grid-template-columns: 1fr; } }
+.day-tag {
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 22px;
+}
+.day-date { display: flex; align-items: center; gap: 18px; margin-bottom: 20px; }
+.day-num {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: clamp(4rem, 3rem + 4vw, 6rem);
+  line-height: .9;
+  letter-spacing: -0.03em;
+}
+.day-meta { display: flex; flex-direction: column; gap: 4px; }
+.day-meta b {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+}
+.day-meta span {
+  font-family: var(--font-mono);
+  font-size: .78rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.day-lead { margin: 0 0 24px; font-size: 1rem; line-height: 1.65; color: var(--ink-2); text-wrap: pretty; }
+.day-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+.day-eyebrow {
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 12px;
+}
+.day-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2.1rem);
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  margin: 0 0 20px;
+}
+.day-title .dim { color: var(--ink-3); font-weight: 500; }
+.day-prog { list-style: none; margin: 0; padding: 0; counter-reset: prog; }
+.day-prog li {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  padding: 13px 0;
+  border-top: 1px solid var(--line);
+}
+.day-prog li:first-child { border-top: 0; padding-top: 0; }
+.day-prog .t {
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  letter-spacing: .08em;
+  color: var(--accent);
+  text-transform: uppercase;
+  flex-shrink: 0;
+  width: 74px;
+}
+.day-prog b {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.04rem;
+  letter-spacing: -0.008em;
+  margin-bottom: 2px;
+}
+.day-prog p { margin: 0; font-size: .88rem; line-height: 1.5; color: var(--ink-2); }
+.day-note {
+  margin: 18px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font-size: .86rem;
+  color: var(--ink-3);
+}

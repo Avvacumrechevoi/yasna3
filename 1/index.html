@@ -31,6 +31,7 @@
     </a>
     <nav class="nav-links">
       <a href="#event">Обращение</a>
+      <a href="#day">26&nbsp;сентября</a>
       <a href="#directions">Направления</a>
       <a href="#method">Метод</a>
       <a href="#faq">Вопросы</a>
@@ -46,7 +47,7 @@
   <div class="wrap">
     <div class="hero-top">
       <div class="hero-meta">
-        <a class="hero-pill" href="#event">
+        <a class="hero-pill" href="#day">
           <span class="hero-pill-dot"></span>
           <span><b>26 сентября</b> · День Ясны 2026</span>
           <span class="hero-pill-arr">→</span>
@@ -104,6 +105,55 @@
       </div>
 
       <p class="appeal-accent appeal-final">Мы с&nbsp;этой Вечной Книгой сами пойдём <span class="gold">к&nbsp;свету, к&nbsp;ладу и&nbsp;любви</span>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ДЕНЬ ЯСНЫ — ОБЩИЙ СБОР ────────────────────────────────────── -->
+<section id="day" class="tight">
+  <div class="wrap">
+    <div class="day-banner">
+      <div>
+        <div class="day-tag">Открытое событие · бесплатно</div>
+        <div class="day-date">
+          <span class="day-num">26</span>
+          <div class="day-meta">
+            <b>сентября 2026</b>
+            <span>суббота · 12:00</span>
+            <span>Москва + онлайн</span>
+          </div>
+        </div>
+        <p class="day-lead">
+          Раз в&nbsp;год все девять направлений собираются вместе. Основатель представляет каждое управление и&nbsp;его руководителя — за&nbsp;один день видно всю Ясну изнутри. Самый простой способ войти в&nbsp;сообщество.
+        </p>
+        <div class="day-cta">
+          <a class="btn btn-primary" href="https://t.me/russkaya_yasna" target="_blank">Записаться <span class="arr">→</span></a>
+          <a class="btn btn-ghost" href="#directions">Девять направлений</a>
+        </div>
+      </div>
+      <div>
+        <div class="day-eyebrow">Программа дня</div>
+        <h2 class="day-title">День Ясны <span class="dim">— общий сбор</span></h2>
+        <ol class="day-prog">
+          <li>
+            <span class="t">30 мин</span>
+            <div><b>Слово основателя</b><p>Что такое Ясна сегодня и&nbsp;куда идём — рамка всего дня.</p></div>
+          </li>
+          <li>
+            <span class="t">~90 мин</span>
+            <div><b>Представление направлений</b><p>Каждое управление — короткое выступление руководителя: что сделано, куда движемся, кого ждём в&nbsp;команду.</p></div>
+          </li>
+          <li>
+            <span class="t">~60 мин</span>
+            <div><b>Голоса людей</b><p>Опыт изнутри направлений и&nbsp;применение Ясны в&nbsp;жизни и&nbsp;профессии — короткие живые истории.</p></div>
+          </li>
+          <li>
+            <span class="t">20 мин</span>
+            <div><b>Закрытие</b><p>Заключительное слово, награждения, общее фото — и&nbsp;свободное общение за&nbsp;чаем.</p></div>
+          </li>
+        </ol>
+        <p class="day-note">Можно прийти на&nbsp;часть программы. Ярмарка направлений, чай и&nbsp;живое общение — весь день.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -387,6 +437,7 @@
         <h4>Участие</h4>
         <ul>
           <li><a href="#event">Обращение</a></li>
+          <li><a href="#day">26 сентября — День Ясны</a></li>
           <li><a href="#method">Как устроено</a></li>
           <li><a href="#faq">Вопросы</a></li>
           <li><a href="#join">Оставить заявку</a></li>
@@ -417,7 +468,7 @@
 (function(){
   if (typeof IntersectionObserver === 'undefined') return;
   const targets = document.querySelectorAll(
-    '.hero-manifest, .appeal, .dir-grid, .method-grid, .rc-wrap, .cta-banner'
+    '.hero-manifest, .appeal, .day-banner, .dir-grid, .method-grid, .rc-wrap, .cta-banner'
   );
   targets.forEach(el => el.classList.add('reveal'));
   const io = new IntersectionObserver((entries) => {
