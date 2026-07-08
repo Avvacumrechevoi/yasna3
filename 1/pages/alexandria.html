@@ -67,15 +67,22 @@
           <a class="btn btn-ghost" href="#video">Смотреть занятие</a>
         </div>
       </div>
-      <div class="dir-stats" aria-label="Статистика">
-        <div class="dir-stat"><div class="lbl">Участников</div><div class="val">10</div></div>
-        <div class="dir-stat"><div class="lbl">Управлений-партнёров</div><div class="val">6</div></div>
-        <div class="dir-stat"><div class="lbl">Серии видеоуроков</div><div class="val">2</div></div>
-        <div class="dir-stat"><div class="lbl">Работаем</div><div class="val">с 2022</div></div>
+      <div class="promo-box">
+        <video class="promo-video" id="promo" autoplay muted loop playsinline preload="auto" poster="../src/img/alexandria/promo-poster.jpg" aria-label="Промо-ролик управления Александрия">
+          <source src="../src/video/alexandria-promo.mp4" type="video/mp4"/>
+        </video>
+        <button class="promo-sound" id="promo-sound" type="button" aria-label="Включить звук">🔇 Звук</button>
       </div>
     </div>
 
-    <div class="strip" style="margin-top:32px;max-width:max-content">
+    <div class="dir-stats dir-stats-row" aria-label="Статистика">
+      <div class="dir-stat"><div class="lbl">Участников</div><div class="val">10</div></div>
+      <div class="dir-stat"><div class="lbl">Управлений-партнёров</div><div class="val">6</div></div>
+      <div class="dir-stat"><div class="lbl">Серии видеоуроков</div><div class="val">2</div></div>
+      <div class="dir-stat"><div class="lbl">Работаем</div><div class="val">с 2022</div></div>
+    </div>
+
+    <div class="strip" style="margin-top:28px;max-width:max-content">
       <span class="dot"></span>
       <span><b style="font-weight:600">Слоган управления:</b>&nbsp; «Разложи всё!» — 26&nbsp;сентября покажем раскладки, видеопрогулку по&nbsp;мостам и&nbsp;доклады на&nbsp;Дне Ясны.</span>
       <a href="../index.html#day" class="mono" style="color:var(--accent);text-transform:uppercase;letter-spacing:.08em;font-size:.72rem">Подробнее →</a>
@@ -463,6 +470,19 @@
     </div>
   </div>
 </footer>
+
+<script>
+(function(){
+  var v = document.getElementById('promo'), b = document.getElementById('promo-sound');
+  if (!v || !b) return;
+  b.addEventListener('click', function(){
+    v.muted = !v.muted;
+    if (!v.muted && v.paused) v.play();
+    b.textContent = v.muted ? '🔇 Звук' : '🔊 Звук вкл';
+    b.setAttribute('aria-label', v.muted ? 'Включить звук' : 'Выключить звук');
+  });
+})();
+</script>
 
 </body>
 </html>

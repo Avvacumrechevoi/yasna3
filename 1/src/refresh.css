@@ -846,3 +846,45 @@ section.tight { padding-top: calc(48px * var(--dens)); padding-bottom: calc(48px
 /* Аватар-фото в списке людей (.coord) — вместо инициалов */
 .av.av-photo { overflow: hidden; padding: 0; }
 .av.av-photo img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 50%; }
+
+
+/* ─── Промо-ролик в hero страницы управления (Александрия) ─────────── */
+.promo-box {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 6px 28px rgba(26,23,20,.12);
+  border: 1px solid var(--line);
+  background: #f7f3ea;
+  line-height: 0;
+}
+.promo-video { width: 100%; height: auto; display: block; }
+.promo-sound {
+  position: absolute;
+  right: 12px; bottom: 12px;
+  padding: 7px 14px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(26,23,20,.72);
+  color: #fbfaf6;
+  font-family: var(--font-body);
+  font-size: .8rem;
+  cursor: pointer;
+  line-height: 1;
+  transition: background .2s;
+}
+.promo-sound:hover { background: rgba(26,23,20,.9); }
+
+/* Статистика строкой под hero (когда правую колонку занял ролик) */
+.dir-stats-row {
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 28px;
+}
+.dir-stats-row .dir-stat { border-bottom: 0; }
+.dir-stats-row .dir-stat:nth-child(2n) { border-right: 1px solid var(--line); }
+.dir-stats-row .dir-stat:last-child { border-right: 0; }
+@media (max-width: 720px) {
+  .dir-stats-row { grid-template-columns: repeat(2, 1fr); }
+  .dir-stats-row .dir-stat:nth-child(2n) { border-right: 0; }
+  .dir-stats-row .dir-stat:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+}
