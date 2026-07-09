@@ -922,3 +922,16 @@ section.tight { padding-top: calc(48px * var(--dens)); padding-bottom: calc(48px
 @media (max-width: 480px) {
   .video-duo { grid-template-columns: 1fr; }
 }
+
+
+/* ─── Уважение к prefers-reduced-motion ───────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* показываем скрытые reveal-блоки сразу, без появления */
+  .reveal { opacity: 1 !important; transform: none !important; }
+}

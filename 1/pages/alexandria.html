@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500;1,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
 <link rel="icon" type="image/jpeg" href="../src/img/yasna-mark.jpg"/>
+<link rel="canonical" href="https://avvacumrechevoi.github.io/yasna3/1/pages/alexandria.html"/>
 <meta property="og:type" content="website"/>
 <meta property="og:locale" content="ru_RU"/>
 <meta property="og:site_name" content="Русская Ясна"/>
@@ -68,7 +69,7 @@
         </div>
       </div>
       <div class="promo-box">
-        <video class="promo-video" id="promo" autoplay muted loop playsinline preload="auto" poster="../src/img/alexandria/promo-poster.jpg" aria-label="Промо-ролик управления Александрия">
+        <video class="promo-video" id="promo" autoplay muted loop playsinline preload="metadata" poster="../src/img/alexandria/promo-poster.jpg" aria-label="Промо-ролик управления Александрия">
           <source src="../src/video/alexandria-promo.mp4" type="video/mp4"/>
         </video>
         <button class="promo-sound" id="promo-sound" type="button" aria-label="Включить звук">🔇 Звук</button>
@@ -499,6 +500,11 @@
 (function(){
   var v = document.getElementById('promo'), b = document.getElementById('promo-sound');
   if (!v || !b) return;
+  // Уважаем prefers-reduced-motion: не крутим ролик сам, показываем постер
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    v.removeAttribute('autoplay'); v.removeAttribute('loop'); v.setAttribute('controls','');
+    try { v.pause(); } catch (e) {}
+  }
   b.addEventListener('click', function(){
     v.muted = !v.muted;
     if (!v.muted && v.paused) v.play();
