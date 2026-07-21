@@ -1067,3 +1067,83 @@ a.dir.is-quiet::after {
   content: "работает";
   color: var(--ink-3);
 }
+
+
+/* ─── Страница заявки ─────────────────────────────────────────────── */
+.zv-head { max-width: 620px; }
+.zv-head .dir-title { margin-bottom: 16px; }
+.zv-layout {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+@media (max-width: 980px) { .zv-layout { grid-template-columns: 1fr; } }
+
+.zv-form { padding: 24px; display: flex; flex-direction: column; gap: 18px; }
+.zv-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+@media (max-width: 560px) { .zv-row { grid-template-columns: 1fr; } }
+.zv-field { display: flex; flex-direction: column; gap: 7px; }
+.zv-field label {
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.zv-req { color: var(--accent); }
+.zv-field input[type="text"],
+.zv-field select,
+.zv-field textarea {
+  font-family: var(--font-body);
+  font-size: .98rem;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  padding: 12px 14px;
+  width: 100%;
+  transition: border-color .2s, box-shadow .2s;
+}
+.zv-field textarea { resize: vertical; line-height: 1.5; }
+.zv-field input:focus,
+.zv-field select:focus,
+.zv-field textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 18%, transparent);
+}
+.zv-hint { font-size: .8rem; color: var(--ink-3); }
+.zv-check {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-body); font-size: .94rem;
+  letter-spacing: 0; text-transform: none; color: var(--ink);
+  cursor: pointer;
+}
+.zv-check input { width: 18px; height: 18px; accent-color: var(--accent); }
+.zv-submit { align-self: flex-start; margin-top: 4px; }
+.zv-note { margin: 0; font-size: .82rem; color: var(--ink-3); line-height: 1.5; }
+
+.zv-done { padding: 32px 24px 28px; text-align: center; }
+.zv-done-mark {
+  width: 46px; height: 46px; margin: 0 auto 14px;
+  border-radius: 50%; display: grid; place-items: center;
+  background: var(--accent); color: var(--accent-ink);
+  font-size: 1.3rem;
+}
+.zv-done h4 {
+  font-family: var(--font-display); font-weight: 600;
+  font-size: 1.3rem; margin: 0 0 8px;
+}
+.zv-done p { margin: 0 auto 16px; max-width: 46ch; font-size: .92rem; color: var(--ink-2); line-height: 1.6; }
+.zv-copy {
+  width: 100%; font-family: var(--font-mono); font-size: .82rem;
+  color: var(--ink-2); background: var(--bg); line-height: 1.5;
+  border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; resize: vertical;
+}
+.zv-done-acts { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 14px; }
+.zv-chan { grid-template-columns: 1fr; }
+
+/* [hidden] должен побеждать display:flex у .zv-field — иначе скрытые
+   поля формы всё равно видны (правило автора перебивает стиль браузера). */
+.zv-field[hidden] { display: none !important; }

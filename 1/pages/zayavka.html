@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Оставить заявку — Русская Ясна</title>
+<meta name="description" content="Оставьте заявку: прийти 26 сентября, вступить в направление, принести свой проект или задать вопрос. Ответим в течение двух-трёх дней."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500;1,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="icon" type="image/jpeg" href="../src/img/yasna-mark.jpg"/>
+<link rel="canonical" href="https://avvacumrechevoi.github.io/yasna3/1/pages/zayavka.html"/>
+<meta property="og:type" content="website"/>
+<meta property="og:locale" content="ru_RU"/>
+<meta property="og:site_name" content="Русская Ясна"/>
+<meta property="og:title" content="Оставить заявку — Русская Ясна"/>
+<meta property="og:description" content="Прийти 26 сентября, вступить в направление, принести свой проект или задать вопрос."/>
+<meta property="og:url" content="https://avvacumrechevoi.github.io/yasna3/1/pages/zayavka.html"/>
+<meta property="og:image" content="https://avvacumrechevoi.github.io/yasna3/1/src/img/yasna-mark.jpg"/>
+<meta name="twitter:card" content="summary"/>
+<link rel="stylesheet" href="../src/styles.css"/>
+<link rel="stylesheet" href="../src/refresh.css"/>
+</head>
+<body data-palette="iney" data-fontpair="modern" data-density="regular" data-screen-label="Заявка">
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav-row">
+    <a class="brand" href="../index.html">
+      <img class="mark" src="../src/img/yasna-mark.jpg" alt="ЯСНА" width="38" height="38"/>
+      <span>Русская Ясна</span>
+    </a>
+    <nav class="nav-links">
+      <a href="../index.html#event">Обращение</a>
+      <a href="../index.html#day">26&nbsp;сентября</a>
+      <a href="../index.html#directions">Направления</a>
+      <a href="../index.html#ways">Участие</a>
+      <a href="../index.html#faq">Вопросы</a>
+    </nav>
+  </div>
+</header>
+
+<section class="dir-hero">
+  <div class="wrap">
+    <a class="dir-back" href="../index.html">
+      <span>← </span><span>НА ГЛАВНУЮ</span>
+    </a>
+
+    <div class="zv-head">
+      <h1 class="dir-title">Оставить заявку</h1>
+      <p class="dir-sub">Заполните коротко — ответим в&nbsp;течение двух-трёх дней и&nbsp;подскажем, с&nbsp;чего начать. Ничего платить и&nbsp;ничем себя связывать не&nbsp;нужно.</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:8px">
+  <div class="wrap">
+    <div class="zv-layout">
+
+      <!-- ФОРМА -->
+      <article class="panel">
+        <div class="panel-head">
+          <h3>Заявка</h3>
+          <span class="sub">Полей мало · минута времени</span>
+        </div>
+
+        <form class="zv-form" id="zv-form" novalidate>
+          <div class="zv-field">
+            <label for="f-goal">С чем вы к&nbsp;нам? <span class="zv-req">*</span></label>
+            <select id="f-goal" name="goal" required>
+              <option value="Прийти 26 сентября">Прийти 26 сентября на общий сбор</option>
+              <option value="Вступить в направление">Вступить в направление</option>
+              <option value="Свой проект">У меня свой проект или разработка</option>
+              <option value="Вопрос">Просто вопрос</option>
+            </select>
+          </div>
+
+          <div class="zv-field" id="wrap-dir" hidden>
+            <label for="f-dir">Какое направление</label>
+            <select id="f-dir" name="direction">
+              <option value="">Ещё не выбрал(а) — подскажите</option>
+              <option>Ясна-Школа</option>
+              <option>Неглинка</option>
+              <option>Граника</option>
+              <option>ЛитПроСвет</option>
+              <option>Извод</option>
+              <option>Джива</option>
+              <option>Парад Красоты</option>
+              <option>Александрия</option>
+              <option>Геральдика</option>
+            </select>
+          </div>
+
+          <div class="zv-row">
+            <div class="zv-field">
+              <label for="f-name">Как вас зовут <span class="zv-req">*</span></label>
+              <input id="f-name" name="name" type="text" required autocomplete="name" placeholder="Имя"/>
+            </div>
+            <div class="zv-field">
+              <label for="f-city">Город</label>
+              <input id="f-city" name="city" type="text" autocomplete="address-level2" placeholder="Москва"/>
+            </div>
+          </div>
+
+          <div class="zv-field">
+            <label for="f-contact">Как с&nbsp;вами связаться <span class="zv-req">*</span></label>
+            <input id="f-contact" name="contact" type="text" required placeholder="Telegram, телефон или почта"/>
+            <span class="zv-hint">Напишите так, как вам удобнее отвечать.</span>
+          </div>
+
+          <div class="zv-field" id="wrap-help" hidden>
+            <label class="zv-check">
+              <input type="checkbox" id="f-help" name="help"/>
+              <span>Нужна помощь с&nbsp;дорогой или ночлегом</span>
+            </label>
+          </div>
+
+          <div class="zv-field">
+            <label for="f-msg">Что хотите сказать или спросить</label>
+            <textarea id="f-msg" name="message" rows="4" placeholder="Пара строк о себе или ваш вопрос — необязательно"></textarea>
+          </div>
+
+          <button class="btn btn-primary zv-submit" type="submit">Отправить заявку <span class="arr">→</span></button>
+          <p class="zv-note" id="zv-note">Нажимая кнопку, вы откроете письмо с&nbsp;уже заполненной заявкой — останется только отправить.</p>
+        </form>
+
+        <div class="zv-done" id="zv-done" hidden>
+          <div class="zv-done-mark">✓</div>
+          <h4>Заявка собрана</h4>
+          <p id="zv-done-text">Мы открыли письмо с&nbsp;вашей заявкой. Если почтовая программа не&nbsp;открылась, скопируйте текст ниже и&nbsp;пришлите его любым удобным способом.</p>
+          <textarea class="zv-copy" id="zv-copy" rows="8" readonly></textarea>
+          <div class="zv-done-acts">
+            <button class="btn btn-ghost" type="button" id="zv-copy-btn">Скопировать текст</button>
+            <a class="btn btn-ghost" href="https://t.me/russkaya_yasna" target="_blank" rel="noopener">Открыть Telegram</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- АЛЬТЕРНАТИВЫ -->
+      <div class="col" style="gap:24px">
+        <article class="panel">
+          <div class="panel-head">
+            <h3>Другие способы</h3>
+            <span class="sub">Если форма неудобна</span>
+          </div>
+          <div class="chan-grid zv-chan">
+            <a class="chan" href="https://t.me/russkaya_yasna" target="_blank" rel="noopener">
+              <span class="chan-plat">Telegram</span>
+              <span class="chan-name">Русская Ясна</span>
+              <span class="chan-go">канал сообщества →</span>
+            </a>
+            <a class="chan" href="mailto:hi@russkaya-yasna.ru?subject=%D0%97%D0%B0%D1%8F%D0%B2%D0%BA%D0%B0%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0">
+              <span class="chan-plat">Почта</span>
+              <span class="chan-name">hi@russkaya-yasna.ru</span>
+              <span class="chan-go">написать письмо →</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <h3>Что будет дальше</h3>
+            <span class="sub">3 шага</span>
+          </div>
+          <div class="panel-body join-body">
+            <div class="join-step">
+              <span class="join-num">I</span>
+              <div>
+                <div class="join-title">Мы ответим</div>
+                <p class="join-desc">В&nbsp;течение двух-трёх дней напишем тем способом, который вы указали.</p>
+              </div>
+            </div>
+            <div class="join-step">
+              <span class="join-num">II</span>
+              <div>
+                <div class="join-title">Подскажем, куда идти</div>
+                <p class="join-desc">Если направление ещё не&nbsp;выбрано — поможем выбрать по&nbsp;тому, что вам интересно.</p>
+              </div>
+            </div>
+            <div class="join-step">
+              <span class="join-num">III</span>
+              <div>
+                <div class="join-title">Позовём на&nbsp;встречу</div>
+                <p class="join-desc">Ближайшая открытая — бесплатно и&nbsp;без обязательств. Можно просто послушать.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <h3>Руководителю напрямую</h3>
+            <span class="sub">Если знаете, к&nbsp;кому</span>
+          </div>
+          <div class="kv-list">
+            <div class="kv-row">
+              <span class="dim">Ясна-Школа</span>
+              <b class="kv-val"><a href="https://t.me/Yasna_axlbot" target="_blank" rel="noopener">@Yasna_axlbot</a></b>
+            </div>
+            <div class="kv-line"></div>
+            <div class="kv-row">
+              <span class="dim">Александрия</span>
+              <b class="kv-val"><a href="https://t.me/mobictas" target="_blank" rel="noopener">@mobictas</a></b>
+            </div>
+            <div class="kv-line"></div>
+            <div class="kv-row">
+              <span class="dim">Неглинка</span>
+              <b class="kv-val"><a href="https://t.me/neglinka78" target="_blank" rel="noopener">38 Меридиан</a></b>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand" style="margin-bottom:14px">
+          <span class="mark">Я</span>
+          <span>Русская Ясна</span>
+        </div>
+        <p class="dim" style="font-size:.92rem;line-height:1.5;max-width:38ch;margin:0">
+          Открытое сообщество исследователей русского языка, истории и культуры.
+        </p>
+      </div>
+      <div>
+        <h4>Направления</h4>
+        <ul>
+          <li><a href="yasna-shkola.html">Ясна-Школа</a></li>
+          <li><a href="neglinka.html">Неглинка</a></li>
+          <li><a href="granika.html">Граника</a></li>
+          <li><a href="alexandria.html">Александрия</a></li>
+          <li><a href="../index.html#directions">Все девять</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Участие</h4>
+        <ul>
+          <li><a href="../index.html#day">26 сентября</a></li>
+          <li><a href="../index.html#ways">Четыре пути</a></li>
+          <li><a href="../index.html#faq">Вопросы</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Контакты</h4>
+        <ul>
+          <li><a href="mailto:hi@russkaya-yasna.ru">hi@russkaya-yasna.ru</a></li>
+          <li><a href="https://t.me/russkaya_yasna">@russkaya_yasna</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Русская Ясна</span>
+      <span class="mono">v.2026</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ─────────────────────────────────────────────────────────────────────
+   КУДА УХОДЯТ ЗАЯВКИ.
+
+   Сейчас форма собирает письмо и открывает почтовую программу — работает
+   везде и без всякой регистрации, но заявки живут в почте.
+
+   Чтобы заявки складывались в ТАБЛИЦУ автоматически:
+   1) заведите форму на forms.yandex.ru (5 минут, бесплатно) с теми же полями;
+   2) впишите её адрес в FORM_URL ниже.
+   Тогда кнопка будет вести на неё, а ответы копиться в таблице Яндекса.
+   ───────────────────────────────────────────────────────────────────── */
+var FORM_URL = '';                        // напр. 'https://forms.yandex.ru/u/xxxxxxxx/'
+var MAIL_TO  = 'hi@russkaya-yasna.ru';
+
+(function () {
+  var form = document.getElementById('zv-form');
+  if (!form) return;
+  var goal = document.getElementById('f-goal');
+  var wrapDir = document.getElementById('wrap-dir');
+  var wrapHelp = document.getElementById('wrap-help');
+  var done = document.getElementById('zv-done');
+
+  // Подставляем цель и направление из адреса: ?goal=day / ?dir=granika
+  var q = new URLSearchParams(location.search);
+  var GOALS = { day: 'Прийти 26 сентября', join: 'Вступить в направление',
+                project: 'Свой проект', ask: 'Вопрос' };
+  if (q.get('goal') && GOALS[q.get('goal')]) goal.value = GOALS[q.get('goal')];
+  var DIRS = { 'yasna-shkola': 'Ясна-Школа', neglinka: 'Неглинка', granika: 'Граника',
+               alexandria: 'Александрия', litprosvet: 'ЛитПроСвет', izvod: 'Извод',
+               dzhiva: 'Джива', parad: 'Парад Красоты', geraldika: 'Геральдика' };
+  if (q.get('dir') && DIRS[q.get('dir')]) {
+    goal.value = 'Вступить в направление';
+    document.getElementById('f-dir').value = DIRS[q.get('dir')];
+  }
+
+  function sync() {
+    wrapDir.hidden = goal.value !== 'Вступить в направление';
+    wrapHelp.hidden = goal.value !== 'Прийти 26 сентября';
+  }
+  goal.addEventListener('change', sync);
+  sync();
+
+  function collect() {
+    var v = function (id) { return (document.getElementById(id).value || '').trim(); };
+    var lines = [
+      'С чем: ' + goal.value,
+      wrapDir.hidden ? null : 'Направление: ' + (v('f-dir') || 'не выбрано'),
+      'Имя: ' + v('f-name'),
+      v('f-city') ? 'Город: ' + v('f-city') : null,
+      'Связь: ' + v('f-contact'),
+      (!wrapHelp.hidden && document.getElementById('f-help').checked)
+        ? 'Нужна помощь с дорогой или ночлегом: да' : null,
+      v('f-msg') ? '\nСообщение:\n' + v('f-msg') : null,
+    ].filter(Boolean);
+    return lines.join('\n');
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+
+    if (FORM_URL) { window.open(FORM_URL, '_blank', 'noopener'); return; }
+
+    var body = collect();
+    var subject = 'Заявка с сайта — ' + goal.value;
+    document.getElementById('zv-copy').value = body;
+    form.hidden = true;
+    done.hidden = false;
+    done.scrollIntoView({ block: 'center' });
+    location.href = 'mailto:' + MAIL_TO +
+      '?subject=' + encodeURIComponent(subject) +
+      '&body=' + encodeURIComponent(body);
+  });
+
+  document.getElementById('zv-copy-btn').addEventListener('click', function () {
+    var ta = document.getElementById('zv-copy');
+    ta.select();
+    try { document.execCommand('copy'); this.textContent = 'Скопировано'; }
+    catch (err) { this.textContent = 'Выделите и скопируйте'; }
+  });
+})();
+</script>
+
+</body>
+</html>
