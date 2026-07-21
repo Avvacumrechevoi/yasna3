@@ -1038,3 +1038,32 @@ section.tight { padding-top: calc(48px * var(--dens)); padding-bottom: calc(48px
   color: var(--ink-3);
   margin-bottom: 10px;
 }
+
+
+/* ─── Логотип-плашка в hero страницы направления (Ясна-Школа) ─────── */
+.dir-logo.dir-logo-tile {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.dir-logo.dir-logo-tile img { object-fit: cover; border-radius: 20px; }
+
+/* Честная сноска о текущем состоянии направления */
+.dir-note-quiet {
+  margin: 28px 0 0;
+  padding: 18px 22px;
+  background: var(--bg-deep);
+  border-radius: var(--radius);
+  font-size: .92rem;
+  line-height: 1.6;
+  color: var(--ink-2);
+  max-width: 760px;
+}
+
+/* Карточка направления: работает, но набор не ведётся */
+a.dir.is-quiet::after {
+  content: "работает";
+  color: var(--ink-3);
+}
