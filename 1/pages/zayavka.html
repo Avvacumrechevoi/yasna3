@@ -64,75 +64,15 @@
           <span class="sub">Полей мало · минута времени</span>
         </div>
 
-        <form class="zv-form" id="zv-form" novalidate>
-          <div class="zv-field">
-            <label for="f-goal">С чем вы к&nbsp;нам? <span class="zv-req">*</span></label>
-            <select id="f-goal" name="goal" required>
-              <option value="Прийти 26 сентября">Прийти 26 сентября на общий сбор</option>
-              <option value="Вступить в направление">Вступить в направление</option>
-              <option value="Свой проект">У меня свой проект или разработка</option>
-              <option value="Вопрос">Просто вопрос</option>
-            </select>
-          </div>
-
-          <div class="zv-field" id="wrap-dir" hidden>
-            <label for="f-dir">Какое направление</label>
-            <select id="f-dir" name="direction">
-              <option value="">Ещё не выбрал(а) — подскажите</option>
-              <option>Ясна-Школа</option>
-              <option>Неглинка</option>
-              <option>Граника</option>
-              <option>ЛитПроСвет</option>
-              <option>Извод</option>
-              <option>Джива</option>
-              <option>Парад Красоты</option>
-              <option>Александрия</option>
-              <option>Геральдика</option>
-            </select>
-          </div>
-
-          <div class="zv-row">
-            <div class="zv-field">
-              <label for="f-name">Как вас зовут <span class="zv-req">*</span></label>
-              <input id="f-name" name="name" type="text" required autocomplete="name" placeholder="Имя"/>
-            </div>
-            <div class="zv-field">
-              <label for="f-city">Город</label>
-              <input id="f-city" name="city" type="text" autocomplete="address-level2" placeholder="Москва"/>
-            </div>
-          </div>
-
-          <div class="zv-field">
-            <label for="f-contact">Как с&nbsp;вами связаться <span class="zv-req">*</span></label>
-            <input id="f-contact" name="contact" type="text" required placeholder="Telegram, телефон или почта"/>
-            <span class="zv-hint">Напишите так, как вам удобнее отвечать.</span>
-          </div>
-
-          <div class="zv-field" id="wrap-help" hidden>
-            <label class="zv-check">
-              <input type="checkbox" id="f-help" name="help"/>
-              <span>Нужна помощь с&nbsp;дорогой или ночлегом</span>
-            </label>
-          </div>
-
-          <div class="zv-field">
-            <label for="f-msg">Что хотите сказать или спросить</label>
-            <textarea id="f-msg" name="message" rows="4" placeholder="Пара строк о себе или ваш вопрос — необязательно"></textarea>
-          </div>
-
-          <button class="btn btn-primary zv-submit" type="submit">Отправить заявку <span class="arr">→</span></button>
-          <p class="zv-note" id="zv-note">Нажимая кнопку, вы откроете письмо с&nbsp;уже заполненной заявкой — останется только отправить.</p>
-        </form>
-
-        <div class="zv-done" id="zv-done" hidden>
-          <div class="zv-done-mark">✓</div>
-          <h4>Заявка собрана</h4>
-          <p id="zv-done-text">Мы открыли письмо с&nbsp;вашей заявкой. Если почтовая программа не&nbsp;открылась, скопируйте текст ниже и&nbsp;пришлите его любым удобным способом.</p>
-          <textarea class="zv-copy" id="zv-copy" rows="8" readonly></textarea>
-          <div class="zv-done-acts">
-            <button class="btn btn-ghost" type="button" id="zv-copy-btn">Скопировать текст</button>
-            <a class="btn btn-ghost" href="https://t.me/russkaya_yasna" target="_blank" rel="noopener">Открыть Telegram</a>
-          </div>
+        <div id="ya-form-mount" class="zv-mount" aria-live="polite">
+          <p class="zv-loading">Загружаем форму…
+            <a href="https://forms.yandex.ru/u/6a60a61b493639002bc66bcb/" target="_blank" rel="noopener">открыть напрямую&nbsp;→</a>
+          </p>
+          <noscript>
+            <p class="zv-loading">Для формы нужен включённый JavaScript.
+              <a href="https://forms.yandex.ru/u/6a60a61b493639002bc66bcb/" target="_blank" rel="noopener">Открыть форму заявки&nbsp;→</a>
+            </p>
+          </noscript>
         </div>
       </article>
 
@@ -264,83 +204,72 @@
 /* ─────────────────────────────────────────────────────────────────────
    КУДА УХОДЯТ ЗАЯВКИ.
 
-   Сейчас форма собирает письмо и открывает почтовую программу — работает
-   везде и без всякой регистрации, но заявки живут в почте.
+   Заявки уходят в Яндекс.Форму (forms.yandex.ru) — все ответы копятся
+   в таблице внутри формы (вкладка «Ответы»), а на почту оргкомитета
+   приходит уведомление о каждой новой заявке.
 
-   Чтобы заявки складывались в ТАБЛИЦУ автоматически:
-   1) заведите форму на forms.yandex.ru (5 минут, бесплатно) с теми же полями;
-   2) впишите её адрес в FORM_URL ниже.
-   Тогда кнопка будет вести на неё, а ответы копиться в таблице Яндекса.
+   Форма встроена прямо в страницу (iframe), человек не уходит с сайта.
+   Со страниц направлений и из блока «26 сентября» в неё передаётся
+   контекст через адрес: ?goal=day|join|project|ask и ?dir=<направление> —
+   тогда нужные пункты в форме уже отмечены.
+
+   Если однажды заведёте НОВУЮ форму — поменяйте FORM_ID и, если поменяются
+   поля, идентификаторы Q_GOAL/Q_DIR и коды вариантов ниже. Взять их можно
+   так: открыть форму, в консоли браузера выполнить
+   document.querySelectorAll('input,textarea') и посмотреть name/value.
    ───────────────────────────────────────────────────────────────────── */
-var FORM_URL = '';                        // напр. 'https://forms.yandex.ru/u/xxxxxxxx/'
-var MAIL_TO  = 'hi@russkaya-yasna.ru';
+var FORM_ID = '6a60a61b493639002bc66bcb';
+
+/* внутренние идентификаторы полей формы (вопрос → коды вариантов) */
+var Q_GOAL = 'answer_choices_9008983973706812';
+var Q_DIR  = 'answer_choices_9008983973814362';
+var GOAL = {
+  day:     '9008983973706822',   // Прийти 26 сентября на общий сбор
+  join:    '1784719001427',      // Вступить в направление
+  project: '1784719015474',      // Хочу предложить проект
+  ask:     '1784719034844'       // Просто вопрос
+};
+var DIR = {
+  'yasna-shkola': '1784719092799', neglinka: '1784719099724', granika: '1784719106192',
+  litprosvet: '1784719111840', izvod: '1784719117775', dzhiva: '1784719124708',
+  parad: '1784719134260', alexandria: '1784719140275', geraldika: '1784719143625'
+};
 
 (function () {
-  var form = document.getElementById('zv-form');
-  if (!form) return;
-  var goal = document.getElementById('f-goal');
-  var wrapDir = document.getElementById('wrap-dir');
-  var wrapHelp = document.getElementById('wrap-help');
-  var done = document.getElementById('zv-done');
+  var mount = document.getElementById('ya-form-mount');
+  if (!mount) return;
 
-  // Подставляем цель и направление из адреса: ?goal=day / ?dir=granika
+  // Контекст из адреса страницы → предзаполнение формы.
   var q = new URLSearchParams(location.search);
-  var GOALS = { day: 'Прийти 26 сентября', join: 'Вступить в направление',
-                project: 'Свой проект', ask: 'Вопрос' };
-  if (q.get('goal') && GOALS[q.get('goal')]) goal.value = GOALS[q.get('goal')];
-  var DIRS = { 'yasna-shkola': 'Ясна-Школа', neglinka: 'Неглинка', granika: 'Граника',
-               alexandria: 'Александрия', litprosvet: 'ЛитПроСвет', izvod: 'Извод',
-               dzhiva: 'Джива', parad: 'Парад Красоты', geraldika: 'Геральдика' };
-  if (q.get('dir') && DIRS[q.get('dir')]) {
-    goal.value = 'Вступить в направление';
-    document.getElementById('f-dir').value = DIRS[q.get('dir')];
+  var pre = ['iframe=1'];
+  var dir = q.get('dir'), goal = q.get('goal');
+  if (dir && DIR[dir]) {
+    pre.push(Q_GOAL + '=' + GOAL.join);     // пришли со страницы направления → «вступить»
+    pre.push(Q_DIR + '=' + DIR[dir]);
+  } else if (goal && GOAL[goal]) {
+    pre.push(Q_GOAL + '=' + GOAL[goal]);
   }
 
-  function sync() {
-    wrapDir.hidden = goal.value !== 'Вступить в направление';
-    wrapHelp.hidden = goal.value !== 'Прийти 26 сентября';
-  }
-  goal.addEventListener('change', sync);
-  sync();
+  var src = 'https://forms.yandex.ru/u/' + FORM_ID + '/?' + pre.join('&');
 
-  function collect() {
-    var v = function (id) { return (document.getElementById(id).value || '').trim(); };
-    var lines = [
-      'С чем: ' + goal.value,
-      wrapDir.hidden ? null : 'Направление: ' + (v('f-dir') || 'не выбрано'),
-      'Имя: ' + v('f-name'),
-      v('f-city') ? 'Город: ' + v('f-city') : null,
-      'Связь: ' + v('f-contact'),
-      (!wrapHelp.hidden && document.getElementById('f-help').checked)
-        ? 'Нужна помощь с дорогой или ночлегом: да' : null,
-      v('f-msg') ? '\nСообщение:\n' + v('f-msg') : null,
-    ].filter(Boolean);
-    return lines.join('\n');
-  }
-
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    if (!form.checkValidity()) { form.reportValidity(); return; }
-
-    if (FORM_URL) { window.open(FORM_URL, '_blank', 'noopener'); return; }
-
-    var body = collect();
-    var subject = 'Заявка с сайта — ' + goal.value;
-    document.getElementById('zv-copy').value = body;
-    form.hidden = true;
-    done.hidden = false;
-    done.scrollIntoView({ block: 'center' });
-    location.href = 'mailto:' + MAIL_TO +
-      '?subject=' + encodeURIComponent(subject) +
-      '&body=' + encodeURIComponent(body);
+  var iframe = document.createElement('iframe');
+  iframe.src = src;
+  iframe.name = 'ya-form-' + FORM_ID;       // нужно для авто-подгонки высоты (embed.js)
+  iframe.title = 'Форма заявки';
+  iframe.setAttribute('frameborder', '0');
+  iframe.setAttribute('scrolling', 'no');
+  iframe.style.cssText = 'width:100%;border:0;min-height:640px;display:block';
+  iframe.addEventListener('load', function () {
+    var l = mount.querySelector('.zv-loading');
+    if (l) l.remove();
   });
+  mount.appendChild(iframe);
 
-  document.getElementById('zv-copy-btn').addEventListener('click', function () {
-    var ta = document.getElementById('zv-copy');
-    ta.select();
-    try { document.execCommand('copy'); this.textContent = 'Скопировано'; }
-    catch (err) { this.textContent = 'Выделите и скопируйте'; }
-  });
+  // embed.js слушает высоту iframe и подгоняет её, чтобы не было двойной прокрутки
+  var s = document.createElement('script');
+  s.src = 'https://forms.yandex.ru/_static/embed.js';
+  s.async = true;
+  document.body.appendChild(s);
 })();
 </script>
 
