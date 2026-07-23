@@ -315,11 +315,17 @@ section.tight{padding-top:calc(56px * var(--dens));padding-bottom:calc(56px * va
 .rc-foot-r b, .rc-foot-r{font-weight:700}
 
 @media (max-width:820px){
+  /* На узком экране «компас» не собрать: центральная схема со стрелками по
+     сторонам света пуста без карточек вокруг неё. Показываем «круг» как
+     вертикальную цепочку опор (см. блок .rc-card--* ниже), схему скрываем. */
   .rc-grid{
     grid-template-columns:1fr;
-    grid-template-rows:auto auto auto auto auto;
+    grid-template-rows:none;
+    gap:0;
+    max-width:460px;
   }
-  .rc-center  { grid-column:1; grid-row:2; min-height:240px; }
+  .rc-center{ display:none; }
+  .rc-wrap{ gap:26px; }
 }
 
 /* Background star twinkle */
@@ -541,8 +547,29 @@ footer.foot{padding:64px 0 40px;border-top:1px solid var(--line);margin-top:80px
 
 
 @media (max-width:820px) {
-  .rc-card--n{ grid-column:1; grid-row:1; }
-  .rc-card--e{ grid-column:1; grid-row:3; }
-  .rc-card--s{ grid-column:1; grid-row:5; }
-  .rc-card--w{ grid-column:1; grid-row:4; }
+  /* Вертикальный круг: порядок опор = тот же цикл, что крутит подсветку в
+     cross.js (отец → государство → дети → мать → снова отец). Подсветка
+     «стекает» сверху вниз и возвращается к началу — это и есть круг. */
+  .rc-card--w{ grid-column:1; grid-row:1; } /* Отец */
+  .rc-card--n{ grid-column:1; grid-row:2; } /* Государство */
+  .rc-card--e{ grid-column:1; grid-row:3; } /* Дети */
+  .rc-card--s{ grid-column:1; grid-row:4; } /* Мать */
+
+  /* связки между опорами — стрелка вниз в разрыве */
+  .rc-card--w, .rc-card--n, .rc-card--e{ margin-bottom:40px; }
+  .rc-card--w::after, .rc-card--n::after, .rc-card--e::after{
+    content:"↓";
+    position:absolute; left:50%; bottom:-30px; transform:translateX(-50%);
+    font-family:var(--font-mono); font-size:1.05rem; line-height:1;
+    color:var(--ink-3); opacity:.6;
+  }
+  /* замыкание круга под последней опорой */
+  .rc-card--s{ margin-bottom:52px; }
+  .rc-card--s::after{
+    content:"↺  снова к началу";
+    position:absolute; left:50%; bottom:-42px; transform:translateX(-50%);
+    white-space:nowrap;
+    font-family:var(--font-mono); font-size:.68rem; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--ink-3);
+  }
 }
