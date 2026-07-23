@@ -410,7 +410,13 @@ section.tight{padding-top:calc(56px * var(--dens));padding-bottom:calc(56px * va
 /* footer */
 footer.foot{padding:64px 0 40px;border-top:1px solid var(--line);margin-top:80px}
 .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px}
-@media (max-width:820px){ .foot-grid{grid-template-columns:1fr 1fr} }
+@media (max-width:820px){
+  .foot-grid{grid-template-columns:1fr 1fr}
+  /* Колонка бренда — на всю ширину: иначе чип с номером Max ломается
+     на две строки, да и описание читается тесно. Списки идут ниже в два ряда. */
+  .foot-grid > div:first-child{grid-column:1 / -1}
+}
+.foot .chip{white-space:nowrap}
 .foot h4{font-family:var(--font-display);font-weight:600;font-size:.78rem;text-transform:uppercase;letter-spacing:.14em;color:var(--ink-3);margin:0 0 14px}
 .foot ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
 .foot a{color:var(--ink-2);font-size:.92rem;transition:color .15s}
