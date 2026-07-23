@@ -479,7 +479,7 @@ section.tight { padding-top: calc(48px * var(--dens)); padding-bottom: calc(48px
 .dir-lead b { color: var(--ink-2); font-weight: 500; }
 
 
-/* ─── Brand mark as ЯСНА emblem image (header) ────────────────────── */
+/* ─── Brand mark as ЯСНА emblem image (шапка и подвал — одинаково) ── */
 .brand img.mark {
   width: 38px;
   height: 38px;
@@ -488,6 +488,35 @@ section.tight { padding-top: calc(48px * var(--dens)); padding-bottom: calc(48px
   object-fit: cover;
   box-shadow: 0 0 0 1px var(--line);
   font-size: 0;
+}
+
+/* ─── Бренд-локап: имя + описание под ним ──────────────────────────
+   Один и тот же блок в шапке и в подвале всех страниц. */
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  line-height: 1.15;
+}
+.brand-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.02rem;
+  letter-spacing: -0.004em;
+  color: var(--ink);
+}
+.brand-sub {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: .58rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+/* Ниже ~360px локап упирается в кнопку «Вступить» — прячем подпись.
+   На 375px зазор ещё 48px, поэтому обычные телефоны её видят. */
+@media (max-width: 359px) {
+  .brand-sub { display: none; }
 }
 
 
@@ -1030,14 +1059,6 @@ section.tight { padding-top: calc(48px * var(--dens)); padding-bottom: calc(48px
 .way-link:hover { color: var(--ink); }
 
 /* Надстройка в подвале */
-.foot-umbrella {
-  font-family: var(--font-mono);
-  font-size: .68rem;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-  margin-bottom: 10px;
-}
 
 
 /* ─── Логотип-плашка в hero страницы направления (Ясна-Школа) ─────── */
