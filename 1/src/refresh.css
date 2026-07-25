@@ -974,6 +974,10 @@ section.tight { padding-top: calc(48px * var(--dens)); padding-bottom: calc(48px
   padding: 20px 24px 24px;
 }
 @media (max-width: 680px) { .chan-grid { grid-template-columns: 1fr; } }
+/* Если последняя карточка осталась в ряду одна — растягиваем её на всю ширину,
+   чтобы не висела сиротой рядом с двумя пустыми ячейками (так вышло с седьмым
+   каналом). Правило общее: сработает и при 10-м, 13-м и т.д. */
+.chan-grid > *:last-child:nth-child(3n + 1) { grid-column: 1 / -1; }
 .chan {
   display: flex;
   flex-direction: column;
