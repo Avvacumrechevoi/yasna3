@@ -1113,3 +1113,55 @@ a.dir.is-quiet::after {
 }
 .zv-loading a { color: var(--accent); white-space: nowrap; }
 .zv-chan { grid-template-columns: 1fr; }
+
+/* ─── МОБИЛЬНАЯ ГИГИЕНА ВНУТРЕННИХ СТРАНИЦ ─────────────────────────── */
+/* styles.css:136 скрывает на ≤760px ВСЕ ссылки шапки, а бургера на этих
+   страницах нет: на zayavka.html не остаётся ни одной (0 видимых ссылок).
+   Возвращаем их второй строкой — горизонтально прокручиваемой лентой.
+   Sticky на телефоне снимаем: две строки шапки съедали бы 14% экрана. */
+@media (max-width: 760px) {
+  .nav { position: static; }
+  .nav-row { height: auto; flex-wrap: wrap; row-gap: 4px; padding-top: 8px; padding-bottom: 6px; }
+  .nav-links {
+    order: 3; width: 100%; gap: 18px;
+    overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+  }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links a:not(.nav-cta),
+  .nav-links a:not(.nav-cta):nth-child(3) {
+    display: inline-flex; align-items: center;
+    min-height: 32px; flex: 0 0 auto; font-size: .86rem;
+  }
+  .nav-links a.nav-cta { order: -1; flex: 0 0 auto; padding: 8px 14px; }
+}
+@media (min-width: 761px) and (max-width: 960px) {
+  /* порог 960px прятал «Направления» при 283.9px свободного места в строке */
+  .nav-links a:not(.nav-cta):nth-child(3) { display: inline; }
+  .nav-links { gap: 14px; }
+  .nav-links a { font-size: .84rem; }
+}
+/* Точку в .strip нельзя сжимать: без flex-shrink:0 на 375px она превращалась
+   в серп 2.2x7px. Ниже 680px пилюля с тремя строками текста — уже карточка. */
+.strip .dot { flex-shrink: 0; }
+@media (max-width: 680px) {
+  .strip { border-radius: var(--radius); align-items: flex-start; padding: 14px 16px; gap: 10px; flex-wrap: wrap; }
+  .strip > span:nth-child(2) { flex: 1 1 100%; order: 2; }
+  .strip .dot { order: 1; margin-top: 7px; }
+  .strip > a { order: 3; }
+}
+/* Панель «Для кого»: сетка задана инлайном в granika.html:193 и
+   yasna-shkola.html:236 — перебить её можно только !important.
+   Два столбца на 375px давали меру ~11 знаков в строке. */
+@media (max-width: 620px) {
+  .panel-body:has(.for-row) { grid-template-columns: 1fr !important; padding: 20px !important; }
+}
+@media (max-width: 560px) {
+  /* подпись панели уходит на свою строку только когда не влезает */
+  .panel-head { flex-wrap: wrap; row-gap: 4px; padding: 18px 20px 12px; }
+  /* тач-цели подвала: 19px при шаге 32px, а среди ссылок два телефона */
+  .foot ul { gap: 2px; }
+  .foot ul a { display: inline-flex; align-items: center; min-height: 40px; }
+}
+.kv-row .kv-val a { display: inline-flex; align-items: center; min-height: 32px; }
+/* .fmt-num печатался унаследованным 1rem и спорил по кеглю с .fmt-title 16.8px */
+.fmt-num { font-size: .68rem; }

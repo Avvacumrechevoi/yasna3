@@ -68,7 +68,7 @@
         </div>
 
         <div id="ya-form-mount" class="zv-mount" aria-live="polite">
-          <p class="zv-loading">Загружаем форму…
+          <p class="zv-loading"><span class="zv-wait">Загружаем форму…</span>
             <a href="https://forms.yandex.ru/u/6a60a61b493639002bc66bcb/" target="_blank" rel="noopener">открыть напрямую&nbsp;→</a>
           </p>
           <noscript>
@@ -270,12 +270,25 @@ var DIR = {
   iframe.name = 'ya-form-' + FORM_ID;       // нужно для авто-подгонки высоты (embed.js)
   iframe.title = 'Форма заявки';
   iframe.setAttribute('frameborder', '0');
-  iframe.setAttribute('scrolling', 'no');
+  /* scrolling НЕ отключаем: если embed.js не загрузился (блокировщик, офисная
+     сеть), высота остаётся 640px при реальных ~1374px — без своей прокрутки
+     нижние 53% формы и кнопка отправки недостижимы. При работающем embed.js
+     высота подгоняется точно и полоса не появляется — двойной прокрутки нет. */
+  iframe.setAttribute('scrolling', 'auto');
   iframe.style.cssText = 'width:100%;border:0;min-height:640px;display:block';
   iframe.addEventListener('load', function () {
+    /* ссылку «открыть напрямую» НЕ удаляем: load срабатывает и на странице ошибки */
     var l = mount.querySelector('.zv-loading');
-    if (l) l.remove();
+    if (l) {
+      var w = l.querySelector('.zv-wait');
+      if (w) w.remove();
+      l.style.cssText = 'padding:6px 4px 12px;font-size:.74rem';
+    }
   });
+  /* страховка: embed.js не ответил за 6 с — даём кадру достаточную высоту */
+  setTimeout(function () {
+    if (iframe.clientHeight <= 660) iframe.style.minHeight = '1500px';
+  }, 6000);
   mount.appendChild(iframe);
 
   // embed.js слушает высоту iframe и подгоняет её, чтобы не было двойной прокрутки

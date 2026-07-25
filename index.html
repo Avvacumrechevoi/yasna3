@@ -70,12 +70,13 @@
   nav.open #burger span:nth-child(2){opacity:0}
   nav.open #burger span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
   #mobmenu{display:none}
-  @media(max-width:940px){
+  @media(max-width:1000px){
     .navlinks .lnk{display:none}
     #burger{display:block}
     #mobmenu{display:flex; position:fixed; top:0; left:0; right:0; z-index:49; flex-direction:column; gap:4px;
       background:rgba(243,236,224,.97); backdrop-filter:blur(14px); box-shadow:0 14px 40px rgba(33,27,20,.14);
       padding:84px 32px 26px; transform:translateY(-105%); visibility:hidden;
+      max-height:100vh; max-height:100svh; overflow-y:auto; overscroll-behavior:contain; -webkit-overflow-scrolling:touch;
       transition:transform .45s var(--ease), visibility 0s .45s}
     nav.open + #mobmenu{transform:none; visibility:visible; transition:transform .45s var(--ease), visibility 0s}
     #mobmenu a{font-family:'Spectral',serif; font-size:22px; padding:10px 0; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; align-items:center}
@@ -131,13 +132,17 @@
     padding:64px 72px 56px; box-shadow:0 24px 70px rgba(33,27,20,.09); position:relative}
   .letter::before{content:""; position:absolute; inset:10px; border:1px solid rgba(185,138,60,.28); border-radius:3px; pointer-events:none}
   .letter .eyebrow{display:block; text-align:center; margin-bottom:26px}
-  .anaphora{text-align:center; font-family:'Spectral',serif; font-size:22px; line-height:1.5; margin-bottom:34px}
+  .anaphora{text-align:center; font-family:'Spectral',serif; font-size:clamp(16.5px,4.6vw,22px); line-height:1.5; margin-bottom:34px}
   .anaphora div{transition-delay:0s}
   .letter p{font-size:17px; line-height:1.75; color:rgba(33,27,20,.78); margin:0 0 20px}
-  .letter p.cap::first-letter{font-family:'Spectral',serif; font-size:64px; line-height:.9; color:var(--accent);
-    float:left; padding:6px 12px 0 0; font-weight:500}
-  .keyline{text-align:center; font-family:'Spectral',serif; font-style:italic; font-size:24px; color:var(--ink);
-    margin:34px 0; padding:26px 0; border-top:1px solid rgba(185,138,60,.4); border-bottom:1px solid rgba(185,138,60,.4)}
+  /* line-height .9 давал флоат 63.6px при шаге строки 29.75px: буквицу обтекали
+     3 строки, а закрывала она 2.14 — под «В» оставалась пустая ниша в строку */
+  .letter p.cap::first-letter{font-family:'Spectral',serif; font-size:64px; line-height:.86; color:var(--accent);
+    float:left; padding:4px 12px 0 0; font-weight:500}
+  /* 24px на 375px = 7 строк по 17.7 знака и 391px высоты под одну фразу;
+     линейки на альфе .4 давали 1.43:1 — ниже порога видимости */
+  .keyline{text-align:center; font-family:'Spectral',serif; font-style:italic; font-size:clamp(19px,4.6vw,24px); color:var(--ink);
+    margin:34px 0; padding:26px 0; border-top:1px solid rgba(185,138,60,.6); border-bottom:1px solid rgba(185,138,60,.6)}
   .keyline b{font-style:normal; color:var(--accent); font-weight:600}
   .letter .sign{text-align:center; font-family:'Spectral',serif; font-style:italic; font-size:19px; color:var(--ink-60); margin-top:32px}
   .letter .sign::before{content:"✦"; display:block; color:var(--gold); font-style:normal; font-size:13px; margin-bottom:12px}
@@ -154,7 +159,8 @@
   .reel .letterfly .med img{padding:5px; border-radius:50%}
   .reel .letterfly .med img{width:100%; height:100%; object-fit:cover}
   .reel .letterfly .med.lt{background:#2b241c; display:grid; place-items:center; font-family:'Spectral',serif; font-size:26px; font-weight:500; color:var(--paper); overflow:visible}
-  .reel .center{position:absolute; left:50%; top:50%; text-align:center; transform:translate(-50%,-50%)}
+  .reel .center{position:absolute; left:50%; top:50%; width:min(330px, calc(84% - 60px)); text-align:center; transform:translate(-50%,-50%)}
+  @media(max-width:400px){ .reel .center{width:calc(84% - 92px)} }
   .reel .center .d{font-size:13px; letter-spacing:.24em; text-transform:uppercase; color:var(--gold); font-weight:600; margin-bottom:6px}
   .reel .center .t{font-family:'Spectral',serif; font-size:clamp(30px,3.6vw,42px); line-height:1}
   .reel .center .s{font-size:13px; color:rgba(243,236,224,.55); margin-top:9px}
@@ -167,7 +173,9 @@
   .program h3{font-size:clamp(24px,3vw,34px)}
   .program .phead span{font-size:13px; letter-spacing:.2em; text-transform:uppercase; color:rgba(243,236,224,.5); font-weight:600}
   .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:26px; position:relative}
-  .steps::before{content:""; position:absolute; top:17px; left:0; right:0; height:1px; background:rgba(243,236,224,.16);
+  /* right: колонка=(W-78)/4, центр 4-го узла = 0.75W+27 → хвост убран,
+     альфа .16 давала контраст 1.57:1 и линия пропадала на многих экранах */
+  .steps::before{content:""; position:absolute; top:17px; left:0; right:calc(25% - 27px); height:1px; background:rgba(243,236,224,.38);
     transform:scaleX(0); transform-origin:left; transition:transform 1.6s var(--ease) .2s}
   .steps.in::before{transform:scaleX(1)}
   .step{position:relative; padding-top:44px}
@@ -191,39 +199,50 @@
   /* ---------- directions ---------- */
   .directions{padding:110px 0}
   .dir-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
-  .card{position:relative; display:block; background:var(--paper); border:1px solid var(--line); border-radius:6px; padding:30px 28px 24px;
+  .card{position:relative; display:flex; flex-direction:column; background:var(--paper); border:1px solid var(--line); border-radius:6px; padding:30px 28px 24px;
     overflow:hidden; transition:transform .4s var(--ease), box-shadow .4s var(--ease), border-color .4s, opacity .9s var(--ease)}
-  .card:hover{transform:translateY(-5px); box-shadow:0 16px 40px rgba(33,27,20,.1); border-color:rgba(162,60,36,.4)}
+  /* hover — только у настоящих ссылок: 5 из 9 карточек это <div>, и они
+     поднимались и подсвечивались точно так же, обещая переход, которого нет */
+  @media(hover:hover){
+    a.card:hover{transform:translateY(-5px); box-shadow:0 16px 40px rgba(33,27,20,.1); border-color:rgba(162,60,36,.4)}
+    a.card:hover .idx{transform:translateY(-3px); color:var(--accent)}
+    a.card:hover .mono img{transform:scale(1.07)}
+    a.card:hover .mono::after{clip-path:inset(0 0 0 0)}
+    a.card:hover .arrow{transform:translateX(4px)}
+  }
   .card .idx{position:absolute; top:22px; right:24px; font-family:'Spectral',serif; font-size:15px; color:var(--ink-45); transition:transform .4s var(--ease), color .4s}
-  .card:hover .idx{transform:translateY(-3px); color:var(--accent)}
   .mono{width:64px; height:64px; border-radius:50%; border:1.5px solid rgba(162,60,36,.35); display:grid; place-items:center;
     font-family:'Spectral',serif; font-size:30px; color:var(--accent); margin-bottom:20px; position:relative; overflow:hidden}
   .mono img{width:100%; height:100%; object-fit:cover; transition:transform .5s var(--ease)}
-  .card:hover .mono img{transform:scale(1.07)}
   .mono::after{content:""; position:absolute; inset:0; border-radius:50%; border:1.5px solid var(--accent);
     clip-path:inset(0 0 100% 0); transition:clip-path .55s var(--ease)}
-  .card:hover .mono::after{clip-path:inset(0 0 0 0)}
+  .card:not(a) .mono{border-color:rgba(33,27,20,.18)}
   .card .tag{font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-45); font-weight:600; margin-bottom:7px}
   .card h3{font-size:23px; margin-bottom:9px}
   .card p{margin:0 0 16px; font-size:15px; line-height:1.55; color:var(--ink-60)}
-  .card .foot{display:flex; align-items:center; justify-content:space-between; gap:10px; padding-top:14px; border-top:1px solid var(--line)}
-  .card .lead-by{font-size:13px; color:var(--ink-60)} .card .lead-by b{color:var(--ink); font-weight:600}
-  .card .loc{font-size:11px; letter-spacing:.12em; color:var(--ink-45); font-weight:700; white-space:nowrap}
-  .card .arrow{position:absolute; bottom:24px; right:26px; opacity:0; transform:translateX(-6px); transition:opacity .35s, transform .35s; color:var(--accent); font-size:18px}
-  .card:hover .arrow{opacity:1; transform:none}
+  /* подвал: имя на своей строке, место и стрелка справа — иначе nowrap-подпись
+     «МОСКВА + ОНЛАЙН» срезалась overflow:hidden, а стрелка ложилась на неё */
+  .card .foot{display:flex; flex-wrap:wrap; align-items:center; row-gap:4px; column-gap:10px;
+    margin-top:auto; padding-top:14px; border-top:1px solid var(--line)}
+  .card .lead-by{flex:1 1 100%; font-size:13px; color:var(--ink-60)} .card .lead-by b{color:var(--ink); font-weight:600}
+  .card .loc{flex:0 0 auto; margin-left:auto; font-size:11px; letter-spacing:.12em; color:var(--ink-45); font-weight:700; white-space:nowrap}
+  .card .arrow{flex:0 0 auto; color:var(--accent); font-size:16px; line-height:1; transition:transform .3s var(--ease)}
 
   /* ---------- ways ---------- */
   .ways{padding:110px 0; background:var(--paper-2)}
   .ways-grid{display:grid; grid-template-columns:1fr 1fr; gap:18px}
-  .way{position:relative; background:var(--paper); border:1px solid var(--line); border-radius:6px; padding:34px 36px 30px;
+  .way{position:relative; isolation:isolate; display:flex; flex-direction:column; background:var(--paper); border:1px solid var(--line); border-radius:6px; padding:34px 36px 30px;
     overflow:hidden; transition:transform .4s var(--ease), box-shadow .4s, border-color .4s, opacity .9s var(--ease)}
   .way:hover{transform:translateY(-4px); box-shadow:0 16px 40px rgba(33,27,20,.09); border-color:rgba(162,60,36,.35)}
-  .way .ghost{position:absolute; top:-26px; right:6px; font-family:'Spectral',serif; font-size:150px; line-height:1;
+  /* z-index:-1 (плюс isolation на .way) уводит цифру ПОД текст: без этого
+     позиционированный потомок красился поверх заголовка и абзаца */
+  .way .ghost{position:absolute; top:-19px; right:6px; z-index:-1; font-family:'Spectral',serif; font-size:150px; line-height:1;
     color:rgba(33,27,20,.055); transition:color .4s, transform .5s var(--ease); pointer-events:none}
   .way:hover .ghost{color:rgba(162,60,36,.1); transform:translateY(-4px)}
-  .way h3{font-size:24px; margin-bottom:10px}
-  .way p{margin:0 0 18px; font-size:15.5px; line-height:1.6; color:var(--ink-60); max-width:420px}
-  .way a{font-weight:600; font-size:15px; color:var(--accent); display:inline-flex; gap:8px; align-items:center}
+  .way h3{font-size:24px; line-height:1.22; margin-bottom:14px}
+  .way p{margin:0 0 10px; font-size:15.5px; line-height:1.6; color:var(--ink-60); max-width:420px}
+  .way a{font-weight:600; font-size:15px; color:var(--accent); display:inline-flex; gap:8px; align-items:center;
+    align-self:flex-start; margin-top:auto; margin-bottom:-10px; min-height:44px}
   .way a .ar{transition:transform .25s var(--ease)}
   .way a:hover .ar{transform:translateX(4px)}
 
@@ -260,10 +279,12 @@
   .pcard.on h3,.pcard.on .prow .pv{color:var(--paper)}
   .pcard.on .prow .pv.g{color:var(--gold)}
   .pcard.on .prow{border-color:rgba(243,236,224,.15)}
-  .pcard.on .pl{color:rgba(243,236,224,.45)} .pcard.on .pgive .pw{color:rgba(243,236,224,.8)}
+  .pcard.on .pl{color:rgba(243,236,224,.62)} .pcard.on .pgive .pw{color:rgba(243,236,224,.8)}
   .pcenter{grid-area:c; display:grid; place-items:center}
   .pcenter svg{width:100%; max-width:225px; overflow:visible}
-  #goldArc{transform-box:view-box; transform-origin:50% 50%; transition:transform 1.1s var(--ease)}
+  /* 50% 50% при transform-box:view-box Chromium разрешает как точку (100,100):
+     дуга уезжала на 120-200px за пределы SVG, поверх карточек «Дети» и «Мать» */
+  #goldArc{transform-origin:0 0; transition:transform 1.1s var(--ease)}
   .pfoot{text-align:center; font-family:'Spectral',serif; font-style:italic; font-size:21px; margin:54px 0 0; color:var(--ink-60)}
   .pfoot b{font-style:normal; color:var(--ink); font-weight:600}
 
@@ -281,12 +302,15 @@
   .qa .ico::before{top:12px; left:3px; right:3px; height:1.5px}
   .qa .ico::after{left:12px; top:3px; bottom:3px; width:1.5px}
   .qa.open .ico::after{transform:scaleY(0)}
-  .qa .ans{max-height:0; overflow:hidden; transition:max-height .45s var(--ease)}
+  .qa .ans{max-height:0; overflow:hidden; visibility:hidden; transition:max-height .45s var(--ease), visibility 0s linear .45s}
+  .qa.open .ans{visibility:visible; transition:max-height .45s var(--ease), visibility 0s linear}
   .qa .ans p{margin:0 0 26px 44px; padding-left:18px; border-left:2px solid rgba(185,138,60,.45); color:var(--ink-60); font-size:16px; line-height:1.65; max-width:640px}
 
   /* ---------- cta ---------- */
   .cta{padding:130px 0; text-align:center; position:relative; overflow:hidden; background:var(--paper-2)}
-  .cta .glow{top:50%; left:50%}
+  /* --gt и right:60px наследовались от геройского пятна: в CTA оно уезжало
+     на 638px вправо (1920) и обрезалось overflow:hidden секции */
+  .cta .glow{--gt:translate(-50%,-50%); top:50%; left:50%; right:auto}
   .cta .inner{position:relative}
   .cta h2{font-size:clamp(34px,5vw,58px); line-height:1.05; margin-bottom:18px}
   .cta p{color:var(--ink-60); font-size:18px; max-width:560px; margin:0 auto 32px; line-height:1.6}
@@ -299,11 +323,13 @@
   footer .brand{color:var(--paper); margin-bottom:16px}
   footer .brand .bt span{color:rgba(243,236,224,.5)}
   footer p.about{font-size:15px; line-height:1.6; max-width:320px; margin:0 0 18px}
-  footer .social{display:flex; gap:16px; font-size:14px}
+  footer .social{display:flex; flex-wrap:wrap; gap:10px 16px; font-size:14px}
+  footer .social span{white-space:nowrap}
   footer .social a:hover{color:var(--paper)}
-  footer ul{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px; font-size:15px}
-  footer ul a{transition:color .25s, padding-left .25s} footer ul a:hover{color:var(--paper); padding-left:4px}
-  .foot-bot{border-top:1px solid rgba(243,236,224,.12); padding-top:24px; font-size:14px; color:rgba(243,236,224,.5); display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap}
+  footer ul{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:2px; font-size:15px}
+  footer ul a{display:inline-block; padding:6px 0; line-height:1.35; transition:color .25s, padding-left .25s} footer ul a:hover{color:var(--paper); padding-left:4px}
+  @media(hover:none){ footer ul a{padding:11.5px 0} footer .social a{display:inline-block; padding:11.5px 0} }
+  .foot-bot{border-top:1px solid rgba(243,236,224,.12); padding-top:24px; padding-right:64px; font-size:14px; color:rgba(243,236,224,.62); display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap}
 
   #toTop{position:fixed; right:26px; bottom:26px; z-index:55; width:46px; height:46px; border-radius:50%; border:1px solid rgba(33,27,20,.3);
     background:rgba(243,236,224,.9); backdrop-filter:blur(6px); color:var(--ink); font-size:18px; cursor:pointer;
@@ -336,7 +362,9 @@
     .step{padding-top:0}
     .step .node{left:-28px; top:2px}
     .ways-grid{grid-template-columns:1fr}
-    .foot-grid{grid-template-columns:1fr 1fr; gap:32px}
+    .foot-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:34px 24px}
+    .foot-grid>div:first-child{grid-column:1 / -1}
+    .foot-grid>div:nth-child(2){grid-row:span 2}
   }
   @media(max-width:620px){
     nav .brand .bt span{display:none}
@@ -380,6 +408,52 @@
     .hero-list{gap:8px}
     .hero-list .row{font-size:15px; line-height:1.4}
     .treewrap,.glow{opacity:.22}
+    /* меню боком: 7 пунктов по 56.4px = 528px не влезают в 390px — поджимаем
+       кегль и верхний отступ, остаток добирается прокруткой (см. #mobmenu выше) */
+    #mobmenu{padding-top:70px}
+    #mobmenu a{font-size:18px; padding:7px 0}
+  }
+  /* ---------- мобильный ритм и планшетные сетки ---------- */
+  @media(max-width:600px),(max-height:560px) and (orientation:landscape){
+    /* 110+110px давали 220px пустоты на каждом стыке — 33% экрана 375x667 */
+    .address,.day,.directions,.ways,.method,.faq{padding-top:68px; padding-bottom:68px}
+    .pillars{padding-top:72px; padding-bottom:72px}
+    .cta{padding-top:76px; padding-bottom:76px}
+    .sec-head{margin-bottom:34px}
+    /* отступ 44+18+2px съедал 19% ширины экрана: мера падала до 28 знаков */
+    .qa .ans p{margin-left:0}
+    .step p{font-size:16px; line-height:1.55}
+    .mcard p{font-size:15.5px; line-height:1.55}
+  }
+  @media(max-width:480px){
+    /* две кнопки CTA не влезают в ряд ниже 474px и расходятся по ширине */
+    .cta .btn-row{flex-direction:column; align-items:stretch}
+    .cta .btn{justify-content:center}
+  }
+  @media(min-width:601px) and (max-width:1100px){
+    /* 4 колонки метода дают 22.8 знака в строке на 1024px */
+    .method-grid{grid-template-columns:repeat(2,1fr)}
+  }
+  @media(min-width:901px) and (max-width:1019px){
+    /* 3 колонки направлений при 267px — 23 знака в строке, имя рук. в 3 строки */
+    .dir-grid{grid-template-columns:repeat(2,1fr)}
+  }
+  @media(min-width:700px) and (max-width:1019px){
+    /* 9 карточек в 2 колонки = сирота в последнем ряду */
+    .dir-grid>.card:last-child{grid-column:1 / -1}
+    .dir-grid>.card:last-child p{max-width:62ch}
+  }
+  @media(max-width:1199px){
+    /* 4 колонки степпера ниже 1200px крошатся до 25 знаков в строке, а рельс
+       висел на 87-133px ниже последнего узла. Заменяем сегментами между узлами;
+       статично — чтобы не пропали при prefers-reduced-motion. */
+    .steps{grid-template-columns:1fr; gap:32px; padding-left:28px}
+    .steps::before{display:none}
+    .step{padding-top:0}
+    .step p{max-width:520px}
+    .step .node{left:-28px; top:2px}
+    .step:not(:last-child)::after{content:""; position:absolute; left:-21px; top:19px; bottom:-41.5px;
+      width:1px; background:rgba(243,236,224,.38)}
   }
   @media(prefers-reduced-motion:reduce){
     *{animation:none !important; scroll-behavior:auto !important; transition:none !important}
@@ -651,7 +725,8 @@
           <path d="M13.5,-76.8 A78,78 0 0 1 76.8,-13.5" fill="none" stroke="rgba(33,27,20,.28)" stroke-width="1.2" marker-end="url(#ahg)"/>
           <path d="M76.8,13.5 A78,78 0 0 1 13.5,76.8" fill="none" stroke="rgba(33,27,20,.28)" stroke-width="1.2" marker-end="url(#ahg)"/>
           <path d="M-13.5,76.8 A78,78 0 0 1 -76.8,13.5" fill="none" stroke="rgba(33,27,20,.28)" stroke-width="1.2" marker-end="url(#ahg)"/>
-          <g id="goldArc"><path d="M-77.7,-6.8 A78,78 0 0 1 -6.8,-77.7" fill="none" stroke="#A23C24" stroke-width="1.8" marker-end="url(#aha)"/></g>
+          <path d="M-76.8,-13.5 A78,78 0 0 1 -13.5,-76.8" fill="none" stroke="rgba(33,27,20,.28)" stroke-width="1.2" marker-end="url(#ahg)"/>
+          <g id="goldArc"><path d="M-76.8,-13.5 A78,78 0 0 1 -13.5,-76.8" fill="none" stroke="#A23C24" stroke-width="1.8" marker-end="url(#aha)"/></g>
           <line x1="-10" x2="10" y1="0" y2="0" stroke="rgba(33,27,20,.5)" stroke-width="1.2"/>
           <line x1="0" x2="0" y1="-10" y2="10" stroke="rgba(33,27,20,.5)" stroke-width="1.2"/>
           <circle cx="0" cy="0" r="3.5" fill="#B98A3C"/>
@@ -774,20 +849,31 @@
   var host=document.getElementById('reelLetters');
   var flies=reelItems.map(function(it,i){
     var s=document.createElement('span'); s.className='letterfly';
-    s.innerHTML = it.img ? '<span class="med"><img src="'+it.img+'" alt="'+it.a+'"></span>' : '<span class="med lt">'+it.lt+'</span>';
+    s.innerHTML = it.img ? '<span class="med"><img src="'+it.img+'" alt="'+it.a+'" width="512" height="512" loading="lazy" decoding="async"></span>' : '<span class="med lt">'+it.lt+'</span>';
     s.style.setProperty('--sx',spread[i][0]+'px'); s.style.setProperty('--sy',spread[i][1]+'px');
     s.style.animationDelay=(-i*0.14)+'s';
     if(reduce){ s.style.animation='none'; s.style.opacity='1'; }
     host.appendChild(s); return s;
   });
-  /* медальоны должны лежать на узлах кольца: r=168 в системе viewBox 380 */
+  /* медальоны должны лежать на узлах кольца: r=168 в системе viewBox 380.
+     Стартовый разлёт зажимаем в габарит секции: .day{overflow:hidden} иначе
+     режет медальон на 178px (1024) и на 248px (375). Пол в 1.1*R не даёт
+     точке старта уехать внутрь кольца на узких экранах. */
+  var daySection=document.querySelector('.day');
   function layoutReel(){
     var w=host.parentNode.clientWidth || 470;
     var R=Math.round(w*168/380);
+    var rb=host.parentNode.getBoundingClientRect(), db=daySection.getBoundingClientRect();
+    var pad=32, cX=rb.left+rb.width/2, cY=rb.top+rb.height/2;
+    var roomL=Math.max(R*1.1, cX-db.left-pad), roomR=Math.max(R*1.1, db.right-cX-pad);
+    var roomU=Math.max(R*1.1, cY-db.top-pad), roomD=Math.max(R*1.1, db.bottom-cY-pad);
     flies.forEach(function(s,i){
       var ang=-Math.PI/2+i*2*Math.PI/9;
       var cx=Math.round(Math.cos(ang)*R), cy=Math.round(Math.sin(ang)*R);
+      var sx=Math.round(Math.max(-roomL, Math.min(roomR, spread[i][0])));
+      var sy=Math.round(Math.max(-roomU, Math.min(roomD, spread[i][1])));
       s.style.setProperty('--cx',cx+'px'); s.style.setProperty('--cy',cy+'px');
+      s.style.setProperty('--sx',sx+'px'); s.style.setProperty('--sy',sy+'px');
       if(reduce){ s.style.transform='translate(calc(-50% + '+cx+'px), calc(-50% + '+cy+'px))'; }
     });
   }
@@ -812,8 +898,8 @@
     var medal = d.img ? '<div class="mono"><img src="'+d.img+'" alt="'+d.h+'" loading="lazy"></div>' : '<div class="mono">'+d.m+'</div>';
     el.innerHTML='<span class="idx">'+d.n+'</span>'+medal+
       '<div class="tag">'+d.tag+'</div><h3>'+d.h+'</h3><p>'+d.p+'</p>'+
-      '<div class="foot"><span class="lead-by">Рук. · <b>'+d.lead+'</b></span><span class="loc">'+d.loc.toUpperCase()+'</span></div>'+
-      (d.url?'<span class="arrow">→</span>':'');
+      '<div class="foot"><span class="lead-by">Рук. · <b>'+d.lead+'</b></span><span class="loc">'+d.loc.toUpperCase()+'</span>'+
+      (d.url?'<span class="arrow" aria-hidden="true">→</span>':'')+'</div>';
     dg.appendChild(el);
   });
   var fd=document.getElementById('footDirs');
@@ -842,10 +928,14 @@
     btn.addEventListener('click',function(){
       var open=el.classList.toggle('open');
       btn.setAttribute('aria-expanded', open?'true':'false');
-      if(open){ ans.style.maxHeight = ans.scrollHeight+'px'; }
+      if(open){ ans.style.maxHeight = ans.scrollHeight+'px';
+        /* при prefers-reduced-motion transition выключен и transitionend не приходит —
+           без этого inline max-height навсегда остаётся числом и режет ответ при ресайзе */
+        setTimeout(function(){ if(el.classList.contains('open')) ans.style.maxHeight='none'; },600); }
       else { ans.style.maxHeight = ans.scrollHeight+'px'; void ans.offsetHeight; ans.style.maxHeight='0'; }
     });
-    ans.addEventListener('transitionend',function(){ if(el.classList.contains('open')) ans.style.maxHeight='none'; });
+    ans.addEventListener('transitionend',function(e){ if(e.propertyName!=='max-height') return;
+      if(el.classList.contains('open')) ans.style.maxHeight='none'; onScroll(); });
     fl.appendChild(el);
   });
 
@@ -907,17 +997,29 @@
   /* pillars cycle */
   var pgrid=document.getElementById('pgrid');
   if(pgrid){
-    var pOrder=['otec','gos','deti','mat'], pCards={}, pi=0, ptimer=null;
+    var pOrder=['otec','gos','deti','mat'], pCards={}, pi=0, ptimer=null, pHold=false, pPin=false, pLoops=0;
+    var pCoarse=matchMedia('(pointer:coarse)').matches;
     pOrder.forEach(function(k){ pCards[k]=pgrid.querySelector('[data-p="'+k+'"]'); });
     var goldArc=document.getElementById('goldArc');
     function setP(i){ pi=((i%4)+4)%4; pOrder.forEach(function(k,j){ pCards[k].classList.toggle('on', j===pi); }); if(goldArc) goldArc.style.transform='rotate('+(pi*90)+'deg)'; }
-    function startP(){ if(!ptimer) ptimer=setInterval(function(){ setP(pi+1); },3200); }
+    function stopP(){ if(ptimer){ clearInterval(ptimer); ptimer=null; } }
+    /* 3.2s хватает на одну карточку, но не на чтение соседней: наведение ставит
+       цикл на паузу, клик/тап фиксирует карточку, на тач-экранах цикл гаснет
+       после двух кругов. Тап нужен и при reduced-motion: там hover не работает
+       и три опоры из четырёх были недостижимы. */
+    function startP(){ if(reduce||ptimer||pHold||pPin) return; ptimer=setInterval(function(){
+      if(pi===pOrder.length-1){ pLoops++; if(pCoarse&&pLoops>=2){ stopP(); return; } }
+      setP(pi+1); },3200); }
     setP(0);
     if(!reduce){
-      var pio=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ startP(); } else if(ptimer){ clearInterval(ptimer); ptimer=null; } }); },{threshold:.25});
+      var pio=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ startP(); } else { stopP(); } }); },{threshold:.25});
       pio.observe(pgrid);
-      pOrder.forEach(function(k,j){ pCards[k].addEventListener('mouseenter',function(){ setP(j); if(ptimer){ clearInterval(ptimer); ptimer=null; startP(); } }); });
     }
+    pOrder.forEach(function(k,j){ var el=pCards[k];
+      el.addEventListener('mouseenter',function(){ pHold=true; stopP(); setP(j); });
+      el.addEventListener('mouseleave',function(){ pHold=false; startP(); });
+      el.addEventListener('click',function(){ pPin=true; stopP(); setP(j); });
+    });
   }
 })();
 </script>
