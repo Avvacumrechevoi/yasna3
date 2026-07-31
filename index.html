@@ -163,9 +163,14 @@
   .reel .letterfly .med img{width:100%; height:100%; object-fit:cover}
   .reel .letterfly .med.lt{background:#2b241c; display:grid; place-items:center; font-family:'Spectral',serif; font-size:26px; font-weight:500; color:var(--paper); overflow:visible}
   .reel .center{position:absolute; left:50%; top:50%; width:min(330px, calc(84% - 60px)); text-align:center; transform:translate(-50%,-50%)}
-  @media(max-width:400px){ .reel .center{width:calc(84% - 92px)} }
+  /* «Большой лист» длиннее прежнего названия: при -92px он не влезал
+     в строку на 375px. -78px даёт запас и не подводит текст к медальонам. */
+  @media(max-width:400px){ .reel .center{width:calc(84% - 78px)} }
   .reel .center .d{font-size:13px; letter-spacing:.24em; text-transform:uppercase; color:var(--gold); font-weight:600; margin-bottom:6px}
   .reel .center .t{font-family:'Spectral',serif; font-size:clamp(30px,3.6vw,42px); line-height:1}
+  /* На узких телефонах имя из двух слов не влезает в строку даже так —
+     даём шрифту шаг вниз, чтобы заголовок не рвался надвое. */
+  @media(max-width:370px){ .reel .center .t{font-size:27px} }
   .reel .center .s{font-size:13px; color:rgba(243,236,224,.55); margin-top:9px}
   .day h2{font-size:clamp(34px,4.6vw,54px); line-height:1.05; margin:18px 0 22px}
   .day p.lead{color:rgba(243,236,224,.72); font-size:17.5px; line-height:1.62; margin:0 0 18px}
@@ -564,7 +569,7 @@
   </div>
   <div class="hero-scrim"></div>
   <div class="wrap hero-inner">
-    <a class="badge" href="#day" data-reveal><span class="dot"></span><b>26 сентября</b><span>·</span><span>День Ясны 2026 →</span></a>
+    <a class="badge" href="#day" data-reveal><span class="dot"></span><b>26 сентября</b><span>·</span><span>Большой лист 2026 →</span></a>
     <h1 data-reveal>Возвращаем исходные смыслы в&nbsp;современную <em>жизнь</em></h1>
     <p class="lead" data-reveal>Открытое сообщество исследователей русского языка, истории и культуры. Девять направлений, общие праздники, совместный поиск.</p>
     <div class="btn-row" data-reveal>
@@ -604,7 +609,7 @@
   </div>
 </section>
 
-<!-- ДЕНЬ ЯСНЫ -->
+<!-- БОЛЬШОЙ ЛИСТ — ОБЩИЙ СБОР -->
 <section class="day" id="day">
   <div class="wrap">
     <div class="day-grid">
@@ -619,7 +624,7 @@
         <div id="reelLetters"></div>
         <div class="center">
           <div class="d">26 сентября 2026 · общий сбор</div>
-          <div class="t">День Ясны</div>
+          <div class="t">Большой лист</div>
           <div class="s">суббота · 12:00 · Москва · только очно</div>
         </div>
       </div>
@@ -653,7 +658,7 @@
   <div class="wrap">
     <div class="sec-head">
       <h2 data-reveal>Девять направлений</h2>
-      <p data-reveal>От архитектуры и истории до языка и здоровья. Каждое направление ведёт свой руководитель. Выберите то, что откликается — или приходите на День Ясны и познакомьтесь со всеми сразу.</p>
+      <p data-reveal>От архитектуры и истории до языка и здоровья. Каждое направление ведёт свой руководитель. Выберите то, что откликается — или приходите на «Большой лист» и познакомьтесь со всеми сразу.</p>
     </div>
     <div class="dir-grid" id="dirGrid"></div>
   </div>
@@ -688,7 +693,7 @@
       <div class="mcard" data-reveal><div class="k">01 · Где и когда</div><h3>Москва, Петербург, онлайн</h3><p>Раз в 1–2 недели.</p></div>
       <div class="mcard" data-reveal><div class="k">02 · Что делаем</div><h3>Возвращаемся к своему укладу</h3><p>Речь, семья, дом, здоровье.</p></div>
       <div class="mcard" data-reveal><div class="k">03 · Кто ведёт</div><h3>Вчерашние участники</h3><p>Ступеней нет: кто пришёл раньше — помогает.</p></div>
-      <div class="mcard" data-reveal><div class="k">04 · Все вместе</div><h3>День Ясны</h3><p>Общий сбор. Между сборами — Купала, Осенины, Святки, поездки.</p></div>
+      <div class="mcard" data-reveal><div class="k">04 · Все вместе</div><h3>Большой лист</h3><p>Общий сбор. Между сборами — Купала, Осенины, Святки, поездки.</p></div>
     </div>
   </div>
 </section>
@@ -791,7 +796,7 @@
         <h4>Участие</h4>
         <ul>
           <li><a href="#event">Обращение</a></li>
-          <li><a href="#day">26 сентября — День Ясны</a></li>
+          <li><a href="#day">26 сентября — Большой лист</a></li>
           <li><a href="#method">Как устроено</a></li>
           <li><a href="#faq">Вопросы</a></li>
           <li><a href="1/pages/zayavka.html">Оставить заявку</a></li>

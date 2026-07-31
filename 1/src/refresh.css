@@ -770,7 +770,7 @@ section.tight { padding-top: calc(48px * var(--dens)); padding-bottom: calc(48px
 .kv-line { height: 1px; background: var(--line); }
 
 
-/* ─── День Ясны — событийный блок под Обращением ──────────────────── */
+/* ─── Большой лист — событийный блок под Обращением ──────────────────── */
 .day-banner {
   display: grid;
   grid-template-columns: 1fr 1.25fr;
