@@ -1169,3 +1169,59 @@ a.dir.is-quiet::after {
 .kv-row .kv-val a { display: inline-flex; align-items: center; min-height: 32px; }
 /* .fmt-num печатался унаследованным 1rem и спорил по кеглю с .fmt-title 16.8px */
 .fmt-num { font-size: .68rem; }
+
+
+/* ─── Граника: видео с VK Видео (плеер грузится по клику) ────────── */
+.vk-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  padding: 20px 24px 24px;
+}
+.vk-item { margin: 0; }
+.vk-play {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--bg-deep);
+  cursor: pointer;
+}
+/* contain, а не cover: два ролика сняты вертикально (9:16). При cover
+   от них остаётся середина; плеер VK покажет их так же — с полями. */
+.vk-play img { width: 100%; height: 100%; object-fit: contain; display: block; background: #17140f; }
+.vk-mark {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 1.5rem;
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, .6);
+  background: rgba(26, 23, 20, .22);
+  transition: background .25s ease;
+}
+@media (hover: hover) {
+  .vk-play:hover .vk-mark { background: rgba(26, 23, 20, .38); }
+}
+.vk-play:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.vk-item iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  display: block;
+  background: #000;
+}
+.vk-item figcaption {
+  margin-top: 10px;
+  font-size: .92rem;
+  color: var(--ink);
+}
+.vk-dur { color: var(--accent); font-family: var(--font-mono); font-size: .78rem; }
+@media (max-width: 680px) {
+  .vk-grid { grid-template-columns: 1fr; }
+}
