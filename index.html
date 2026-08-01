@@ -85,7 +85,7 @@
   }
 
   /* ---------- hero ---------- */
-  .hero{position:relative; min-height:100svh; display:flex; align-items:center; overflow:hidden}
+  .hero{position:relative; min-height:100vh; min-height:100svh; display:flex; align-items:center; overflow:hidden}
   .hero-bg{position:absolute; inset:0; z-index:0; pointer-events:none; transition:transform .6s var(--ease)}
   .glow{position:absolute; --gt:translate(11.33%,-62%); top:50%; left:auto; right:60px; width:clamp(340px,calc(69vw - 250px),1040px); height:auto; aspect-ratio:1; transform:var(--gt) scale(1.28);
     background:radial-gradient(circle, rgba(185,138,60,.18), rgba(243,236,224,0) 62%); animation:breathe 12s var(--ease) infinite}
@@ -118,7 +118,7 @@
   .hero-list .lbl{font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-45); margin-bottom:4px; font-weight:600}
   .hero-list .row{display:flex; align-items:flex-start; gap:12px; font-size:17px; color:var(--ink-60)}
   .hero-list .tick{color:var(--accent); font-weight:700}
-  .scrollcue{position:absolute; left:auto; right:38px; top:calc(100svh - 88px); bottom:auto; transform:none; z-index:3; font-size:12px; letter-spacing:.2em;
+  .scrollcue{position:absolute; left:auto; right:38px; top:calc(100vh - 88px); top:calc(100svh - 88px); bottom:auto; transform:none; z-index:3; font-size:12px; letter-spacing:.2em;
     text-transform:uppercase; color:var(--ink-45); display:flex; flex-direction:column; align-items:center; gap:8px}
   .scrollcue .bar{width:1px; height:34px; background:linear-gradient(var(--accent),transparent); animation:cue 2s var(--ease) infinite}
 
@@ -195,7 +195,7 @@
   .steps.in .step:nth-child(4) .node{transition-delay:1.25s} .steps.in .step:nth-child(4) .node::after{transition-delay:1.4s}
   .step .chip{display:inline-block; font-size:11px; letter-spacing:.18em; text-transform:uppercase; font-weight:700;
     color:var(--gold); border:1px solid rgba(185,138,60,.4); border-radius:100px; padding:4px 10px; margin-bottom:14px}
-  .step h4{font-family:'Spectral',serif; font-size:21px; margin-bottom:9px; transition:color .3s}
+  .step h3{font-family:'Spectral',serif; font-size:21px; margin-bottom:9px; transition:color .3s}
   .step:hover h4{color:var(--gold)}
   .step p{margin:0; font-size:14.5px; line-height:1.6; color:rgba(243,236,224,.62)}
   .day .note{margin-top:46px; padding:22px 26px; border-left:2px solid var(--gold); background:rgba(243,236,224,.05);
@@ -325,7 +325,7 @@
   /* ---------- footer ---------- */
   footer{background:var(--ink); color:rgba(243,236,224,.7); padding:72px 0 40px}
   .foot-grid{display:grid; grid-template-columns:1.6fr 1fr 1fr 1fr; gap:40px; margin-bottom:48px}
-  footer h4{font-family:'Manrope',sans-serif; font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); margin-bottom:18px; font-weight:600}
+  footer h3{font-family:'Manrope',sans-serif; font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); margin-bottom:18px; font-weight:600}
   footer .brand{color:var(--paper); margin-bottom:16px}
   footer .brand .bt span{color:rgba(243,236,224,.5)}
   footer p.about{font-size:15px; line-height:1.6; max-width:320px; margin:0 0 18px}
@@ -347,7 +347,7 @@
      рисунок прыгал на 178px и терял привязку. Теперь right:60px на всех ширинах. */
   @media(max-width:900px){
     /* контент героя выше экрана: центрирование тянет его под шапку — прижимаем к верху */
-    .hero{align-items:flex-start; min-height:88svh}
+    .hero{align-items:flex-start; min-height:88vh; min-height:88svh}
     .scrollcue{display:none}
     .hero-inner{padding-bottom:44px}
     .treewrap{left:50%; right:auto; top:0; width:min(118vw,600px); transform:translate(-50%,calc(96px - 21.17%))}
@@ -444,8 +444,8 @@
     /* 3 колонки направлений при 267px — 23 знака в строке, имя рук. в 3 строки */
     .dir-grid{grid-template-columns:repeat(2,1fr)}
   }
-  @media(min-width:700px) and (max-width:1019px){
-    /* 9 карточек в 2 колонки = сирота в последнем ряду */
+  @media(min-width:601px) and (max-width:1019px){
+    /* 11 карточек в 2 колонки = сирота в последнем ряду */
     .dir-grid>.card:last-child{grid-column:1 / -1}
     .dir-grid>.card:last-child p{max-width:62ch}
   }
@@ -578,7 +578,7 @@
       <div class="lbl">Наш взгляд</div>
       <div class="row"><span class="tick">✓</span><span>язык — инструмент мышления, а не только общения</span></div>
       <div class="row"><span class="tick">✓</span><span>праздники с исходным смыслом — в семейный календарь</span></div>
-      <div class="row"><span class="tick">✓</span><span>не «как было раньше», а <em>почему</em> это работает сегодня</span></div>
+      <div class="row"><span class="tick">✓</span><span>разбираем, <em>почему</em> это работает сегодня</span></div>
       <div class="row"><span class="tick">✓</span><span>открытое сообщество — приходите и посмотрите сами</span></div>
     </div>
   </div>
@@ -596,12 +596,12 @@
         <div data-reveal><em>Горящие сердцем</em> товарищи!</div>
         <div data-reveal><em>Горящие сердцем</em> друзья и&nbsp;подруги!</div>
       </div>
-      <p class="cap" data-reveal>Вера наших дедов и&nbsp;прадедов захватывает всё больше сердец и&nbsp;душ. Учение Ясна — это наше родное национальное учение, дошедшее до&nbsp;нас из&nbsp;глубины веков. Мы долгое время жили чужой жизнью, чужими мыслями, чужим отношением к&nbsp;человеку, обществу, природе и&nbsp;мирозданию.</p>
+      <p class="cap" data-reveal>Вера наших дедов и&nbsp;прадедов захватывает всё больше сердец и&nbsp;душ. Учение Ясна&nbsp;— это наше родное национальное учение, дошедшее до&nbsp;нас из&nbsp;глубины веков. Мы долгое время жили чужой жизнью, чужими мыслями, чужим отношением к&nbsp;человеку, обществу, природе и&nbsp;мирозданию.</p>
       <p data-reveal>Пришло время возвращения Ясны в&nbsp;нашу жизнь.</p>
-      <div class="keyline" data-reveal>Ясна — это наш самостоятельный путь веры, и&nbsp;это наш самостоятельный путь знания. Ясна ждёт нас. <b>Двери Ясны открыты для&nbsp;всех.</b></div>
+      <div class="keyline" data-reveal>Ясна&nbsp;— это наш самостоятельный путь веры, и&nbsp;это наш самостоятельный путь знания. Ясна ждёт нас. <b>Двери Ясны открыты для&nbsp;всех.</b></div>
       <p data-reveal>С&nbsp;древности мы всегда были грамотными и&nbsp;мужчины и&nbsp;женщины, и&nbsp;взрослые и&nbsp;дети. Мы грамотны были своею собственной грамотой&nbsp;— Ясной.</p>
       <p data-reveal>Наша задача принять помощь Ясны в&nbsp;нашей жизни, в&nbsp;нашем труде, в&nbsp;нашем здоровье, в&nbsp;наших мечтах и&nbsp;стремлениях.</p>
-      <p data-reveal>Наша Ясна — это наша правда. Она не&nbsp;нуждается в&nbsp;чужих правках, в&nbsp;чужом участии и&nbsp;в&nbsp;чужих оценках.</p>
+      <p data-reveal>Наша Ясна&nbsp;— это наша правда. Она не&nbsp;нуждается в&nbsp;чужих правках, в&nbsp;чужом участии и&nbsp;в&nbsp;чужих оценках.</p>
       <div class="sign" data-reveal>Мы с&nbsp;этой Вечной Книгой сами пойдём к&nbsp;свету, к&nbsp;ладу и&nbsp;любви.</div>
     </div>
   </div>
@@ -622,7 +622,7 @@
         <div id="reelLetters"></div>
         <div class="center">
           <div class="d">26 сентября 2026 · общий сбор</div>
-          <div class="t">Большой лист</div>
+          <h2 class="t" style="margin:0;font-weight:400">Большой лист</h2>
           <div class="s">суббота · 12:00 · Москва · только очно</div>
         </div>
       </div>
@@ -642,10 +642,10 @@
         <span>12:00 — вечер</span>
       </div>
       <div class="steps" id="steps">
-        <div class="step" data-reveal><span class="node"></span><span class="chip">Часть I · 01</span><h4>Слово основателя</h4><p>Что такое Ясна сегодня и куда идём — рамка всего дня.</p></div>
-        <div class="step" data-reveal><span class="node"></span><span class="chip">Часть I · 02</span><h4>Направления рассказывают о себе</h4><p>Коротко о каждом: чем заняты, что предлагают, кого ждут.</p></div>
-        <div class="step" data-reveal><span class="node"></span><span class="chip">Часть I · 03</span><h4>Голоса людей</h4><p>Опыт изнутри направлений и применение Ясны в жизни и профессии — короткие живые истории.</p></div>
-        <div class="step" data-reveal><span class="node"></span><span class="chip">Часть II · вечер</span><h4>Творческий вечер</h4><p>Свободная часть: приходите и рассказывайте, у кого что. Живое общение, чай, музыка и танцы.</p></div>
+        <div class="step" data-reveal><span class="node"></span><span class="chip">Часть I · 01</span><h3>Слово основателя</h3><p>Что такое Ясна сегодня и куда идём — рамка всего дня.</p></div>
+        <div class="step" data-reveal><span class="node"></span><span class="chip">Часть I · 02</span><h3>Направления рассказывают о себе</h3><p>Коротко о каждом: чем заняты, что предлагают, кого ждут.</p></div>
+        <div class="step" data-reveal><span class="node"></span><span class="chip">Часть I · 03</span><h3>Голоса людей</h3><p>Опыт изнутри направлений и применение Ясны в жизни и профессии — короткие живые истории.</p></div>
+        <div class="step" data-reveal><span class="node"></span><span class="chip">Часть II · вечер</span><h3>Творческий вечер</h3><p>Свободная часть: приходите и рассказывайте, у кого что. Живое общение, чай, музыка и танцы.</p></div>
       </div>
     </div>
   </div>
@@ -656,7 +656,7 @@
   <div class="wrap">
     <div class="sec-head">
       <h2 data-reveal>Одиннадцать направлений</h2>
-      <p data-reveal>От архитектуры и истории до языка и здоровья. Каждое направление ведёт свой руководитель. Выберите то, что откликается — или приходите на «Большой лист» и познакомьтесь со всеми сразу.</p>
+      <p data-reveal>От архитектуры и истории до языка и здоровья. Каждое направление ведёт свой руководитель. Выбирайте по теме и городу — или приходите на «Большой лист» и познакомьтесь со всеми сразу.</p>
     </div>
     <div class="dir-grid" id="dirGrid"></div>
   </div>
@@ -672,7 +672,7 @@
     </div>
     <div class="ways-grid">
       <div class="way" data-reveal><span class="ghost">01</span><h3>Войти в направление</h3><p>Работать в команде направления — вместе разбирать, ходить, исследовать.</p><a href="#directions">Выбрать направление <span class="ar">→</span></a></div>
-      <div class="way" data-reveal><span class="ghost">02</span><h3>Прийти со своим проектом</h3><p>У вас есть своя разработка или проект? Принесите свою разработку или проект — направление посмотрит. Авторство остаётся за вами.</p><a href="1/pages/zayavka.html?goal=project">Рассказать о проекте <span class="ar">→</span></a></div>
+      <div class="way" data-reveal><span class="ghost">02</span><h3>Прийти со своим проектом</h3><p>Принесите свою разработку или проект — направление посмотрит. Авторство остаётся за вами.</p><a href="1/pages/zayavka.html?goal=project">Рассказать о проекте <span class="ar">→</span></a></div>
       <div class="way" data-reveal><span class="ghost">03</span><h3>Учиться</h3><p>Групповые занятия и разборы — или индивидуально, если хочется в своём темпе. Начать можно без подготовки.</p><a href="1/pages/zayavka.html?goal=ask">Спросить про занятия <span class="ar">→</span></a></div>
       <div class="way" data-reveal><span class="ghost">04</span><h3>Просто быть рядом</h3><p>Общие праздники, творческие вечера, живое общение. Без обязательств — приходите и смотрите.</p><a href="#day">Ближайший сбор <span class="ar">→</span></a></div>
     </div>
@@ -739,7 +739,7 @@
         <span class="dot"></span><h3>Дети</h3>
         <div class="prow"><span class="pl">ОТВЕЧАЮТ ЗА</span><span class="pv">будущее</span></div>
         <div class="prow"><span class="pl">ПЕРЕД</span><span class="pv g">матерью</span></div>
-        <div class="pgive"><span class="pl">ДАЁТ</span><span class="pw">ПРОДОЛЖЕНИЕ · НАДЕЖДУ</span></div>
+        <div class="pgive"><span class="pl">ДАЮТ</span><span class="pw">ПРОДОЛЖЕНИЕ · НАДЕЖДУ</span></div>
       </div>
       <div class="pcard" data-p="mat" data-reveal>
         <span class="dot"></span><h3>Мать</h3>
@@ -784,24 +784,24 @@
           <span class="bt"><b>Золотой Ясень</b><span>Интеграционный центр</span></span>
         </a>
         <p class="about">Открытое сообщество исследователей русского языка, истории и культуры. Одиннадцать направлений, общие праздники, совместный поиск смыслов.</p>
-        <div class="social"><a href="https://t.me/dmlandra" target="_blank" rel="noopener">Telegram</a><span>Max&nbsp;· +7&nbsp;908&nbsp;293-93-63</span></div>
+        <div class="social"><a href="https://t.me/dmlandra" target="_blank" rel="noopener">Telegram</a><span>MAX&nbsp;· +7&nbsp;908&nbsp;293-93-63</span></div>
       </div>
       <div>
-        <h4>Направления</h4>
+        <h3>Направления</h3>
         <ul id="footDirs"></ul>
       </div>
       <div>
-        <h4>Участие</h4>
+        <h3>Разделы</h3>
         <ul>
           <li><a href="#event">Обращение</a></li>
           <li><a href="#day">26 сентября — Большой лист</a></li>
-          <li><a href="#method">Как устроено</a></li>
+          <li><a href="#method">Метод</a></li>
           <li><a href="#faq">Вопросы</a></li>
           <li><a href="1/pages/zayavka.html">Оставить заявку</a></li>
         </ul>
       </div>
       <div>
-        <h4>Контакты</h4>
+        <h3>Контакты</h3>
         <ul>
           <li><a href="tel:+79082939363">+7 908 293-93-63</a></li>
           <li><a href="tel:+79152595250">+7 915 259-52-50</a></li>
@@ -891,7 +891,7 @@
     {n:'02',img:IMG+'alexandria-emblem.jpg',tag:'Раскладки · теория и практика',h:'Александрия',p:'Теоретическое ядро Ясны: изучаем построение раскладок — «разложи всё и соедини всё». От медицины до истории.',lead:'Тимур Фахрутдинов',loc:'Петербург + онлайн',url:BASE+'pages/alexandria.html'},
     {n:'03',img:IMG+'neglinka-emblem.png',tag:'История · география',h:'Неглинка',p:'Проясняем историю и географию России — гуляем по Москве, читаем то, что зашифровано в улицах.',lead:'Антон Черномашенцев',loc:'Москва + онлайн',url:BASE+'pages/neglinka.html'},
     {n:'04',img:IMG+'granika.png',tag:'Архитектура · астрономия',h:'Граника',p:'Читаем язык предков в камне — усадьбы, крепости, монастыри и храмовые комплексы. Русский классицизм и деревянное зодчество.',lead:'Александр Акимов',loc:'Москва + онлайн',url:BASE+'pages/granika.html'},
-    {n:'05',img:IMG+'astronevod.png',tag:'Астросмыслы · астрокоды',h:'Астроневод',p:'Астрономия наших предков: археоастрономия древних поселений, звёздный язык сказок и былин, астрономия икон. Закон Подобия — как на Небе, так и на Земле.',lead:'Анна Виноградова',loc:'Москва + онлайн',url:BASE+'pages/astronevod.html'},
+    {n:'05',img:IMG+'astronevod.png',tag:'Астросмыслы · астрокоды',h:'Астроневод',p:'Астрономия наших предков: археоастрономия древних поселений, звёздный язык сказок и баллад, астрономия икон. Закон Подобия — как на Небе, так и на Земле.',lead:'Анна Виноградова',loc:'Москва + онлайн',url:BASE+'pages/astronevod.html'},
     {n:'06',img:IMG+'marshruty.png',tag:'Натурные уроки · исследование',h:'Ясные маршруты',p:'Натурные уроки по городам: читаем устройство поселений через астрономию, географию, архитектуру и историю. Москва, Петербург, Кронштадт.',lead:'Лидия Дрожжина',loc:'Москва · Петербург · Кронштадт',url:BASE+'pages/marshruty.html'},
     {n:'07',img:IMG+'litprosvet-mark.svg',tag:'Литература',h:'ЛитПроСвет',p:'Литература как способ думать и чувствовать. Возвращаем людей к чтению — клубы, аудиолекторий, разборы классики.',lead:'Анастасия Скиба',loc:'Москва + онлайн',url:BASE+'pages/zayavka.html?dir=litprosvet'},
     {n:'08',img:IMG+'izvod.png',tag:'Язык · этимология',h:'Извод',p:'Утерянные смыслы русских слов. Этимология как практика — возвращаем словам их настоящее значение.',lead:'Александр Иванов',loc:'Онлайн',url:BASE+'pages/zayavka.html?dir=izvod'},
@@ -922,8 +922,8 @@
     ['Как устроено сообщество?','Русская Ясна — открытое сообщество исследователей. У каждого направления есть руководитель; ступеней и обязательных взносов нет. Вы подписываетесь на каналы направлений, участвуете в обсуждениях и встречах в удобном ритме. Можете прийти на открытую встречу, посмотреть материалы и решить, подходит ли вам формат. Все публикации доступны бесплатно.'],
     ['Сколько это стоит?','Подписка на каналы и открытые встречи — бесплатно. Отдельные прогулки и курсы бывают платными — цена стоит в анонсе.'],
     ['Какие правила и обязательства внутри?','Никаких формальных. Приходите и уходите свободно, формат участия выбираете сами. В разборах опираемся на первоисточники и проверяем выводы вместе.'],
-    ['С чего начать, если я ничего не знаю?','Подпишитесь на Telegram-канал направления, которое вам откликается. Почитайте материалы. Приходите на ближайшую открытую встречу. Или оставьте заявку — координатор свяжется и подскажет, что подойдёт лучше всего.'],
-    ['Я не в Москве — могу ли участвовать?','Да. Извод и Геральдика работают онлайн. У Ясна-Школы всё онлайн, живые выступления бывают. ЛитПроСвет, Джива и Парад Красоты совмещают московские встречи с онлайном. У Неглинки, Граники и Александрии часть работы очная — Москва и Петербург, — а разборы и лекции идут онлайн, участвовать можно удалённо.'],
+    ['С чего начать, если я ничего не знаю?','Подпишитесь на Telegram-канал направления, тема которого вам ближе. Почитайте материалы. Приходите на ближайшую открытую встречу. Или оставьте заявку — координатор свяжется и подскажет, что подойдёт лучше всего.'],
+    ['Я не в Москве — могу ли участвовать?','Да. Извод и Геральдика работают онлайн. У Ясна-Школы всё онлайн, живые выступления бывают. ЛитПроСвет, Джива и Парад Красоты совмещают московские встречи с онлайном. У Неглинки, Граники и Александрии часть работы очная — Москва и Петербург, — а разборы и лекции идут онлайн, участвовать можно удалённо. Общий сбор 26 сентября — исключение: он проходит только очно, в Москве.'],
     ['Сколько времени нужно уделять?','Столько, сколько хотите. Чтобы быть в курсе, хватает часа в неделю — почитать материалы и заглянуть в обсуждение. Ходить на все встречи необязательно.'],
     ['Могу ли я участвовать в нескольких направлениях?','Конечно, направления можно совмещать — они пересекаются. Неглинка рядом с Граникой: история города и архитектура. Извод рядом с ЛитПроСветом: язык и литература.'],
     ['Чем это отличается от обычных курсов?','Мы исследуем вместе: каждый работает с первоисточниками, задаёт вопросы и приносит находки. Лекции и разборы тоже есть — собственную работу они не заменяют.']

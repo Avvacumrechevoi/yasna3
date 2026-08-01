@@ -7,10 +7,11 @@
   --paper: #fbfaf6;
   --ink: #1a1714;
   --ink-2: #4a443d;
-  --ink-3: #736d63;
+  --ink-3: #6b665c;
   --line: rgba(26,23,20,.08);
   --line-strong: rgba(26,23,20,.18);
-  --accent: #a9743b;    /* охра */
+  --accent: #8a5b2a;    /* охра, затемнена до контраста AA — в том числе
+                            на подложке панелей #ebe7df, где фон темнее страницы */
   --accent-ink: #fbfaf6;
   --accent-2: #2f4170;  /* глубокий синий */
   --warm: rgba(169,116,59,.10);
@@ -33,9 +34,9 @@
 /* palettes */
 [data-palette="iney"] {
   --bg:#f5f3ee; --bg-deep:#ebe7df; --paper:#fbfaf6;
-  --ink:#1a1714; --ink-2:#4a443d; --ink-3:#736d63;
+  --ink:#1a1714; --ink-2:#4a443d; --ink-3:#6b665c;
   --line:rgba(26,23,20,.08); --line-strong:rgba(26,23,20,.18);
-  --accent:#a9743b; --accent-ink:#fbfaf6; --accent-2:#2f4170;
+  --accent:#8a5b2a; --accent-ink:#fbfaf6; --accent-2:#2f4170;
   --warm:rgba(169,116,59,.10); --cool:rgba(47,65,112,.10);
 }
 
