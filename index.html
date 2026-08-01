@@ -821,17 +821,10 @@
   var BASE='1/';
   var IMG='src/img/';
 
-  /* 9-gon points for reel */
-  function ninePts(cx,cy,r){ var a=[],i; for(i=0;i<9;i++){ var t=-Math.PI/2+i*2*Math.PI/9; a.push([cx+Math.cos(t)*r, cy+Math.sin(t)*r]); } return a; }
-  var rp=ninePts(0,0,168);
-  document.getElementById('reelPoly').setAttribute('points', rp.map(function(p){return p[0].toFixed(1)+','+p[1].toFixed(1)}).join(' '));
-  var rn=document.getElementById('reelNodes');
-  rp.forEach(function(p){
-    var c=document.createElementNS('http://www.w3.org/2000/svg','circle');
-    c.setAttribute('cx',p[0].toFixed(1)); c.setAttribute('cy',p[1].toFixed(1)); c.setAttribute('r',3); c.setAttribute('fill','#B98A3C');
-    rn.appendChild(c);
-  });
-
+  /* Многоугольник кольца строится по числу направлений, а не по зашитой
+     девятке: раньше при одиннадцати медальонах два получали угол больше
+     полного круга и садились ровно поверх первых двух. */
+  function ringPts(cx,cy,r,n){ var a=[],i; for(i=0;i<n;i++){ var t=-Math.PI/2+i*2*Math.PI/n; a.push([cx+Math.cos(t)*r, cy+Math.sin(t)*r]); } return a; }
   /* hero parallax (desktop, no reduced motion) */
   var hbg=document.getElementById('heroBg');
   if(!reduce && matchMedia('(pointer:fine)').matches){
@@ -846,6 +839,18 @@
     {img:IMG+'yasna-shkola.png',a:'Ясна-Школа'},{img:IMG+'alexandria-emblem.jpg',a:'Александрия'},{img:IMG+'neglinka-emblem.png',a:'Неглинка'},{img:IMG+'granika.png',a:'Граника'},{img:IMG+'astronevod.png',a:'Астроневод'},{img:IMG+'marshruty.png',a:'Ясные маршруты'},
     {img:IMG+'litprosvet-mark.svg',a:'ЛитПроСвет'},{img:IMG+'izvod.png',a:'Извод'},{img:IMG+'dzhiva.png',a:'Джива'},{img:IMG+'parad.png',a:'Парад Красоты'},{img:IMG+'geraldika.png',a:'Геральдика'}
   ];
+  var REEL_N=reelItems.length;
+
+  /* многоугольник и узлы — после того, как известно число направлений */
+  var rp=ringPts(0,0,168,REEL_N);
+  document.getElementById('reelPoly').setAttribute('points', rp.map(function(p){return p[0].toFixed(1)+','+p[1].toFixed(1)}).join(' '));
+  var rn=document.getElementById('reelNodes');
+  rp.forEach(function(p){
+    var c=document.createElementNS('http://www.w3.org/2000/svg','circle');
+    c.setAttribute('cx',p[0].toFixed(1)); c.setAttribute('cy',p[1].toFixed(1)); c.setAttribute('r',3); c.setAttribute('fill','#B98A3C');
+    rn.appendChild(c);
+  });
+
   var spread=[[-300,-200],[330,-230],[400,30],[300,240],[40,300],[-320,230],[-420,40],[-280,-260],[120,-330],[-140,340],[420,-40]];
   var host=document.getElementById('reelLetters');
   var flies=reelItems.map(function(it,i){
@@ -869,7 +874,7 @@
     var roomL=Math.max(R*1.1, cX-db.left-pad), roomR=Math.max(R*1.1, db.right-cX-pad);
     var roomU=Math.max(R*1.1, cY-db.top-pad), roomD=Math.max(R*1.1, db.bottom-cY-pad);
     flies.forEach(function(s,i){
-      var ang=-Math.PI/2+i*2*Math.PI/9;
+      var ang=-Math.PI/2+i*2*Math.PI/REEL_N;
       var cx=Math.round(Math.cos(ang)*R), cy=Math.round(Math.sin(ang)*R);
       var sx=Math.round(Math.max(-roomL, Math.min(roomR, spread[i][0])));
       var sy=Math.round(Math.max(-roomU, Math.min(roomD, spread[i][1])));
