@@ -69,6 +69,15 @@
           <span class="sub">Полей мало · на минуту</span>
         </div>
 
+        <!-- Запасной путь стоит ВСЕГДА, а не показывается по таймеру:
+             определить «форма не поднялась» надёжно нельзя — у части
+             посетителей embed.js не отвечает, хотя форма работает,
+             и подмена содержимого стёрла бы уже заполненные поля. -->
+        <p class="zv-fallback">Форма не открывается? Напишите
+          <a href="https://t.me/dmlandra" target="_blank" rel="noopener">в&nbsp;Telegram</a>
+          или позвоните: <a href="tel:+79082939363">+7&nbsp;908&nbsp;293-93-63</a>,
+          <a href="tel:+79152595250">+7&nbsp;915&nbsp;259-52-50</a>.</p>
+
         <div id="ya-form-mount" class="zv-mount" aria-live="polite">
           <p class="zv-loading"><span class="zv-wait">Загружаем форму…</span>
             <a href="https://forms.yandex.ru/u/6a60a61b493639002bc66bcb/" target="_blank" rel="noopener">открыть напрямую&nbsp;→</a>
@@ -191,7 +200,7 @@
           <li><a href="granika.html">Граника</a></li>
           <li><a href="astronevod.html">Астроневод</a></li>
           <li><a href="marshruty.html">Ясные маршруты</a></li>
-          <li><a href="/#directions">Все девять</a></li>
+          <li><a href="/#directions">Все одиннадцать</a></li>
         </ul>
       </div>
       <div>
@@ -252,6 +261,8 @@ var DIR = {
   parad: '1784719134260', alexandria: '1784719140275', geraldika: '1784719143625',
   astronevod: '1785573333586', marshruty: '1785573354458'
 };
+// «Ещё не выбрал(а) — подскажите» — тот же вопрос, вариант по умолчанию
+var DIR_NONE = '9008983973814372';
 
 (function () {
   var mount = document.getElementById('ya-form-mount');
@@ -266,6 +277,13 @@ var DIR = {
     pre.push(Q_DIR + '=' + DIR[dir]);
   } else if (goal && GOAL[goal]) {
     pre.push(Q_GOAL + '=' + GOAL[goal]);
+    /* Форма держит черновик в localStorage. Ссылка ?goal=day перебивает только
+       первый вопрос, а «Какое направление» остаётся с прошлого визита — и заявка
+       на сбор уходит с направлением, которого человек сейчас не выбирал.
+       Гасим явно. Побочный эффект: тем, кто пришёл по goal-ссылке, направление
+       выставится в «Ещё не выбрал(а)». Это видно на экране и правится одним
+       щелчком, в отличие от тихо подставленного чужого ответа. */
+    pre.push(Q_DIR + '=' + DIR_NONE);
   }
 
   var src = 'https://forms.yandex.ru/u/' + FORM_ID + '/?' + pre.join('&');

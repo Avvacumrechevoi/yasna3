@@ -1225,3 +1225,15 @@ a.dir.is-quiet::after {
 @media (max-width: 680px) {
   .vk-grid { grid-template-columns: 1fr; }
 }
+
+
+/* Запасной способ связи на странице заявки — виден всегда, на случай,
+   если Яндекс-форма не поднялась или её отрезал блокировщик. */
+.zv-fallback {
+  margin: 0;
+  padding: 0 24px 14px;
+  font-size: .92rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+.zv-fallback a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
