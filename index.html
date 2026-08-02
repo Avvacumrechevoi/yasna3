@@ -40,7 +40,10 @@
   ::selection{background:rgba(162,60,36,.22)}
   a:focus-visible,button:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:4px}
   .wrap{max-width:1200px; margin:0 auto; padding:0 32px}
-  .eyebrow{font-size:12px; letter-spacing:.22em; text-transform:uppercase; font-weight:600; color:var(--accent)}
+  .skip{position:absolute; left:-9999px; top:0; z-index:100; padding:10px 16px;
+    background:var(--ink); color:var(--paper); border-radius:0 0 8px 0; font-size:14px}
+  .skip:focus{left:0}
+  .eyebrow{font-family:inherit; font-weight:600; margin:0; font-size:12px; letter-spacing:.22em; text-transform:uppercase; font-weight:600; color:var(--accent)}
   section[id],header[id]{scroll-margin-top:76px}
 
   [data-reveal]{opacity:0; transform:translateY(26px); transition:opacity .9s var(--ease), transform .9s var(--ease)}
@@ -102,6 +105,12 @@
   .hero-inner{position:relative; z-index:2; width:100%; max-width:1200px; padding-top:clamp(104px,11vh,132px); padding-bottom:clamp(56px,7.5vh,88px)}
   .badge{display:inline-flex; align-items:center; gap:9px; padding:8px 15px; border:1px solid rgba(162,60,36,.4);
     border-radius:100px; font-size:14px; font-weight:600; color:var(--accent); background:rgba(243,236,224,.55); margin-bottom:28px; transition:border-color .3s, box-shadow .3s, opacity .9s var(--ease), transform .9s var(--ease)}
+  /* На 320px плашка рвалась на три строки: ужимаем шрифт и отступы,
+     дату и год держим неразрывными. Ходовые 375/390/430 не трогаем. */
+  @media(max-width:360px){
+    .badge{font-size:12.5px; padding:7px 12px; gap:7px}
+    .badge b, .badge span{white-space:nowrap}
+  }
   .badge:hover{border-color:var(--accent); box-shadow:0 4px 18px rgba(162,60,36,.15)}
   .badge .dot{width:7px; height:7px; border-radius:50%; background:var(--accent); animation:pulse 2.4s var(--ease) infinite}
   .hero h1{font-size:clamp(38px,5.6vw,62px); line-height:1.06; margin:0 0 22px -.06em; max-width:640px; text-wrap:balance}
@@ -492,6 +501,7 @@
 </style>
 </head>
 <body id="top">
+<a class="skip" href="#content">К содержанию</a>
 <div id="root" style="display:contents">
 <div id="progress"></div>
 
@@ -585,12 +595,14 @@
   <div class="scrollcue"><span class="bar"></span>листайте</div>
 </header>
 
+<main id="content">
+
 <!-- ОБРАЩЕНИЕ -->
 <section class="address" id="event">
   <div class="ornament" data-reveal>✦ ✦ ✦</div>
   <div class="wrap">
     <div class="letter" data-reveal>
-      <span class="eyebrow">Обращение</span>
+      <h2 class="eyebrow">Обращение</h2>
       <div class="anaphora">
         <div data-reveal><em>Горящие сердцем</em> соратники!</div>
         <div data-reveal><em>Горящие сердцем</em> товарищи!</div>
@@ -775,6 +787,8 @@
   </div>
 </section>
 
+</main>
+
 <footer>
   <div class="wrap">
     <div class="foot-grid">
@@ -891,7 +905,7 @@
     {n:'02',img:IMG+'alexandria-emblem.jpg',tag:'Раскладки · теория и практика',h:'Александрия',p:'Теоретическое ядро Ясны: изучаем построение раскладок — «разложи всё и соедини всё». От медицины до истории.',lead:'Тимур Фахрутдинов',loc:'Петербург + онлайн',url:BASE+'pages/alexandria.html'},
     {n:'03',img:IMG+'neglinka-emblem.png',tag:'История · география',h:'Неглинка',p:'Проясняем историю и географию России — гуляем по Москве, читаем то, что зашифровано в улицах.',lead:'Антон Черномашенцев',loc:'Москва + онлайн',url:BASE+'pages/neglinka.html'},
     {n:'04',img:IMG+'granika.png',tag:'Архитектура · астрономия',h:'Граника',p:'Читаем язык предков в камне — усадьбы, крепости, монастыри и храмовые комплексы. Русский классицизм и деревянное зодчество.',lead:'Александр Акимов',loc:'Москва + онлайн',url:BASE+'pages/granika.html'},
-    {n:'05',img:IMG+'astronevod.png',tag:'Астросмыслы · астрокоды',h:'Астроневод',p:'Астрономия наших предков: археоастрономия древних поселений, звёздный язык сказок и баллад, астрономия икон. Закон Подобия — как на Небе, так и на Земле.',lead:'Анна Виноградова',loc:'Москва + онлайн',url:BASE+'pages/astronevod.html'},
+    {n:'05',img:IMG+'astronevod.png',tag:'Астросмыслы · астрокоды',h:'Астроневод',p:'Астрономия наших предков: археоастрономия древних поселений, звёздный язык сказок и баллад, астрономия икон. Закон подобия — как на Небе, так и на Земле.',lead:'Анна Виноградова',loc:'Москва + онлайн',url:BASE+'pages/astronevod.html'},
     {n:'06',img:IMG+'marshruty.png',tag:'Натурные уроки · исследование',h:'Ясные маршруты',p:'Натурные уроки по городам: читаем устройство поселений через астрономию, географию, архитектуру и историю. Москва, Петербург, Кронштадт.',lead:'Лидия Дрожжина',loc:'Москва · Петербург · Кронштадт',url:BASE+'pages/marshruty.html'},
     {n:'07',img:IMG+'litprosvet-mark.svg',tag:'Литература',h:'ЛитПроСвет',p:'Литература как способ думать и чувствовать. Возвращаем людей к чтению — клубы, аудиолекторий, разборы классики.',lead:'Анастасия Скиба',loc:'Москва + онлайн',url:BASE+'pages/zayavka.html?dir=litprosvet'},
     {n:'08',img:IMG+'izvod.png',tag:'Язык · этимология',h:'Извод',p:'Утерянные смыслы русских слов. Этимология как практика — возвращаем словам их настоящее значение.',lead:'Александр Иванов',loc:'Онлайн',url:BASE+'pages/zayavka.html?dir=izvod'},
