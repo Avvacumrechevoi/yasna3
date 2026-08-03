@@ -1129,11 +1129,9 @@ a.dir.is-quiet::after {
 @media (max-width: 760px) {
   .nav { position: static; }
   .nav-row { height: auto; flex-wrap: wrap; row-gap: 4px; padding-top: 8px; padding-bottom: 6px; }
-  .nav-links {
-    order: 3; width: 100%; gap: 18px;
-    flex-wrap: wrap; row-gap: 6px;
-    overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
-  }
+  /* Ссылки шапки на телефоне живут в раскрывающемся списке — см. блок
+     «ШАПКА НА ТЕЛЕФОНЕ» в конце файла. Здесь остаётся только базовое. */
+  .nav-links { order: 3; width: 100%; }
   .nav-links::-webkit-scrollbar { display: none; }
   .nav-links a:not(.nav-cta),
   .nav-links a:not(.nav-cta):nth-child(3) {
@@ -1266,9 +1264,7 @@ a.dir.is-quiet::after {
 .dir-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .dir-stat { min-width: 0; }
 .dir-stat .val { overflow-wrap: anywhere; line-height: 1.15; }
-@media (max-width: 720px) {
-  .dir-stats { grid-template-columns: minmax(0, 1fr); }
-}
+
 
 
 /* На 761–830px показываются все пять пунктов, а марка с подписью
@@ -1361,4 +1357,259 @@ a.res-chip:hover { background: var(--ink); color: var(--bg); border-color: var(-
 .res-video-note {
   margin: 7px 0 0; font-family: var(--font-mono); font-size: .64rem;
   letter-spacing: .05em; color: var(--ink-3); line-height: 1.4;
+}
+
+/* ═══ ЧИСЛА УПРАВЛЕНИЯ ══════════════════════════════════════════════
+   На 375px четыре плитки в две колонки занимали 151px, и справа от
+   каждого числа пустовала половина меры. Ниже 920px — там же, где
+   .dir-hero-row смыкается в одну колонку (styles.css:432) — плитки
+   уступают место описи: пары «ПОДПИСЬ: значение» по базовой линии
+   с переносом по мере надобности. Плиточная сетка остаётся от 921px.
+
+   Замерено на всех семи страницах управлений при 320, 360, 375, 800,
+   1000 и 1280px; горизонтального переполнения нет нигде. Блок чисел
+   на 375px: Маршруты 151 → 74; Ясна-Школа 152 → 74; Александрия
+   167 → 74; Неглинка 235 → 89; Извод, Астроневод и Граника 77 → 40. */
+
+/* Разделители рисует просвет в 1px: между плитками просвечивает фон
+   контейнера. Такие линии живут при любом числе плиток и не зависят
+   от инлайновых border-bottom:0 в разметке четырёх страниц. Заодно
+   чинится десктоп: на «Ясных маршрутах» инлайн убирал линию между
+   рядами, а на Неглинке третья плитка висела с рамкой справа в пустой
+   клетке — теперь она занимает ряд целиком. */
+.dir-stats { gap: 1px; background: var(--line); overflow: hidden; }
+.dir-stats > .dir-stat,
+.dir-stats.dir-stats-row > .dir-stat { border: 0; background: var(--bg); }
+.dir-stats > .dir-stat:last-child:nth-child(odd) { grid-column: 1 / -1; }
+
+/* Строчный вариант снова идёт в четыре колонки. Правило .dir-stats выше
+   стоит вне медиазапроса и ниже по файлу, вес у обоих одноклассовый —
+   поэтому Александрия на 1280px показывала две колонки по 568px вместо
+   строки из четырёх. Двухклассовый селектор возвращает задуманное. */
+.dir-stats.dir-stats-row { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+@media (max-width: 920px) {
+  .dir-stats,
+  .dir-stats.dir-stats-row {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    column-gap: 22px;      /* просвет между парами втрое шире внутреннего —
+                              он и держит группировку «подпись: значение» */
+    row-gap: 9px;
+    background: none;      /* иначе просвет в 22px залился бы цветом линии */
+    overflow: visible;     /* засечке нужно выйти за верхний край */
+    border: 0;
+    border-top: 1px solid var(--line);
+    border-radius: 0;
+    padding: 15px 0 0;
+    margin-top: 10px;
+  }
+  /* Охряная засечка на линейке — тот же приём, что у .hero-manifest::before
+     на главной. С ней строка читается как выходные данные управления даже
+     там, где чисел всего два. */
+  .dir-stats::before {
+    content: "";
+    position: absolute;
+    left: 0; top: -1px;
+    width: 34px; height: 2px;
+    background: var(--accent);
+  }
+  .dir-stats > .dir-stat,
+  .dir-stats.dir-stats-row > .dir-stat {
+    display: flex;
+    align-items: baseline;
+    gap: 7px;
+    flex: 0 1 auto;
+    min-width: 0;
+    max-width: 100%;
+    grid-column: auto;
+    padding: 0; border: 0; background: none;
+  }
+  .dir-stats .dir-stat .lbl {
+    margin-bottom: 0;
+    flex-shrink: 0;
+    font-size: .64rem;
+    letter-spacing: .12em;
+  }
+  /* Двоеточие разводит подпись и значение: без него соседняя пара
+     читается как «16 ведущих». */
+  .dir-stats .dir-stat .lbl::after { content: ":"; }
+  .dir-stats .dir-stat .val { font-size: 1.22rem; line-height: 1.25; min-width: 0; }
+  /* «+» у «5+» и «7+» набирается в долях от числа и держится рядом с ним;
+     штатный отступ в 6px в строке давал «5 +». */
+  .dir-stats .dir-stat .val small { font-size: .62em; margin-left: 1px; }
+
+  /* Плитка, где вместо числа лежит строка: ФИО руководителя,
+     «Москва + онлайн». Серифный кегль числа спорит там с заголовком
+     страницы, поэтому текст печатается основным шрифтом. */
+  .dir-stats .dir-stat.is-text .val {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0;
+  }
+
+  /* 48px между колонками шапки (styles.css:431) — десктопная величина;
+     ниже 920px колонки смыкаются, и просвет становится вертикальным. */
+  .dir-hero-row { gap: 22px; }
+}
+
+/* ═══ МОБИЛЬНЫЕ ПОЧИНКИ СТРАНИЦЫ УПРАВЛЕНИЯ ═════════════════════════ */
+
+/* Карточка урока вылезала из панели: ширину колонки задаёт самая длинная
+   карточка, а у элемента сетки min-width по умолчанию auto — он не даёт
+   ей ужаться уже своего содержимого. На 320px карточка выходила за панель
+   на 48px и срезала значок «+», то есть единственный признак того, что
+   карточку можно раскрыть. Замерено: с min-width:0 вылета нет ни на 320,
+   ни на 360, ни на 375px. */
+.res-grid > * { min-width: 0; }
+/* На узком экране длинному ФИО нужен перенос: без него имя упирается
+   в край карточки. */
+@media (max-width: 400px) {
+  .res .ft > span:last-child { white-space: normal; }
+}
+
+/* Зоны нажатия. Замерено: «← ВСЕ УПРАВЛЕНИЯ» 18,7px, «Оставить заявку»
+   внутри карточки урока 18,3px, ссылка на управление в чипе 17,5px —
+   втрое меньше опорных 44px, в которые целится палец. Высоту добавляем
+   отступом, чтобы рисунок строки не поехал. */
+@media (hover: none) {
+  .dir-back { display: inline-flex; align-items: center; min-height: 44px; }
+  .res-cta { min-height: 44px; display: inline-flex; align-items: center; }
+  a.res-chip { min-height: 34px; padding-top: 6px; padding-bottom: 6px; }
+  .coord .info p a { display: inline-block; padding: 4px 0; }
+}
+
+/* Отступы секций на телефоне. 88px сверху и снизу — величина для широкого
+   экрана; на 375px это седьмая часть экрана на пустоту между блоками. */
+@media (max-width: 680px) {
+  section { padding-top: 44px; padding-bottom: 44px; }
+  .dir-hero { padding-top: 24px; }
+}
+
+/* Порядок панелей на телефоне. Колонки смыкаются в одну (styles.css:445),
+   и правая целиком уезжает за левую: «Как присоединиться» оказывалась
+   на 9800-м пикселе — за каталогом уроков в 3783px и галереей в 1451px.
+   display:contents убирает колонки из потока, и панели становятся прямыми
+   детьми сетки; дальше их можно переставить по содержимому, не трогая
+   разметку семи страниц. Тяжёлая галерея уходит в конец. */
+@media (max-width: 980px) {
+  .dash { gap: 24px; }
+  .dash > .col { display: contents; }
+  .dash .panel { order: 5; }
+  .dash .panel:has(.about-body)  { order: 1; }
+  .dash .panel:has(.res-grid)    { order: 2; }
+  .dash .panel:has(.join-body)   { order: 3; }
+  .dash .panel:has(.chan-grid)   { order: 4; }
+  .dash .panel:has(.coord)       { order: 5; }
+  .dash .panel:has(.for-row)     { order: 6; }
+  .dash .panel:has(.kv-list)     { order: 7; }
+  .dash .panel:has(.photo-grid)  { order: 8; }
+}
+
+/* ═══ ШАПКА НА ТЕЛЕФОНЕ: разделы под раскрытием ══════════════════════
+   Шесть целей в строку не умещаются ни на одной телефонной ширине:
+   одни только буквы пяти разделов занимают 329px при 335px содержимого
+   на 375px. Лента с прокруткой вбок прятала 163px из 498 — «Метод»
+   и «Вопросы» не видно при загрузке, а «Вступить» ездила вместе с лентой.
+   Поэтому разделы уходят под кнопку «Разделы», а строка шапки одна.
+
+   Разметка: <details class="nav-menu"> с одним <summary> стоит ПЕРЕД
+   <nav class="nav-links">. Список лежит за пределами <details>, поэтому
+   ничего не зависит от того, как браузер прячет содержимое свёрнутого
+   <details>; раскрытие читается соседним селектором [open] ~ .nav-links.
+   JS для самого раскрытия не нужен: <summary> — нативная кнопка
+   с состоянием и работой от клавиатуры. */
+
+html { scroll-padding-top: 74px; }
+@media (max-width: 760px) { html { scroll-padding-top: 70px; } }
+
+.nav-menu { display: none; }
+.nav-burger {
+  display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+  min-height: 44px; min-width: 44px; padding: 11px 15px;
+  border: 1px solid var(--line-strong); border-radius: 999px;
+  background: var(--paper); color: var(--ink-2);
+  font-family: var(--font-body); font-size: .86rem; line-height: 1;
+  cursor: pointer; user-select: none; -webkit-tap-highlight-color: transparent;
+  list-style: none;
+}
+.nav-burger::-webkit-details-marker { display: none; }
+.nav-burger:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.nav-burger .bars {
+  position: relative; flex: 0 0 auto; width: 15px; height: 11px;
+  background: linear-gradient(currentColor, currentColor) center / 100% 1px no-repeat;
+}
+.nav-burger .bars::before,
+.nav-burger .bars::after {
+  content: ""; position: absolute; left: 0; right: 0; height: 1px;
+  background: currentColor; transition: transform .18s ease;
+}
+.nav-burger .bars::before { top: 2px; }
+.nav-burger .bars::after { bottom: 2px; }
+.nav-menu[open] .nav-burger { color: var(--ink); border-color: var(--ink-3); }
+.nav-menu[open] .nav-burger .bars { background-size: 0 1px; }
+.nav-menu[open] .nav-burger .bars::before { transform: translateY(3px) rotate(45deg); }
+.nav-menu[open] .nav-burger .bars::after  { transform: translateY(-3px) rotate(-45deg); }
+@media (prefers-reduced-motion: reduce) {
+  .nav-burger .bars::before, .nav-burger .bars::after { transition: none; }
+}
+/* На 320px локап и кнопка со словом расходятся: 164 + 12 + 112 = 288
+   при 280 доступных. Слово убираем из виду, оставляя его в дереве
+   доступности — кнопка по-прежнему называется «Разделы». */
+@media (max-width: 359px) {
+  .nav-burger { padding: 11px 14px; }
+  .nav-burger .cap {
+    position: absolute; width: 1px; height: 1px;
+    margin: -1px; padding: 0; border: 0; overflow: hidden;
+    clip-path: inset(50%); white-space: nowrap;
+  }
+}
+
+@media (max-width: 760px) {
+  /* Шапка снова липкая: одна строка стоит 61px, зато «Разделы»
+     и «Вступить» под рукой на всём протяжении страницы в 13 700px.
+     Размытие подложки снимаем: непрозрачный фон дешевле при прокрутке
+     и не даёт содержимому просвечивать сквозь шапку. */
+  .nav {
+    position: sticky; top: 0;
+    background: var(--bg);
+    backdrop-filter: none; -webkit-backdrop-filter: none;
+  }
+  .nav-row { height: 60px; flex-wrap: nowrap; gap: 12px; }
+  .nav .brand-sub { display: none; }
+  .nav-menu { display: block; flex: 0 0 auto; }
+
+  .nav-links {
+    position: absolute; top: 100%; left: 0; right: 0;
+    display: none; flex-direction: column; align-items: stretch; gap: 0;
+    padding: 2px var(--gutter) 16px;
+    background: var(--bg); border-bottom: 1px solid var(--line);
+    box-shadow: 0 24px 34px -28px rgba(0,0,0,.45);
+    max-height: calc(100dvh - 60px); overflow-y: auto; overscroll-behavior: contain;
+  }
+  .nav-menu[open] ~ .nav-links { display: flex; }
+
+  .nav-links a:not(.nav-cta),
+  .nav-links a:not(.nav-cta):nth-child(3) {
+    display: flex; align-items: center; min-height: 50px;
+    font-size: 1rem; color: var(--ink);
+    border-bottom: 1px solid var(--line);
+  }
+  /* На privacy.html и zayavka.html кнопки «Вступить» в шапке нет —
+     у последней ссылки линия снизу лишняя. */
+  .nav-links a:not(.nav-cta):last-child { border-bottom: 0; }
+  .nav-links a.nav-cta {
+    order: 0; align-self: flex-start;
+    margin-top: 16px; padding: 12px 22px; font-size: .94rem;
+  }
+}
+
+/* На 320px длинные заголовки управлений не влезают: «Обработка
+   персональных данных» просит 313px при 280 доступных, и слово
+   «персональных» рисуется за краем. Уменьшаем кегль и разрешаем
+   переносить слово, если и этого мало. */
+@media (max-width: 360px) {
+  .dir-title { font-size: clamp(1.7rem, 1.1rem + 4.4vw, 2.4rem); overflow-wrap: break-word; }
 }

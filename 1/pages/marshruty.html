@@ -35,6 +35,9 @@
         <span class="brand-sub">Интеграционный центр</span>
       </span>
     </a>
+    <details class="nav-menu">
+      <summary class="nav-burger"><span class="bars" aria-hidden="true"></span><span class="cap">Разделы</span></summary>
+    </details>
     <nav class="nav-links">
       <a href="/#event">Обращение</a>
       <a href="/#day">26&nbsp;сентября</a>
@@ -957,7 +960,31 @@
       v.removeAttribute('data-poster');
     });
   }
+
+  /* Ссылка вида marshruty.html#urok-lefortovo вела в закрытую карточку:
+     браузер не разворачивает <details> сам, поэтому переход не прокручивал
+     страницу вовсе. Раскрываем нужную карточку и подводим к ней. */
+  function openFromHash() {
+    var h = location.hash;
+    if (!h || h.indexOf('#urok-') !== 0) return;
+    var el;
+    try { el = document.querySelector(h); } catch (e) { return; }
+    if (!el || el.tagName !== 'DETAILS') return;
+    el.open = true;
+    /* Высота страницы ещё меняется: раскрытая карточка растёт, выше неё
+       догружаются картинки. Одного кадра мало — подводим трижды, последний
+       раз после полной загрузки. */
+    var go = function () { el.scrollIntoView({ block: 'start' }); };
+    requestAnimationFrame(go);
+    setTimeout(go, 80);
+    if (document.readyState !== 'complete') {
+      window.addEventListener('load', go, { once: true });
+    }
+  }
+  openFromHash();
+  window.addEventListener('hashchange', openFromHash);
 })();
 </script>
+<script src="../src/nav.js" defer></script>
 </body>
 </html>
