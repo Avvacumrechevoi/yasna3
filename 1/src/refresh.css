@@ -1348,3 +1348,17 @@ a.res-chip:hover { background: var(--ink); color: var(--bg); border-color: var(-
 /* Ссылка на управление внутри строки ведущего */
 .coord .info p a { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid var(--line-strong); }
 .coord .info p a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* ─── Ролик внутри карточки урока ──────────────────────────────────
+   Видео живёт в раскрытой части .res-more, поэтому в свёрнутом виде
+   браузер его не строит и постер не грузит. preload="none" — чтобы
+   даже раскрытая карточка не тянула сам файл до нажатия. */
+.res-video { margin-top: 2px; }
+.res-video video {
+  width: 100%; height: auto; display: block;
+  border-radius: 10px; background: var(--bg-deep);
+}
+.res-video-note {
+  margin: 7px 0 0; font-family: var(--font-mono); font-size: .64rem;
+  letter-spacing: .05em; color: var(--ink-3); line-height: 1.4;
+}
