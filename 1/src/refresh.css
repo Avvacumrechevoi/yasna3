@@ -724,7 +724,7 @@ section.tight { padding-top: calc(48px * var(--dens)); padding-bottom: calc(48px
 }
 .fmt-desc { margin: 0; font-size: .88rem; color: var(--ink-2); line-height: 1.5; }
 
-/* Панель «О направлении» */
+/* Панель «Об управлении» */
 .about-body { padding: 24px; display: flex; flex-direction: column; gap: 18px; }
 .about-text { margin: 0; font-size: 1.02rem; line-height: 1.6; color: var(--ink); }
 .mission-box { padding: 18px 20px; background: var(--bg-deep); border-radius: var(--radius); }
@@ -966,7 +966,7 @@ section.tight { padding-top: calc(48px * var(--dens)); padding-bottom: calc(48px
 }
 
 
-/* ─── Каналы направления (Неглинка) ───────────────────────────────── */
+/* ─── Каналы управления (Неглинка) ───────────────────────────────── */
 .chan-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1065,7 +1065,7 @@ section.tight { padding-top: calc(48px * var(--dens)); padding-bottom: calc(48px
 /* Надстройка в подвале */
 
 
-/* ─── Логотип-плашка в hero страницы направления (Ясна-Школа) ─────── */
+/* ─── Логотип-плашка в hero страницы управления (Ясна-Школа) ─────── */
 .dir-logo.dir-logo-tile {
   background: transparent;
   border: 0;
@@ -1075,7 +1075,7 @@ section.tight { padding-top: calc(48px * var(--dens)); padding-bottom: calc(48px
 }
 .dir-logo.dir-logo-tile img { object-fit: cover; border-radius: 20px; }
 
-/* Честная сноска о текущем состоянии направления */
+/* Честная сноска о текущем состоянии управления */
 .dir-note-quiet {
   margin: 28px 0 0;
   padding: 18px 22px;
@@ -1087,7 +1087,7 @@ section.tight { padding-top: calc(48px * var(--dens)); padding-bottom: calc(48px
   max-width: 760px;
 }
 
-/* Карточка направления: работает, но набор не ведётся */
+/* Карточка управления: работает, но набор не ведётся */
 a.dir.is-quiet::after {
   content: "работает";
   color: var(--ink-3);
@@ -1140,7 +1140,7 @@ a.dir.is-quiet::after {
   .nav-links a.nav-cta { order: -1; flex: 0 0 auto; padding: 8px 14px; }
 }
 @media (min-width: 761px) and (max-width: 960px) {
-  /* порог 960px прятал «Направления» при 283.9px свободного места в строке */
+  /* порог 960px прятал «Управления» при 283.9px свободного места в строке */
   .nav-links a:not(.nav-cta):nth-child(3) { display: inline; }
   .nav-links { gap: 14px; }
   .nav-links a { font-size: .84rem; }
@@ -1256,7 +1256,7 @@ a.dir.is-quiet::after {
 .res .ft > span:last-child { white-space: nowrap; }
 
 
-/* Плитки статистики в шапке направления. С отчествами длинное имя
+/* Плитки статистики в шапке управления. С отчествами длинное имя
    («Черномашенцев Антон Александрович») перестало помещаться: 1fr — это
    minmax(auto,1fr), колонка не сжимается ниже самого длинного слова
    и растягивала шапку за край экрана. Разрешаем сжатие и перенос. */
@@ -1269,10 +1269,12 @@ a.dir.is-quiet::after {
 
 
 /* На 761–830px показываются все пять пунктов, а марка с подписью
-   «Интеграционный центр» шире, чем на страницах направлений, — строка
-   не помещалась и уезжала за край на 27px. Ужимаем просветы и кегль. */
+   «Интеграционный центр» шире, чем на страницах управлений, — строка
+   не помещалась и уезжала за край на 27px. Ужимаем просветы и кегль.
+   После переименования в «Управления» строка стала короче на 9px, но
+   у 768px оставался хвост в 1.8px — отсюда просвет 7px вместо 9px. */
 @media (min-width: 761px) and (max-width: 830px) {
-  .nav-links { gap: 9px; }
+  .nav-links { gap: 7px; }
   .nav-links a { font-size: .8rem; }
-  .nav-links a.nav-cta { padding: 8px 13px; }
+  .nav-links a.nav-cta { padding: 8px 12px; }
 }

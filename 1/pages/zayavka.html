@@ -4,7 +4,7 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Оставить заявку — Золотой Ясень</title>
-<meta name="description" content="Оставьте заявку: прийти 26 сентября, вступить в направление, принести свой проект или задать вопрос. Ответим в течение двух-трёх дней."/>
+<meta name="description" content="Оставьте заявку: прийти 26 сентября, вступить в управление, принести свой проект или задать вопрос. Ответим в течение двух-трёх дней."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500;1,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
@@ -14,7 +14,7 @@
 <meta property="og:locale" content="ru_RU"/>
 <meta property="og:site_name" content="Золотой Ясень"/>
 <meta property="og:title" content="Оставить заявку — Золотой Ясень"/>
-<meta property="og:description" content="Прийти 26 сентября, вступить в направление, принести свой проект или задать вопрос."/>
+<meta property="og:description" content="Прийти 26 сентября, вступить в управление, принести свой проект или задать вопрос."/>
 <meta property="og:url" content="https://zolotoj-yasen.ru/1/pages/zayavka.html"/>
 <meta property="og:image" content="https://zolotoj-yasen.ru/src/img/og-cover.jpg"/>
 <meta property="og:image:width" content="1200"/>
@@ -38,7 +38,7 @@
     <nav class="nav-links">
       <a href="/#event">Обращение</a>
       <a href="/#day">26&nbsp;сентября</a>
-      <a href="/#directions">Направления</a>
+      <a href="/#directions">Управления</a>
       <a href="/#method">Метод</a>
       <a href="/#faq">Вопросы</a>
     </nav>
@@ -136,7 +136,7 @@
               <span class="join-num">II</span>
               <div>
                 <div class="join-title">Подскажем, куда идти</div>
-                <p class="join-desc">Если направление ещё не&nbsp;выбрано — поможем выбрать по&nbsp;тому, что вам интересно.</p>
+                <p class="join-desc">Если управление ещё не&nbsp;выбрано — поможем выбрать по&nbsp;тому, что вам интересно.</p>
               </div>
             </div>
             <div class="join-step">
@@ -151,7 +151,7 @@
 
         <article class="panel">
           <div class="panel-head">
-            <h3>Написать направлению</h3>
+            <h3>Написать управлению</h3>
             <span class="sub">Если знаете, к&nbsp;кому</span>
           </div>
           <div class="kv-list">
@@ -193,7 +193,7 @@
         </p>
       </div>
       <div>
-        <h4>Направления</h4>
+        <h4>Управления</h4>
         <ul>
           <li><a href="yasna-shkola.html">Ясна-Школа</a></li>
           <li><a href="alexandria.html">Александрия</a></li>
@@ -236,8 +236,8 @@
    приходит уведомление о каждой новой заявке.
 
    Форма встроена прямо в страницу (iframe), человек не уходит с сайта.
-   Со страниц направлений и из блока «26 сентября» в неё передаётся
-   контекст через адрес: ?goal=day|join|project|ask и ?dir=<направление> —
+   Со страниц управлений и из блока «26 сентября» в неё передаётся
+   контекст через адрес: ?goal=day|join|project|ask и ?dir=<управление> —
    тогда нужные пункты в форме уже отмечены.
 
    Если однажды заведёте НОВУЮ форму — поменяйте FORM_ID и, если поменяются
@@ -252,7 +252,7 @@ var Q_GOAL = 'answer_choices_9008983973706812';
 var Q_DIR  = 'answer_choices_9008983973814362';
 var GOAL = {
   day:     '9008983973706822',   // Прийти 26 сентября на общий сбор
-  join:    '1784719001427',      // Вступить в направление
+  join:    '1784719001427',      // Вступить в управление
   project: '1784719015474',      // Хочу предложить проект
   ask:     '1784719034844'       // Просто вопрос
 };
@@ -274,14 +274,14 @@ var DIR_NONE = '9008983973814372';
   var pre = ['iframe=1'];
   var dir = q.get('dir'), goal = q.get('goal');
   if (dir && DIR[dir]) {
-    pre.push(Q_GOAL + '=' + GOAL.join);     // пришли со страницы направления → «вступить»
+    pre.push(Q_GOAL + '=' + GOAL.join);     // пришли со страницы управления → «вступить»
     pre.push(Q_DIR + '=' + DIR[dir]);
   } else if (goal && GOAL[goal]) {
     pre.push(Q_GOAL + '=' + GOAL[goal]);
     /* Форма держит черновик в localStorage. Ссылка ?goal=day перебивает только
-       первый вопрос, а «Какое направление» остаётся с прошлого визита — и заявка
-       на сбор уходит с направлением, которого человек сейчас не выбирал.
-       Гасим явно. Побочный эффект: тем, кто пришёл по goal-ссылке, направление
+       первый вопрос, а «Какое управление» остаётся с прошлого визита — и заявка
+       на сбор уходит с управлением, которого человек сейчас не выбирал.
+       Гасим явно. Побочный эффект: тем, кто пришёл по goal-ссылке, управление
        выставится в «Ещё не выбрал(а)». Это видно на экране и правится одним
        щелчком, в отличие от тихо подставленного чужого ответа. */
     pre.push(Q_DIR + '=' + DIR_NONE);
