@@ -139,7 +139,7 @@
   .sec-head p{margin:0; color:var(--ink-60); font-size:18px; line-height:1.55}
 
   /* ---------- address (Обращение) ---------- */
-  .address{padding:110px 0; background:var(--paper-2); position:relative; overflow:hidden}
+  .address{padding:110px 0 0; background:var(--paper-2); position:relative; overflow:hidden}
   .address .ornament{position:absolute; top:64px; left:50%; transform:translateX(-50%); color:var(--gold); font-size:15px; letter-spacing:.9em; padding-left:.9em}
   .letter{max-width:760px; margin:0 auto; background:var(--paper); border:1px solid var(--line); border-radius:6px;
     padding:64px 72px 56px; box-shadow:0 24px 70px rgba(33,27,20,.09); position:relative}
@@ -435,6 +435,7 @@
   @media(max-width:600px),(max-height:560px) and (orientation:landscape){
     /* 110+110px давали 220px пустоты на каждом стыке — 33% экрана 375x667 */
     .address,.day,.directions,.ways,.method,.faq{padding-top:68px; padding-bottom:68px}
+    .address{padding-bottom:0}
     .pillars{padding-top:72px; padding-bottom:72px}
     .cta{padding-top:76px; padding-bottom:76px}
     .sec-head{margin-bottom:34px}
@@ -480,6 +481,91 @@
     .tree path{stroke-dashoffset:0 !important} .tree .leaf,.tree .berry{opacity:1 !important}
     .step .node{opacity:1 !important} .step .node::after{transform:scale(1) !important}
     .steps::before{transform:scaleX(1) !important}
+  }
+  /* ================= Обращение: дочитанный разворот ================= */
+  /* Свёртка включается ТОЛЬКО классом .foldable, который ставит скрипт.
+     Без JS (и при любой ошибке скрипта) письмо стоит целиком, кнопки нет. */
+
+  /* Единственная ручка настройки. Правило реза: плёнка должна гаснуть
+     ПОВЕРХ живых строк, а не поверх пустого поля между абзацами.
+     Замерено: на ≥601px .letter-body имеет cap 0..149, «Пришло время»
+     169..199, врезку 233..402 (текст с 259). Рез 330 гасит две строки
+     врезки. На ≤600px cap 0..298, «Пришло время» 318..377 — рез 348
+     оставляет первую строку призраком. */
+  .letter{--fold:330px}
+  .letter-fold{position:relative}
+  .letter.foldable .letter-body{max-height:var(--fold); overflow:hidden;
+    transition:max-height .8s var(--ease)}
+
+  .letter-veil{display:none; position:absolute; left:0; right:0; bottom:0; height:150px;
+    pointer-events:none; transition:opacity .45s var(--ease)}
+  .letter.foldable .letter-veil{display:block}
+  /* нижний слой — расфокус; маска гасит блюр кверху, чтобы размытие
+     нарастало, а не начиналось ступенькой */
+  .letter-veil::before{content:""; position:absolute; inset:0;
+    -webkit-backdrop-filter:blur(3px); backdrop-filter:blur(3px);
+    -webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.12) 45%,rgba(0,0,0,.6) 72%,#000 92%);
+            mask-image:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.12) 45%,rgba(0,0,0,.6) 72%,#000 92%)}
+  /* верхний слой — сама бумага: строка уходит в лист, а не под серую плёнку */
+  .letter-veil::after{content:""; position:absolute; inset:0;
+    background:linear-gradient(180deg,rgba(243,236,224,0) 0%,rgba(243,236,224,.14) 42%,
+      rgba(243,236,224,.55) 68%,rgba(243,236,224,.93) 88%,var(--paper) 100%)}
+  /* нет backdrop-filter — остаётся чистое угасание в цвет листа */
+  @supports not ((backdrop-filter:blur(2px)) or (-webkit-backdrop-filter:blur(2px))){
+    .letter-veil::before{display:none}
+    .letter-veil::after{background:linear-gradient(180deg,rgba(243,236,224,0) 0%,rgba(243,236,224,.2) 38%,
+      rgba(243,236,224,.62) 66%,rgba(243,236,224,.95) 88%,var(--paper) 100%)}
+  }
+  .letter.open .letter-veil{opacity:0; visibility:hidden;
+    transition:opacity .45s var(--ease), visibility 0s linear .45s}
+
+  /* Кнопка набрана служебным стилем сайта (Manrope, капитель), а не Spectral:
+     управляющий элемент не должен читаться как часть канонического текста. */
+  .unveil{display:none}
+  .letter.foldable .unveil{display:flex; align-items:center; justify-content:center; gap:13px;
+    width:100%; margin:20px 0 -12px; padding:12px 4px; min-height:48px;
+    background:none; border:0; cursor:pointer;
+    font-family:'Manrope',sans-serif; font-size:12px; font-weight:600;
+    letter-spacing:.18em; text-transform:uppercase; color:var(--accent); transition:color .25s}
+  .unveil::before,.unveil::after{content:""; flex:1 1 auto; height:1px;
+    background:rgba(185,138,60,.5); transition:background .25s}
+  .unveil .pl{position:relative; flex:none; width:24px; height:24px; border-radius:50%;
+    border:1px solid rgba(185,138,60,.7); transition:border-color .25s}
+  .unveil .pl::before,.unveil .pl::after{content:""; position:absolute; left:50%; top:50%;
+    background:currentColor; transform:translate(-50%,-50%); transition:transform .35s var(--ease)}
+  .unveil .pl::before{width:10px; height:1.5px}
+  .unveil .pl::after{width:1.5px; height:10px}
+  /* тот же приём, что у вопросов-ответов: плюс теряет вертикаль */
+  .letter.open .unveil .pl::after{transform:translate(-50%,-50%) scaleY(0)}
+  .unveil:hover{color:var(--ink)}
+  .unveil:hover::before,.unveil:hover::after{background:rgba(185,138,60,.85)}
+  .unveil:hover .pl{border-color:var(--gold)}
+  .unveil:focus-visible{outline:2px solid var(--gold); outline-offset:4px; border-radius:3px}
+  .unveil[hidden]{display:none !important}
+
+  /* ---------- Обращение → День: смена разворота ---------- */
+  /* Обрез двух нижних страниц: видно, что лист не один. */
+  .pagestack{max-width:760px; margin:0 auto; filter:drop-shadow(0 20px 32px rgba(33,27,20,.13))}
+  .pagestack i{display:block; height:8px; margin:0 auto; background:var(--paper);
+    border:1px solid var(--line); border-top:0; border-radius:0 0 6px 6px}
+  .pagestack i:first-child{width:calc(100% - 22px)}
+  .pagestack i:last-child{width:calc(100% - 50px); opacity:.7}
+  /* Шов вместо нижнего отступа секции. Ступени ведены через золото сайта:
+     прямая интерполяция #ECE3D4 → #211B14 даёт грязно-серую середину.
+     Последний стоп — та же переменная, что фон .day, поэтому границы нет. */
+  .seam{height:clamp(150px,16vw,190px); background:linear-gradient(180deg,
+    #ECE3D4 0%, #E8DCCB 10%, #DCCAB3 20%, #CBAF90 30%, #B3916B 40%, #94724B 50%,
+    #725534 60%, #523E26 70%, #372B1C 80%, #262017 90%, var(--ink) 100%)}
+
+  @media(max-width:600px),(max-height:560px) and (orientation:landscape){
+    .letter{--fold:348px}
+    .letter-veil{height:118px}
+    .letter.foldable .unveil{margin:16px 0 -12px; gap:10px; font-size:11px; letter-spacing:.12em}
+  }
+  @media print{
+    .letter.foldable .letter-body{max-height:none !important}
+    .letter-veil,.unveil,.seam,.pagestack{display:none !important}
+    .address{padding-bottom:40px}
   }
 
   @keyframes treeDraw{to{stroke-dashoffset:0}}
@@ -604,22 +690,37 @@
 <section class="address" id="event">
   <div class="ornament" data-reveal>✦ ✦ ✦</div>
   <div class="wrap">
-    <div class="letter" data-reveal>
+    <div class="letter" id="letter" data-reveal>
       <h2 class="eyebrow">Обращение</h2>
       <div class="anaphora">
         <div data-reveal><em>Горящие сердцем</em> соратники!</div>
         <div data-reveal><em>Горящие сердцем</em> товарищи!</div>
         <div data-reveal><em>Горящие сердцем</em> друзья и&nbsp;подруги!</div>
       </div>
-      <p class="cap" data-reveal>Вера наших дедов и&nbsp;прадедов захватывает всё больше сердец и&nbsp;душ. Учение Ясна&nbsp;— это наше родное национальное учение, дошедшее до&nbsp;нас из&nbsp;глубины веков. Мы долгое время жили чужой жизнью, чужими мыслями, чужим отношением к&nbsp;человеку, обществу, природе и&nbsp;мирозданию.</p>
-      <p data-reveal>Пришло время возвращения Ясны в&nbsp;нашу жизнь.</p>
-      <div class="keyline" data-reveal>Ясна&nbsp;— это наш самостоятельный путь веры, и&nbsp;это наш самостоятельный путь знания. Ясна ждёт нас. <b>Двери Ясны открыты для&nbsp;всех.</b></div>
-      <p data-reveal>С&nbsp;древности мы всегда были грамотными и&nbsp;мужчины и&nbsp;женщины, и&nbsp;взрослые и&nbsp;дети. Мы грамотны были своею собственной грамотой&nbsp;— Ясной.</p>
-      <p data-reveal>Наша задача принять помощь Ясны в&nbsp;нашей жизни, в&nbsp;нашем труде, в&nbsp;нашем здоровье, в&nbsp;наших мечтах и&nbsp;стремлениях.</p>
-      <p data-reveal>Наша Ясна&nbsp;— это наша правда. Она не&nbsp;нуждается в&nbsp;чужих правках, в&nbsp;чужом участии и&nbsp;в&nbsp;чужих оценках.</p>
-      <div class="sign" data-reveal>Мы с&nbsp;этой Вечной Книгой сами пойдём к&nbsp;свету, к&nbsp;ладу и&nbsp;любви.</div>
+
+      <!-- ВНИМАНИЕ: у частей письма намеренно СНЯТ data-reveal. Под срезом
+           IntersectionObserver их не видит, класса .in они не получат и после
+           раскрытия останутся прозрачными — текст пропадёт. Не возвращать. -->
+      <div class="letter-fold">
+        <div class="letter-body" id="letterBody">
+          <p class="cap">Вера наших дедов и&nbsp;прадедов захватывает всё больше сердец и&nbsp;душ. Учение Ясна&nbsp;— это наше родное национальное учение, дошедшее до&nbsp;нас из&nbsp;глубины веков. Мы долгое время жили чужой жизнью, чужими мыслями, чужим отношением к&nbsp;человеку, обществу, природе и&nbsp;мирозданию.</p>
+          <p>Пришло время возвращения Ясны в&nbsp;нашу жизнь.</p>
+          <div class="keyline">Ясна&nbsp;— это наш самостоятельный путь веры, и&nbsp;это наш самостоятельный путь знания. Ясна ждёт нас. <b>Двери Ясны открыты для&nbsp;всех.</b></div>
+          <p>С&nbsp;древности мы всегда были грамотными и&nbsp;мужчины и&nbsp;женщины, и&nbsp;взрослые и&nbsp;дети. Мы грамотны были своею собственной грамотой&nbsp;— Ясной.</p>
+          <p>Наша задача принять помощь Ясны в&nbsp;нашей жизни, в&nbsp;нашем труде, в&nbsp;нашем здоровье, в&nbsp;наших мечтах и&nbsp;стремлениях.</p>
+          <p>Наша Ясна&nbsp;— это наша правда. Она не&nbsp;нуждается в&nbsp;чужих правках, в&nbsp;чужом участии и&nbsp;в&nbsp;чужих оценках.</p>
+          <div class="sign">Мы с&nbsp;этой Вечной Книгой сами пойдём к&nbsp;свету, к&nbsp;ладу и&nbsp;любви.</div>
+        </div>
+        <div class="letter-veil" aria-hidden="true"></div>
+      </div>
+
+      <button class="unveil" id="letterMore" type="button" hidden aria-expanded="false" aria-controls="letterBody">
+        <span class="pl" aria-hidden="true"></span><span class="lb">Читать обращение целиком</span>
+      </button>
     </div>
+    <div class="pagestack" aria-hidden="true"><i></i><i></i></div>
   </div>
+  <div class="seam" aria-hidden="true"></div>
 </section>
 
 <!-- БОЛЬШОЙ ЛИСТ — ОБЩИЙ СБОР -->
@@ -846,6 +947,54 @@
 
 <button id="toTop" aria-label="Наверх">↑</button>
 </div>
+
+<!-- Обращение: свёртка письма. Отдельным блоком, НЕ внутри основного скрипта:
+     ошибка здесь не должна валить остальную страницу, а ошибка там —
+     оставлять письмо свёрнутым с мёртвой кнопкой. -->
+<script>
+(function(){
+  var letter=document.getElementById('letter'),
+      body=document.getElementById('letterBody'),
+      btn=document.getElementById('letterMore');
+  if(!letter||!body||!btn) return;
+  var lb=btn.querySelector('.lb'), SHUT=lb.textContent, OPEN='Свернуть',
+      reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  /* Клип ставится отсюда: не дошли до этой строки — письмо целое, кнопки нет. */
+  letter.classList.add('foldable');
+  /* если письмо и так помещается (крупный шрифт, короткий экран) — ручка не нужна */
+  if(body.scrollHeight-body.clientHeight<40){ letter.classList.remove('foldable'); return; }
+  btn.hidden=false;
+
+  btn.addEventListener('click',function(){
+    var open=letter.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open?'true':'false');
+    lb.textContent = open ? OPEN : SHUT;
+    if(open){
+      body.style.maxHeight=body.scrollHeight+'px';
+      /* при prefers-reduced-motion переходы выключены глобально и transitionend
+         не приходит — без этого inline-высота навсегда останется числом */
+      setTimeout(function(){ if(letter.classList.contains('open')) body.style.maxHeight='none'; },900);
+    }else{
+      body.style.maxHeight=body.scrollHeight+'px'; void body.offsetHeight;
+      body.style.maxHeight='';            /* назад к var(--fold) */
+      var t=letter.getBoundingClientRect().top;
+      if(t<70) window.scrollTo({top:window.scrollY+t-90, behavior: reduce?'auto':'smooth'});
+    }
+    /* высота документа изменилась: обновить полосу прогресса и подсветку меню */
+    dispatchEvent(new Event('scroll'));
+  });
+
+  body.addEventListener('transitionend',function(e){
+    if(e.propertyName!=='max-height') return;
+    if(letter.classList.contains('open')) body.style.maxHeight='none';
+    dispatchEvent(new Event('scroll'));
+  });
+  addEventListener('resize',function(){
+    if(letter.classList.contains('open')) body.style.maxHeight='none';
+  });
+})();
+</script>
 
 <script>
 (function(){
