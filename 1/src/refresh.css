@@ -568,6 +568,9 @@ section.tight { padding-top: calc(48px * var(--dens)); padding-bottom: calc(48px
 @media (max-width: 680px) {
   .photo-grid { grid-template-columns: repeat(2, 1fr); }
   .photo-grid img { height: 150px; }
+  /* Нечётное число снимков оставляет последний одиноко в ряду — растягиваем
+     его на обе колонки, иначе рядом зияет пустая клетка. */
+  .photo-grid img:last-child:nth-child(odd) { grid-column: span 2; height: 190px; }
 }
 
 .video-box {
@@ -1278,3 +1281,70 @@ a.dir.is-quiet::after {
   .nav-links a { font-size: .8rem; }
   .nav-links a.nav-cta { padding: 8px 12px; }
 }
+
+/* ─── Карточка натурного урока раскрывается ─────────────────────────
+   Сводка в свёрнутом виде повторяет прежнюю карточку .res, внутри —
+   перечень вопросов со слайда-описания презентации, управление ведущего
+   и категория урока. Значок «плюс» повторяет тот, что в блоке вопросов
+   на главной (.faq-list summary .pl), но живёт в своей раскладке: там
+   summary — строка, здесь — колонка. */
+/* Нечётное число связанных управлений оставляло последнюю карточку одну
+   в ряду из двух колонок — растягиваем её на всю ширину. */
+.rel-grid > :last-child:nth-child(odd) { grid-column: 1 / -1; }
+@media (max-width: 680px) { .rel-grid > :last-child:nth-child(odd) { grid-column: auto; } }
+
+/* Карточки в строке больше не тянутся по высоте соседа: иначе раскрытая
+   карточка раздувала закрытую, и подпись «Ведёт» повисала у неё внизу
+   на пустом месте (из-за margin-top:auto у .ft). */
+.res-grid { align-items: start; }
+.res-grid details.res { display: flex; flex-direction: column; }
+.res-grid summary.res-sum {
+  display: flex; flex-direction: column; gap: 8px;
+  cursor: pointer; list-style: none; position: relative; padding-right: 28px;
+}
+.res-grid summary.res-sum::-webkit-details-marker { display: none; }
+.res-grid summary.res-sum::marker { content: ""; }
+.res-sum .pl {
+  position: absolute; top: 1px; right: 0; width: 20px; height: 20px;
+  border: 1px solid var(--line-strong); border-radius: 50%;
+}
+.res-sum .pl::before, .res-sum .pl::after {
+  content: ""; position: absolute; background: var(--ink);
+  left: 50%; top: 50%; transform: translate(-50%, -50%);
+}
+.res-sum .pl::before { width: 9px; height: 1.5px; }
+.res-sum .pl::after  { width: 1.5px; height: 9px; transition: transform .2s, opacity .2s; }
+details.res[open] .pl::after { transform: translate(-50%, -50%) rotate(90deg); opacity: 0; }
+details.res[open] { border-color: var(--line-strong); }
+/* Подъём карточки при наведении мешает читать раскрытую — гасим */
+details.res[open]:hover { transform: none; }
+
+.res-more {
+  display: flex; flex-direction: column; gap: 12px;
+  margin-top: 10px; padding-top: 14px; border-top: 1px solid var(--line);
+}
+.res-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.res-chip { font-size: .72rem; padding: 3px 9px; }
+a.res-chip { text-decoration: none; }
+a.res-chip:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.res-cat { font-family: var(--font-mono); letter-spacing: .03em; color: var(--ink-3); }
+.res-sub {
+  margin: 0; font-family: var(--font-display); font-style: italic;
+  font-size: .88rem; color: var(--ink-2); line-height: 1.4;
+}
+.res-q-lbl {
+  font-family: var(--font-mono); font-size: .66rem; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--ink-3);
+}
+.res-q { margin: 0; padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.res-q li { position: relative; padding-left: 15px; font-size: .82rem; color: var(--ink-2); line-height: 1.45; }
+.res-q li::before { content: "·"; position: absolute; left: 3px; top: -2px; color: var(--accent); font-weight: 700; }
+.res-cta {
+  align-self: flex-start; font-family: var(--font-mono); font-size: .72rem;
+  letter-spacing: .06em; color: var(--accent); text-decoration: none;
+  border-bottom: 1px solid transparent; transition: border-color .15s;
+}
+.res-cta:hover { border-bottom-color: var(--accent); }
+/* Ссылка на управление внутри строки ведущего */
+.coord .info p a { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid var(--line-strong); }
+.coord .info p a:hover { color: var(--accent); border-bottom-color: var(--accent); }
