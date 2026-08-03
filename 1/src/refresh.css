@@ -1238,3 +1238,41 @@ a.dir.is-quiet::after {
   color: var(--ink-2);
 }
 .zv-fallback a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+
+
+/* Ссылка «к содержанию»: не видна, пока не получила фокус с клавиатуры. */
+.skip {
+  position: absolute; left: -9999px; top: 0; z-index: 100;
+  padding: 10px 16px; background: var(--ink); color: var(--bg);
+  border-radius: 0 0 8px 0; font-size: 14px; text-decoration: none;
+}
+.skip:focus { left: 0; }
+
+
+/* Подпись «Ведёт · Имя» в карточке урока. С отчествами самое длинное имя
+   не помещается рядом с меткой и разрывалось посередине. Теперь метка
+   и имя переносятся целиком: имя уходит на свою строку неразрывным. */
+.res .ft { flex-wrap: wrap; gap: 2px 10px; }
+.res .ft > span:last-child { white-space: nowrap; }
+
+
+/* Плитки статистики в шапке направления. С отчествами длинное имя
+   («Черномашенцев Антон Александрович») перестало помещаться: 1fr — это
+   minmax(auto,1fr), колонка не сжимается ниже самого длинного слова
+   и растягивала шапку за край экрана. Разрешаем сжатие и перенос. */
+.dir-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.dir-stat { min-width: 0; }
+.dir-stat .val { overflow-wrap: anywhere; line-height: 1.15; }
+@media (max-width: 720px) {
+  .dir-stats { grid-template-columns: minmax(0, 1fr); }
+}
+
+
+/* На 761–830px показываются все пять пунктов, а марка с подписью
+   «Интеграционный центр» шире, чем на страницах направлений, — строка
+   не помещалась и уезжала за край на 27px. Ужимаем просветы и кегль. */
+@media (min-width: 761px) and (max-width: 830px) {
+  .nav-links { gap: 9px; }
+  .nav-links a { font-size: .8rem; }
+  .nav-links a.nav-cta { padding: 8px 13px; }
+}

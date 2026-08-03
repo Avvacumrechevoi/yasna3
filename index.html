@@ -2,6 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
+<script>document.documentElement.className+=' js'</script>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Русская Ясна — возвращаем исходные смыслы в современную жизнь</title>
 <meta name="description" content="Открытое сообщество исследователей русского языка, истории и культуры. Одиннадцать направлений, общие праздники, совместный поиск.">
@@ -46,8 +47,10 @@
   .eyebrow{font-family:inherit; font-weight:600; margin:0; font-size:12px; letter-spacing:.22em; text-transform:uppercase; font-weight:600; color:var(--accent)}
   section[id],header[id]{scroll-margin-top:76px}
 
-  [data-reveal]{opacity:0; transform:translateY(26px); transition:opacity .9s var(--ease), transform .9s var(--ease)}
-  [data-reveal].in{opacity:1; transform:none}
+  /* Скрываем до появления только при работающем скрипте: класс js
+     ставится в head. Без него текст виден сразу, а не остаётся пустым. */
+  .js [data-reveal]{opacity:0; transform:translateY(26px); transition:opacity .9s var(--ease), transform .9s var(--ease)}
+  .js [data-reveal].in{opacity:1; transform:none}
 
   /* ---------- nav ---------- */
   #progress{position:fixed; top:0; left:0; right:0; height:2px; z-index:60; transform-origin:left;
@@ -472,7 +475,7 @@
   }
   @media(prefers-reduced-motion:reduce){
     *{animation:none !important; scroll-behavior:auto !important; transition:none !important}
-    [data-reveal]{opacity:1 !important; transform:none !important}
+    .js [data-reveal]{opacity:1 !important; transform:none !important}
     .ring-path{stroke-dashoffset:0 !important}
     .tree path{stroke-dashoffset:0 !important} .tree .leaf,.tree .berry{opacity:1 !important}
     .step .node{opacity:1 !important} .step .node::after{transform:scale(1) !important}
@@ -802,7 +805,21 @@
       </div>
       <div>
         <h3>Направления</h3>
-        <ul id="footDirs"></ul>
+        <ul id="footDirs">
+          <!-- Список статический: он нужен и роботам, и посетителю
+               без JavaScript. Скрипт ниже наполняет его только если пуст. -->
+          <li><a href="1/pages/yasna-shkola.html">Ясна-Школа</a></li>
+          <li><a href="1/pages/alexandria.html">Александрия</a></li>
+          <li><a href="1/pages/neglinka.html">Неглинка</a></li>
+          <li><a href="1/pages/granika.html">Граника</a></li>
+          <li><a href="1/pages/astronevod.html">Астроневод</a></li>
+          <li><a href="1/pages/marshruty.html">Ясные маршруты</a></li>
+          <li><a href="1/pages/zayavka.html?dir=litprosvet">ЛитПроСвет</a></li>
+          <li><a href="1/pages/zayavka.html?dir=izvod">Извод</a></li>
+          <li><a href="1/pages/zayavka.html?dir=dzhiva">Джива</a></li>
+          <li><a href="1/pages/zayavka.html?dir=parad">Парад Красоты</a></li>
+          <li><a href="1/pages/zayavka.html?dir=geraldika">Геральдика</a></li>
+        </ul>
       </div>
       <div>
         <h3>Разделы</h3>
@@ -812,6 +829,7 @@
           <li><a href="#method">Метод</a></li>
           <li><a href="#faq">Вопросы</a></li>
           <li><a href="1/pages/zayavka.html">Оставить заявку</a></li>
+          <li><a href="1/pages/privacy.html">Персональные данные</a></li>
         </ul>
       </div>
       <div>
@@ -901,17 +919,17 @@
 
   /* directions */
   var dirs=[
-    {n:'01',img:IMG+'yasna-shkola.png',tag:'Обучение · информационное',h:'Ясна-Школа',p:'Русская Школа Русского Языка. Уроки РШРЯ, курсы и статьи о русском учении, мировоззрении и русской семье.',lead:'С. Ю. Архипов',loc:'Онлайн · очно возможно',url:BASE+'pages/yasna-shkola.html'},
-    {n:'02',img:IMG+'alexandria-emblem.jpg',tag:'Раскладки · теория и практика',h:'Александрия',p:'Теоретическое ядро Ясны: изучаем построение раскладок — «разложи всё и соедини всё». От медицины до истории.',lead:'Тимур Фахрутдинов',loc:'Петербург + онлайн',url:BASE+'pages/alexandria.html'},
-    {n:'03',img:IMG+'neglinka-emblem.png',tag:'История · география',h:'Неглинка',p:'Проясняем историю и географию России — гуляем по Москве, читаем то, что зашифровано в улицах.',lead:'Антон Черномашенцев',loc:'Москва + онлайн',url:BASE+'pages/neglinka.html'},
-    {n:'04',img:IMG+'granika.png',tag:'Архитектура · астрономия',h:'Граника',p:'Читаем язык предков в камне — усадьбы, крепости, монастыри и храмовые комплексы. Русский классицизм и деревянное зодчество.',lead:'Александр Акимов',loc:'Москва + онлайн',url:BASE+'pages/granika.html'},
-    {n:'05',img:IMG+'astronevod.png',tag:'Астросмыслы · астрокоды',h:'Астроневод',p:'Астрономия наших предков: археоастрономия древних поселений, звёздный язык сказок и баллад, астрономия икон. Закон подобия — как на Небе, так и на Земле.',lead:'Анна Виноградова',loc:'Москва + онлайн',url:BASE+'pages/astronevod.html'},
-    {n:'06',img:IMG+'marshruty.png',tag:'Натурные уроки · исследование',h:'Ясные маршруты',p:'Натурные уроки по городам: читаем устройство поселений через астрономию, географию, архитектуру и историю. Москва, Петербург, Кронштадт.',lead:'Лидия Дрожжина',loc:'Москва · Петербург · Кронштадт',url:BASE+'pages/marshruty.html'},
-    {n:'07',img:IMG+'litprosvet-mark.svg',tag:'Литература',h:'ЛитПроСвет',p:'Литература как способ думать и чувствовать. Возвращаем людей к чтению — клубы, аудиолекторий, разборы классики.',lead:'Анастасия Скиба',loc:'Москва + онлайн',url:BASE+'pages/zayavka.html?dir=litprosvet'},
-    {n:'08',img:IMG+'izvod.png',tag:'Язык · этимология',h:'Извод',p:'Утерянные смыслы русских слов. Этимология как практика — возвращаем словам их настоящее значение.',lead:'Александр Иванов',loc:'Онлайн',url:BASE+'pages/zayavka.html?dir=izvod'},
-    {n:'09',img:IMG+'dzhiva.png',tag:'Здоровье · тело',h:'Джива',p:'Здоровье и тело в русской традиции. Дыхание, движение, голос, уклад — практики возвращения к себе.',lead:'Екатерина Белова',loc:'Москва + онлайн',url:BASE+'pages/zayavka.html?dir=dzhiva'},
-    {n:'10',img:IMG+'parad.png',tag:'Красота · лад',h:'Парад Красоты',p:'Красота, лад и любовь как уклад жизни. Эстетика русской традиции — от образа до отношений между людьми.',lead:'Вишня Стефарова',loc:'Москва + онлайн',url:BASE+'pages/zayavka.html?dir=parad'},
-    {n:'11',img:IMG+'geraldika.png',tag:'Символика · гербы',h:'Геральдика',p:'Родовые знаки, гербы и символика. Читаем язык образов — что и зачем зашифровано в гербах городов и родов.',lead:'Алексей Грачёв',loc:'Онлайн',url:BASE+'pages/zayavka.html?dir=geraldika'}
+    {n:'01',img:IMG+'yasna-shkola.png',tag:'Обучение · информационное',h:'Ясна-Школа',p:'Русская Школа Русского Языка. Уроки РШРЯ, курсы и статьи о русском учении, мировоззрении и русской семье.',lead:'Архипов Сергей Юрьевич',loc:'Онлайн · очно возможно',url:BASE+'pages/yasna-shkola.html'},
+    {n:'02',img:IMG+'alexandria-emblem.jpg',tag:'Раскладки · теория и практика',h:'Александрия',p:'Теоретическое ядро Ясны: изучаем построение раскладок — «разложи всё и соедини всё». От медицины до истории.',lead:'Фахрутдинов Тимур Михайлович',loc:'Петербург + онлайн',url:BASE+'pages/alexandria.html'},
+    {n:'03',img:IMG+'neglinka-emblem.png',tag:'История · география',h:'Неглинка',p:'Проясняем историю и географию России — гуляем по Москве, читаем то, что зашифровано в улицах.',lead:'Черномашенцев Антон Александрович',loc:'Москва + онлайн',url:BASE+'pages/neglinka.html'},
+    {n:'04',img:IMG+'granika.png',tag:'Архитектура · астрономия',h:'Граника',p:'Читаем язык предков в камне — усадьбы, крепости, монастыри и храмовые комплексы. Русский классицизм и деревянное зодчество.',lead:'Акимов Александр Анатольевич',loc:'Москва + онлайн',url:BASE+'pages/granika.html'},
+    {n:'05',img:IMG+'astronevod.png',tag:'Астросмыслы · астрокоды',h:'Астроневод',p:'Астрономия наших предков: археоастрономия древних поселений, звёздный язык сказок и баллад, астрономия икон. Закон подобия — как на Небе, так и на Земле.',lead:'Виноградова Анна Львовна',loc:'Москва + онлайн',url:BASE+'pages/astronevod.html'},
+    {n:'06',img:IMG+'marshruty.png',tag:'Натурные уроки · исследование',h:'Ясные маршруты',p:'Натурные уроки по городам: читаем устройство поселений через астрономию, географию, архитектуру и историю. Москва, Петербург, Кронштадт.',lead:'Дрожжина Лидия Андреевна',loc:'Москва · Петербург · Кронштадт',url:BASE+'pages/marshruty.html'},
+    {n:'07',img:IMG+'litprosvet-mark.svg',tag:'Литература',h:'ЛитПроСвет',p:'Литература как способ думать и чувствовать. Возвращаем людей к чтению — клубы, аудиолекторий, разборы классики.',lead:'Скиба Анастасия Александровна',loc:'Москва + онлайн',url:BASE+'pages/zayavka.html?dir=litprosvet'},
+    {n:'08',img:IMG+'izvod.png',tag:'Язык · этимология',h:'Извод',p:'Утерянные смыслы русских слов. Этимология как практика — возвращаем словам их настоящее значение.',lead:'Иванов Александр Николаевич',loc:'Онлайн',url:BASE+'pages/zayavka.html?dir=izvod'},
+    {n:'09',img:IMG+'dzhiva.png',tag:'Здоровье · тело',h:'Джива',p:'Здоровье и тело в русской традиции. Дыхание, движение, голос, уклад — практики возвращения к себе.',lead:'Белова Екатерина Андреевна',loc:'Москва + онлайн',url:BASE+'pages/zayavka.html?dir=dzhiva'},
+    {n:'10',img:IMG+'parad.png',tag:'Красота · лад',h:'Парад Красоты',p:'Красота, лад и любовь как уклад жизни. Эстетика русской традиции — от образа до отношений между людьми.',lead:'Стефарова Вишня Владимировна',loc:'Москва + онлайн',url:BASE+'pages/zayavka.html?dir=parad'},
+    {n:'11',img:IMG+'geraldika.png',tag:'Символика · гербы',h:'Геральдика',p:'Родовые знаки, гербы и символика. Читаем язык образов — что и зачем зашифровано в гербах городов и родов.',lead:'Грачёв Алексей Анатольевич',loc:'Онлайн',url:BASE+'pages/zayavka.html?dir=geraldika'}
   ];
   var dg=document.getElementById('dirGrid');
   dirs.forEach(function(d){
@@ -925,11 +943,13 @@
     dg.appendChild(el);
   });
   var fd=document.getElementById('footDirs');
-  dirs.forEach(function(d){
-    var li=document.createElement('li');
-    li.innerHTML='<a href="'+(d.url||'#directions')+'">'+d.h+'</a>';
-    fd.appendChild(li);
-  });
+  if(!fd.children.length){                       /* разметка уже статическая */
+    dirs.forEach(function(d){
+      var li=document.createElement('li');
+      li.innerHTML='<a href="'+(d.url||'#directions')+'">'+d.h+'</a>';
+      fd.appendChild(li);
+    });
+  }
 
   /* faq */
   var faqs=[
