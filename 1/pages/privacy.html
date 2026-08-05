@@ -4,152 +4,20 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Обработка персональных данных — Золотой Ясень</title>
-<meta name="description" content="Какие данные собирает сайт «Золотой Ясень», зачем, кому они уходят и как их отозвать."/>
-<meta name="robots" content="noindex,follow"/>
-<link rel="icon" type="image/jpeg" href="../src/img/yasna-mark.jpg"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500;1,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
-<link rel="canonical" href="https://zolotoj-yasen.ru/1/pages/privacy.html"/>
-<link rel="stylesheet" href="../src/styles.css"/>
-<link rel="stylesheet" href="../src/refresh.css"/>
+<!-- Страница переехала на /privacy/. Заглушка оставлена навсегда: по старому
+     адресу ходят ссылки из чатов, постов и поисковой выдачи. noindex здесь
+     не ставим — он мешал бы передать вес на новый адрес; вместо этого
+     canonical и мгновенная переадресация. -->
+<link rel="canonical" href="https://zolotoj-yasen.ru/privacy/"/>
+<meta http-equiv="refresh" content="0; url=/privacy/"/>
 <style>
-  .doc { max-width: 72ch; margin: 0 auto; padding: 40px 24px 72px; }
-  .doc h2 { font-family: var(--font-display); font-size: 1.35rem; margin: 34px 0 12px; }
-  .doc h2:first-of-type { margin-top: 22px; }
-  .doc p, .doc li { line-height: 1.65; color: var(--ink-2); }
-  .doc ul { padding-left: 20px; margin: 10px 0; }
-  .doc li { margin-bottom: 7px; }
-  .doc .lead { font-size: 1.05rem; color: var(--ink); }
-  .doc .todo {
-    border: 1px dashed var(--accent); border-radius: 10px;
-    padding: 16px 18px; margin: 24px 0; background: var(--warm);
-  }
-  .doc .todo b { color: var(--accent); }
-  .doc .upd { font-family: var(--font-mono); font-size: .78rem; color: var(--ink-3); margin-top: 40px; }
+  html,body{margin:0;background:#F3ECE0;color:#211B14;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+  .c{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px}
+  a{color:#A23C24;text-decoration:none;border-bottom:1px solid currentColor}
 </style>
-<!-- Хлебные крошки: страница не управление, путь короткий -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Золотой Ясень","item":"https://zolotoj-yasen.ru/"},{"@type":"ListItem","position":2,"name":"Обработка персональных данных","item":"https://zolotoj-yasen.ru/1/pages/privacy.html"}]}</script>
 </head>
-<body data-palette="iney" data-fontpair="modern" data-density="regular">
-
-<a class="skip" href="#content">К содержанию</a>
-
-<header class="nav">
-  <div class="wrap nav-row">
-    <a class="brand" href="/">
-      <img class="mark" src="../src/img/yasna-mark.jpg" alt="Золотой Ясень" width="38" height="38"/>
-      <span class="brand-text">
-        <span class="brand-name">Золотой Ясень</span>
-        <span class="brand-sub">Интеграционный центр</span>
-      </span>
-    </a>
-    <details class="nav-menu">
-      <summary class="nav-burger"><span class="bars" aria-hidden="true"></span><span class="cap">Разделы</span></summary>
-    </details>
-    <nav class="nav-links">
-      <a href="/#event">Обращение</a>
-      <a href="/#day">26&nbsp;сентября</a>
-      <a href="/#directions">Управления</a>
-      <a href="/#method">Метод</a>
-      <a href="/#faq">Вопросы</a>
-      <a class="nav-cta" href="zayavka.html">Вступить</a>
-    </nav>
-  </div>
-</header>
-
-<main id="content">
-<section class="dir-hero">
-  <div class="wrap">
-    <a class="dir-back" href="/"><span>← </span><span>НА ГЛАВНУЮ</span></a>
-    <h1 class="dir-title" style="margin-top:18px">Обработка персональных данных</h1>
-    <p class="dir-sub">Что мы&nbsp;спрашиваем в&nbsp;заявке, зачем, кому эти сведения уходят и&nbsp;как их&nbsp;отозвать.</p>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="doc">
-
-      <div class="todo">
-        <b>Черновик.</b> Реквизиты организации ещё не&nbsp;подставлены — они помечены
-        в&nbsp;тексте как <b>[…]</b>. Документ нужно показать юристу перед публикацией:
-        мы&nbsp;описали фактическое устройство формы, но&nbsp;не&nbsp;даём юридической оценки.
-        Пока реквизитов нет, страница закрыта от&nbsp;поисковиков.
-      </div>
-
-      <p class="lead">Заявку на&nbsp;сайте принимает форма Яндекс&nbsp;Форм. Мы&nbsp;спрашиваем
-      только то, без чего не&nbsp;сможем ответить, и&nbsp;не&nbsp;передаём сведения никому,
-      кроме перечисленного ниже.</p>
-
-      <h2>Кто собирает</h2>
-      <p>Оператор персональных данных&nbsp;— <b>[наименование организации или Ф.&nbsp;И.&nbsp;О.]</b>,
-      <b>[ИНН/ОГРН]</b>, <b>[почтовый адрес]</b>. Вопросы по&nbsp;обработке данных&nbsp;—
-      на&nbsp;<b>[адрес электронной почты]</b> или по&nbsp;телефонам
-      <a href="tel:+79082939363">+7&nbsp;908&nbsp;293-93-63</a>,
-      <a href="tel:+79152595250">+7&nbsp;915&nbsp;259-52-50</a>.</p>
-
-      <h2>Что спрашиваем</h2>
-      <ul>
-        <li>имя;</li>
-        <li>город;</li>
-        <li>способ связи, который вы&nbsp;выбрали сами: телефон, электронная почта
-        или имя в&nbsp;Telegram;</li>
-        <li>что вас привело: прийти на&nbsp;сбор, вступить в&nbsp;управление,
-        предложить проект или задать вопрос;</li>
-        <li>какое управление вам интересно;</li>
-        <li>то, что вы&nbsp;сами напишете в&nbsp;свободном поле.</li>
-      </ul>
-      <p>Паспортных данных, места работы, сведений о&nbsp;здоровье, вероисповедании
-      и&nbsp;других особых категорий мы&nbsp;не&nbsp;спрашиваем. Если такие сведения
-      окажутся в&nbsp;свободном поле, вы&nbsp;сообщаете их&nbsp;по&nbsp;своему усмотрению.</p>
-
-      <h2>Зачем</h2>
-      <ul>
-        <li>ответить вам и&nbsp;рассказать о&nbsp;ближайших встречах;</li>
-        <li>записать вас на&nbsp;общий сбор 26&nbsp;сентября;</li>
-        <li>передать вашу заявку руководителю выбранного управления.</li>
-      </ul>
-      <p>Для рассылок, рекламы и&nbsp;передачи третьим лицам данные не&nbsp;используются.</p>
-
-      <h2>Где они хранятся</h2>
-      <p>Форму обслуживает сервис Яндекс&nbsp;Формы; ответы попадают в&nbsp;таблицу
-      внутри этого сервиса, серверы находятся в&nbsp;России. Условия сервиса&nbsp;—
-      на&nbsp;<a href="https://yandex.ru/legal/confidential/" target="_blank" rel="noopener">странице
-      Яндекса</a>. Доступ к&nbsp;таблице есть у&nbsp;организаторов сбора
-      и&nbsp;у&nbsp;руководителя управления, которое вы&nbsp;выбрали.</p>
-      <p>Сам сайт ничего не&nbsp;записывает: у&nbsp;него нет ни&nbsp;базы данных,
-      ни&nbsp;собственных счётчиков, ни&nbsp;рекламных скриптов.</p>
-
-      <h2>Сколько храним</h2>
-      <p><b>[срок]</b>&nbsp;— либо до&nbsp;вашего отзыва, смотря что наступит раньше.
-      После этого запись удаляется из&nbsp;таблицы ответов.</p>
-
-      <h2>Как отозвать</h2>
-      <p>Напишите на&nbsp;<b>[адрес электронной почты]</b> или в&nbsp;Telegram
-      <a href="https://t.me/dmlandra" target="_blank" rel="noopener">@dmlandra</a>
-      с&nbsp;просьбой удалить вашу заявку. Указывать причину не&nbsp;нужно.
-      Удалим и&nbsp;сообщим об&nbsp;этом.</p>
-
-      <h2>Согласие</h2>
-      <p>Отправляя форму, вы&nbsp;соглашаетесь на&nbsp;обработку перечисленных выше
-      сведений на&nbsp;описанных здесь условиях.</p>
-
-      <p class="upd">Черновик от 2 августа 2026</p>
-    </div>
-  </div>
-</section>
-</main>
-
-<footer class="foot">
-  <div class="wrap">
-    <div class="foot-bottom">
-      <span>© 2026 Интеграционный центр «Золотой Ясень»</span>
-      <span><a href="/">На главную</a></span>
-    </div>
-  </div>
-</footer>
-
-<script src="../src/nav.js" defer></script>
+<body>
+<div class="c"><p>Страница переехала — <a href="/privacy/">Обработка персональных данных — Золотой Ясень</a>.</p></div>
+<script>location.replace('/privacy/');</script>
 </body>
 </html>

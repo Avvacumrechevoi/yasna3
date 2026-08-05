@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Александрия — Золотой Ясень</title>
+<meta name="description" content="Александрия — теоретическое управление центра «Золотой Ясень». Изучаем построение раскладок: разложи всё и соедини всё. Петербург и онлайн."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500;1,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="icon" type="image/png" href="/1/src/img/fav/alexandria-emblem.png"/>
+<link rel="canonical" href="https://zolotoj-yasen.ru/upravleniya/alexandria/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:locale" content="ru_RU"/>
+<meta property="og:site_name" content="Золотой Ясень"/>
+<meta property="og:title" content="Александрия — Золотой Ясень"/>
+<meta property="og:description" content="Изучаем построение раскладок: разложи всё и соедини всё. Встречи в Санкт-Петербурге и онлайн."/>
+<meta property="og:url" content="https://zolotoj-yasen.ru/upravleniya/alexandria/"/>
+<meta property="og:image" content="https://zolotoj-yasen.ru/src/img/og-cover.jpg"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="stylesheet" href="/1/src/styles.css"/>
+<link rel="stylesheet" href="/1/src/refresh.css"/>
+<!-- Хлебные крошки: в выдаче вместо голого адреса показывается путь
+     Золотой Ясень › Управления › Александрия -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Золотой Ясень","item":"https://zolotoj-yasen.ru/"},{"@type":"ListItem","position":2,"name":"Управления","item":"https://zolotoj-yasen.ru/#directions"},{"@type":"ListItem","position":3,"name":"Александрия","item":"https://zolotoj-yasen.ru/upravleniya/alexandria/"}]}</script>
+</head>
+<body data-palette="iney" data-fontpair="modern" data-density="regular" data-screen-label="Александрия">
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav-row">
+    <a class="brand" href="/">
+      <img class="mark" src="/1/src/img/yasna-mark.jpg" alt="Золотой Ясень" width="160" height="160"/>
+      <span class="brand-text">
+        <span class="brand-name">Золотой Ясень</span>
+        <span class="brand-sub">Интеграционный центр</span>
+      </span>
+    </a>
+    <details class="nav-menu">
+      <summary class="nav-burger"><span class="bars" aria-hidden="true"></span><span class="cap">Разделы</span></summary>
+    </details>
+    <nav class="nav-links">
+      <a href="/#event">Обращение</a>
+      <a href="/#day">26&nbsp;сентября</a>
+      <a href="/#directions">Управления</a>
+      <a href="/#method">Метод</a>
+      <a href="/#faq">Вопросы</a>
+      <a class="nav-cta" href="/zayavka/?dir=alexandria">Вступить</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ─── DIR HERO ─────────────────────────────────────────────────── -->
+<section class="dir-hero">
+  <div class="wrap">
+    <a class="dir-back" href="/#directions">
+      <span>← </span><span>ВСЕ УПРАВЛЕНИЯ</span>
+      <span class="mono" style="color:var(--ink-3);margin-left:14px">03 / 12</span>
+    </a>
+
+    <div class="dir-hero-row">
+      <div>
+        <div class="row" style="gap:10px;margin-bottom:20px">
+          <span class="chip">Раскладки · теория и практика</span>
+          <span class="chip">Санкт-Петербург + Онлайн</span>
+        </div>
+        <div class="dir-hero-id">
+          <div class="dir-logo"><img src="/1/src/img/alexandria-mayak.jpg" alt="Александрийский маяк — эмблема управления Александрия" width="512" height="512"/></div>
+          <div>
+            <h1 class="dir-title">Александрия</h1>
+            <div class="dir-kicker">Обеспечиваем безупречную навигацию</div>
+          </div>
+        </div>
+        <p class="dir-sub">Изучаем способы построения раскладок — работаем по&nbsp;принципу «разложи всё» и&nbsp;«соедини всё». Теоретическое ядро Ясны: от&nbsp;медицины и&nbsp;техники до&nbsp;истории и&nbsp;языка.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="/zayavka/?dir=alexandria">Оставить заявку <span class="arr">→</span></a>
+          <a class="btn btn-ghost" href="#video">Смотреть занятие</a>
+        </div>
+      </div>
+      <div class="promo-box">
+        <video class="promo-video" id="promo" muted loop playsinline controls preload="none" poster="/1/src/img/alexandria/promo-poster.jpg" aria-label="Промо-ролик управления Александрия">
+          <source src="/1/src/video/alexandria-promo.mp4" type="video/mp4"/>
+        </video>
+        <button class="promo-sound" id="promo-sound" type="button" aria-label="Включить звук">🔇 Звук</button>
+      </div>
+    </div>
+
+    <div class="dir-stats dir-stats-row" aria-label="Статистика">
+      <div class="dir-stat"><div class="lbl">Участников</div><div class="val">10</div></div>
+      <div class="dir-stat"><div class="lbl">Управлений-партнёров</div><div class="val">6</div></div>
+      <div class="dir-stat"><div class="lbl">Серий видеоуроков</div><div class="val">2</div></div>
+      <div class="dir-stat"><div class="lbl">Работаем</div><div class="val">с 2022</div></div>
+    </div>
+
+    <div class="strip" style="margin-top:28px;max-width:max-content">
+      <span class="dot"></span>
+      <span><b style="font-weight:600">Слоган управления:</b>&nbsp; «Разложи всё!» — 26&nbsp;сентября покажем раскладки и&nbsp;видеопрогулку по&nbsp;мостам на&nbsp;«Большом листе».</span>
+      <a href="/#day" class="mono" style="color:var(--accent);text-transform:uppercase;letter-spacing:.08em;font-size:.72rem">Подробнее →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── DASHBOARD ─────────────────────────────────────────────────── -->
+<section style="padding-top:40px">
+  <div class="wrap">
+
+    <!-- WHAT WE DO -->
+    <div class="grid" style="grid-template-columns:1fr; gap:32px;">
+      <article class="panel" style="grid-column:1 / -1">
+        <div class="panel-head">
+          <h3>Чем занимаемся</h3>
+          <span class="sub">Формат · 4 типа работы</span>
+        </div>
+        <div class="fmt-grid" id="formats">
+          <div>
+            <div class="fmt-num">01 · РАЗБОРЫ</div>
+            <h4 class="fmt-title">Индивидуальные раскладки</h4>
+            <p class="fmt-desc">На&nbsp;встречах вживую и&nbsp;онлайн разбираем раскладки участников, обсуждаем и&nbsp;дорабатываем сообща.</p>
+          </div>
+          <div>
+            <div class="fmt-num">02 · ПРОЕКТЫ</div>
+            <h4 class="fmt-title">Коллективные раскладки</h4>
+            <p class="fmt-desc">Вместе раскладываем объекты и&nbsp;явления — подтверждаем известное и&nbsp;открываем новое в&nbsp;устройстве мира.</p>
+          </div>
+          <div>
+            <div class="fmt-num">03 · ИССЛЕДОВАНИЯ</div>
+            <h4 class="fmt-title">По следам Ясны</h4>
+            <p class="fmt-desc">Идём по&nbsp;следам созданного по&nbsp;Ясне и&nbsp;дополняем недостающими элементами.</p>
+          </div>
+          <div>
+            <div class="fmt-num">04 · НАВИГАЦИЯ</div>
+            <h4 class="fmt-title">Связи управлений</h4>
+            <p class="fmt-desc">Соединяем наработки Неглинки, ЛитПроСвета, Дживы и&nbsp;других — всё связано со&nbsp;всем.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- DASH MAIN -->
+    <div class="dash">
+      <!-- LEFT -->
+      <div class="col" style="gap:24px">
+        <article class="panel">
+          <div class="panel-head">
+            <h3>Об управлении</h3>
+            <span class="sub">Миссия · суть</span>
+          </div>
+          <div class="panel-body about-body">
+            <p class="about-text">
+              Александрия занимается изучением способов построения раскладок (Ясен) и&nbsp;строит раскладки по&nbsp;разным направлениям: медицина, техника, геология, история, биология. Нас немного, но&nbsp;вместе мы ясно видим, как всё связано со&nbsp;всем — поэтому Александрия взаимодействует со&nbsp;всеми управлениями и&nbsp;движется к&nbsp;тому, чтобы стать всеохватным управлением.
+            </p>
+            <div class="mission-box">
+              <div class="label-accent">МИССИЯ</div>
+              <p class="mission-text">
+                Мотивируем себя и&nbsp;других замечать, осмысливать и&nbsp;правильно понимать окружающий мир.
+              </p>
+            </div>
+            <div>
+              <div class="label-muted">В&nbsp;ЧЁМ ОСОБЕННОСТЬ</div>
+              <p class="unique-text">
+                Мы — теоретики, но&nbsp;ничто человеческое нам не&nbsp;чуждо. Для всех, кому важно осознать, как, зачем и&nbsp;почему они живут на&nbsp;этой Земле.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel" id="video">
+          <div class="panel-head">
+            <h3>Занятие: как строится раскладка</h3>
+            <span class="sub">Видео · 2 мин 24 сек</span>
+          </div>
+          <div class="video-box">
+            <video controls preload="none" poster="/1/src/img/alexandria/poster.jpg" playsinline>
+              <source src="/1/src/video/alexandria-lesson.mp4" type="video/mp4"/>
+              Ваш браузер не поддерживает видео. <a href="/1/src/video/alexandria-lesson.mp4">Скачать ролик</a>.
+            </video>
+            <div class="video-note">
+              <p style="margin:0 0 12px;font-size:.95rem;line-height:1.6;color:var(--ink)">
+                Руководитель управления ведёт занятие по&nbsp;Ясне: на&nbsp;флипчарте шаг за&nbsp;шагом строится звезда-раскладка — от&nbsp;центрального понятия к&nbsp;двенадцати Полкам.
+              </p>
+              <p style="margin:0;font-size:.88rem;line-height:1.6;color:var(--ink-2)">
+                Это фрагмент серии занятий Тимура Фахрутдинова. Полные видеоуроки по&nbsp;Ясне и&nbsp;по&nbsp;Ясне массажа доступны в&nbsp;Ясна-центре.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <h3>Что уже сделано</h3>
+            
+          </div>
+          <div class="res-grid">
+            <div class="res">
+              <div class="st"><span class="stat done"></span><span class="sl">ВИДЕОУРОКИ</span></div>
+              <h4 class="t">Серия уроков по&nbsp;Ясне</h4>
+              <p class="m">Большая серия занятий Тимура Фахрутдинова + уроки по&nbsp;Ясне массажа. Доступны в&nbsp;Ясна-центре.</p>
+              <div class="ft"><span>Ясна-центр</span><span>→</span></div>
+            </div>
+            <div class="res">
+              <div class="st"><span class="stat done"></span><span class="sl">СПБ · МАРШРУТЫ</span></div>
+              <h4 class="t">Ясные маршруты и&nbsp;прогулки</h4>
+              <p class="m">Маршруты по&nbsp;Питерской Коломне, литературные прогулки по&nbsp;каналам, Ясна мостов.</p>
+              <div class="ft"><span>с Неглинкой и ЛитПроСветом</span><span>→</span></div>
+            </div>
+            <div class="res">
+              <div class="st"><span class="stat done"></span><span class="sl">СОБЫТИЕ · 8.01.2026</span></div>
+              <h4 class="t">Поэтический бал</h4>
+              <p class="m">Организовали по&nbsp;Ясне бал для ЛитПроСвета в&nbsp;Санкт-Петербурге — от&nbsp;идеи до&nbsp;команды по&nbsp;раскладке.</p>
+              <div class="ft"><span>для ЛитПроСвета</span><span>→</span></div>
+            </div>
+            <div class="res">
+              <div class="st"><span class="stat"></span><span class="sl">ПРАКТИКА</span></div>
+              <h4 class="t">Группа Чудо-массажа</h4>
+              <p class="m">Александрийская группа практиков: раскладки в&nbsp;работе массажного кабинета и&nbsp;медицинском направлении.</p>
+              <div class="ft"><span>идёт набор</span><span>→</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel" id="uzory">
+          <div class="panel-head">
+            <h3>Узоры родовой памяти</h3>
+            <span class="sub">Матухнова Наталья Григорьевна · 2 видео</span>
+          </div>
+          <div class="video-duo-intro">
+            <p>Матухнова Наталья Григорьевна — хранительница и&nbsp;собирательница родовой памяти — показывает родовые узоры и&nbsp;рассказывает, как орнамент читается по&nbsp;Ясне: каждый узор — это раскладка, вышитая нитью.</p>
+          </div>
+          <div class="video-duo">
+            <figure>
+              <video controls preload="none" poster="/1/src/img/alexandria/uzor-1.jpg" playsinline aria-label="Узоры родовой памяти, часть 1">
+                <source src="/1/src/video/uzor-1.mp4" type="video/mp4"/>
+              </video>
+              <figcaption>Часть 1 · Узоры-раскладки <span class="dur-tag">25 сек</span></figcaption>
+            </figure>
+            <figure>
+              <video controls preload="none" poster="/1/src/img/alexandria/uzor-2.jpg" playsinline aria-label="Узоры родовой памяти, часть 2">
+                <source src="/1/src/video/uzor-2.mp4" type="video/mp4"/>
+              </video>
+              <figcaption>Часть 2 · О родовой памяти <span class="dur-tag">31 сек</span></figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <h3>Фото со встреч</h3>
+            <span class="sub">Занятия · экскурсии · бал</span>
+          </div>
+          <div class="photo-grid">
+            <img src="/1/src/img/alexandria/meet-loft.jpg" alt="Встреча управления в лофте" loading="lazy" width="480" height="360"/>
+            <img src="/1/src/img/alexandria/excursion.jpg" alt="Экскурсия по Санкт-Петербургу, созданная по Ясне" loading="lazy" width="480" height="362"/>
+            <img src="/1/src/img/alexandria/lesson.jpg" alt="Занятие: раскладка на флипчарте" loading="lazy" width="480" height="216"/>
+            <img src="/1/src/img/alexandria/schemes.jpg" alt="Рабочий стол с раскладками и схемами" loading="lazy" width="480" height="360"/>
+            <img src="/1/src/img/alexandria/rasklad-bal.jpg" alt="Раскладка Поэтического бала" loading="lazy" width="360" height="480"/>
+            <img src="/1/src/img/alexandria/mandala.jpg" alt="Мандала-раскладка" loading="lazy" width="360" height="480"/>
+            <img src="/1/src/img/alexandria/fairy.jpg" alt="Раскладки Александрии" loading="lazy" width="449" height="480"/>
+            <img src="/1/src/img/alexandria/walk.jpg" alt="Литературная прогулка по Санкт-Петербургу" loading="lazy" width="480" height="362"/>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <h3>Голоса участников</h3>
+            <span class="sub">Отзывы · было → стало</span>
+          </div>
+          <div class="panel-body" style="padding:0">
+            <div class="voice">
+              <blockquote>Регулярное обращение к&nbsp;Ясне дало мне лучшее понимание ряда предметных областей и&nbsp;позволило совершенствовать навыки верификации. Самое главное — ощущение радостной ясности во&nbsp;всём теле, голове, сердце.</blockquote>
+              <div class="voice-by">Ковалевич Елена Павловна · педагог · в управлении с 2022 года</div>
+            </div>
+            <div class="voice">
+              <blockquote>Александрия стала котлом, в&nbsp;котором выплавилось новое видение мира. То, что было интуитивным чувством, стало ясной картиной.</blockquote>
+              <div class="voice-by">Юрьева Марьяна Алексеевна · медицинское направление</div>
+            </div>
+            <div class="voice">
+              <blockquote>Александрия помогла увидеть Ясну не&nbsp;в&nbsp;плоскости, а&nbsp;в&nbsp;пространстве, объёмно.</blockquote>
+              <div class="voice-by">Ланцева Елена Владимировна · сценарии Ясных маршрутов</div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="col" style="gap:24px">
+        <article class="panel">
+          <div class="panel-head">
+            <h3>Александрийцы</h3>
+            <span class="sub">10 человек · кто что развивает</span>
+          </div>
+          <div class="panel-body" style="padding:0">
+            <div class="coord">
+              <div class="av av-photo"><img src="/1/src/img/alexandria/av/fahrutdinov.jpg" alt="Фахрутдинов Тимур Михайлович" width="144" height="144" loading="lazy"/></div>
+              <div class="info"><b><a href="https://t.me/mobictas" target="_blank" rel="noopener" style="color:inherit">Фахрутдинов Тимур Михайлович</a></b><p>Руководитель · серия уроков по Ясне</p></div>
+              <a class="link" href="https://t.me/mobictas" target="_blank" rel="noopener">TG →</a>
+            </div>
+            <div class="coord">
+              <div class="av av-photo"><img src="/1/src/img/alexandria/av/sychuk.jpg" alt="Сычук Максим Николаевич" width="144" height="144" loading="lazy"/></div>
+              <div class="info"><b>Сычук Максим Николаевич</b><p>Многомерная Ясна «соты» · раскладки кино</p></div>
+            </div>
+            <div class="coord">
+              <div class="av av-photo"><img src="/1/src/img/alexandria/av/yurieva.jpg" alt="Юрьева Марьяна Алексеевна" width="144" height="144" loading="lazy"/></div>
+              <div class="info"><b>Юрьева Марьяна Алексеевна</b><p>Медицина · связи с управлениями</p></div>
+            </div>
+            <div class="coord">
+              <div class="av av-photo"><img src="/1/src/img/alexandria/av/dulapchiy.jpg" alt="Дулапчий Елена Владимировна" width="144" height="144" loading="lazy"/></div>
+              <div class="info"><b>Дулапчий Елена Владимировна</b><p>Ясна реки, Ясна алмаза и другие</p></div>
+            </div>
+            <div class="coord">
+              <div class="av av-photo"><img src="/1/src/img/alexandria/av/matukhnova.jpg" alt="Матухнова Наталья Григорьевна" width="144" height="144" loading="lazy"/></div>
+              <div class="info"><b>Матухнова Наталья Григорьевна</b><p>Экскурсии по СПб</p></div>
+            </div>
+            <div class="coord">
+              <div class="av av-photo"><img src="/1/src/img/alexandria/av/lantseva.jpg" alt="Ланцева Елена Владимировна" width="144" height="144" loading="lazy"/></div>
+              <div class="info"><b>Ланцева Елена Владимировна</b><p>Сценарии Ясных маршрутов · натурные уроки в&nbsp;Петербурге</p></div>
+            </div>
+            <div class="coord">
+              <div class="av av-photo"><img src="/1/src/img/alexandria/av/tronin.jpg" alt="Юрий Тронин" width="144" height="144" loading="lazy"/></div>
+              <div class="info"><b>Юрий Тронин</b><p>Медицинское направление</p></div>
+            </div>
+            <div class="coord">
+              <div class="av av-photo"><img src="/1/src/img/alexandria/av/kovalevich.jpg" alt="Ковалевич Елена Павловна" width="144" height="144" loading="lazy"/></div>
+              <div class="info"><b>Ковалевич Елена Павловна</b><p>Раскладки в&nbsp;образовании: природа, язык, обучение</p></div>
+            </div>
+            <div class="coord">
+              <div class="av av-photo"><img src="/1/src/img/alexandria/av/kovalenko.jpg" alt="Елена Коваленко" width="144" height="144" loading="lazy"/></div>
+              <div class="info"><b>Елена Коваленко</b><p>Ясны кроя и шитья · русский язык</p></div>
+            </div>
+            <div class="coord">
+              <div class="av" style="background:linear-gradient(135deg,#5a5a3a,var(--accent))">ВБ</div>
+              <div class="info"><b>Вячеслав Богданов</b><p>Форма и оформление раскладок</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <h3>Как присоединиться</h3>
+            <span class="sub">3 шага · бесплатно</span>
+          </div>
+          <div class="panel-body join-body">
+            <div class="join-step">
+              <span class="join-num">I</span>
+              <div>
+                <div class="join-title">Оставьте заявку</div>
+                <p class="join-desc">Заполните короткую форму на&nbsp;сайте — пригласим на&nbsp;ближайшую встречу вживую в&nbsp;СПб или онлайн.</p>
+              </div>
+            </div>
+            <div class="join-step">
+              <span class="join-num">II</span>
+              <div>
+                <div class="join-title">Посмотрите видеоуроки</div>
+                <p class="join-desc">Серия занятий по&nbsp;Ясне — в&nbsp;Ясна-центре. Начните с&nbsp;ролика на&nbsp;этой странице.</p>
+              </div>
+            </div>
+            <div class="join-step">
+              <span class="join-num">III</span>
+              <div>
+                <div class="join-title">Принесите свою раскладку</div>
+                <p class="join-desc">Тему выбираете сами — разберём и&nbsp;доработаем сообща на&nbsp;встрече.</p>
+              </div>
+            </div>
+            <a class="btn btn-primary join-cta" href="/zayavka/?dir=alexandria">Оставить заявку <span class="arr">→</span></a>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <h3>Формат</h3>
+            <span class="sub">СПб + удалённо</span>
+          </div>
+          <div class="kv-list">
+            <div class="kv-row">
+              <span class="dim">Встречи вживую</span>
+              <b class="kv-val">Санкт-Петербург</b>
+            </div>
+            <div class="kv-line"></div>
+            <div class="kv-row">
+              <span class="dim">Разборы раскладок</span>
+              <b class="kv-val">Онлайн</b>
+            </div>
+            <div class="kv-line"></div>
+            <div class="kv-row">
+              <span class="dim">Видеоуроки</span>
+              <b class="kv-val">Ясна-центр</b>
+            </div>
+            <div class="kv-line"></div>
+            <div class="kv-row">
+              <span class="dim">Канал управления</span>
+              <b class="kv-val"><a href="https://t.me/aleksandriya_2026" target="_blank" rel="noopener">@aleksandriya_2026</a></b>
+            </div>
+            <div class="kv-line"></div>
+            <div class="kv-row">
+              <span class="dim">Беседы о&nbsp;Ясне</span>
+              <b class="kv-val"><a href="https://t.me/yasna_besedy" target="_blank" rel="noopener">t.me/yasna_besedy</a></b>
+            </div>
+            <div class="kv-line"></div>
+            <div class="kv-row">
+              <span class="dim">Почта</span>
+              <b class="kv-val"><a href="mailto:admin@yasna.spb.ru">admin@yasna.spb.ru</a></b>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── RELATED ──────────────────────────────────────────────────── -->
+<section style="background:var(--bg-deep)">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="ttl">
+        <div class="eyebrow">Связанные управления</div>
+        <h2 class="h2" style="margin-top:14px">С чем Александрия пересекается</h2>
+      </div>
+      <a class="btn btn-ghost" href="/#directions">Все управления <span class="arr">→</span></a>
+    </div>
+    <div class="rel-grid">
+      <a class="rel" href="/upravleniya/neglinka/">
+        <span class="bond">↔ история и география</span>
+        <span class="nm">Неглинка</span>
+        <p>Раскладки по истории и совместные Ясные маршруты — методика Неглинки на материале Петербурга.</p>
+      </a>
+      <a class="rel" href="/#directions">
+        <span class="bond">↔ литература и события</span>
+        <span class="nm">ЛитПроСвет</span>
+        <p>Поэтический бал 8 января 2026 организован по Ясне. Литературные прогулки по каналам Петербурга.</p>
+      </a>
+      <a class="rel" href="/#directions">
+        <span class="bond">↔ здоровье и практика</span>
+        <span class="nm">Джива</span>
+        <p>Медицинские раскладки, Ясна массажа и александрийская группа практиков Чудо-массажа.</p>
+      </a>
+      <a class="rel" href="/upravleniya/granika/">
+        <span class="bond">↔ метод и пропорции</span>
+        <span class="nm">Граника</span>
+        <p>Общая методологическая база: закон подобия, меры и раскладки в архитектуре.</p>
+      </a>
+    
+      <a class="rel" href="/upravleniya/marshruty/">
+        <span class="bond">↔ Петербург и&nbsp;Кронштадт</span>
+        <span class="nm">Ясные маршруты</span>
+        <p>Три урока в&nbsp;Петербурге и&nbsp;Кронштадте ведут Матухнова Наталья Григорьевна и&nbsp;Ланцева Елена Владимировна.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA ──────────────────────────────────────────────────────── -->
+<section id="join">
+  <div class="wrap">
+    <div class="cta-banner">
+      <div>
+        <div class="eyebrow">Присоединиться к Александрии</div>
+        <h2 style="margin-top:14px">Разложи всё —<br/>и&nbsp;соедини всё</h2>
+        <p style="margin-top:18px">Оставьте заявку — пригласим на&nbsp;ближайшую встречу в&nbsp;Санкт-Петербурге или онлайн. Принесите свой вопрос — разберём его раскладкой.</p>
+      </div>
+      <div class="acts">
+        <a class="btn btn-primary" href="/zayavka/?dir=alexandria">Оставить заявку <span class="arr">→</span></a>
+        <a class="btn btn-ghost" href="https://t.me/aleksandriya_2026" target="_blank" rel="noopener">Канал Александрии</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand" style="margin-bottom:14px">
+          <img class="mark" src="/1/src/img/yasna-mark.jpg" alt="Золотой Ясень" width="160" height="160"/>
+          <span class="brand-text">
+            <span class="brand-name">Золотой Ясень</span>
+            <span class="brand-sub">Интеграционный центр</span>
+          </span>
+        </div>
+        <p class="dim" style="font-size:.92rem;line-height:1.5;max-width:38ch;margin:0">
+          Открытое сообщество исследователей русского языка, истории и культуры.
+        </p>
+      </div>
+      <div>
+        <h4>Управления</h4>
+        <ul>
+          <li><a href="/upravleniya/yasna-shkola/">Ясна-Школа</a></li>
+          <li><a href="/upravleniya/vospitanie/">Воспитание и Образование</a></li>
+          <li><a href="/upravleniya/alexandria/">Александрия</a></li>
+          <li><a href="/upravleniya/neglinka/">Неглинка</a></li>
+          <li><a href="/upravleniya/granika/">Граника</a></li>
+          <li><a href="/upravleniya/astronevod/">Астроневод</a></li>
+          <li><a href="/upravleniya/marshruty/">Ясные маршруты</a></li>
+          <li><a href="/#directions">ЛитПроСвет</a></li>
+          <li><a href="/upravleniya/izvod/">Извод</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Ещё</h4>
+        <ul>
+          <li><a href="/#directions">Джива</a></li>
+          <li><a href="/#directions">Парад Красоты</a></li>
+          <li><a href="/#directions">Herbaldika</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Контакты</h4>
+        <ul>
+          <li><a href="tel:+79082939363">+7&nbsp;908&nbsp;293-93-63</a></li>
+          <li><a href="tel:+79152595250">+7&nbsp;915&nbsp;259-52-50</a></li>
+          <li><a href="/privacy/">Обработка персональных данных</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Интеграционный центр «Золотой Ясень»</span>
+      
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var v = document.getElementById('promo'), b = document.getElementById('promo-sound');
+  if (!v || !b) return;
+  // Уважаем prefers-reduced-motion: не крутим ролик сам, показываем постер
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    v.removeAttribute('autoplay'); v.removeAttribute('loop'); v.setAttribute('controls','');
+    try { v.pause(); } catch (e) {}
+  }
+  b.addEventListener('click', function(){
+    v.muted = !v.muted;
+    if (!v.muted && v.paused) v.play();
+    b.textContent = v.muted ? '🔇 Звук' : '🔊 Звук вкл';
+    b.setAttribute('aria-label', v.muted ? 'Включить звук' : 'Выключить звук');
+  });
+})();
+</script>
+
+<script src="/1/src/nav.js" defer></script>
+</body>
+</html>

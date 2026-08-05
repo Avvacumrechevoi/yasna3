@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Страницы, закрытые noindex (1/index.html, privacy.html), в карту не входят. -->
+<!-- Только новые адреса. Старые /1/pages/*.html отдают переадресацию
+     и в карту не входят; /privacy/ и /1/ закрыты noindex. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://zolotoj-yasen.ru/</loc>
@@ -7,47 +8,47 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://zolotoj-yasen.ru/1/pages/zayavka.html</loc>
+    <loc>https://zolotoj-yasen.ru/zayavka/</loc>
     <lastmod>2026-08-05</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://zolotoj-yasen.ru/1/pages/vospitanie.html</loc>
+    <loc>https://zolotoj-yasen.ru/upravleniya/yasna-shkola/</loc>
     <lastmod>2026-08-05</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://zolotoj-yasen.ru/1/pages/alexandria.html</loc>
+    <loc>https://zolotoj-yasen.ru/upravleniya/vospitanie/</loc>
     <lastmod>2026-08-05</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://zolotoj-yasen.ru/1/pages/astronevod.html</loc>
+    <loc>https://zolotoj-yasen.ru/upravleniya/alexandria/</loc>
     <lastmod>2026-08-05</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://zolotoj-yasen.ru/1/pages/granika.html</loc>
+    <loc>https://zolotoj-yasen.ru/upravleniya/neglinka/</loc>
     <lastmod>2026-08-05</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://zolotoj-yasen.ru/1/pages/izvod.html</loc>
+    <loc>https://zolotoj-yasen.ru/upravleniya/granika/</loc>
     <lastmod>2026-08-05</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://zolotoj-yasen.ru/1/pages/marshruty.html</loc>
+    <loc>https://zolotoj-yasen.ru/upravleniya/astronevod/</loc>
     <lastmod>2026-08-05</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://zolotoj-yasen.ru/1/pages/neglinka.html</loc>
+    <loc>https://zolotoj-yasen.ru/upravleniya/marshruty/</loc>
     <lastmod>2026-08-05</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://zolotoj-yasen.ru/1/pages/yasna-shkola.html</loc>
+    <loc>https://zolotoj-yasen.ru/upravleniya/izvod/</loc>
     <lastmod>2026-08-05</lastmod>
     <priority>0.8</priority>
   </url>
