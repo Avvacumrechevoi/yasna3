@@ -57,7 +57,10 @@
       <span class="mono" style="color:var(--ink-3);margin-left:14px">02 / 12</span>
     </a>
 
-    <div class="dir-hero-row">
+    <!-- Одна колонка, без блока цифр: у соседних управлений там участники
+         и кураторы, а здесь считать нечего — «столпов 4» дублировало бы
+         раздел ниже. -->
+    <div class="dir-hero-row" style="grid-template-columns:1fr">
       <div>
         <div class="row" style="gap:10px;margin-bottom:20px">
           <span class="chip">Воспитание · образование</span>
@@ -66,17 +69,14 @@
           <div class="dir-logo"><img src="../src/img/vospitanie.svg" alt="Логотип управления «Воспитание и Образование»" width="384" height="384"/></div>
           <div>
             <h1 class="dir-title">Воспитание и&nbsp;Образование</h1>
-            <div class="dir-kicker">Четыре столпа воспитания</div>
+            <div class="dir-kicker">Целеполагание и&nbsp;определённости правил в&nbsp;жизни</div>
           </div>
         </div>
         <p class="dir-sub">Рассказываем родителям, что такое воспитание, а&nbsp;детям предлагаем образовательный курс и&nbsp;учим правильно мыслить по&nbsp;композиции.</p>
         <div class="hero-cta">
           <a class="btn btn-primary" href="mailto:proyasna@yandex.ru?subject=Воспитание%20и%20Образование">Написать нам <span class="arr">→</span></a>
-          <a class="btn btn-ghost" href="/#event">Обращение</a>
+          <a class="btn btn-ghost" href="#stolpy">Четыре столпа</a>
         </div>
-      </div>
-      <div class="dir-stats" aria-label="Статистика">
-        <div class="dir-stat" style="border-bottom:0"><div class="lbl">Столпов</div><div class="val">4</div></div>
       </div>
     </div>
 
@@ -89,7 +89,7 @@
 
     <!-- ЧЕТЫРЕ СТОЛПА -->
     <div class="grid" style="grid-template-columns:1fr; gap:32px;">
-      <article class="panel" style="grid-column:1 / -1">
+      <article class="panel" id="stolpy" style="grid-column:1 / -1">
         <div class="panel-head">
           <h3>Четыре столпа</h3>
           <span class="sub">На чём стоит воспитание</span>
