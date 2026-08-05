@@ -603,6 +603,10 @@
   }
   @keyframes spinR{to{transform:rotate(-360deg)}}
 </style>
+<!-- Событие: карточка сбора в поиске показывает дату и город. -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Event","name":"Большой лист 2026 — общий сбор «Золотого Ясеня»","startDate":"2026-09-26T12:00:00+03:00","eventStatus":"https://schema.org/EventScheduled","eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode","description":"Общий сбор интеграционного центра «Золотой Ясень»: слово основателя, рассказы двенадцати управлений о себе, знакомство и обсуждение планов на год. Вход свободный.","url":"https://zolotoj-yasen.ru/#day","image":"https://zolotoj-yasen.ru/src/img/og-cover.jpg","isAccessibleForFree":true,"location":{"@type":"Place","name":"Москва","address":{"@type":"PostalAddress","addressLocality":"Москва","addressCountry":"RU"}},"organizer":{"@type":"Organization","name":"Золотой Ясень","url":"https://zolotoj-yasen.ru/"}}</script>
+<!-- Вопросы и ответы: разметка собрана из той же верстки, что видит читатель. -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Как устроено сообщество?","acceptedAnswer":{"@type":"Answer","text":"Золотой Ясень — интеграционный центр: двенадцать управлений, у каждого свой руководитель; ступеней и обязательных взносов нет. Вы подписываетесь на каналы управлений, участвуете в обсуждениях и встречах в удобном ритме. Можете прийти на открытую встречу, посмотреть материалы и решить, подходит ли вам формат. Все публикации доступны бесплатно."}},{"@type":"Question","name":"Сколько это стоит?","acceptedAnswer":{"@type":"Answer","text":"Подписка на каналы и открытые встречи — бесплатно. Отдельные прогулки и курсы бывают платными — цена стоит в анонсе."}},{"@type":"Question","name":"Какие правила и обязательства внутри?","acceptedAnswer":{"@type":"Answer","text":"Никаких формальных. Приходите и уходите свободно, формат участия выбираете сами. В разборах опираемся на первоисточники и проверяем выводы вместе."}},{"@type":"Question","name":"С чего начать, если я ничего не знаю?","acceptedAnswer":{"@type":"Answer","text":"Подпишитесь на Telegram-канал управления, тема которого вам ближе. Почитайте материалы. Приходите на ближайшую открытую встречу. Или оставьте заявку — координатор свяжется и подскажет, что подойдёт лучше всего."}},{"@type":"Question","name":"Я не в Москве — могу ли участвовать?","acceptedAnswer":{"@type":"Answer","text":"Да. Herbaldika работает онлайн, Извод совмещает московские встречи с онлайном. У Ясна-Школы всё онлайн, живые выступления бывают. ЛитПроСвет, Джива и Парад Красоты совмещают московские встречи с онлайном. У Неглинки, Граники и Александрии часть работы очная — Москва и Петербург, — а разборы и лекции идут онлайн, участвовать можно удалённо. Общий сбор 26 сентября — исключение: он проходит только очно, в Москве."}},{"@type":"Question","name":"Сколько времени нужно уделять?","acceptedAnswer":{"@type":"Answer","text":"Столько, сколько хотите. Чтобы быть в курсе, хватает часа в неделю — почитать материалы и заглянуть в обсуждение. Ходить на все встречи необязательно."}},{"@type":"Question","name":"Могу ли я участвовать в нескольких управлениях?","acceptedAnswer":{"@type":"Answer","text":"Конечно, управления можно совмещать — они пересекаются. Неглинка рядом с Граникой: история города и архитектура. Извод рядом с ЛитПроСветом: язык и литература."}},{"@type":"Question","name":"Чем это отличается от обычных курсов?","acceptedAnswer":{"@type":"Answer","text":"Мы исследуем вместе: каждый работает с первоисточниками, задаёт вопросы и приносит находки. Лекции и разборы тоже есть — собственную работу они не заменяют."}}]}</script>
 </head>
 <body id="top">
 <a class="skip" href="#content">К содержанию</a>
@@ -789,7 +793,23 @@
       <h2 data-reveal>Двенадцать управлений</h2>
       <p data-reveal>От архитектуры и истории до языка и здоровья. Каждое управление ведёт свой руководитель. Выбирайте по теме и городу — или приходите на «Большой лист» и познакомьтесь со всеми сразу.</p>
     </div>
-    <div class="dir-grid" id="dirGrid"></div>
+    <div class="dir-grid" id="dirGrid">
+      <!-- Разметка статическая. Раньше блок рисовал скрипт, и поисковик без
+           выполнения JavaScript не видел ни описаний управлений, ни ответов
+           — треть текста главной. Скрипт-сборщик удалён, правьте разметку. -->
+      <div class="card" data-reveal><span class="idx">01</span><div class="mono"><img src="src/img/yasna-shkola.png" alt="Ясна-Школа" loading="lazy"></div><div class="tag">Обучение · информационное</div><h3>Ясна-Школа</h3><p>Русская Школа Русского Языка. Уроки РШРЯ, курсы и статьи о русском учении, мировоззрении и русской семье.</p><div class="foot"><span class="lead-by">Рук. · <b>Архипов Сергей Юрьевич</b></span><span class="loc">ОНЛАЙН · ОЧНО ВОЗМОЖНО</span></div></div>
+      <div class="card" data-reveal><span class="idx">02</span><div class="mono"><img src="src/img/vospitanie.svg" alt="Воспитание и Образование" loading="lazy"></div><div class="tag">Воспитание · образование</div><h3>Воспитание и Образование</h3><p>Родителям рассказываем, что такое воспитание, детям предлагаем образовательный курс. Четыре столпа: телосложение, обучение, образование, просвещение.</p><div class="foot"><span class="lead-by">Рук. · <b>Костромитин Руслан Александрович</b></span></div></div>
+      <div class="card" data-reveal><span class="idx">03</span><div class="mono"><img src="src/img/alexandria-emblem.jpg" alt="Александрия" loading="lazy"></div><div class="tag">Раскладки · теория и практика</div><h3>Александрия</h3><p>Теоретическое ядро Ясны: изучаем построение раскладок — «разложи всё и соедини всё». От медицины до истории.</p><div class="foot"><span class="lead-by">Рук. · <b>Фахрутдинов Тимур Михайлович</b></span><span class="loc">ПЕТЕРБУРГ + ОНЛАЙН</span></div></div>
+      <div class="card" data-reveal><span class="idx">04</span><div class="mono"><img src="src/img/neglinka-emblem.png" alt="Неглинка" loading="lazy"></div><div class="tag">История · география</div><h3>Неглинка</h3><p>Проясняем историю и географию России — гуляем по Москве, читаем то, что зашифровано в улицах.</p><div class="foot"><span class="lead-by">Рук. · <b>Воинов Леонид Викторович</b></span><span class="loc">МОСКВА + ОНЛАЙН</span></div></div>
+      <div class="card" data-reveal><span class="idx">05</span><div class="mono"><img src="src/img/granika.png" alt="Граника" loading="lazy"></div><div class="tag">Архитектура · астрономия</div><h3>Граника</h3><p>Читаем язык предков в камне — усадьбы, крепости, монастыри и храмовые комплексы. Русский классицизм и деревянное зодчество.</p><div class="foot"><span class="lead-by">Рук. · <b>Акимов Александр Анатольевич</b></span><span class="loc">МОСКВА + ОНЛАЙН</span></div></div>
+      <div class="card" data-reveal><span class="idx">06</span><div class="mono"><img src="src/img/astronevod.png" alt="Астроневод" loading="lazy"></div><div class="tag">Астросмыслы · астрокоды</div><h3>Астроневод</h3><p>Астрономия наших предков: археоастрономия древних поселений, звёздный язык сказок и баллад, астрономия икон. Закон подобия — как на Небе, так и на Земле.</p><div class="foot"><span class="lead-by">Рук. · <b>Виноградова Анна Львовна</b></span><span class="loc">МОСКВА + ОНЛАЙН</span></div></div>
+      <div class="card" data-reveal><span class="idx">07</span><div class="mono"><img src="src/img/marshruty.png" alt="Ясные маршруты" loading="lazy"></div><div class="tag">Натурные уроки · исследование</div><h3>Ясные маршруты</h3><p>Натурные уроки по городам: читаем устройство поселений через астрономию, географию, архитектуру и историю. Москва, Петербург, Кронштадт.</p><div class="foot"><span class="lead-by">Рук. · <b>Дрожжина Лидия Андреевна</b></span><span class="loc">МОСКВА · ПЕТЕРБУРГ · КРОНШТАДТ</span></div></div>
+      <div class="card" data-reveal><span class="idx">08</span><div class="mono"><img src="src/img/litprosvet-mark.svg" alt="ЛитПроСвет" loading="lazy"></div><div class="tag">Литература</div><h3>ЛитПроСвет</h3><p>Литература как способ думать и чувствовать. Возвращаем людей к чтению — клубы, аудиолекторий, разборы классики.</p><div class="foot"><span class="lead-by">Рук. · <b>Скиба Анастасия Александровна</b></span><span class="loc">МОСКВА + ОНЛАЙН</span></div></div>
+      <div class="card" data-reveal><span class="idx">09</span><div class="mono"><img src="src/img/izvod.png" alt="Извод" loading="lazy"></div><div class="tag">Языки</div><h3>Извод</h3><p>Устройство языка и изводы слов — тех, что сформировали смыслы русского мировоззрения. Фольклор, история, истинные смыслы фразеологизмов.</p><div class="foot"><span class="lead-by">Рук. · <b>Ванин Александр Николаевич</b></span><span class="loc">МОСКВА + ОНЛАЙН</span></div></div>
+      <div class="card" data-reveal><span class="idx">10</span><div class="mono"><img src="src/img/dzhiva.png" alt="Джива" loading="lazy"></div><div class="tag">Здоровье · тело</div><h3>Джива</h3><p>Здоровье и тело в русской традиции. Дыхание, движение, голос, уклад — практики возвращения к себе.</p><div class="foot"><span class="lead-by">Рук. · <b>Белова Екатерина Андреевна</b></span><span class="loc">МОСКВА + ОНЛАЙН</span></div></div>
+      <div class="card" data-reveal><span class="idx">11</span><div class="mono"><img src="src/img/parad.png" alt="Парад Красоты" loading="lazy"></div><div class="tag">Красота · лад</div><h3>Парад Красоты</h3><p>Красота, лад и любовь как уклад жизни. Эстетика русской традиции — от образа до отношений между людьми.</p><div class="foot"><span class="lead-by">Рук. · <b>Стефарова Вишня Владимировна</b></span><span class="loc">МОСКВА + ОНЛАЙН</span></div></div>
+      <div class="card" data-reveal><span class="idx">12</span><div class="mono"><img src="src/img/geraldika.png" alt="Herbaldika" loading="lazy"></div><div class="tag">Символика · гербы</div><h3>Herbaldika</h3><p>Родовые знаки, гербы и символика. Читаем язык образов — что и зачем зашифровано в гербах городов и родов.</p><div class="foot"><span class="lead-by">Рук. · <b>Грачёв Алексей Анатольевич</b></span><span class="loc">ОНЛАЙН</span></div></div>
+    </div>
   </div>
 </section>
 
@@ -889,7 +909,19 @@
     <div class="sec-head" style="margin:0 auto 44px; text-align:center; align-items:center">
       <h2 data-reveal>Частые вопросы</h2>
     </div>
-    <div class="faq-list" id="faqList"></div>
+    <div class="faq-list" id="faqList">
+      <!-- Разметка статическая. Раньше блок рисовал скрипт, и поисковик без
+           выполнения JavaScript не видел ни описаний управлений, ни ответов
+           — треть текста главной. Скрипт-сборщик удалён, правьте разметку. -->
+      <div class="qa" data-reveal><button aria-expanded="false"><span class="n">01</span><span class="q">Как устроено сообщество?</span><span class="ico"></span></button><div class="ans"><p>Золотой Ясень — интеграционный центр: двенадцать управлений, у каждого свой руководитель; ступеней и обязательных взносов нет. Вы подписываетесь на каналы управлений, участвуете в обсуждениях и встречах в удобном ритме. Можете прийти на открытую встречу, посмотреть материалы и решить, подходит ли вам формат. Все публикации доступны бесплатно.</p></div></div>
+      <div class="qa" data-reveal><button aria-expanded="false"><span class="n">02</span><span class="q">Сколько это стоит?</span><span class="ico"></span></button><div class="ans"><p>Подписка на каналы и открытые встречи — бесплатно. Отдельные прогулки и курсы бывают платными — цена стоит в анонсе.</p></div></div>
+      <div class="qa" data-reveal><button aria-expanded="false"><span class="n">03</span><span class="q">Какие правила и обязательства внутри?</span><span class="ico"></span></button><div class="ans"><p>Никаких формальных. Приходите и уходите свободно, формат участия выбираете сами. В разборах опираемся на первоисточники и проверяем выводы вместе.</p></div></div>
+      <div class="qa" data-reveal><button aria-expanded="false"><span class="n">04</span><span class="q">С чего начать, если я ничего не знаю?</span><span class="ico"></span></button><div class="ans"><p>Подпишитесь на Telegram-канал управления, тема которого вам ближе. Почитайте материалы. Приходите на ближайшую открытую встречу. Или оставьте заявку — координатор свяжется и подскажет, что подойдёт лучше всего.</p></div></div>
+      <div class="qa" data-reveal><button aria-expanded="false"><span class="n">05</span><span class="q">Я не в Москве — могу ли участвовать?</span><span class="ico"></span></button><div class="ans"><p>Да. Herbaldika работает онлайн, Извод совмещает московские встречи с онлайном. У Ясна-Школы всё онлайн, живые выступления бывают. ЛитПроСвет, Джива и Парад Красоты совмещают московские встречи с онлайном. У Неглинки, Граники и Александрии часть работы очная — Москва и Петербург, — а разборы и лекции идут онлайн, участвовать можно удалённо. Общий сбор 26 сентября — исключение: он проходит только очно, в Москве.</p></div></div>
+      <div class="qa" data-reveal><button aria-expanded="false"><span class="n">06</span><span class="q">Сколько времени нужно уделять?</span><span class="ico"></span></button><div class="ans"><p>Столько, сколько хотите. Чтобы быть в курсе, хватает часа в неделю — почитать материалы и заглянуть в обсуждение. Ходить на все встречи необязательно.</p></div></div>
+      <div class="qa" data-reveal><button aria-expanded="false"><span class="n">07</span><span class="q">Могу ли я участвовать в нескольких управлениях?</span><span class="ico"></span></button><div class="ans"><p>Конечно, управления можно совмещать — они пересекаются. Неглинка рядом с Граникой: история города и архитектура. Извод рядом с ЛитПроСветом: язык и литература.</p></div></div>
+      <div class="qa" data-reveal><button aria-expanded="false"><span class="n">08</span><span class="q">Чем это отличается от обычных курсов?</span><span class="ico"></span></button><div class="ans"><p>Мы исследуем вместе: каждый работает с первоисточниками, задаёт вопросы и приносит находки. Лекции и разборы тоже есть — собственную работу они не заменяют.</p></div></div>
+    </div>
   </div>
 </section>
 
@@ -1087,60 +1119,11 @@
   }
   layoutReel(); addEventListener('resize',layoutReel);
 
-  /* directions */
-  var dirs=[
-    {n:'01',img:IMG+'yasna-shkola.png',tag:'Обучение · информационное',h:'Ясна-Школа',p:'Русская Школа Русского Языка. Уроки РШРЯ, курсы и статьи о русском учении, мировоззрении и русской семье.',lead:'Архипов Сергей Юрьевич',loc:'Онлайн · очно возможно',url:BASE+'pages/yasna-shkola.html'},
-    {n:'02',img:IMG+'vospitanie.svg',tag:'Воспитание · образование',h:'Воспитание и Образование',p:'Родителям рассказываем, что такое воспитание, детям предлагаем образовательный курс. Четыре столпа: телосложение, обучение, образование, просвещение.',lead:'Костромитин Руслан Александрович',url:BASE+'pages/vospitanie.html'},
-    {n:'03',img:IMG+'alexandria-emblem.jpg',tag:'Раскладки · теория и практика',h:'Александрия',p:'Теоретическое ядро Ясны: изучаем построение раскладок — «разложи всё и соедини всё». От медицины до истории.',lead:'Фахрутдинов Тимур Михайлович',loc:'Петербург + онлайн',url:BASE+'pages/alexandria.html'},
-    {n:'04',img:IMG+'neglinka-emblem.png',tag:'История · география',h:'Неглинка',p:'Проясняем историю и географию России — гуляем по Москве, читаем то, что зашифровано в улицах.',lead:'Воинов Леонид Викторович',loc:'Москва + онлайн',url:BASE+'pages/neglinka.html'},
-    {n:'05',img:IMG+'granika.png',tag:'Архитектура · астрономия',h:'Граника',p:'Читаем язык предков в камне — усадьбы, крепости, монастыри и храмовые комплексы. Русский классицизм и деревянное зодчество.',lead:'Акимов Александр Анатольевич',loc:'Москва + онлайн',url:BASE+'pages/granika.html'},
-    {n:'06',img:IMG+'astronevod.png',tag:'Астросмыслы · астрокоды',h:'Астроневод',p:'Астрономия наших предков: археоастрономия древних поселений, звёздный язык сказок и баллад, астрономия икон. Закон подобия — как на Небе, так и на Земле.',lead:'Виноградова Анна Львовна',loc:'Москва + онлайн',url:BASE+'pages/astronevod.html'},
-    {n:'07',img:IMG+'marshruty.png',tag:'Натурные уроки · исследование',h:'Ясные маршруты',p:'Натурные уроки по городам: читаем устройство поселений через астрономию, географию, архитектуру и историю. Москва, Петербург, Кронштадт.',lead:'Дрожжина Лидия Андреевна',loc:'Москва · Петербург · Кронштадт',url:BASE+'pages/marshruty.html'},
-    {n:'08',img:IMG+'litprosvet-mark.svg',tag:'Литература',h:'ЛитПроСвет',p:'Литература как способ думать и чувствовать. Возвращаем людей к чтению — клубы, аудиолекторий, разборы классики.',lead:'Скиба Анастасия Александровна',loc:'Москва + онлайн',url:BASE+'pages/zayavka.html?dir=litprosvet'},
-    {n:'09',img:IMG+'izvod.png',tag:'Языки',h:'Извод',p:'Устройство языка и изводы слов — тех, что сформировали смыслы русского мировоззрения. Фольклор, история, истинные смыслы фразеологизмов.',lead:'Ванин Александр Николаевич',loc:'Москва + онлайн',url:BASE+'pages/izvod.html'},
-    {n:'10',img:IMG+'dzhiva.png',tag:'Здоровье · тело',h:'Джива',p:'Здоровье и тело в русской традиции. Дыхание, движение, голос, уклад — практики возвращения к себе.',lead:'Белова Екатерина Андреевна',loc:'Москва + онлайн',url:BASE+'pages/zayavka.html?dir=dzhiva'},
-    {n:'11',img:IMG+'parad.png',tag:'Красота · лад',h:'Парад Красоты',p:'Красота, лад и любовь как уклад жизни. Эстетика русской традиции — от образа до отношений между людьми.',lead:'Стефарова Вишня Владимировна',loc:'Москва + онлайн',url:BASE+'pages/zayavka.html?dir=parad'},
-    {n:'12',img:IMG+'geraldika.png',tag:'Символика · гербы',h:'Herbaldika',p:'Родовые знаки, гербы и символика. Читаем язык образов — что и зачем зашифровано в гербах городов и родов.',lead:'Грачёв Алексей Анатольевич',loc:'Онлайн',url:BASE+'pages/zayavka.html?dir=geraldika'}
-  ];
-  var dg=document.getElementById('dirGrid');
-  dirs.forEach(function(d){
-    var el=document.createElement(d.url?'a':'div'); el.className='card'; el.setAttribute('data-reveal','');
-    if(d.url) el.href=d.url;
-    var medal = d.img ? '<div class="mono"><img src="'+d.img+'" alt="'+d.h+'" loading="lazy"></div>' : '<div class="mono">'+d.m+'</div>';
-    /* Руководителя и город печатаем, только когда они известны: у нового
-       управления анкеты ещё нет, а «Рук. · undefined» хуже пустого места. */
-    el.innerHTML='<span class="idx">'+d.n+'</span>'+medal+
-      '<div class="tag">'+d.tag+'</div><h3>'+d.h+'</h3><p>'+d.p+'</p>'+
-      '<div class="foot">'+
-      (d.lead?'<span class="lead-by">Рук. · <b>'+d.lead+'</b></span>':'')+
-      (d.loc?'<span class="loc">'+d.loc.toUpperCase()+'</span>':'')+
-      (d.url?'<span class="arrow" aria-hidden="true">→</span>':'')+'</div>';
-    dg.appendChild(el);
-  });
-  var fd=document.getElementById('footDirs');
-  if(!fd.children.length){                       /* разметка уже статическая */
-    dirs.forEach(function(d){
-      var li=document.createElement('li');
-      li.innerHTML='<a href="'+(d.url||'#directions')+'">'+d.h+'</a>';
-      fd.appendChild(li);
-    });
-  }
 
   /* faq */
-  var faqs=[
-    ['Как устроено сообщество?','Золотой Ясень — интеграционный центр: двенадцать управлений, у каждого свой руководитель; ступеней и обязательных взносов нет. Вы подписываетесь на каналы управлений, участвуете в обсуждениях и встречах в удобном ритме. Можете прийти на открытую встречу, посмотреть материалы и решить, подходит ли вам формат. Все публикации доступны бесплатно.'],
-    ['Сколько это стоит?','Подписка на каналы и открытые встречи — бесплатно. Отдельные прогулки и курсы бывают платными — цена стоит в анонсе.'],
-    ['Какие правила и обязательства внутри?','Никаких формальных. Приходите и уходите свободно, формат участия выбираете сами. В разборах опираемся на первоисточники и проверяем выводы вместе.'],
-    ['С чего начать, если я ничего не знаю?','Подпишитесь на Telegram-канал управления, тема которого вам ближе. Почитайте материалы. Приходите на ближайшую открытую встречу. Или оставьте заявку — координатор свяжется и подскажет, что подойдёт лучше всего.'],
-    ['Я не в Москве — могу ли участвовать?','Да. Herbaldika работает онлайн, Извод совмещает московские встречи с онлайном. У Ясна-Школы всё онлайн, живые выступления бывают. ЛитПроСвет, Джива и Парад Красоты совмещают московские встречи с онлайном. У Неглинки, Граники и Александрии часть работы очная — Москва и Петербург, — а разборы и лекции идут онлайн, участвовать можно удалённо. Общий сбор 26 сентября — исключение: он проходит только очно, в Москве.'],
-    ['Сколько времени нужно уделять?','Столько, сколько хотите. Чтобы быть в курсе, хватает часа в неделю — почитать материалы и заглянуть в обсуждение. Ходить на все встречи необязательно.'],
-    ['Могу ли я участвовать в нескольких управлениях?','Конечно, управления можно совмещать — они пересекаются. Неглинка рядом с Граникой: история города и архитектура. Извод рядом с ЛитПроСветом: язык и литература.'],
-    ['Чем это отличается от обычных курсов?','Мы исследуем вместе: каждый работает с первоисточниками, задаёт вопросы и приносит находки. Лекции и разборы тоже есть — собственную работу они не заменяют.']
-  ];
-  var fl=document.getElementById('faqList');
-  faqs.forEach(function(f,i){
-    var el=document.createElement('div'); el.className='qa'; el.setAttribute('data-reveal','');
-    el.innerHTML='<button aria-expanded="false"><span class="n">0'+(i+1)+'</span><span class="q">'+f[0]+'</span><span class="ico"></span></button><div class="ans"><p>'+f[1]+'</p></div>';
+  /* Разметка вопросов статическая (нужна поисковикам и читателю без JS) —
+     скрипт только навешивает раскрытие на готовые узлы. */
+  document.querySelectorAll('#faqList .qa').forEach(function(el){
     var btn=el.querySelector('button'), ans=el.querySelector('.ans');
     btn.addEventListener('click',function(){
       var open=el.classList.toggle('open');
@@ -1153,7 +1136,6 @@
     });
     ans.addEventListener('transitionend',function(e){ if(e.propertyName!=='max-height') return;
       if(el.classList.contains('open')) ans.style.maxHeight='none'; onScroll(); });
-    fl.appendChild(el);
   });
 
   /* nav state + progress + scrollspy + toTop */
