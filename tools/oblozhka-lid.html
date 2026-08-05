@@ -1,0 +1,44 @@
+<!doctype html><meta charset="utf-8">
+<title>лид обложки</title>
+<pre id="log" style="font:13px ui-monospace,monospace">жду…</pre>
+<script>
+/* Лид обложки набирается целиком, тремя строками сразу: подбор по
+   среднеквадратичному отклонению от оригинала показал, что одна строка,
+   вставленная среди двух чужих, выбивается по рисунку букв.
+   Параметры восстановлены перебором и проверены на неизменных строках. */
+const LINES = [
+  ['Открытое сообщество исследователей русского языка,', 390],
+  ['истории и культуры. Двенадцать управлений,',         419],
+  ['общие праздники, совместный поиск.',                 448]];
+const FONT = '400 19.5px Arial', LS = '0.28px', X = 70, COL = 'rgb(120,107,88)';
+const L = document.getElementById('log');
+const say = s => { L.textContent += '\n' + s; };
+
+(async () => {
+  const load = async s => { const i = new Image(); i.src = s + '?' + Math.floor(performance.now()); await i.decode(); return i; };
+  const ref = await load('og-ref.png'), bg = await load('og-bg.png');
+  const mk = img => { const c = document.createElement('canvas'); c.width = img.width; c.height = img.height;
+    const g = c.getContext('2d', { willReadFrequently: true }); g.drawImage(img, 0, 0); return [c, g]; };
+  const [, gr] = mk(ref);
+  const [c, g] = mk(bg);
+  L.textContent = 'основа ' + bg.width + '×' + bg.height + ' (лид стёрт)';
+
+  const draw = (ctx, t, y) => { ctx.letterSpacing = LS; ctx.font = FONT; ctx.fillStyle = COL;
+    ctx.textBaseline = 'alphabetic'; ctx.fillText(t, X, y); };
+  for (const [t, y] of LINES) draw(g, t, y);
+
+  // контроль: неизменные строки должны лечь как в оригинале
+  const rms = (ctx, y0) => { const A = ctx.getImageData(58, y0, 560, 28).data, B = gr.getImageData(58, y0, 560, 28).data;
+    let s = 0; for (let i = 0; i < A.length; i += 4) { const d = (A[i]+A[i+1]+A[i+2])/3 - (B[i]+B[i+1]+B[i+2])/3; s += d*d; }
+    return Math.sqrt(s / (A.length/4)); };
+  say('отклонение от оригинала: 1-я строка ' + rms(g,371).toFixed(1) + ', 3-я ' + rms(g,429).toFixed(1));
+  g.letterSpacing = LS; g.font = FONT;
+  say('ширина 1-й строки ' + (X + g.measureText(LINES[0][0]).width).toFixed(0) + ' (в оригинале правый край 582)');
+  say('правый край 2-й строки ' + (X + g.measureText(LINES[1][0]).width).toFixed(0));
+
+  const data = c.toDataURL('image/jpeg', 0.92);
+  const r = await fetch('http://127.0.0.1:8799/', { method: 'POST',
+    headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ data }) });
+  say('отправлено: ' + (await r.text()) + ', ' + Math.round(data.length / 1365) + ' КБ');
+})().catch(e => say('ОШИБКА: ' + e));
+</script>

@@ -1642,3 +1642,22 @@ html { scroll-padding-top: 74px; }
 @media (max-width: 360px) {
   .dir-title { font-size: clamp(1.7rem, 1.1rem + 4.4vw, 2.4rem); overflow-wrap: break-word; }
 }
+
+/* ─── Четыре столпа воспитания ─────────────────────────────────────────
+   У каждого столпа свой круг взрослых — родители, учителя, мастера,
+   наставники. Это часть содержания, а не подпись: держим отдельной
+   строкой под описанием, набранной как метка. */
+.fmt-who {
+  margin-top: auto;
+  padding-top: 10px;
+  font-size: .68rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--accent);
+}
+/* Описания у столпов разной длины, и без выравнивания метки ответственных
+   скачут по высоте. Колонка + margin-top:auto ставит их на одну линию,
+   как в исходном материале. :has() трогает только эту сетку — на других
+   страницах .fmt-who нет. */
+.fmt-grid > div:has(.fmt-who) { display: flex; flex-direction: column; }
