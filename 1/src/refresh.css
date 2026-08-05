@@ -1020,14 +1020,15 @@ section.tight { padding-top: calc(48px * var(--dens)); padding-bottom: calc(48px
   gap: 7px;
   min-width: 0;
 }
-/* Значок площадки. Цвет наследуется от подписи, при наведении на карточку
-   теплеет вместе с ней — семь фирменных расцветок спорили бы с палитрой. */
+/* Значок площадки — фирменный знак, поэтому цветом не управляем и при
+   наведении не перекрашиваем: подпись теплеет, знак остаётся собой.
+   Коробка квадратная, знак вписывается: у ютуба логотип широкий, у прочих
+   квадратный, contain держит их на одной оптической высоте. */
 .chan-ico {
-  width: 15px; height: 15px; flex: none;
-  color: currentColor;
-  transition: color .2s;
+  width: 16px; height: 16px; flex: none;
+  object-fit: contain;
 }
-.chan:hover .chan-plat, .chan:hover .chan-ico { color: var(--accent); }
+.chan:hover .chan-plat { color: var(--accent); }
 .chan-name {
   font-family: var(--font-display);
   font-weight: 600;
