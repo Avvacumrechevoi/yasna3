@@ -53,23 +53,28 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://zolotoj-yasen.ru/upravleniya/dzhiva/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://zolotoj-yasen.ru/upravleniya/marshruty/kolomenskoe/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://zolotoj-yasen.ru/upravleniya/marshruty/dom-pashkova/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://zolotoj-yasen.ru/upravleniya/marshruty/novodevichy/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://zolotoj-yasen.ru/upravleniya/marshruty/vdnh/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <priority>0.7</priority>
   </url>
 </urlset>
