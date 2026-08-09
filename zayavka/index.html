@@ -377,13 +377,36 @@ var DIR_NONE = '9008983973814372';
       l.style.cssText = 'padding:6px 4px 12px;font-size:.74rem';
     }
   });
-  /* страховка: embed.js не ответил за 6 с — даём кадру достаточную высоту */
+  /* Высоту слушаем САМИ, а не полагаемся на чужой embed.js.
+
+     Замерено 10.08.2026: рамка вставала ровно в 1500px — то есть срабатывала
+     страховка, а подгонка не работала. Форма при этом 1922px на телефоне:
+     галочка согласия на 1686, кнопка «Отправить» на 1810. Ниже рамки
+     оставалось 370px — и человек мог отправить заявку, только сообразив
+     прокрутить рамку внутри страницы. На телефоне так не делает почти никто.
+
+     Форма шлёт родителю сообщение {"iframe-height": N} — на нём и держимся.
+     embed.js оставлен: он делает то же самое и служит вторым путём. */
+  window.addEventListener('message', function (e) {
+    if (String(e.origin).indexOf('forms.yandex') < 0) return;
+    var h;
+    try { h = JSON.parse(e.data)['iframe-height']; } catch (err) { return; }
+    if (h > 0 && e.source === iframe.contentWindow) {
+      iframe.style.height = h + 'px';
+      iframe.style.minHeight = '0';
+    }
+  }, false);
+
+  /* Страховка на случай, если сообщение не придёт вовсе: блокировщик,
+     офисная сеть, отвалившийся домен. Запас взят по замеру 1922px
+     плюс место на будущие вопросы. Ждём 3 с, а не 6: полминуты
+     смотреть на обрезанную форму человек не станет. */
   setTimeout(function () {
-    if (iframe.clientHeight <= 660) iframe.style.minHeight = '1500px';
-  }, 6000);
+    if (iframe.clientHeight <= 660) iframe.style.minHeight = '2200px';
+  }, 3000);
+
   mount.appendChild(iframe);
 
-  // embed.js слушает высоту iframe и подгоняет её, чтобы не было двойной прокрутки
   var s = document.createElement('script');
   s.src = 'https://forms.yandex.ru/_static/embed.js';
   s.async = true;
