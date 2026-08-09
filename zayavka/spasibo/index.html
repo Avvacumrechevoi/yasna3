@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<!-- Яндекс.Метрика. Ради этой страницы всё и затевалось: Яндекс Формы
+     счётчик на своей странице регистрируют, но хитов в него не шлют —
+     проверено двумя пробными отправками. Поэтому форма после отправки
+     перенаправляет сюда, на нашу землю, где просмотр считается сам
+     и сразу же засчитывается цель. -->
+<script type="text/javascript">
+(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+m[i].l=1*new Date();
+for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=111443194', 'ym');
+ym(111443194, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+
+/* Форма встроена рамкой, и перенаправление после отправки происходит
+   внутри неё. Показывать там сайт внутри сайта нельзя — выходим наверх.
+
+   Цель засчитывается РОВНО ОДИН РАЗ. Внутри рамки мы её не трогаем:
+   верхнее окно сейчас загрузит эту же страницу заново, и она отметится
+   там. Иначе на одну заявку пришлось бы два достижения.
+   Если выйти наверх не удалось — считаем на месте, лучше здесь,
+   чем нигде. Замена адреса, а не переход: возвращаться в рамку
+   с отправленной формой некуда. */
+if (window.top !== window.self) {
+  try { window.top.location.replace('/zayavka/spasibo/'); }
+  catch (e) { ym(111443194, 'reachGoal', 'zayavka'); }
+} else {
+  ym(111443194, 'reachGoal', 'zayavka');
+}
+
+/* Тот же слушатель целей, что на остальных страницах. */
+document.addEventListener('click', function (e) {
+  var a = e.target && e.target.closest && e.target.closest('a');
+  if (!a || !window.ym) return;
+  var h = a.getAttribute('href') || '';
+  var goal = h.indexOf('tel:') === 0 ? 'zvonok'
+           : h.indexOf('mailto:') === 0 ? 'pochta'
+           : h.indexOf('forms.yandex.ru') > -1 ? 'forma'
+           : h.indexOf('/zayavka/') === 0 ? 'zapis'
+           : h.indexOf('/bolshoy-list/') === 0 ? 'sbor' : '';
+  if (goal) ym(111443194, 'reachGoal', goal);
+}, true);
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/111443194" style="position:absolute; left:-9999px;" alt=""/></div></noscript>
+<!-- /Яндекс.Метрика -->
+<title>Заявка отправлена — Золотой Ясень</title>
+<meta name="description" content="Заявка принята. Отвечаем в течение двух-трёх дней."/>
+<!-- Служебная страница: в поиске ей делать нечего, а по ссылкам вес
+     передать надо — отсюда follow. -->
+<meta name="robots" content="noindex,follow"/>
+<link rel="icon" href="/favicon.ico" sizes="any"/>
+<link rel="icon" type="image/jpeg" href="/1/src/img/yasna-mark.jpg"/>
+<link rel="stylesheet" href="/src/fonts.css"/>
+<link rel="canonical" href="https://zolotoj-yasen.ru/zayavka/spasibo/"/>
+<link rel="stylesheet" href="/1/src/styles.css"/>
+<link rel="stylesheet" href="/1/src/refresh.css"/>
+<style>
+  /* Страница из одного экрана: человек только что сделал, что хотел,
+     и держать его тут незачем. Прижимаем содержимое к центру. */
+  .sps { max-width: 620px; margin: 0 auto; padding: 64px 24px 96px; text-align: center; }
+  .sps .tick {
+    width: 68px; height: 68px; margin: 0 auto 26px; border-radius: 50%;
+    display: grid; place-items: center;
+    background: var(--warm); border: 1px solid var(--line);
+  }
+  .sps .tick svg { width: 30px; height: 30px; stroke: var(--accent); fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+  .sps h1 { font-family: var(--font-display); font-size: clamp(30px, 3.2vw + 18px, 46px); line-height: 1.1; margin: 0 0 16px; }
+  .sps .lead { font-size: 1.06rem; line-height: 1.6; color: var(--ink-2); margin: 0 0 32px; }
+  .sps .next {
+    text-align: left; border: 1px solid var(--line); border-radius: 14px;
+    padding: 22px 24px; margin: 0 0 32px; background: var(--warm);
+  }
+  .sps .next h2 { font-family: var(--font-display); font-size: 1.05rem; margin: 0 0 12px; }
+  .sps .next ol { margin: 0; padding-left: 20px; }
+  .sps .next li { line-height: 1.55; color: var(--ink-2); margin-bottom: 8px; }
+  .sps .next li:last-child { margin-bottom: 0; }
+  .sps .cta { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+  .sps .aside { margin-top: 30px; font-size: .92rem; line-height: 1.55; color: var(--ink-3); }
+  @media (max-width: 560px) { .sps { padding: 44px 20px 72px } }
+</style>
+</head>
+<body data-palette="iney" data-fontpair="modern" data-density="regular" data-screen-label="Заявка отправлена">
+
+<header class="nav">
+  <div class="wrap nav-row">
+    <a class="brand" href="/">
+      <img class="mark" src="/1/src/img/yasna-mark.jpg" alt="Золотой Ясень" width="160" height="160"/>
+      <span class="brand-text">
+        <span class="brand-name">Золотой Ясень</span>
+        <span class="brand-sub">Интеграционный центр</span>
+      </span>
+    </a>
+    <details class="nav-menu">
+      <summary class="nav-burger"><span class="bars" aria-hidden="true"></span><span class="cap">Разделы</span></summary>
+    </details>
+    <nav class="nav-links">
+      <a href="/#event">Обращение</a>
+      <a href="/bolshoy-list/">26&nbsp;сентября</a>
+      <a href="/#directions">Управления</a>
+      <a href="/#faq">Вопросы</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="sps">
+
+      <div class="tick" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M4 12.5l5.2 5.2L20 7"/></svg>
+      </div>
+
+      <h1>Заявка ушла</h1>
+      <p class="lead">Спасибо. Мы&nbsp;её&nbsp;прочтём и&nbsp;ответим в&nbsp;течение двух-трёх дней.</p>
+
+      <div class="next">
+        <h2>Что дальше</h2>
+        <ol>
+          <li>Ваша заявка уходит руководителю того управления, которое вы&nbsp;выбрали.</li>
+          <li>Он&nbsp;свяжется тем способом, который вы&nbsp;указали, и&nbsp;расскажет, с&nbsp;чего начать.</li>
+          <li>Если вы&nbsp;записались на&nbsp;общий сбор&nbsp;— ближе к&nbsp;делу пришлём время и&nbsp;адрес.</li>
+        </ol>
+      </div>
+
+      <div class="cta">
+        <a class="btn btn-primary" href="/bolshoy-list/">Про сбор 26&nbsp;сентября <span class="arr">→</span></a>
+        <a class="btn btn-ghost" href="/#directions">Двенадцать управлений</a>
+      </div>
+
+      <p class="aside">Ответа долго нет или что-то важное забыли написать&nbsp;— напишите
+      в&nbsp;<a href="https://t.me/dmlandra" target="_blank" rel="noopener">Telegram</a>
+      или позвоните: <a href="tel:+79082939363">+7&nbsp;908&nbsp;293-93-63</a>,
+      <a href="tel:+79152595250">+7&nbsp;915&nbsp;259-52-50</a>.</p>
+
+    </div>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-bottom">
+      <span>© 2026 Интеграционный центр «Золотой Ясень»</span>
+      <span><a href="/">На главную</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="/1/src/nav.js" defer></script>
+</body>
+</html>
