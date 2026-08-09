@@ -1720,14 +1720,14 @@ html { scroll-padding-top: 74px; }
   90%  { opacity: .5 }
   100% { transform: translate(calc(-50% + var(--sx)), calc(-50% + var(--sy))) scale(.85); opacity: 0 }
 }
-/* Кольцо ходит в обе стороны: полный оборот против часовой, затем полный
-   по часовой. Это даёт alternate — обратный проход отыгрывает те же кадры
-   задом наперёд. ease-in-out гасит скорость к развороту, иначе направление
-   меняется рывком. Один проход 80 с, полный цикл туда-обратно 160 с. */
+/* Кольцо ходит в обе стороны: 5 с против часовой, 5 с по часовой.
+   alternate отыгрывает те же кадры задом наперёд, ease-in-out гасит
+   скорость к развороту — иначе направление меняется рывком.
+   Полный цикл туда-обратно 10 с. */
 @keyframes sbor-spin { to { transform: rotate(-360deg) } }
 .reel .ring-rot {
   transform-box: fill-box; transform-origin: center;
-  animation: sbor-spin 80s ease-in-out infinite alternate;
+  animation: sbor-spin 5s ease-in-out infinite alternate;
 }
 /* При выключенной анимации медальоны просто стоят на кольце — скрипт
    проставляет им итоговое положение. */
