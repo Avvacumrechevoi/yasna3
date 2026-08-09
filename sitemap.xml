@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Только новые адреса. Старые /1/pages/*.html отдают переадресацию
-     и в карту не входят; /privacy/ и /1/ закрыты noindex. -->
+     и в карту не входят; /1/ закрыт noindex. Правовые документы включены
+     намеренно: закон требует к ним неограниченного доступа. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://zolotoj-yasen.ru/</loc>
@@ -141,5 +142,15 @@
     <loc>https://zolotoj-yasen.ru/upravleniya/marshruty/borovsk/</loc>
     <lastmod>2026-08-06</lastmod>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://zolotoj-yasen.ru/privacy/</loc>
+    <lastmod>2026-08-10</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://zolotoj-yasen.ru/soglasie/</loc>
+    <lastmod>2026-08-10</lastmod>
+    <priority>0.3</priority>
   </url>
 </urlset>

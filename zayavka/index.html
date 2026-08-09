@@ -114,7 +114,7 @@ document.addEventListener('click', function (e) {
           или позвоните: <a href="tel:+79082939363">+7&nbsp;908&nbsp;293-93-63</a>,
           <a href="tel:+79152595250">+7&nbsp;915&nbsp;259-52-50</a>.</p>
 
-        <p class="zv-fallback" style="padding-bottom:4px">Отправляя форму, вы&nbsp;соглашаетесь на&nbsp;<a href="/privacy/">Обработка персональных данных</a>.</p>
+        <p class="zv-fallback" style="padding-bottom:4px">В&nbsp;форме нужно отметить согласие на&nbsp;обработку персональных данных. Прочитать заранее: <a href="/soglasie/">текст согласия</a> и&nbsp;<a href="/privacy/">политика обработки</a>.</p>
         <div id="ya-form-mount" class="zv-mount" aria-live="polite">
           <p class="zv-loading"><span class="zv-wait">Загружаем форму…</span>
             <a href="https://forms.yandex.ru/u/6a60a61b493639002bc66bcb/" target="_blank" rel="noopener">открыть напрямую&nbsp;→</a>
@@ -289,7 +289,7 @@ document.addEventListener('click', function (e) {
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© 2026 Интеграционный центр «Золотой Ясень»</span>
+      <span>© 2026 Интеграционный центр «Золотой Ясень» · ООО «ПАРАД&nbsp;КРАСОТЫ», ОГРН&nbsp;1217700366289, ИНН&nbsp;9715404569</span>
       
     </div>
   </div>
@@ -392,5 +392,44 @@ var DIR_NONE = '9008983973814372';
 </script>
 
 <script src="/1/src/nav.js" defer></script>
+<!-- Уведомление о файлах cookie. В России нет прямого требования
+     спрашивать разрешение, как в Европе, но информировать надо: Метрика
+     ставит свои cookie, а Вебвизор пишет поведение. Полоса не перекрывает
+     кнопки и гаснет навсегда после первого «Понятно» — иначе она била бы
+     по конверсии рекламы, ради которой всё и делалось. -->
+<style>
+  .ck-bar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;
+    background:#211B14;color:#EFE9DE;padding:12px 18px;font-size:.86rem;line-height:1.45;
+    box-shadow:0 -6px 24px rgba(0,0,0,.18)}
+  .ck-bar.on{display:block}
+  .ck-in{max-width:1100px;margin:0 auto;display:flex;gap:14px;align-items:center;
+    justify-content:space-between;flex-wrap:wrap}
+  .ck-bar a{color:#EFE9DE;text-decoration:underline;text-underline-offset:2px}
+  .ck-bar button{flex:none;background:#EFE9DE;color:#211B14;border:0;border-radius:999px;
+    padding:8px 20px;font:inherit;font-weight:600;cursor:pointer}
+  .ck-bar button:hover{background:#fff}
+  @media (max-width:560px){.ck-in{gap:10px}.ck-bar{padding:12px 14px;font-size:.82rem}}
+</style>
+<div class="ck-bar" id="ckBar" role="region" aria-label="Уведомление о файлах cookie">
+  <div class="ck-in">
+    <span>Сайт использует cookie и&nbsp;Яндекс&nbsp;Метрику, чтобы считать посещаемость.
+      Подробнее&nbsp;— в&nbsp;<a href="/privacy/">политике обработки данных</a>.</span>
+    <button type="button" id="ckOk">Понятно</button>
+  </div>
+</div>
+<script>
+(function () {
+  var K = 'yasna_cookie_notice', bar = document.getElementById('ckBar');
+  if (!bar) return;
+  var seen;
+  try { seen = localStorage.getItem(K); } catch (e) { seen = '1'; }
+  if (seen) return;
+  bar.classList.add('on');
+  document.getElementById('ckOk').addEventListener('click', function () {
+    bar.classList.remove('on');
+    try { localStorage.setItem(K, '1'); } catch (e) {}
+  });
+})();
+</script>
 </body>
 </html>
