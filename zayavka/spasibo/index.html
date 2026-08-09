@@ -26,7 +26,7 @@ ym(111443194, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
    чем нигде. Замена адреса, а не переход: возвращаться в рамку
    с отправленной формой некуда. */
 if (window.top !== window.self) {
-  try { window.top.location.replace('/zayavka/spasibo/'); }
+  try { window.top.location.replace('https://zolotoj-yasen.ru/zayavka/spasibo/'); }
   catch (e) { ym(111443194, 'reachGoal', 'zayavka'); }
 } else {
   ym(111443194, 'reachGoal', 'zayavka');
