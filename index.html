@@ -599,6 +599,8 @@
     90%{opacity:.5}
     100%{transform:translate(calc(-50% + var(--sx)), calc(-50% + var(--sy))) scale(.85); opacity:0}
   }
+  /* Кольцо ходит в обе стороны: alternate отыгрывает те же кадры задом
+     наперёд, ease-in-out гасит скорость к развороту. Цикл туда-обратно 160 с. */
   @keyframes spinR{to{transform:rotate(-360deg)}}
 </style>
 <!-- Вопросы и ответы: разметка собрана из той же верстки, что видит читатель. -->
@@ -747,7 +749,7 @@
     <div class="day-grid">
       <div class="reel" data-reveal>
         <svg class="ring" viewBox="-190 -190 380 380">
-          <g style="transform-box:fill-box; transform-origin:center; animation:spinR 80s linear infinite">
+          <g style="transform-box:fill-box; transform-origin:center; animation:spinR 80s ease-in-out infinite alternate">
             <circle cx="0" cy="0" r="168" fill="none" stroke="rgba(243,236,224,.12)"/>
             <polygon id="reelPoly" fill="none" stroke="rgba(185,138,60,.5)" stroke-width="1.2"/>
             <g id="reelNodes"></g>
