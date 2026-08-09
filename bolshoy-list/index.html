@@ -316,6 +316,28 @@ document.addEventListener('click', function (e) {
   </div>
 </section>
 
+<!-- Микроцель для рекламы. Заявок на такое событие будет единицы в неделю,
+     а автостратегиям Директа нужно на чём-то учиться — на редком сигнале
+     они не сходятся. «Дочитал до нижнего призыва» случается на порядок
+     чаще и всё ещё отделяет заинтересованного от случайного клика.
+
+     Порог — половина блока в кадре: засчитывать по касанию верхней
+     кромки значило бы ловить тех, кто просто пролистнул страницу вниз.
+     Наблюдатель отключается после первого срабатывания: цель разовая. -->
+<script>
+(function () {
+  var el = document.getElementById('join');
+  if (!el || !('IntersectionObserver' in window)) return;
+  var seen = false;
+  var io = new IntersectionObserver(function (entries) {
+    if (seen || !entries[0].isIntersecting) return;
+    seen = true; io.disconnect();
+    if (window.ym) ym(111443194, 'reachGoal', 'dochital');
+  }, { threshold: 0.5 });
+  io.observe(el);
+})();
+</script>
+
 <!-- FOOTER -->
 <footer class="foot">
   <div class="wrap">
