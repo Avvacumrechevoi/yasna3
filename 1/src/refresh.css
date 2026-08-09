@@ -1662,3 +1662,68 @@ html { scroll-padding-top: 74px; }
    как в исходном материале. :has() трогает только эту сетку — на других
    страницах .fmt-who нет. */
 .fmt-grid > div:has(.fmt-who) { display: flex; flex-direction: column; }
+
+/* ─── Кольцо двенадцати управлений на странице сбора ───────────────────
+   Тот же визуал, что на главной: медальоны слетаются к надписи и снова
+   разлетаются. Смысл ровно в этом — двенадцать управлений сходятся
+   в одном месте 26 сентября, поэтому кольцо живёт на странице сбора,
+   а не на страницах отдельных управлений.
+   Логотипы лежат в разметке, скрипт только расставляет их по окружности:
+   робот без выполнения js видит все двенадцать. */
+.sbor-day {
+  background: var(--ink);
+  color: var(--paper);
+  padding: clamp(56px, 8vw, 96px) 0;
+  overflow: hidden;                    /* разлёт уходит за край, а не в скролл */
+  --gold: #b98a3c;
+}
+.sbor-day .sbor-lead {
+  text-align: center;
+  color: rgba(251,250,246,.72);
+  font-size: clamp(1rem, .95rem + .3vw, 1.12rem);
+  line-height: 1.6;
+  max-width: 46ch;
+  margin: clamp(24px, 4vw, 40px) auto 0;
+}
+.reel { position: relative; aspect-ratio: 1; max-width: 470px; width: 100%; margin: 0 auto; }
+.reel svg.ring { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.reel .letterfly {
+  position: absolute; left: 50%; top: 50%;
+  will-change: transform, opacity;
+  animation: sbor-converge 13s cubic-bezier(.55,.06,.25,1) infinite;
+}
+.reel .letterfly .med {
+  display: grid; place-items: center;
+  width: clamp(44px, 12vw, 56px); height: clamp(44px, 12vw, 56px);
+  border-radius: 50%; overflow: hidden; background: var(--paper);
+  box-shadow: 0 0 0 1.5px rgba(185,138,60,.65), 0 4px 18px rgba(0,0,0,.4);
+}
+.reel .letterfly .med img { width: 100%; height: 100%; object-fit: cover; padding: 5px; border-radius: 50%; }
+.reel .center {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
+  width: min(320px, calc(84% - 66px)); text-align: center;
+}
+@media (max-width: 400px) { .reel .center { width: calc(84% - 78px); } }
+.reel .center .d {
+  font-family: var(--font-mono); font-size: .7rem; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px;
+}
+.reel .center .t { font-family: var(--font-display); font-size: clamp(26px, 3.4vw, 40px); line-height: 1.05; margin: 0; font-weight: 600; }
+@media (max-width: 370px) { .reel .center .t { font-size: 23px; } }
+.reel .center .s { font-size: .8rem; color: rgba(251,250,246,.55); margin-top: 9px; }
+
+@keyframes sbor-converge {
+  0%   { transform: translate(calc(-50% + var(--sx)), calc(-50% + var(--sy))) scale(.85); opacity: 0 }
+  16%  { opacity: .4 }
+  40%  { transform: translate(calc(-50% + var(--cx)), calc(-50% + var(--cy))) scale(1); opacity: 1 }
+  72%  { transform: translate(calc(-50% + var(--cx)), calc(-50% + var(--cy))) scale(1); opacity: 1 }
+  90%  { opacity: .5 }
+  100% { transform: translate(calc(-50% + var(--sx)), calc(-50% + var(--sy))) scale(.85); opacity: 0 }
+}
+@keyframes sbor-spin { to { transform: rotate(-360deg) } }
+.reel .ring-rot { transform-box: fill-box; transform-origin: center; animation: sbor-spin 80s linear infinite; }
+/* При выключенной анимации медальоны просто стоят на кольце — скрипт
+   проставляет им итоговое положение. */
+@media (prefers-reduced-motion: reduce) {
+  .reel .letterfly, .reel .ring-rot { animation: none; }
+}

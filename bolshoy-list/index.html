@@ -78,6 +78,45 @@
   </div>
 </section>
 
+<!-- ─── ДВЕНАДЦАТЬ УПРАВЛЕНИЙ СХОДЯТСЯ ──────────────────────────────
+     Медальоны слетаются к надписи и снова разлетаются — визуал самого
+     сбора. Логотипы лежат в разметке, скрипт лишь расставляет их
+     по окружности. -->
+<section class="sbor-day">
+  <div class="wrap">
+    <div class="reel" id="sborReel">
+      <svg class="ring" viewBox="-190 -190 380 380" aria-hidden="true">
+        <g class="ring-rot">
+          <circle cx="0" cy="0" r="168" fill="none" stroke="rgba(251,250,246,.12)"/>
+          <polygon id="sborPoly" fill="none" stroke="rgba(185,138,60,.5)" stroke-width="1.2"/>
+          <g id="sborNodes"></g>
+        </g>
+      </svg>
+      <div class="reel-items">
+          <span class="letterfly"><span class="med"><img src="/1/src/img/yasna-shkola.png" alt="Логотип управления «Ясна-Школа»" width="512" height="512" loading="lazy" decoding="async"/></span></span>
+          <span class="letterfly"><span class="med"><img src="/1/src/img/vospitanie.svg" alt="Логотип управления «Воспитание и Образование»" width="512" height="512" loading="lazy" decoding="async"/></span></span>
+          <span class="letterfly"><span class="med"><img src="/1/src/img/alexandria-emblem.jpg" alt="Логотип управления «Александрия»" width="512" height="512" loading="lazy" decoding="async"/></span></span>
+          <span class="letterfly"><span class="med"><img src="/1/src/img/neglinka-emblem.png" alt="Логотип управления «Неглинка»" width="512" height="512" loading="lazy" decoding="async"/></span></span>
+          <span class="letterfly"><span class="med"><img src="/1/src/img/granika.png" alt="Логотип управления «Граника»" width="512" height="512" loading="lazy" decoding="async"/></span></span>
+          <span class="letterfly"><span class="med"><img src="/1/src/img/astronevod.png" alt="Логотип управления «Астроневод»" width="512" height="512" loading="lazy" decoding="async"/></span></span>
+          <span class="letterfly"><span class="med"><img src="/1/src/img/marshruty.png" alt="Логотип управления «Ясные маршруты»" width="512" height="512" loading="lazy" decoding="async"/></span></span>
+          <span class="letterfly"><span class="med"><img src="/1/src/img/litprosvet-mark.svg" alt="Логотип управления «ЛитПроСвет»" width="512" height="512" loading="lazy" decoding="async"/></span></span>
+          <span class="letterfly"><span class="med"><img src="/1/src/img/izvod.png" alt="Логотип управления «Извод»" width="512" height="512" loading="lazy" decoding="async"/></span></span>
+          <span class="letterfly"><span class="med"><img src="/1/src/img/dzhiva.png" alt="Логотип управления «Джива»" width="512" height="512" loading="lazy" decoding="async"/></span></span>
+          <span class="letterfly"><span class="med"><img src="/1/src/img/parad.png" alt="Логотип управления «Парад Красоты»" width="512" height="512" loading="lazy" decoding="async"/></span></span>
+          <span class="letterfly"><span class="med"><img src="/1/src/img/geraldika.png" alt="Логотип управления «Herbaldika»" width="512" height="512" loading="lazy" decoding="async"/></span></span>
+      </div>
+      <div class="center">
+        <div class="d">26 сентября 2026</div>
+        <p class="t">Двенадцать управлений в&nbsp;одном месте</p>
+        <div class="s">суббота · 12:00 · Москва</div>
+      </div>
+    </div>
+    <p class="sbor-lead">Каждое управление выйдет и&nbsp;расскажет о&nbsp;себе: чем заняты, что предлагают, кого ждут. За&nbsp;один день можно познакомиться со&nbsp;всеми сразу.</p>
+  </div>
+</section>
+
+
 <section style="padding-top:40px">
   <div class="wrap">
 
@@ -298,6 +337,65 @@
     </div>
   </div>
 </footer>
+
+<script>
+/* Расстановка медальонов по кольцу. Число берётся из разметки, а не зашито:
+   при тринадцатом управлении кольцо перестроится само. */
+(function(){
+  var reel = document.getElementById('sborReel');
+  if (!reel) return;
+  var items = [].slice.call(reel.querySelectorAll('.letterfly'));
+  var n = items.length;
+  var reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
+  /* точки стартового разлёта; если управлений станет больше — добираем по кругу */
+  var spread = [[-300,-200],[330,-230],[400,30],[300,240],[40,300],[-320,230],
+                [-420,40],[-280,-260],[120,-330],[-140,340],[420,-40],[-60,-350]];
+  function ringPts(r){
+    var a=[], i;
+    for (i=0;i<n;i++){ var t=-Math.PI/2+i*2*Math.PI/n; a.push([Math.cos(t)*r, Math.sin(t)*r]); }
+    return a;
+  }
+  var rp = ringPts(168);
+  document.getElementById('sborPoly').setAttribute('points',
+    rp.map(function(p){ return p[0].toFixed(1)+','+p[1].toFixed(1); }).join(' '));
+  var nodes = document.getElementById('sborNodes');
+  rp.forEach(function(p){
+    var c = document.createElementNS('http://www.w3.org/2000/svg','circle');
+    c.setAttribute('cx', p[0].toFixed(1)); c.setAttribute('cy', p[1].toFixed(1));
+    c.setAttribute('r', 3); c.setAttribute('fill', '#b98a3c');
+    nodes.appendChild(c);
+  });
+  var band = document.querySelector('.sbor-day');
+  function layout(){
+    var w = reel.clientWidth || 470;
+    var R = Math.round(w * 168 / 380);
+    /* Разлёт зажимаем габаритами тёмной полосы: у неё overflow:hidden,
+       и без зажима верхние медальоны срезаются краем. Пол в 1.1*R
+       не даёт точке старта уехать внутрь кольца на узких экранах. */
+    var rb = reel.getBoundingClientRect(), bb = band.getBoundingClientRect();
+    var cX = rb.left + rb.width / 2, cY = rb.top + rb.height / 2;
+    var pad = 26;
+    var roomL = Math.max(R * 1.1, cX - bb.left - pad), roomR = Math.max(R * 1.1, bb.right - cX - pad);
+    var roomU = Math.max(R * 1.1, cY - bb.top - pad),  roomD = Math.max(R * 1.1, bb.bottom - cY - pad);
+    items.forEach(function(s, i){
+      var t = -Math.PI/2 + i*2*Math.PI/n;
+      var cx = Math.round(Math.cos(t)*R), cy = Math.round(Math.sin(t)*R);
+      var sp = spread[i] || [Math.round(Math.cos(i)*380), Math.round(Math.sin(i)*320)];
+      s.style.setProperty('--cx', cx+'px');
+      s.style.setProperty('--cy', cy+'px');
+      s.style.setProperty('--sx', Math.round(Math.max(-roomL, Math.min(roomR, sp[0])))+'px');
+      s.style.setProperty('--sy', Math.round(Math.max(-roomU, Math.min(roomD, sp[1])))+'px');
+      s.style.animationDelay = (-i * 0.14) + 's';
+      if (reduce) {
+        s.style.opacity = '1';
+        s.style.transform = 'translate(calc(-50% + '+cx+'px), calc(-50% + '+cy+'px))';
+      }
+    });
+  }
+  layout();
+  addEventListener('resize', layout);
+})();
+</script>
 
 <script src="/1/src/nav.js" defer></script>
 </body>
