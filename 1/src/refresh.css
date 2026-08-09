@@ -1708,8 +1708,14 @@ html { scroll-padding-top: 74px; }
   font-family: var(--font-mono); font-size: .7rem; letter-spacing: .2em;
   text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px;
 }
-.reel .center .t { font-family: var(--font-display); font-size: clamp(26px, 3.4vw, 40px); line-height: 1.05; margin: 0; font-weight: 600; }
-@media (max-width: 370px) { .reel .center .t { font-size: 23px; } }
+/* Число вместо слова «двенадцать»: в узкой середине круга длинное слово
+   занимало три строки, цифра читается сразу и на телефоне тоже. */
+.reel .center .num {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(46px, 4.4vw + 24px, 78px); line-height: .92;
+  letter-spacing: -.02em; margin: 6px 0 4px;
+}
+.reel .center .t { font-family: var(--font-display); font-size: clamp(15px, 1.4vw + 9px, 21px); line-height: 1.25; margin: 0; font-weight: 500; }
 .reel .center .s { font-size: .8rem; color: rgba(251,250,246,.55); margin-top: 9px; }
 
 @keyframes sbor-converge {
@@ -1720,23 +1726,13 @@ html { scroll-padding-top: 74px; }
   90%  { opacity: .5 }
   100% { transform: translate(calc(-50% + var(--sx)), calc(-50% + var(--sy))) scale(.85); opacity: 0 }
 }
-/* Кольцо идёт в такт со слётом медальонов, а не само по себе.
-   Слёт длится 13 с: до 40 % медальоны летят к кольцу, с 40 до 72 % стоят
-   на нём, дальше разлетаются. Кольцо повторяет этот такт: пока собираются —
-   плавно против часовой, когда собрались — разворот по часовой, на разлёте
-   снова против. Углы подобраны так, чтобы за цикл вернуться в ноль, иначе
-   на стыке был бы скачок. Скорость 3–7°/с — спокойнее прежних 72°/с.
-   Смягчение задано на каждом отрезке отдельно: общий ease-in-out
-   исказил бы скорости внутри цикла. */
-@keyframes sbor-spin {
-  0%   { transform: rotate(0deg);    animation-timing-function: ease-in-out }
-  40%  { transform: rotate(-18deg);  animation-timing-function: ease-in-out }
-  72%  { transform: rotate(11deg);   animation-timing-function: ease-in-out }
-  100% { transform: rotate(0deg) }
-}
+/* Кольцо просто едет по часовой, без разворотов: привязка к фазам слёта
+   оказалась лишней сложностью. Полный оборот за 80 с — 4,5°/с, движение
+   заметно, но глаз не отвлекает. */
+@keyframes sbor-spin { to { transform: rotate(360deg) } }
 .reel .ring-rot {
   transform-box: fill-box; transform-origin: center;
-  animation: sbor-spin 13s linear infinite;
+  animation: sbor-spin 80s linear infinite;
 }
 /* При выключенной анимации медальоны просто стоят на кольце — скрипт
    проставляет им итоговое положение. */
