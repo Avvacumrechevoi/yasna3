@@ -84,12 +84,19 @@ document.addEventListener('click', function (e) {
      кнопки. В разметке они идут именно в этом порядке, потому что на
      телефоне колонка одна и порядок берётся из разметки — дата с адресом
      обязаны стоять выше кнопок. На широком экране раскладываем обратно:
-     слева текст и под ним кнопки, справа плитка во всю высоту. */
+     слева текст, под ним кнопка, справа плитка.
+
+     Плитка живёт в первой строке и прижата к низу текста. Держать её
+     растянутой на обе строки нельзя: выше текста она не бывает, зато
+     растягивает вторую строку, и кнопка отъезжает от текста на 70px. */
   @media (min-width: 921px) {
-    .dir-hero-row { grid-template-rows: auto auto; }
+    /* Зазор в 48px из styles.css разводит колонки, и он же разводил бы
+       текст с кнопкой — 56px до призыва многовато. Колонкам оставляем 48,
+       строкам даём 18. */
+    .dir-hero-row { grid-template-rows: auto auto; column-gap: 48px; row-gap: 18px; }
     .dir-hero-row > .hero-lead  { grid-column: 1; grid-row: 1; }
-    .dir-hero-row > .hero-cta   { grid-column: 1; grid-row: 2; margin-top: 22px; }
-    .dir-hero-row > .hero-facts { grid-column: 2; grid-row: 1 / span 2; align-self: end; }
+    .dir-hero-row > .hero-facts { grid-column: 2; grid-row: 1; align-self: end; }
+    .dir-hero-row > .hero-cta   { grid-column: 1; grid-row: 2; }
   }
 
   /* Порядок панелей на телефоне. refresh.css:1531 поднимает .about-body
@@ -104,10 +111,39 @@ document.addEventListener('click', function (e) {
     .dash .panel:has(.kv-list)    { order: 4; }
   }
 
-  /* Главная кнопка на телефоне — во всю ширину: рядом с ней стоят ещё две,
-     и втроём они складывались в три ряда. */
+  /* Кнопка в первом экране теперь одна, и на телефоне она во всю ширину. */
   @media (max-width: 560px) {
     .hero-cta .btn-primary { flex: 1 1 100%; justify-content: center; }
+  }
+
+  /* Живая кнопка. Первый экран статичен, и единственный призыв рискует
+     потеряться среди спокойной вёрстки. Взял самое тихое, что работает:
+     блик раз в шесть секунд проходит по кнопке слева направо. Ни прыжков,
+     ни мигания — страница про сбор исследователей, а не про распродажу.
+
+     Блик рисуется псевдоэлементом поверх кнопки, поэтому ей нужны
+     position и overflow; стрелка и текст поднимаются над бликом. */
+  .btn-live { position: relative; overflow: hidden; isolation: isolate; }
+  .btn-live > * { position: relative; z-index: 1; }
+  .btn-live::after {
+    content: ""; position: absolute; z-index: 0; top: 0; bottom: 0;
+    width: 45%; left: -60%;
+    background: linear-gradient(100deg,
+      transparent 0%, rgba(255,255,255,.18) 50%, transparent 100%);
+    animation: btnLive 6s ease-in-out infinite;
+  }
+  @keyframes btnLive {
+    0%, 72% { left: -60%; }
+    100%    { left: 130%; }
+  }
+  /* Стрелка подаётся вперёд под курсором — обычная вежливость ссылки. */
+  .btn-live .arr { transition: transform .18s ease; }
+  .btn-live:hover .arr { transform: translateX(3px); }
+
+  /* Кому движение мешает или вредит — тому его нет вовсе. */
+  @media (prefers-reduced-motion: reduce) {
+    .btn-live::after { animation: none; display: none; }
+    .btn-live .arr { transition: none; }
   }
 </style>
 </head>
@@ -174,12 +210,12 @@ document.addEventListener('click', function (e) {
         </dl>
       </aside>
 
+      <!-- Одна кнопка вместо трёх. «Программа дня» вела к соседнему блоку
+           этой же страницы, куда человек и так доскроллит, а ссылка на неё
+           есть в шапке. «В календарь» переехала на страницу «спасибо»:
+           отмечать дату имеет смысл тому, кто уже записался. -->
       <div class="hero-cta">
-        <a class="btn btn-primary" href="/zayavka/?goal=day">Записаться <span class="arr">→</span></a>
-        <a class="btn btn-ghost" href="#programma">Программа дня</a>
-        <!-- До сбора семь недель: без отметки в календаре событие
-             выпадает из головы у половины записавшихся. -->
-        <a class="btn btn-ghost" href="/bolshoy-list/bolshoy-list-2026.ics" download>В&nbsp;календарь</a>
+        <a class="btn btn-primary btn-live" href="/zayavka/?goal=day">Записаться <span class="arr">→</span></a>
       </div>
     </div>
   </div>

@@ -80,6 +80,9 @@ document.addEventListener('click', function (e) {
   .sps .next li { line-height: 1.55; color: var(--ink-2); margin-bottom: 8px; }
   .sps .next li:last-child { margin-bottom: 0; }
   .sps .cta { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+  /* Атрибут hidden проигрывает любому собственному display: кнопка .btn
+     задаёт свой, и «В календарь» показывалась всем подряд. Гасим явно. */
+  .sps .cta .btn[hidden] { display: none; }
   .sps .aside { margin-top: 30px; font-size: .92rem; line-height: 1.55; color: var(--ink-3); }
   @media (max-width: 560px) { .sps { padding: 44px 20px 72px } }
 </style>
@@ -129,6 +132,13 @@ document.addEventListener('click', function (e) {
 
       <div class="cta">
         <a class="btn btn-primary" href="/bolshoy-list/">Про сбор 26&nbsp;сентября <span class="arr">→</span></a>
+        <!-- Отметка в календаре переехала сюда с первого экрана посадочной.
+             Там она была третьей кнопкой и растаскивала внимание, а нужна
+             тому, кто уже записался: до сбора семь недель, и без отметки
+             событие выпадает из головы. Показывается только записавшимся
+             на сбор — остальным календарь ни к чему. -->
+        <a class="btn btn-ghost" id="spIcs" hidden
+           href="/bolshoy-list/bolshoy-list-2026.ics" download>В&nbsp;календарь</a>
         <a class="btn btn-ghost" href="/#directions">Двенадцать управлений</a>
       </div>
 
@@ -173,6 +183,9 @@ document.addEventListener('click', function (e) {
     '<li>Напомним накануне, 25&nbsp;сентября, тем способом, который вы&nbsp;указали.</li>' +
     '<li>Если зал переменится&nbsp;— скажем заранее и&nbsp;пришлём новый адрес.</li>' +
     '<li>Планы поменялись&nbsp;— напишите, освободим место для другого человека.</li>';
+
+  var ics = document.getElementById('spIcs');
+  if (ics) ics.hidden = false;
 })();
 </script>
 
