@@ -16,7 +16,7 @@ BEGIN:VEVENT
 UID:bolshoy-list-2026@zolotoj-yasen.ru
 DTSTAMP:20260810T000000Z
 DTSTART;TZID=Europe/Moscow:20260926T120000
-DTEND;TZID=Europe/Moscow:20260926T180000
+DTEND;TZID=Europe/Moscow:20260926T160000
 SUMMARY:Большой лист 2026 — общий сбор «Золотого Ясеня»
 DESCRIPTION:Открытый сбор интеграционного центра «Золотой Ясень»: слово осн
  ователя\, рассказы двенадцати управлений о себе\, живые истории участников
