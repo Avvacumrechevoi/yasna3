@@ -73,7 +73,7 @@ document.addEventListener('click', function (e) {
     </details>
     <nav class="nav-links">
       <a href="/#event">Обращение</a>
-      <a href="/#day">26&nbsp;сентября</a>
+      <a href="/bolshoy-list/">26&nbsp;сентября</a>
       <a href="/#directions">Управления</a>
       <a href="/#method">Метод</a>
       <a href="/#faq">Вопросы</a>
@@ -105,16 +105,11 @@ document.addEventListener('click', function (e) {
           <span class="sub">Полей мало · на минуту</span>
         </div>
 
-        <!-- Запасной путь стоит ВСЕГДА, а не показывается по таймеру:
-             определить «форма не поднялась» надёжно нельзя — у части
-             посетителей embed.js не отвечает, хотя форма работает,
-             и подмена содержимого стёрла бы уже заполненные поля. -->
-        <p class="zv-fallback">Форма не открывается? Напишите
-          <a href="https://t.me/dmlandra" target="_blank" rel="noopener">в&nbsp;Telegram</a>
-          или позвоните: <a href="tel:+79082939363">+7&nbsp;908&nbsp;293-93-63</a>,
-          <a href="tel:+79152595250">+7&nbsp;915&nbsp;259-52-50</a>.</p>
-
-        <p class="zv-fallback" style="padding-bottom:4px">В&nbsp;форме нужно отметить согласие на&nbsp;обработку персональных данных. Прочитать заранее: <a href="/soglasie/">текст согласия</a> и&nbsp;<a href="/privacy/">политика обработки</a>.</p>
+        <!-- Форма идёт ПЕРВОЙ. Раньше над ней стояли два абзаца, и первое,
+             что читал человек, было «Форма не открывается?» — сообщение
+             о поломке до того, как он увидел саму форму. Первое поле при этом
+             уезжало на 662 пикселя. Запасной путь никуда не делся, он ниже:
+             тот, у кого форма не поднялась, до него доскроллит. -->
         <div id="ya-form-mount" class="zv-mount" aria-live="polite">
           <p class="zv-loading"><span class="zv-wait">Загружаем форму…</span>
             <a href="https://forms.yandex.ru/u/6a60a61b493639002bc66bcb/" target="_blank" rel="noopener">открыть напрямую&nbsp;→</a>
@@ -125,6 +120,19 @@ document.addEventListener('click', function (e) {
             </p>
           </noscript>
         </div>
+
+        <p class="zv-fallback" style="padding-top:10px">В&nbsp;форме нужно отметить согласие
+          на&nbsp;обработку персональных данных. Прочитать заранее:
+          <a href="/soglasie/">текст согласия</a> и&nbsp;<a href="/privacy/">политика обработки</a>.</p>
+
+        <!-- Запасной путь стоит ВСЕГДА, а не показывается по таймеру:
+             определить «форма не поднялась» надёжно нельзя — у части
+             посетителей embed.js не отвечает, хотя форма работает,
+             и подмена содержимого стёрла бы уже заполненные поля. -->
+        <p class="zv-fallback" style="padding-bottom:4px">Если форма не&nbsp;открылась&nbsp;— напишите
+          <a href="https://t.me/dmlandra" target="_blank" rel="noopener">в&nbsp;Telegram</a>
+          или позвоните: <a href="tel:+79082939363">+7&nbsp;908&nbsp;293-93-63</a>,
+          <a href="tel:+79152595250">+7&nbsp;915&nbsp;259-52-50</a>.</p>
       </article>
 
       <!-- АЛЬТЕРНАТИВЫ -->
@@ -275,7 +283,7 @@ document.addEventListener('click', function (e) {
       <div>
         <h4>Участие</h4>
         <ul>
-          <li><a href="/#day">26 сентября</a></li>
+          <li><a href="/bolshoy-list/">26 сентября</a></li>
           <li><a href="/#ways">Четыре пути</a></li>
           <li><a href="/#faq">Вопросы</a></li>
         </ul>
@@ -353,6 +361,29 @@ var DIR_NONE = '9008983973814372';
        выставится в «Ещё не выбрал(а)». Это видно на экране и правится одним
        щелчком, в отличие от тихо подставленного чужого ответа. */
     pre.push(Q_DIR + '=' + DIR_NONE);
+  }
+
+  /* Пришли со страницы сбора — страница должна говорить про сбор.
+     Иначе человек, нажавший «Записаться» на 26 сентября, попадает
+     на общую «Оставить заявку» с обещанием «ответим за два-три дня
+     и подскажем, с чего начать»: событие пропадает из кадра целиком,
+     и половина уходит, решив, что кликнула не туда.
+     Флаг кладём в sessionStorage — он переживёт уход на форму
+     и вернётся вместе с человеком на страницу «спасибо». */
+  if (goal === 'day') {
+    try { sessionStorage.setItem('yasna_scenario', 'day'); } catch (e) {}
+    var h1 = document.querySelector('.zv-head .dir-title');
+    var sub = document.querySelector('.zv-head .dir-sub');
+    var back = document.querySelector('.dir-back');
+    if (h1)  h1.textContent = 'Записаться на Большой лист';
+    if (sub) sub.innerHTML = '<b>26&nbsp;сентября 2026, суббота, 12:00. ' +
+      'Большая Никитская,&nbsp;46/17, стр.&nbsp;1.</b><br/>' +
+      'Место закрепляем по&nbsp;заявке. Напомним накануне и&nbsp;сразу скажем, ' +
+      'если зал переменится. Участие бесплатное.';
+    if (back) {
+      back.setAttribute('href', '/bolshoy-list/');
+      back.innerHTML = '<span>← </span><span>К СБОРУ 26 СЕНТЯБРЯ</span>';
+    }
   }
 
   var src = 'https://forms.yandex.ru/u/' + FORM_ID + '/?' + pre.join('&');

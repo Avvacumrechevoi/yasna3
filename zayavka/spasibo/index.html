@@ -114,12 +114,12 @@ document.addEventListener('click', function (e) {
         <svg viewBox="0 0 24 24"><path d="M4 12.5l5.2 5.2L20 7"/></svg>
       </div>
 
-      <h1>Заявка ушла</h1>
-      <p class="lead">Спасибо. Мы&nbsp;её&nbsp;прочтём и&nbsp;ответим в&nbsp;течение двух-трёх дней.</p>
+      <h1 id="spTitle">Заявка ушла</h1>
+      <p class="lead" id="spLead">Спасибо. Мы&nbsp;её&nbsp;прочтём и&nbsp;ответим в&nbsp;течение двух-трёх дней.</p>
 
       <div class="next">
-        <h2>Что дальше</h2>
-        <ol>
+        <h2 id="spNextTitle">Что дальше</h2>
+        <ol id="spNext">
           <li>Ваша заявка уходит руководителю того управления, которое вы&nbsp;выбрали.</li>
           <li>Он&nbsp;свяжется тем способом, который вы&nbsp;указали, и&nbsp;расскажет, с&nbsp;чего начать.</li>
           <li>Если вы&nbsp;записались на&nbsp;общий сбор&nbsp;— ждём 26&nbsp;сентября в&nbsp;12:00 на&nbsp;Большой Никитской,&nbsp;46/17, стр.&nbsp;1. Напомним накануне, а&nbsp;если места переменятся&nbsp;— скажем заранее.</li>
@@ -148,6 +148,32 @@ document.addEventListener('click', function (e) {
     </div>
   </div>
 </footer>
+
+<script>
+/* Записался на сбор — и текст про сбор. Страница обещала звонок
+   руководителя выбранного управления, но по ссылке ?goal=day форма
+   намеренно ставит «Ещё не выбрал(а)»: обещать было некому.
+   Сценарий помечается на /zayavka/ и лежит в sessionStorage —
+   он переживает уход на forms.yandex.ru и возвращение сюда. */
+(function () {
+  var s; try { s = sessionStorage.getItem('yasna_scenario'); } catch (e) { return; }
+  if (s !== 'day') return;
+  try { sessionStorage.removeItem('yasna_scenario'); } catch (e) {}
+
+  var t = document.getElementById('spTitle');
+  var lead = document.getElementById('spLead');
+  var nt = document.getElementById('spNextTitle');
+  var list = document.getElementById('spNext');
+  if (t) t.textContent = 'Вы записаны';
+  if (lead) lead.innerHTML = 'Ждём вас 26&nbsp;сентября в&nbsp;12:00 на&nbsp;Большой Никитской,&nbsp;46/17, стр.&nbsp;1.';
+  if (nt) nt.textContent = 'После записи';
+  if (list) list.innerHTML =
+    '<li>Место за&nbsp;вами закреплено.</li>' +
+    '<li>Напомним накануне, 25&nbsp;сентября, тем способом, который вы&nbsp;указали.</li>' +
+    '<li>Если зал переменится&nbsp;— скажем заранее и&nbsp;пришлём новый адрес.</li>' +
+    '<li>Планы поменялись&nbsp;— напишите, освободим место для другого человека.</li>';
+})();
+</script>
 
 <script src="/1/src/nav.js" defer></script>
 <!-- Уведомление о файлах cookie. В России нет прямого требования
