@@ -26,7 +26,10 @@ ym(111443194, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
    чем нигде. Замена адреса, а не переход: возвращаться в рамку
    с отправленной формой некуда. */
 if (window.top !== window.self) {
-  try { window.top.location.replace('https://zolotoj-yasen.ru/zayavka/spasibo/'); }
+  /* Метку из адреса надо унести с собой: короткая форма возвращает
+     человека сюда по ссылке ?e=day, и без неё верхнее окно откроется
+     без признака сценария — текст будет про обычную заявку. */
+  try { window.top.location.replace('https://zolotoj-yasen.ru/zayavka/spasibo/' + location.search); }
   catch (e) { ym(111443194, 'reachGoal', 'zayavka'); }
 } else {
   ym(111443194, 'reachGoal', 'zayavka');
@@ -167,8 +170,14 @@ document.addEventListener('click', function (e) {
    Сценарий помечается на /zayavka/ и лежит в sessionStorage —
    он переживает уход на forms.yandex.ru и возвращение сюда. */
 (function () {
-  var s; try { s = sessionStorage.getItem('yasna_scenario'); } catch (e) { return; }
-  if (s !== 'day') return;
+  /* Два пути к одному тексту. Длинная форма кладёт метку в sessionStorage
+     на странице /zayavka/, короткая возвращает человека по ссылке ?e=day.
+     Второй путь надёжнее: он переживает и приватную вкладку, и переход
+     на форму с другого устройства. */
+  var s = null;
+  try { s = sessionStorage.getItem('yasna_scenario'); } catch (e) {}
+  var byUrl = new URLSearchParams(location.search).get('e') === 'day';
+  if (s !== 'day' && !byUrl) return;
   try { sessionStorage.removeItem('yasna_scenario'); } catch (e) {}
 
   var t = document.getElementById('spTitle');

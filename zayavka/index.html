@@ -112,8 +112,12 @@ document.addEventListener('click', function (e) {
              уезжало на 662 пикселя. Запасной путь никуда не делся, он ниже:
              тот, у кого форма не поднялась, до него доскроллит. -->
         <div id="ya-form-mount" class="zv-mount" aria-live="polite">
+          <!-- Обе запасные ссылки ведут в ДЛИННУЮ форму намеренно. Скрипт
+               подменит первую на короткую, когда придут по ?goal=day,
+               а вторая живёт в noscript: там скрипта нет по определению,
+               и длинная форма отвечает на любой запрос, включая запись. -->
           <p class="zv-loading"><span class="zv-wait">Загружаем форму…</span>
-            <a href="https://forms.yandex.ru/u/6a60a61b493639002bc66bcb/" target="_blank" rel="noopener">открыть напрямую&nbsp;→</a>
+            <a id="zvDirect" href="https://forms.yandex.ru/u/6a60a61b493639002bc66bcb/" target="_blank" rel="noopener">открыть напрямую&nbsp;→</a>
           </p>
           <noscript>
             <p class="zv-loading">Для формы нужен включённый JavaScript.
@@ -322,7 +326,15 @@ document.addEventListener('click', function (e) {
    так: открыть форму, в консоли браузера выполнить
    document.querySelectorAll('input,textarea') и посмотреть name/value.
    ───────────────────────────────────────────────────────────────────── */
-var FORM_ID = '6a60a61b493639002bc66bcb';
+/* Две формы. Длинная спрашивает про управление, город, тему выступления
+   и вопросы — она нужна тем, кто вступает, приносит проект или спрашивает.
+   Короткая спрашивает имя и контакт: человеку, который нажал «Записаться
+   на 26 сентября», отвечать на девять вопросов незачем, первый из них
+   он уже ответил самой кнопкой. Развилка идёт по метке ?goal=day. */
+var FORM_LONG  = '6a60a61b493639002bc66bcb';
+var FORM_SHORT = '6a7a0a84eb6146a639de146d';
+var IS_DAY = new URLSearchParams(location.search).get('goal') === 'day';
+var FORM_ID = IS_DAY ? FORM_SHORT : FORM_LONG;
 
 /* внутренние идентификаторы полей формы (вопрос → коды вариантов) */
 var Q_GOAL = 'answer_choices_9008983973706812';
@@ -353,6 +365,10 @@ var DIR_NONE = '9008983973814372';
   if (dir && DIR[dir]) {
     pre.push(Q_GOAL + '=' + GOAL.join);     // пришли со страницы управления → «вступить»
     pre.push(Q_DIR + '=' + DIR[dir]);
+  } else if (goal === 'day') {
+    /* Короткая форма своих вопросов про цель и управление не имеет,
+       предзаполнять в ней нечего. Коды длинной формы сюда подставлять
+       нельзя: чужие идентификаторы она просто отбросит. */
   } else if (goal && GOAL[goal]) {
     pre.push(Q_GOAL + '=' + GOAL[goal]);
     /* Форма держит черновик в localStorage. Ссылка ?goal=day перебивает только
@@ -385,9 +401,44 @@ var DIR_NONE = '9008983973814372';
       back.setAttribute('href', '/bolshoy-list/');
       back.innerHTML = '<span>← </span><span>К СБОРУ 26 СЕНТЯБРЯ</span>';
     }
+
+    /* Панель справа обещала ответ «в течение двух-трёх дней» и помощь
+       с выбором управления. Рядом с записью на сбор это читается как
+       другое обращение: человек ждёт подтверждения, а ему обещают
+       разговор о вступлении. Подменяем на то, что произойдёт на самом деле. */
+    var steps = document.querySelectorAll('.join-body .join-step');
+    var dayText = [
+      ['Место закреплено', 'Заявка сохраняется сразу, отвечать на&nbsp;неё не&nbsp;нужно.'],
+      ['Напомним накануне', '25&nbsp;сентября напишем тем способом, который вы&nbsp;указали.'],
+      ['Придёте 26-го', 'На&nbsp;входе назовите имя из&nbsp;заявки. Планы поменялись&nbsp;— напишите, освободим место.']
+    ];
+    for (var i = 0; i < steps.length && i < dayText.length; i++) {
+      var t = steps[i].querySelector('.join-title');
+      var d = steps[i].querySelector('.join-desc');
+      if (t) t.textContent = dayText[i][0];
+      if (d) d.innerHTML = dayText[i][1];
+    }
+
+    /* Короткая форма спрашивает только имя и контакт. Тому, кто пришёл
+       за другим, нужен видимый путь к длинной форме. */
+    var mountEl = document.getElementById('ya-form-mount');
+    if (mountEl && mountEl.parentNode) {
+      var more = document.createElement('p');
+      more.className = 'zv-fallback';
+      more.style.paddingTop = '10px';
+      more.innerHTML = 'Вступить в&nbsp;управление, предложить проект или задать вопрос&nbsp;— ' +
+        '<a href="/zayavka/">здесь</a>.';
+      mountEl.parentNode.insertBefore(more, mountEl.nextSibling);
+    }
   }
 
   var src = 'https://forms.yandex.ru/u/' + FORM_ID + '/?' + pre.join('&');
+
+  /* Запасная ссылка обязана вести в ту же форму, что и рамка: иначе
+     человек, у которого рамка не поднялась, попадёт на девять вопросов
+     вместо двух. */
+  var direct = document.getElementById('zvDirect');
+  if (direct) direct.href = 'https://forms.yandex.ru/u/' + FORM_ID + '/';
 
   var iframe = document.createElement('iframe');
   iframe.src = src;
@@ -419,22 +470,34 @@ var DIR_NONE = '9008983973814372';
 
      Форма шлёт родителю сообщение {"iframe-height": N} — на нём и держимся.
      embed.js оставлен: он делает то же самое и служит вторым путём. */
+  var gotHeight = false;
   window.addEventListener('message', function (e) {
     if (String(e.origin).indexOf('forms.yandex') < 0) return;
     var h;
     try { h = JSON.parse(e.data)['iframe-height']; } catch (err) { return; }
     if (h > 0 && e.source === iframe.contentWindow) {
+      gotHeight = true;
       iframe.style.height = h + 'px';
       iframe.style.minHeight = '0';
     }
   }, false);
 
   /* Страховка на случай, если сообщение не придёт вовсе: блокировщик,
-     офисная сеть, отвалившийся домен. Запас взят по замеру 1922px
-     плюс место на будущие вопросы. Ждём 3 с, а не 6: полминуты
-     смотреть на обрезанную форму человек не станет. */
+     офисная сеть, отвалившийся домен. Ждём 3 с, а не 6: полминуты
+     смотреть на обрезанную форму человек не станет.
+
+     Условие раньше было «рамка ниже 660px» — и короткая форма попадала
+     под него всегда: она честно занимает около 700px, но встречалась
+     с запасом в 2200px, и под кнопкой повисал пустой экран в полтора
+     роста. Теперь смотрим не на высоту, а на то, пришло ли сообщение
+     о ней вообще; запас берём по форме.
+
+     Замерено 10.08.2026 на 320 и 375px: короткая форма кончается кнопкой
+     «Записаться на 26 сентября» на 688px. Ставим 900 — двести пикселей
+     сверху на сообщения об ошибках и на перенос длинных строк. */
   setTimeout(function () {
-    if (iframe.clientHeight <= 660) iframe.style.minHeight = '2200px';
+    if (gotHeight) return;
+    iframe.style.minHeight = IS_DAY ? '900px' : '2200px';
   }, 3000);
 
   mount.appendChild(iframe);
