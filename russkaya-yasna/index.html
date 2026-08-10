@@ -54,6 +54,17 @@ document.addEventListener('click', function (e) {
 <link rel="stylesheet" href="/1/src/styles.css"/>
 <link rel="stylesheet" href="/1/src/refresh.css"/>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Золотой Ясень","item":"https://zolotoj-yasen.ru/"},{"@type":"ListItem","position":2,"name":"Русская Ясна","item":"https://zolotoj-yasen.ru/russkaya-yasna/"}]}</script>
+<style>
+  /* Поля панелей. Штатный .panel-body задаёт только вертикальные отступы
+     (styles.css:451), горизонтальные ставят на месте — как это сделано
+     на страницах управлений. Абзацы .unique-text идут с нулевыми полями,
+     поэтому расстояние между ними задаём здесь же: без этого два абзаца
+     в «С чего начать» слипались в один. */
+  .ry-body { padding: 20px 24px 24px; }
+  .ry-body .unique-text + .unique-text { margin-top: 14px; }
+  .ry-body .ry-cta { margin: 20px 0 0; }
+  @media (max-width: 560px) { .ry-body { padding: 18px 20px 20px } }
+</style>
 </head>
 <body data-palette="iney" data-fontpair="modern" data-density="regular" data-screen-label="Русская Ясна">
 
@@ -151,13 +162,13 @@ document.addEventListener('click', function (e) {
             <h3>Ближайшее событие</h3>
             <span class="sub">Открытое, по записи</span>
           </div>
-          <div style="padding:0 4px 4px">
+          <div class="panel-body ry-body">
             <p class="unique-text"><b>26&nbsp;сентября 2026, суббота, с&nbsp;12:00 до&nbsp;16:00.</b><br/>
             Москва, Большая Никитская,&nbsp;46/17, стр.&nbsp;1.</p>
             <p class="unique-text">Двенадцать управлений по&nbsp;очереди рассказывают
             о&nbsp;себе, живые истории участников и&nbsp;творческий вечер. Участие бесплатное.
             Зал вмещает 80&nbsp;человек, поэтому нужна запись.</p>
-            <p style="margin-top:14px"><a class="btn btn-primary" href="/zayavka/?goal=day">Записаться <span class="arr">→</span></a></p>
+            <p class="ry-cta"><a class="btn btn-primary" href="/zayavka/?goal=day">Записаться <span class="arr">→</span></a></p>
           </div>
         </article>
 
@@ -166,10 +177,9 @@ document.addEventListener('click', function (e) {
             <h3>С чего начать</h3>
             <span class="sub">Если вы здесь впервые</span>
           </div>
-          <div style="padding:0 4px 4px">
+          <div class="panel-body ry-body">
             <p class="unique-text">Подпишитесь на&nbsp;канал, посмотрите разборы
-            и&nbsp;приходите на&nbsp;открытую встречу. Ступеней, экзаменов и&nbsp;обязательных
-            платежей нет: формат участия выбираете сами.</p>
+            и&nbsp;приходите на&nbsp;открытую встречу. Формат участия выбираете сами.</p>
             <p class="unique-text">Ближе всего к&nbsp;языку&nbsp;—
             <a href="/upravleniya/yasna-shkola/">Ясна-Школа</a> и&nbsp;<a href="/upravleniya/izvod/">Извод</a>.
             К&nbsp;городу и&nbsp;истории&nbsp;— <a href="/upravleniya/neglinka/">Неглинка</a>
