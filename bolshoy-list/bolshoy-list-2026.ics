@@ -29,7 +29,7 @@ STATUS:CONFIRMED
 BEGIN:VALARM
 TRIGGER:-P1D
 ACTION:DISPLAY
-DESCRIPTION:Завтра Большой лист — 12:00, Большая Никитская, 46/17
+DESCRIPTION:Завтра Большой лист — 12:00, Большая Никитская, 46/17, стр. 1
 END:VALARM
 END:VEVENT
 END:VCALENDAR

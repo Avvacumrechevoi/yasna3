@@ -36,7 +36,7 @@ document.addEventListener('click', function (e) {
 <noscript><div><img src="https://mc.yandex.ru/watch/111443194" style="position:absolute; left:-9999px;" alt=""/></div></noscript>
 <!-- /Яндекс.Метрика -->
 <title>Большой лист — общий сбор «Золотого Ясеня» 26 сентября 2026 в Москве</title>
-<meta name="description" content="26 сентября 2026, суббота, 12:00. Москва, Большая Никитская 46/17 — метро Баррикадная. Открытый сбор центра «Золотой Ясень»: слово основателя, двенадцать управлений о себе, живые истории, творческий вечер. Вход свободный."/>
+<meta name="description" content="26 сентября 2026, суббота, 12:00. Москва, Большая Никитская, 46/17, стр. 1 — метро Баррикадная. Открытый сбор центра «Золотой Ясень»: слово основателя, двенадцать управлений о себе, живые истории, творческий вечер. Вход свободный."/>
 <link rel="icon" href="/favicon.ico" sizes="any"/>
 <link rel="icon" type="image/jpeg" href="/1/src/img/yasna-mark.jpg"/>
 <link rel="stylesheet" href="/src/fonts.css"/>
@@ -45,7 +45,7 @@ document.addEventListener('click', function (e) {
 <meta property="og:locale" content="ru_RU"/>
 <meta property="og:site_name" content="Золотой Ясень"/>
 <meta property="og:title" content="Большой лист — 26 сентября 2026, Москва. Вход свободный"/>
-<meta property="og:description" content="Москва, Большая Никитская 46/17, метро Баррикадная. Слово основателя, двенадцать управлений о себе, живые истории, творческий вечер. Суббота, 12:00."/>
+<meta property="og:description" content="Москва, Большая Никитская, 46/17, стр. 1, метро Баррикадная. Слово основателя, двенадцать управлений о себе, живые истории, творческий вечер. Суббота, 12:00."/>
 <meta property="og:url" content="https://zolotoj-yasen.ru/bolshoy-list/"/>
 <meta property="og:image" content="https://zolotoj-yasen.ru/src/img/og-cover.jpg"/>
 <meta property="og:image:width" content="1200"/>
@@ -75,6 +75,24 @@ document.addEventListener('click', function (e) {
   .hero-facts dd span { display: block; font-weight: 400; font-size: .9rem;
     color: var(--ink-2); margin-top: 3px; }
   @media (max-width: 920px) { .hero-facts { margin-top: 26px; padding: 18px 20px } }
+
+  /* Порядок панелей на телефоне. refresh.css:1531 поднимает .about-body
+     наверх — правило писалось под страницы управлений, где это блок
+     «Об управлении». Здесь в нём частые вопросы, и они вставали ПЕРЕД
+     программой, а кнопка «Записаться на сбор» живёт внутри программы —
+     то есть уезжала за десять вопросов. Задаём порядок явно. */
+  @media (max-width: 980px) {
+    .dash .panel:has(.join-body)  { order: 1; }
+    .dash .panel:has(.res-q)      { order: 2; }
+    .dash .panel:has(.about-body) { order: 3; }
+    .dash .panel:has(.kv-list)    { order: 4; }
+  }
+
+  /* Главная кнопка на телефоне — во всю ширину: рядом с ней стоят ещё две,
+     и втроём они складывались в три ряда. */
+  @media (max-width: 560px) {
+    .hero-cta .btn-primary { flex: 1 1 100%; justify-content: center; }
+  }
 </style>
 </head>
 <body data-palette="iney" data-fontpair="modern" data-density="regular" data-screen-label="Большой лист">
@@ -111,15 +129,10 @@ document.addEventListener('click', function (e) {
          чтобы человек с объявления не искал их прокруткой. -->
     <div class="dir-hero-row">
       <div>
-        <div class="row" style="gap:10px;margin-bottom:20px">
-          <span class="chip">Открытое событие</span>
-          <span class="chip">Вход свободный</span>
-          <span class="chip">Запись обязательна</span>
-        </div>
         <h1 class="dir-title">Большой лист&nbsp;2026</h1>
         <div class="dir-kicker">Общий сбор интеграционного центра «Золотой Ясень»</div>
         <p class="dir-sub">
-          <b>26&nbsp;сентября 2026, суббота, 12:00. Москва, Большая Никитская, 46/17.</b><br/>
+          <b>26&nbsp;сентября 2026, суббота, с&nbsp;12:00 до&nbsp;16:00. Москва, Большая Никитская, 46/17, стр.&nbsp;1.</b><br/>
           <!-- Одна строка про предмет: человек с рекламы впервые слышит
                название и за пять секунд должен понять, куда его зовут. -->
           Открытое сообщество исследователей русского языка, истории и&nbsp;культуры:
@@ -231,7 +244,7 @@ document.addEventListener('click', function (e) {
         <article class="panel" id="programma">
           <div class="panel-head">
             <h3>Программа дня</h3>
-            <span class="sub">12:00&nbsp;— вечер</span>
+            <span class="sub">12:00&nbsp;— 16:00</span>
           </div>
           <div class="panel-body join-body">
             <div class="join-step">
@@ -367,7 +380,7 @@ document.addEventListener('click', function (e) {
               <li><a href="/upravleniya/astronevod/">Астроневод</a> — астрономия предков</li>
               <li><a href="/upravleniya/marshruty/">Ясные маршруты</a> — натурные уроки</li>
               <li><a href="/upravleniya/izvod/">Извод</a> — устройство языка</li>
-              <li><a href="/upravleniya/dzhiva/">Джива</a> — медицина</li>
+              <li><a href="/upravleniya/dzhiva/">Джива</a> — здоровье и&nbsp;тело</li>
               <li><a href="/#directions">ЛитПроСвет, Парад Красоты, Herbaldika</a></li>
             </ul>
           </div>
