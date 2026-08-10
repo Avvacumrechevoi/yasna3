@@ -1,0 +1,35 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Zolotoj Yasen//Bolshoy List 2026//RU
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:Europe/Moscow
+BEGIN:STANDARD
+DTSTART:19700101T000000
+TZOFFSETFROM:+0300
+TZOFFSETTO:+0300
+TZNAME:MSK
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:bolshoy-list-2026@zolotoj-yasen.ru
+DTSTAMP:20260810T000000Z
+DTSTART;TZID=Europe/Moscow:20260926T120000
+DTEND;TZID=Europe/Moscow:20260926T180000
+SUMMARY:Большой лист 2026 — общий сбор «Золотого Ясеня»
+DESCRIPTION:Открытый сбор интеграционного центра «Золотой Ясень»: слово осн
+ ователя\, рассказы двенадцати управлений о себе\, живые истории участников
+  и творческий вечер. Вход свободный\, по записи.\n\nПодробности и запись: h
+ ttps://zolotoj-yasen.ru/bolshoy-list/
+LOCATION:Колонный зал\, Большая Никитская улица\, 46/17\, строение 1\, Москв
+ а
+URL:https://zolotoj-yasen.ru/bolshoy-list/
+STATUS:CONFIRMED
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Завтра Большой лист — 12:00, Большая Никитская, 46/17
+END:VALARM
+END:VEVENT
+END:VCALENDAR

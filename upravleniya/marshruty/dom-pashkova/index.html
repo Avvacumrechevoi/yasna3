@@ -26,7 +26,8 @@ document.addEventListener('click', function (e) {
   var h = a.getAttribute('href') || '';
   var goal = h.indexOf('tel:') === 0 ? 'zvonok'
            : h.indexOf('mailto:') === 0 ? 'pochta'
-           : h.indexOf('forms.yandex.ru') > -1 ? 'forma'
+           : h.indexOf('.ics') > -1 ? 'calendar'
+           : h.indexOf('forms.yandex.ru') > -1 ? 'zapasnaya'
            : h.indexOf('/zayavka/') === 0 ? 'zapis'
            : h.indexOf('/bolshoy-list/') === 0 ? 'sbor' : '';
   if (goal) ym(111443194, 'reachGoal', goal);
@@ -245,7 +246,7 @@ document.addEventListener('click', function (e) {
      по конверсии рекламы, ради которой всё и делалось. -->
 <style>
   .ck-bar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;
-    background:#211B14;color:#EFE9DE;padding:12px 18px;font-size:.86rem;line-height:1.45;
+    background:#211B14;color:#EFE9DE;padding:9px 16px;font-size:.8rem;line-height:1.35;
     box-shadow:0 -6px 24px rgba(0,0,0,.18)}
   .ck-bar.on{display:block}
   .ck-in{max-width:1100px;margin:0 auto;display:flex;gap:14px;align-items:center;
@@ -254,12 +255,12 @@ document.addEventListener('click', function (e) {
   .ck-bar button{flex:none;background:#EFE9DE;color:#211B14;border:0;border-radius:999px;
     padding:8px 20px;font:inherit;font-weight:600;cursor:pointer}
   .ck-bar button:hover{background:#fff}
-  @media (max-width:560px){.ck-in{gap:10px}.ck-bar{padding:12px 14px;font-size:.82rem}}
+  @media (max-width:560px){.ck-in{gap:8px}.ck-bar{padding:8px 12px;font-size:.76rem}
+    .ck-bar button{padding:6px 16px}}
 </style>
 <div class="ck-bar" id="ckBar" role="region" aria-label="Уведомление о файлах cookie">
   <div class="ck-in">
-    <span>Сайт использует cookie и&nbsp;Яндекс&nbsp;Метрику, чтобы считать посещаемость.
-      Подробнее&nbsp;— в&nbsp;<a href="/privacy/">политике обработки данных</a>.</span>
+    <span>Сайт использует cookie и&nbsp;Метрику&nbsp;— <a href="/privacy/">подробнее</a>.</span>
     <button type="button" id="ckOk">Понятно</button>
   </div>
 </div>

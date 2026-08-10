@@ -26,7 +26,8 @@ document.addEventListener('click', function (e) {
   var h = a.getAttribute('href') || '';
   var goal = h.indexOf('tel:') === 0 ? 'zvonok'
            : h.indexOf('mailto:') === 0 ? 'pochta'
-           : h.indexOf('forms.yandex.ru') > -1 ? 'forma'
+           : h.indexOf('.ics') > -1 ? 'calendar'
+           : h.indexOf('forms.yandex.ru') > -1 ? 'zapasnaya'
            : h.indexOf('/zayavka/') === 0 ? 'zapis'
            : h.indexOf('/bolshoy-list/') === 0 ? 'sbor' : '';
   if (goal) ym(111443194, 'reachGoal', goal);
@@ -59,6 +60,9 @@ document.addEventListener('click', function (e) {
      имеет смысл приводить рекламой. -->
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Event","name":"Большой лист 2026 — общий сбор «Золотого Ясеня»","startDate":"2026-09-26T12:00:00+03:00","eventStatus":"https://schema.org/EventScheduled","eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode","description":"Открытый сбор интеграционного центра «Золотой Ясень»: слово основателя, рассказы двенадцати управлений о себе, живые истории участников и творческий вечер. Вход свободный.","url":"https://zolotoj-yasen.ru/bolshoy-list/","image":"https://zolotoj-yasen.ru/src/img/og-cover.jpg","isAccessibleForFree":true,"maximumAttendeeCapacity":80,"location":{"@type":"Place","name":"Колонный зал","address":{"@type":"PostalAddress","streetAddress":"Большая Никитская улица, 46/17, строение 1","addressLocality":"Москва","addressCountry":"RU"},"publicAccess":true},"organizer":{"@type":"Organization","name":"Золотой Ясень","url":"https://zolotoj-yasen.ru/"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Золотой Ясень","item":"https://zolotoj-yasen.ru/"},{"@type":"ListItem","position":2,"name":"Большой лист 2026","item":"https://zolotoj-yasen.ru/bolshoy-list/"}]}</script>
+<!-- Вопросы страницы объявлены поисковику: расширенный сниппет
+     снимает часть сомнений ещё в выдаче, до перехода. -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Нужно ли записываться на сбор?", "acceptedAnswer": {"@type": "Answer", "text": "Да, и это важно. Зал вмещает 80 человек: по заявкам мы видим, сколько мест осталось, и успеваем найти зал побольше, если желающих окажется больше. Записавшимся напомним накануне и сразу скажем, если место поменяется."}}, {"@type": "Question", "name": "Можно ли прийти, если я ничего не знаю о Ясне?", "acceptedAnswer": {"@type": "Answer", "text": "Можно. Первая часть дня как раз для тех, кто знакомится: управления рассказывают о себе с нуля."}}, {"@type": "Question", "name": "Будет ли трансляция?", "acceptedAnswer": {"@type": "Answer", "text": "Нет, сбор проходит только очно, в Москве."}}, {"@type": "Question", "name": "Можно ли прийти с детьми?", "acceptedAnswer": {"@type": "Answer", "text": "Да, приходите семьёй."}}, {"@type": "Question", "name": "Что от меня потребуется?", "acceptedAnswer": {"@type": "Answer", "text": "Прийти и послушать. Взносов нет, ничего покупать и подписывать не нужно, обязательств после сбора никаких."}}, {"@type": "Question", "name": "Надо ли выступать?", "acceptedAnswer": {"@type": "Answer", "text": "Нет. Выступают те, кто сам захотел, и договариваются об этом заранее. В форме есть поле для темы — его можно оставить пустым."}}, {"@type": "Question", "name": "Я никого там не знаю — стоит ли идти?", "acceptedAnswer": {"@type": "Answer", "text": "Так придёт заметная часть зала. Первая половина дня как раз для знакомства: двенадцать управлений по очереди рассказывают о себе, слушать можно молча."}}, {"@type": "Question", "name": "А если не понравится?", "acceptedAnswer": {"@type": "Answer", "text": "Уйти можно в любой момент, объясняться не нужно. Вход и выход свободные весь день."}}, {"@type": "Question", "name": "Будете ли звонить потом?", "acceptedAnswer": {"@type": "Answer", "text": "Напишем один раз накануне — напомнить про сбор. Дальше только если вы сами попросите. Рассылок и продаж нет, данные никому не передаём: условия — в политике."}}, {"@type": "Question", "name": "Это та самая «Русская Ясна»?", "acceptedAnswer": {"@type": "Answer", "text": "Да. «Золотой Ясень» — имя интеграционного центра, под которым собраны двенадцать управлений. Ясна — то, чем мы занимаемся, и по этому имени нас чаще всего и находят."}}]}</script>
 </head>
 <body data-palette="iney" data-fontpair="modern" data-density="regular" data-screen-label="Большой лист">
 
@@ -93,17 +97,26 @@ document.addEventListener('click', function (e) {
         <div class="row" style="gap:10px;margin-bottom:20px">
           <span class="chip">Открытое событие</span>
           <span class="chip">Вход свободный</span>
-          <span class="chip">Только очно</span>
+          <span class="chip">Запись обязательна</span>
         </div>
         <h1 class="dir-title">Большой лист&nbsp;2026</h1>
-        <div class="dir-kicker">Общий сбор интеграционного центра «Золотой Ясень»</div>
+        <div class="dir-kicker">Общий сбор интеграционного центра «Золотой Ясень», он&nbsp;же «Русская Ясна»</div>
         <p class="dir-sub">
           <b>26&nbsp;сентября 2026, суббота, 12:00. Москва, Большая Никитская, 46/17.</b><br/>
+          <!-- Одна строка про предмет: человек с рекламы впервые слышит
+               название и за пять секунд должен понять, куда его зовут. -->
+          Открытое сообщество исследователей русского языка, истории и&nbsp;культуры:
+          двенадцать управлений, общие праздники, совместный поиск.
           Зовём всех — и&nbsp;тех, кто рядом с&nbsp;самого начала, и&nbsp;тех, кто давно не&nbsp;заглядывал, и&nbsp;тех, кто знает о&nbsp;нас понаслышке.
         </p>
+        <p class="dir-sub" style="margin-top:-6px">Участие бесплатное. Запись нужна: зал вмещает
+          80&nbsp;человек, и&nbsp;по&nbsp;заявкам мы&nbsp;видим, сколько мест осталось.</p>
         <div class="hero-cta">
           <a class="btn btn-primary" href="/zayavka/?goal=day">Записаться <span class="arr">→</span></a>
           <a class="btn btn-ghost" href="#programma">Программа дня</a>
+          <!-- До сбора семь недель: без отметки в календаре событие
+               выпадает из головы у половины записавшихся. -->
+          <a class="btn btn-ghost" href="/bolshoy-list/bolshoy-list-2026.ics" download>В&nbsp;календарь</a>
         </div>
       </div>
     </div>
@@ -169,7 +182,11 @@ document.addEventListener('click', function (e) {
           <div>
             <div class="fmt-num">ГДЕ</div>
             <h4 class="fmt-title">Большая Никитская, 46/17, стр.&nbsp;1</h4>
-            <p class="fmt-desc">Колонный зал. Метро Баррикадная и&nbsp;Краснопресненская, 12&nbsp;минут пешком. Зал вмещает 80&nbsp;человек: если запишется больше, переедем в&nbsp;зал попросторнее и&nbsp;сообщим записавшимся.</p>
+            <p class="fmt-desc">Колонный зал. Метро Баррикадная и&nbsp;Краснопресненская, 12&nbsp;минут пешком.
+              <a href="https://yandex.ru/maps/?text=Москва%2C%20Большая%20Никитская%20улица%2C%2046%2F17%20строение%201" target="_blank" rel="noopener">Показать на&nbsp;карте&nbsp;→</a><br/>
+              Зал вмещает 80&nbsp;человек. Место держим за&nbsp;каждым, кто записался.
+              Если заявок будет больше восьмидесяти, найдём зал попросторнее и&nbsp;заранее
+              сообщим записавшимся новый адрес.</p>
           </div>
           <div>
             <div class="fmt-num">СКОЛЬКО</div>
@@ -248,6 +265,44 @@ document.addEventListener('click', function (e) {
               <div class="label-muted">МОЖНО&nbsp;ЛИ С&nbsp;ДЕТЬМИ</div>
               <p class="unique-text">Да, приходите семьёй.</p>
             </div>
+
+            <!-- Вопросы, которые задаёт человек, впервые о нас услышавший.
+                 Без них холодный посетитель с рекламы уходит молча: он не
+                 спрашивает вслух «не секта ли это» и «что от меня потребуют»,
+                 он просто закрывает вкладку. -->
+            <div style="margin-top:20px">
+              <div class="label-muted">ЧТО ОТ&nbsp;МЕНЯ ПОТРЕБУЕТСЯ</div>
+              <p class="unique-text">Прийти и&nbsp;послушать. Взносов нет, ничего покупать
+              и&nbsp;подписывать не&nbsp;нужно, обязательств после сбора никаких.</p>
+            </div>
+            <div style="margin-top:20px">
+              <div class="label-muted">НАДО&nbsp;ЛИ ВЫСТУПАТЬ</div>
+              <p class="unique-text">Нет. Выступают те, кто сам захотел, и&nbsp;договариваются
+              об&nbsp;этом заранее. В&nbsp;форме есть поле для темы&nbsp;— его можно оставить пустым.</p>
+            </div>
+            <div style="margin-top:20px">
+              <div class="label-muted">Я&nbsp;НИКОГО ТАМ НЕ&nbsp;ЗНАЮ</div>
+              <p class="unique-text">Так придёт заметная часть зала. Первая половина дня
+              как&nbsp;раз для знакомства: двенадцать управлений по&nbsp;очереди рассказывают
+              о&nbsp;себе, слушать можно молча.</p>
+            </div>
+            <div style="margin-top:20px">
+              <div class="label-muted">А&nbsp;ЕСЛИ НЕ&nbsp;ПОНРАВИТСЯ</div>
+              <p class="unique-text">Уйти можно в&nbsp;любой момент, объясняться не&nbsp;нужно.
+              Вход и&nbsp;выход свободные весь день.</p>
+            </div>
+            <div style="margin-top:20px">
+              <div class="label-muted">БУДЕТЕ&nbsp;ЛИ ЗВОНИТЬ ПОТОМ</div>
+              <p class="unique-text">Напишем один раз накануне&nbsp;— напомнить про сбор.
+              Дальше только если вы&nbsp;сами попросите. Рассылок и&nbsp;продаж нет,
+              данные никому не&nbsp;передаём: условия&nbsp;— в&nbsp;<a href="/privacy/">политике</a>.</p>
+            </div>
+            <div style="margin-top:20px">
+              <div class="label-muted">ЭТО ТА&nbsp;САМАЯ «РУССКАЯ ЯСНА»</div>
+              <p class="unique-text">Да. «Золотой Ясень»&nbsp;— имя интеграционного центра,
+              под которым собраны двенадцать управлений. Ясна&nbsp;— то, чем мы&nbsp;занимаемся,
+              и&nbsp;по&nbsp;этому имени нас чаще всего и&nbsp;находят.</p>
+            </div>
           </div>
         </article>
       </div>
@@ -316,6 +371,64 @@ document.addEventListener('click', function (e) {
     </div>
   </div>
 </section>
+
+<!-- Липкая кнопка записи на телефоне. Замерено: между кнопкой в первом
+     экране и следующей — 2613 пикселей, в шапке на телефоне кнопки нет
+     вовсе. Человек, дочитавший до середины и решившийся, должен был
+     вспомнить про верх страницы и уехать туда.
+
+     Показываем после первого экрана и прячем у нижнего призыва, чтобы
+     не спорить с ним. Полосу cookie не перекрываем: пока она висит,
+     поднимаемся над ней. Только на телефоне — на широком экране
+     кнопка есть в шапке. -->
+<style>
+  .cta-dock{position:fixed; left:0; right:0; bottom:0; z-index:55;
+    padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+    background:rgba(243,236,224,.94); backdrop-filter:blur(8px);
+    border-top:1px solid var(--line);
+    transform:translateY(120%); transition:transform .22s ease, bottom .2s ease;
+    display:none}
+  .cta-dock.on{transform:translateY(0)}
+  .cta-dock .btn{width:100%; justify-content:center}
+  .cta-dock .note{display:block; text-align:center; font-size:.76rem;
+    color:var(--ink-3); margin-top:6px}
+  @media (max-width:760px){ .cta-dock{display:block} }
+  @media (min-width:761px){ .cta-dock{display:none !important} }
+</style>
+<div class="cta-dock" id="ctaDock">
+  <a class="btn btn-primary" href="/zayavka/?goal=day">Записаться на 26&nbsp;сентября <span class="arr">→</span></a>
+  <span class="note">Бесплатно · зал на 80 человек</span>
+</div>
+<script>
+(function () {
+  var dock = document.getElementById('ctaDock');
+  var hero = document.querySelector('.dir-hero');
+  var join = document.getElementById('join');
+  if (!dock || !hero || !join) return;
+
+  function place() {
+    var ck = document.getElementById('ckBar');
+    var h = (ck && ck.classList.contains('on')) ? ck.getBoundingClientRect().height : 0;
+    dock.style.bottom = h + 'px';
+  }
+
+  var pastHero = false, atJoin = false;
+  function sync() { dock.classList.toggle('on', pastHero && !atJoin); place(); }
+
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (e) {
+      pastHero = !e[0].isIntersecting; sync();
+    }, { threshold: 0 }).observe(hero);
+    new IntersectionObserver(function (e) {
+      atJoin = e[0].isIntersecting; sync();
+    }, { threshold: 0.2 }).observe(join);
+  }
+  window.addEventListener('resize', place);
+  document.addEventListener('click', function (e) {
+    if (e.target && e.target.id === 'ckOk') setTimeout(place, 60);
+  }, true);
+})();
+</script>
 
 <!-- Микроцель для рекламы. Заявок на такое событие будет единицы в неделю,
      а автостратегиям Директа нужно на чём-то учиться — на редком сигнале
@@ -468,7 +581,7 @@ document.addEventListener('click', function (e) {
      по конверсии рекламы, ради которой всё и делалось. -->
 <style>
   .ck-bar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;
-    background:#211B14;color:#EFE9DE;padding:12px 18px;font-size:.86rem;line-height:1.45;
+    background:#211B14;color:#EFE9DE;padding:9px 16px;font-size:.8rem;line-height:1.35;
     box-shadow:0 -6px 24px rgba(0,0,0,.18)}
   .ck-bar.on{display:block}
   .ck-in{max-width:1100px;margin:0 auto;display:flex;gap:14px;align-items:center;
@@ -477,12 +590,12 @@ document.addEventListener('click', function (e) {
   .ck-bar button{flex:none;background:#EFE9DE;color:#211B14;border:0;border-radius:999px;
     padding:8px 20px;font:inherit;font-weight:600;cursor:pointer}
   .ck-bar button:hover{background:#fff}
-  @media (max-width:560px){.ck-in{gap:10px}.ck-bar{padding:12px 14px;font-size:.82rem}}
+  @media (max-width:560px){.ck-in{gap:8px}.ck-bar{padding:8px 12px;font-size:.76rem}
+    .ck-bar button{padding:6px 16px}}
 </style>
 <div class="ck-bar" id="ckBar" role="region" aria-label="Уведомление о файлах cookie">
   <div class="ck-in">
-    <span>Сайт использует cookie и&nbsp;Яндекс&nbsp;Метрику, чтобы считать посещаемость.
-      Подробнее&nbsp;— в&nbsp;<a href="/privacy/">политике обработки данных</a>.</span>
+    <span>Сайт использует cookie и&nbsp;Метрику&nbsp;— <a href="/privacy/">подробнее</a>.</span>
     <button type="button" id="ckOk">Понятно</button>
   </div>
 </div>
