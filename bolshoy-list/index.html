@@ -63,6 +63,19 @@ document.addEventListener('click', function (e) {
 <!-- Вопросы страницы объявлены поисковику: расширенный сниппет
      снимает часть сомнений ещё в выдаче, до перехода. -->
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Нужно ли записываться на сбор?", "acceptedAnswer": {"@type": "Answer", "text": "Да, и это важно. Зал вмещает 80 человек: по заявкам мы видим, сколько мест осталось, и успеваем найти зал побольше, если желающих окажется больше. Записавшимся напомним накануне и сразу скажем, если место поменяется."}}, {"@type": "Question", "name": "Можно ли прийти, если я ничего не знаю о Ясне?", "acceptedAnswer": {"@type": "Answer", "text": "Можно. Первая часть дня как раз для тех, кто знакомится: управления рассказывают о себе с нуля."}}, {"@type": "Question", "name": "Будет ли трансляция?", "acceptedAnswer": {"@type": "Answer", "text": "Нет, сбор проходит только очно, в Москве."}}, {"@type": "Question", "name": "Можно ли прийти с детьми?", "acceptedAnswer": {"@type": "Answer", "text": "Да, приходите семьёй."}}, {"@type": "Question", "name": "Что от меня потребуется?", "acceptedAnswer": {"@type": "Answer", "text": "Прийти и послушать. Ничего покупать и подписывать не нужно, обязательств после сбора никаких."}}, {"@type": "Question", "name": "Надо ли выступать?", "acceptedAnswer": {"@type": "Answer", "text": "Нет. Выступают те, кто сам захотел, и договариваются об этом заранее. В форме есть поле для темы — его можно оставить пустым."}}, {"@type": "Question", "name": "Я никого там не знаю — стоит ли идти?", "acceptedAnswer": {"@type": "Answer", "text": "Так придёт заметная часть зала. Первая половина дня как раз для знакомства: двенадцать управлений по очереди рассказывают о себе, слушать можно молча."}}, {"@type": "Question", "name": "А если не понравится?", "acceptedAnswer": {"@type": "Answer", "text": "Уйти можно в любой момент, объясняться не нужно. Вход и выход свободные весь день."}}, {"@type": "Question", "name": "Будете ли звонить потом?", "acceptedAnswer": {"@type": "Answer", "text": "Напишем один раз накануне — напомнить про сбор. Дальше только если вы сами попросите. Рассылок и продаж нет, данные никому не передаём: условия — в политике."}}, {"@type": "Question", "name": "Это та самая «Русская Ясна»?", "acceptedAnswer": {"@type": "Answer", "text": "Да. «Золотой Ясень» — имя интеграционного центра, под которым собраны двенадцать управлений. Ясна — то, чем мы занимаемся, и по этому имени нас чаще всего и находят."}}]}</script>
+<style>
+  /* Плитка фактов в первом экране. Опирается на .dir-hero-row из styles.css
+     (1.4fr / 1fr на широком, одна колонка до 920px) — своей сетки не заводим. */
+  .hero-facts { border: 1px solid var(--line); border-radius: 14px;
+    padding: 22px 24px; background: var(--warm); }
+  .hero-facts dl { margin: 0; display: grid; gap: 16px; }
+  .hero-facts dt { font-family: var(--font-mono); font-size: .72rem; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--ink-3); margin-bottom: 4px; }
+  .hero-facts dd { margin: 0; font-size: 1rem; line-height: 1.35; color: var(--ink); font-weight: 600; }
+  .hero-facts dd span { display: block; font-weight: 400; font-size: .9rem;
+    color: var(--ink-2); margin-top: 3px; }
+  @media (max-width: 920px) { .hero-facts { margin-top: 26px; padding: 18px 20px } }
+</style>
 </head>
 <body data-palette="iney" data-fontpair="modern" data-density="regular" data-screen-label="Большой лист">
 
@@ -92,7 +105,11 @@ document.addEventListener('click', function (e) {
 <!-- ─── ШАПКА СОБЫТИЯ ────────────────────────────────────────────── -->
 <section class="dir-hero">
   <div class="wrap">
-    <div class="dir-hero-row" style="grid-template-columns:1fr">
+    <!-- Две колонки, а не одна. При одной колонке абзац упирался
+         в свои 46 символов, а справа зияла пустота на треть экрана.
+         Правой стороне дано содержание: главные факты в первом экране,
+         чтобы человек с объявления не искал их прокруткой. -->
+    <div class="dir-hero-row">
       <div>
         <div class="row" style="gap:10px;margin-bottom:20px">
           <span class="chip">Открытое событие</span>
@@ -100,7 +117,7 @@ document.addEventListener('click', function (e) {
           <span class="chip">Запись обязательна</span>
         </div>
         <h1 class="dir-title">Большой лист&nbsp;2026</h1>
-        <div class="dir-kicker">Общий сбор интеграционного центра «Золотой Ясень», он&nbsp;же «Русская Ясна»</div>
+        <div class="dir-kicker">Общий сбор интеграционного центра «Золотой Ясень»</div>
         <p class="dir-sub">
           <b>26&nbsp;сентября 2026, суббота, 12:00. Москва, Большая Никитская, 46/17.</b><br/>
           <!-- Одна строка про предмет: человек с рекламы впервые слышит
@@ -109,8 +126,6 @@ document.addEventListener('click', function (e) {
           двенадцать управлений, общие праздники, совместный поиск.
           Зовём всех — и&nbsp;тех, кто рядом с&nbsp;самого начала, и&nbsp;тех, кто давно не&nbsp;заглядывал, и&nbsp;тех, кто знает о&nbsp;нас понаслышке.
         </p>
-        <p class="dir-sub" style="margin-top:-6px">Участие бесплатное. Запись нужна: зал вмещает
-          80&nbsp;человек, и&nbsp;по&nbsp;заявкам мы&nbsp;видим, сколько мест осталось.</p>
         <div class="hero-cta">
           <a class="btn btn-primary" href="/zayavka/?goal=day">Записаться <span class="arr">→</span></a>
           <a class="btn btn-ghost" href="#programma">Программа дня</a>
@@ -119,6 +134,14 @@ document.addEventListener('click', function (e) {
           <a class="btn btn-ghost" href="/bolshoy-list/bolshoy-list-2026.ics" download>В&nbsp;календарь</a>
         </div>
       </div>
+
+      <aside class="hero-facts" aria-label="Коротко о сборе">
+        <dl>
+          <dt>Когда</dt><dd>26&nbsp;сентября, суббота<br/><span>с&nbsp;12:00 до&nbsp;16:00</span></dd>
+          <dt>Где</dt><dd>Большая Никитская, 46/17, стр.&nbsp;1<br/><span>метро Баррикадная, 12&nbsp;минут пешком</span></dd>
+          <dt>Участие</dt><dd>Бесплатное, по&nbsp;записи<br/><span>зал вмещает 80&nbsp;человек</span></dd>
+        </dl>
+      </aside>
     </div>
   </div>
 </section>
