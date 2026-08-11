@@ -239,6 +239,31 @@ document.addEventListener('click', function (e) {
     <div class="dash">
       <!-- LEFT: program -->
       <div class="col" style="gap:24px">
+        <!-- Ролик управления. Файл лежит в репозитории и раздаётся Pages —
+             так же, как тринадцать роликов «Ясных маршрутов». preload="none":
+             восемнадцать мегабайт не грузятся, пока человек не нажал.
+             Обложкой стоит кадр из самого ролика, поэтому вместо чёрного
+             прямоугольника видно, что внутри. -->
+        <article class="panel">
+          <div class="panel-head">
+            <h3>Ролик управления</h3>
+            <span class="sub">Москва с&nbsp;высоты · 1 минута</span>
+          </div>
+          <div class="panel-body" style="padding:22px 24px">
+            <div class="res-video">
+              <video controls preload="none" playsinline
+                     width="1920" height="1080"
+                     poster="/1/src/img/neglinka/video/neglinka.jpg"
+                     aria-label="Ролик исследовательской группы «Неглинка»: Москва с высоты">
+                <source src="/1/src/video/neglinka/neglinka.mp4" type="video/mp4"/>
+                Ваш браузер не&nbsp;умеет показывать видео.
+                <a href="/1/src/video/neglinka/neglinka.mp4">Скачать ролик</a>.
+              </video>
+              <p class="res-video-note">Съёмка управления. 18&nbsp;МБ, загружается по&nbsp;нажатию.</p>
+            </div>
+          </div>
+        </article>
+
         <article class="panel" id="channels">
           <div class="panel-head">
             <h3>Наши каналы</h3>
