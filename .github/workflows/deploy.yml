@@ -35,10 +35,33 @@ jobs:
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
+      # Шаг «path: .» выкладывал на боевой домен ВЕСЬ корень репозитория,
+      # включая служебное. Проверено 11.08.2026: по адресам
+      # /tools/zapusk-materialy.md, /tools/razvedka.md, /README.md
+      # и /.DS_Store отдавался код 200. В материалах запуска лежали
+      # промокод Директа, остаток счёта и номера кампаний — открытым
+      # текстом на публичном домене.
+      #
+      # Теперь на сайт уезжает только то, что предназначено посетителю:
+      # собираем витрину отдельной папкой и выкладываем её.
+      - name: Собрать витрину без служебных файлов
+        run: |
+          mkdir -p _site
+          rsync -a ./ _site/ \
+            --exclude '.git' \
+            --exclude '.github' \
+            --exclude '_site' \
+            --exclude 'tools' \
+            --exclude 'README.md' \
+            --exclude '.gitignore' \
+            --exclude '.DS_Store' \
+            --exclude '*.py'
+          echo "— в витрине:"; find _site -maxdepth 1 | sort
+
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
 
   deploy:
     needs: build
