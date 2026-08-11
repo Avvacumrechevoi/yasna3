@@ -169,7 +169,7 @@ document.addEventListener('click', function (e) {
   .sec-head p{margin:0; color:var(--ink-70); font-size:18px; line-height:1.55}
 
   /* ---------- address (Обращение) ---------- */
-  .address{padding:110px 0 0; background:var(--paper-2); position:relative; overflow:hidden}
+  .address{padding:110px 0; background:var(--paper-2); position:relative; overflow:hidden}
   .address /* Центрируем растяжкой left:0;right:0 и justify-content, а НЕ через transform.
      Правило появления .js [data-reveal].in{transform:none} (строка 53) перебивало
      translateX(-50%) — как только украшение проявлялось при прокрутке, оно уезжало
@@ -485,7 +485,6 @@ document.addEventListener('click', function (e) {
   @media(max-width:600px),(max-height:560px) and (orientation:landscape){
     /* 110+110px давали 220px пустоты на каждом стыке — 33% экрана 375x667 */
     .address,.day,.directions,.ways,.method,.faq{padding-top:68px; padding-bottom:68px}
-    .address{padding-bottom:0}
     .pillars{padding-top:72px; padding-bottom:72px}
     .cta{padding-top:76px; padding-bottom:76px}
     .sec-head{margin-bottom:34px}
@@ -603,8 +602,11 @@ document.addEventListener('click', function (e) {
   /* Шов вместо нижнего отступа секции. Ступени ведены через золото сайта:
      прямая интерполяция #ECE3D4 → #211B14 даёт грязно-серую середину.
      Последний стоп — та же переменная, что фон .day, поэтому границы нет. */
+  /* Первый стоп — фон шапки-экрана (--paper). Раньше здесь стоял #ECE3D4,
+     фон Обращения: шов начинался под ним. Шапка светлее на тон, и со
+     старым значением на стыке была бы видимая ступенька. */
   .seam{height:clamp(150px,16vw,190px); background:linear-gradient(180deg,
-    #ECE3D4 0%, #E8DCCB 10%, #DCCAB3 20%, #CBAF90 30%, #B3916B 40%, #94724B 50%,
+    var(--paper) 0%, #E8DCCB 10%, #DCCAB3 20%, #CBAF90 30%, #B3916B 40%, #94724B 50%,
     #725534 60%, #523E26 70%, #372B1C 80%, #262017 90%, var(--ink) 100%)}
 
   @media(max-width:600px),(max-height:560px) and (orientation:landscape){
@@ -747,42 +749,11 @@ document.addEventListener('click', function (e) {
 
 <main id="content">
 
-<!-- ОБРАЩЕНИЕ -->
-<section class="address" id="event">
-  <div class="ornament" data-reveal aria-hidden="true"><i>✦</i><i>✦</i><i>✦</i></div>
-  <div class="wrap">
-    <div class="letter" id="letter" data-reveal>
-      <h2 class="eyebrow">Обращение</h2>
-      <div class="anaphora">
-        <div data-reveal><em>Горящие сердцем</em> соратники!</div>
-        <div data-reveal><em>Горящие сердцем</em> товарищи!</div>
-        <div data-reveal><em>Горящие сердцем</em> друзья и&nbsp;подруги!</div>
-      </div>
-
-      <!-- ВНИМАНИЕ: у частей письма намеренно СНЯТ data-reveal. Под срезом
-           IntersectionObserver их не видит, класса .in они не получат и после
-           раскрытия останутся прозрачными — текст пропадёт. Не возвращать. -->
-      <div class="letter-fold">
-        <div class="letter-body" id="letterBody">
-          <p class="cap">Вера наших дедов и&nbsp;прадедов захватывает всё больше сердец и&nbsp;душ. Учение Ясна&nbsp;— это наше родное национальное учение, дошедшее до&nbsp;нас из&nbsp;глубины веков. Мы долгое время жили чужой жизнью, чужими мыслями, чужим отношением к&nbsp;человеку, обществу, природе и&nbsp;мирозданию.</p>
-          <p>Пришло время возвращения Ясны в&nbsp;нашу жизнь.</p>
-          <div class="keyline">Ясна&nbsp;— это наш самостоятельный путь веры, и&nbsp;это наш самостоятельный путь знания. Ясна ждёт нас. <b>Двери Ясны открыты для&nbsp;всех.</b></div>
-          <p>С&nbsp;древности мы всегда были грамотными и&nbsp;мужчины и&nbsp;женщины, и&nbsp;взрослые и&nbsp;дети. Мы грамотны были своею собственной грамотой&nbsp;— Ясной.</p>
-          <p>Наша задача&nbsp;— принять помощь Ясны в&nbsp;нашей жизни, в&nbsp;нашем труде, в&nbsp;нашем здоровье, в&nbsp;наших мечтах и&nbsp;стремлениях.</p>
-          <p>Наша Ясна&nbsp;— это наша правда. Она не&nbsp;нуждается в&nbsp;чужих правках, в&nbsp;чужом участии и&nbsp;в&nbsp;чужих оценках.</p>
-          <div class="sign">Мы с&nbsp;этой Вечной Книгой сами пойдём к&nbsp;свету, к&nbsp;ладу и&nbsp;любви.</div>
-        </div>
-        <div class="letter-veil" aria-hidden="true"></div>
-      </div>
-
-      <button class="unveil" id="letterMore" type="button" hidden aria-expanded="false" aria-controls="letterBody">
-        <span class="pl" aria-hidden="true"></span><span class="lb">Читать обращение целиком</span>
-      </button>
-    </div>
-    <div class="pagestack" aria-hidden="true"><i></i><i></i></div>
-  </div>
+<!-- Шов из светлого в тёмное. Он был приварен к низу Обращения,
+     потому что следом шёл тёмный «Большой лист». Блоки поменялись
+     местами, и шов переехал вместе с назначением: теперь он готовит
+     стык «шапка-экран → Большой лист». -->
   <div class="seam" aria-hidden="true"></div>
-</section>
 
 <!-- БОЛЬШОЙ ЛИСТ — ОБЩИЙ СБОР -->
 <section class="day" id="day">
@@ -827,6 +798,42 @@ document.addEventListener('click', function (e) {
         <div class="step" data-reveal><span class="node"></span><span class="chip">Часть II · свободная часть</span><h3>Творческий вечер</h3><p>Свободная часть: приходите и рассказывайте, у кого что. Живое общение, чай, музыка и танцы.</p></div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ОБРАЩЕНИЕ -->
+<section class="address" id="event">
+  <div class="ornament" data-reveal aria-hidden="true"><i>✦</i><i>✦</i><i>✦</i></div>
+  <div class="wrap">
+    <div class="letter" id="letter" data-reveal>
+      <h2 class="eyebrow">Обращение</h2>
+      <div class="anaphora">
+        <div data-reveal><em>Горящие сердцем</em> соратники!</div>
+        <div data-reveal><em>Горящие сердцем</em> товарищи!</div>
+        <div data-reveal><em>Горящие сердцем</em> друзья и&nbsp;подруги!</div>
+      </div>
+
+      <!-- ВНИМАНИЕ: у частей письма намеренно СНЯТ data-reveal. Под срезом
+           IntersectionObserver их не видит, класса .in они не получат и после
+           раскрытия останутся прозрачными — текст пропадёт. Не возвращать. -->
+      <div class="letter-fold">
+        <div class="letter-body" id="letterBody">
+          <p class="cap">Вера наших дедов и&nbsp;прадедов захватывает всё больше сердец и&nbsp;душ. Учение Ясна&nbsp;— это наше родное национальное учение, дошедшее до&nbsp;нас из&nbsp;глубины веков. Мы долгое время жили чужой жизнью, чужими мыслями, чужим отношением к&nbsp;человеку, обществу, природе и&nbsp;мирозданию.</p>
+          <p>Пришло время возвращения Ясны в&nbsp;нашу жизнь.</p>
+          <div class="keyline">Ясна&nbsp;— это наш самостоятельный путь веры, и&nbsp;это наш самостоятельный путь знания. Ясна ждёт нас. <b>Двери Ясны открыты для&nbsp;всех.</b></div>
+          <p>С&nbsp;древности мы всегда были грамотными и&nbsp;мужчины и&nbsp;женщины, и&nbsp;взрослые и&nbsp;дети. Мы грамотны были своею собственной грамотой&nbsp;— Ясной.</p>
+          <p>Наша задача&nbsp;— принять помощь Ясны в&nbsp;нашей жизни, в&nbsp;нашем труде, в&nbsp;нашем здоровье, в&nbsp;наших мечтах и&nbsp;стремлениях.</p>
+          <p>Наша Ясна&nbsp;— это наша правда. Она не&nbsp;нуждается в&nbsp;чужих правках, в&nbsp;чужом участии и&nbsp;в&nbsp;чужих оценках.</p>
+          <div class="sign">Мы с&nbsp;этой Вечной Книгой сами пойдём к&nbsp;свету, к&nbsp;ладу и&nbsp;любви.</div>
+        </div>
+        <div class="letter-veil" aria-hidden="true"></div>
+      </div>
+
+      <button class="unveil" id="letterMore" type="button" hidden aria-expanded="false" aria-controls="letterBody">
+        <span class="pl" aria-hidden="true"></span><span class="lb">Читать обращение целиком</span>
+      </button>
+    </div>
+    <div class="pagestack" aria-hidden="true"><i></i><i></i></div>
   </div>
 </section>
 
@@ -1195,7 +1202,10 @@ document.addEventListener('click', function (e) {
 
   /* nav state + progress + scrollspy + toTop */
   var nav=document.getElementById('nav'), prog=document.getElementById('progress'), toTop=document.getElementById('toTop');
-  var spyIds=['event','day','directions','ways','method','faq'];
+    /* Порядок обязан совпадать с порядком секций в разметке: массив
+     перебирается сверху вниз и активным считается последний подошедший.
+     После обмена Обращения и Большого листа местами — day идёт первым. */
+  var spyIds=['day','event','directions','ways','method','faq'];
   var spyEls=spyIds.map(function(id){ return {id:id, el:document.getElementById(id)}; }).filter(function(o){ return o.el; });
   var spyLinks={};
   document.querySelectorAll('.navlinks a.lnk').forEach(function(a){ spyLinks[a.getAttribute('href').slice(1)]=a; });
