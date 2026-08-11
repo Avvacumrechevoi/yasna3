@@ -41,12 +41,12 @@ document.addEventListener('click', function (e) {
      домену на каждой странице. Подмножества те же, что были у Google. -->
 <link rel="stylesheet" href="/src/fonts.css"/>
 <link rel="canonical" href="https://zolotoj-yasen.ru/upravleniya/neglinka/"/>
-<meta name="description" content="Проясняем историю и географию России — гуляем по Москве, читаем то, что зашифровано в её улицах, фасадах и названиях."/>
+<meta name="description" content="Управление истории и географии «Золотого Ясеня». Восстанавливаем образ прошлого: исследования, экспедиции и выступления в онлайне. Москва и онлайн, 20+ участников."/>
 <meta property="og:type" content="website"/>
 <meta property="og:locale" content="ru_RU"/>
 <meta property="og:site_name" content="Золотой Ясень"/>
 <meta property="og:title" content="Неглинка — Золотой Ясень"/>
-<meta property="og:description" content="Проясняем историю и географию России — гуляем по Москве, читаем то, что зашифровано в её улицах, фасадах и названиях."/>
+<meta property="og:description" content="Управление истории и географии «Золотого Ясеня». Восстанавливаем образ прошлого: исследования, экспедиции и выступления в онлайне. Москва и онлайн, 20+ участников."/>
 <meta property="og:url" content="https://zolotoj-yasen.ru/upravleniya/neglinka/"/>
 <meta property="og:image" content="https://zolotoj-yasen.ru/src/img/og-cover.jpg"/>
 <meta property="og:image:width" content="1200"/>
@@ -57,6 +57,62 @@ document.addEventListener('click', function (e) {
 <!-- Хлебные крошки: в выдаче вместо голого адреса показывается путь
      Золотой Ясень › Управления › Неглинка -->
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Золотой Ясень","item":"https://zolotoj-yasen.ru/"},{"@type":"ListItem","position":2,"name":"Управления","item":"https://zolotoj-yasen.ru/#directions"},{"@type":"ListItem","position":3,"name":"Неглинка","item":"https://zolotoj-yasen.ru/upravleniya/neglinka/"}]}</script>
+<style>
+  /* Три активности вместо четырёх. .fmt-grid общий для девяти страниц
+     и задан на repeat(4,1fr) — переопределяем только для этой сетки. */
+  #formats { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 760px) { #formats { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 440px) { #formats { grid-template-columns: 1fr; } }
+
+  /* Плитки шапки идут в две колонки (refresh.css:1294), а .val разрешает
+     перенос в любом месте слова (1296) — «Воинов Леонид Викторови/ч».
+     Отчество длиннее колонки, поэтому плитке руководителя даём всю ширину:
+     имя встаёт в одну строку, остальные три плитки ложатся под ней. */
+  .dir-stats .dir-stat:first-child { grid-column: 1 / -1; }
+  /* Плитка «Каналы 3» снята: она повторяла панель «Наши каналы» с тремя
+     живыми ссылками и после растяжки первой плитки оставляла пустую
+     ячейку в третьем ряду. Осталось 1 + 2. */
+
+  /* Свёртка авторского текста. Текст ВСЕГДА лежит в разметке целиком:
+     робот видит его весь, а без JavaScript он и человеку виден целиком —
+     класс .is-foldable ставит скрипт, и только тогда появляется рез.
+     Плёнка строится от --paper (#fbfaf6) — цвет фона панели на этой
+     странице; значение с главной сюда не переносить, там фон другой. */
+  .fold { position: relative; }
+  .fold-veil { display: none; }
+  .fold.is-foldable .fold-body {
+    max-height: var(--fold, 260px);
+    overflow: hidden;
+    transition: max-height .5s cubic-bezier(.22,.61,.36,1);
+  }
+  .fold.is-foldable.is-open .fold-body { max-height: var(--full, 4000px); }
+  .fold.is-foldable .fold-veil {
+    display: block; position: absolute; left: 0; right: 0; bottom: 0; height: 96px;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(251,250,246,0) 0%, var(--paper) 92%);
+    transition: opacity .35s ease;
+  }
+  .fold.is-foldable.is-open .fold-veil { opacity: 0; }
+  .fold-body p { margin: 0 0 14px; font-size: .96rem; line-height: 1.62; color: var(--ink-2); }
+  .fold-body p:last-child { margin-bottom: 0; }
+  .fold-more {
+    align-self: flex-start; margin-top: -4px;
+    background: none; border: 0; padding: 0; cursor: pointer;
+    font: inherit; font-size: .86rem; color: var(--accent);
+    border-bottom: 1px solid currentColor;
+  }
+  .fold-more:hover { opacity: .78 }
+
+  /* На печати рез снимаем, кнопку прячем: бумага не листается. */
+  @media print {
+    .fold.is-foldable .fold-body { max-height: none }
+    .fold-veil, .fold-more { display: none !important }
+  }
+  /* Кому движение мешает — тому без него. */
+  @media (prefers-reduced-motion: reduce) {
+    .fold.is-foldable .fold-body, .fold.is-foldable .fold-veil { transition: none }
+  }
+</style>
 </head>
 <body data-palette="iney" data-fontpair="modern" data-density="regular" data-screen-label="Неглинка">
 
@@ -94,18 +150,26 @@ document.addEventListener('click', function (e) {
 
     <div class="dir-hero-row">
       <div>
+        <!-- В чипе стоит официальное имя управления из анкеты. Слот
+             под заголовком у всех девяти страниц занят девизом
+             («Архитектура — застывшая музыка небес», «Смыслы и Изводы»),
+             и у Неглинки туда попало имя канала «38 Меридиан». Теперь
+             там слоган, а имя управления живёт в чипе. -->
         <div class="row" style="gap:10px;margin-bottom:20px">
-          <span class="chip">История · география</span>
+          <span class="chip">Управление истории и&nbsp;географии</span>
           <span class="chip">Москва + Онлайн</span>
         </div>
         <div class="dir-hero-id">
           <div class="dir-logo"><img src="/1/src/img/neglinka-emblem.png" alt="Эмблема исследовательской группы «Неглинка»" width="512" height="512"/></div>
           <div>
             <h1 class="dir-title">Неглинка</h1>
-            <div class="dir-kicker">Исследовательская группа «38 Меридиан»</div>
+            <div class="dir-kicker">Формирование позитивного образа будущего на&nbsp;основе анализа прошлого</div>
           </div>
         </div>
-        <p class="dir-sub">Проясняем историю и&nbsp;географию России — гуляем по&nbsp;Москве, читаем то, что&nbsp;зашифровано в&nbsp;её&nbsp;улицах, фасадах и&nbsp;названиях.</p>
+        <!-- Лид собран из полей анкеты «миссия» и «чем занимаемся». Прежний
+             обещал, что мы «читаем то, что зашифровано в улицах» — это
+             утверждение голосом сайта, которого управление не заявляло. -->
+        <p class="dir-sub"><b>Восстанавливаем образ прошлого.</b><br/>Исследования, экспедиции и&nbsp;выступления в&nbsp;онлайне — на&nbsp;стыке истории, географии и&nbsp;русского языка.</p>
         <div class="hero-cta">
           <a class="btn btn-primary" href="/zayavka/?dir=neglinka">Оставить заявку <span class="arr">→</span></a>
           <a class="btn btn-ghost" href="#channels">Наши каналы</a>
@@ -114,8 +178,7 @@ document.addEventListener('click', function (e) {
       <div class="dir-stats" aria-label="Об управлении">
         <div class="dir-stat is-text"><div class="lbl">Руководитель</div><div class="val">Воинов Леонид Викторович</div></div>
         <div class="dir-stat is-text"><div class="lbl">Формат</div><div class="val">Москва + онлайн</div></div>
-        <div class="dir-stat"><div class="lbl">Каналы</div><div class="val">3</div></div>
-        
+        <div class="dir-stat"><div class="lbl">Участников</div><div class="val">20<small>+</small></div></div>
       </div>
     </div>
 
@@ -135,29 +198,29 @@ document.addEventListener('click', function (e) {
     <div class="grid" style="grid-template-columns:1.4fr 1fr; gap:32px;">
       <article class="panel" style="grid-column:1 / -1">
         <div class="panel-head">
-          <h3>Что делаем</h3>
-          <span class="sub">Формат · 4 типа встреч</span>
+          <h3>Чем занимаемся</h3>
+          <span class="sub">Три направления работы</span>
         </div>
+        <!-- Три плитки вместо прежних четырёх: столько активностей назвало
+             само управление. Класс .fmt-grid общий для девяти страниц и жёстко
+             задан на четыре колонки, поэтому ширину переопределяем локально
+             по id — иначе у Неглинки повисла бы пустая четвёртая ячейка,
+             а правка самого класса поехала бы на восьми чужих страницах. -->
         <div class="fmt-grid" id="formats">
           <div>
-            <div class="fmt-num">01 · ПРОГУЛКА</div>
-            <h4 class="fmt-title">Натурные уроки</h4>
-            <p class="fmt-desc">Маршрут 2–3 часа, 8–15 человек, разбор на месте.</p>
+            <div class="fmt-num">01 · ИССЛЕДОВАНИЯ</div>
+            <h4 class="fmt-title">Работа с&nbsp;источниками</h4>
+            <p class="fmt-desc">История и&nbsp;география на&nbsp;стыке дисциплин: карты, документы, язык.</p>
           </div>
           <div>
-            <div class="fmt-num">02 · ЛАБОРАТОРИЯ</div>
-            <h4 class="fmt-title">Кабинетные разборы</h4>
-            <p class="fmt-desc">Работа с картами, источниками, архивами.</p>
+            <div class="fmt-num">02 · ЭКСПЕДИЦИИ</div>
+            <h4 class="fmt-title">Выезды и&nbsp;прогулки</h4>
+            <p class="fmt-desc">Разбор на&nbsp;месте, по&nbsp;улицам Москвы и&nbsp;за&nbsp;её&nbsp;пределами.</p>
           </div>
           <div>
             <div class="fmt-num">03 · ОНЛАЙН</div>
-            <h4 class="fmt-title">Видеолекции и&nbsp;разборы</h4>
-            <p class="fmt-desc">Для тех, кто не в Москве. Запись + обсуждение.</p>
-          </div>
-          <div>
-            <div class="fmt-num">04 · ИЗДАНИЯ</div>
-            <h4 class="fmt-title">Заметки участников</h4>
-            <p class="fmt-desc">Находки и&nbsp;разборы выходят в&nbsp;каналах группы.</p>
+            <h4 class="fmt-title">Выступления в&nbsp;онлайне</h4>
+            <p class="fmt-desc">Для тех, кто не&nbsp;в&nbsp;Москве. Разборы выходят в&nbsp;каналах группы.</p>
           </div>
         </div>
       </article>
@@ -194,21 +257,55 @@ document.addEventListener('click', function (e) {
         <article class="panel">
           <div class="panel-head">
             <h3>О группе</h3>
-            <span class="sub">Что мы ищем</span>
+            <span class="sub">Текст управления</span>
           </div>
           <div class="panel-body about-body">
-            <p class="about-text">
-              «Неглинка» — исследовательская группа: разбираем историю и&nbsp;географию России
-              по&nbsp;первоисточникам и&nbsp;на&nbsp;местности. Ходим по&nbsp;Москве и&nbsp;читаем то,
-              что зашифровано в&nbsp;её&nbsp;улицах, фасадах и&nbsp;названиях.
-            </p>
-            <div>
-              <div class="label-muted">ПОДРОБНЕЕ О РАБОТЕ ГРУППЫ</div>
-              <p class="unique-text">
-                Состав, расписание встреч и&nbsp;материалы группа готовит к&nbsp;публикации.
-                Пока самое живое — в&nbsp;каналах: там выходят анонсы прогулок и&nbsp;разборы.
-              </p>
+            <!-- Подпись авторства стоит НАД текстом намеренно: после раскрытия
+                 шапка панели уходит с экрана, и рядом с утверждениями должно
+                 оставаться указание, чья это речь. Текст авторский, правлена
+                 только типографика: кавычки, тире, ё, неразрывные пробелы. -->
+            <div class="label-muted">ТЕКСТ ИССЛЕДОВАТЕЛЬСКОЙ ГРУППЫ «НЕГЛИНКА»</div>
+
+            <div class="fold" id="aboutFold">
+              <div class="fold-body" id="aboutBody">
+    <p>Основной вектор работы Исследовательской группы (ИГ) «Неглинка» — это формирование позитивного образа будущего на&nbsp;основе анализа прошлого.</p>
+    <p>Многие профессиональные историки признают, что в&nbsp;современной трактовке и&nbsp;описании событий прошлого есть много нестыковок и&nbsp;противоречий и&nbsp;что нет общей картины прошлого. И&nbsp;это не&nbsp;зависит от&nbsp;того, какую хронологию мы используем: классическую или новую/альтернативную. Ярким подтверждением этого служат школьные учебники истории как нашей страны, так и&nbsp;любой другой. Описание и&nbsp;трактовка событий прошлого в&nbsp;британских школьных учебниках не&nbsp;совпадает с&nbsp;тем, как описывают эти события в&nbsp;учебниках Франции или Испании. Наши современные школьные учебники истории и&nbsp;российские школьные учебники 18–19&nbsp;веков по-разному описывают и&nbsp;интерпретируют одни и&nbsp;те же&nbsp;события. Есть много крылатых фраз, объясняющих эту ситуацию: «Историю пишут победители», «История — это политика, опрокинутая в&nbsp;прошлое», «История — это ложь, с&nbsp;которой все согласились» и&nbsp;т.&nbsp;п. А&nbsp;ведь то, чему нас учат в&nbsp;школе на&nbsp;уроках истории, формирует самосознание народа и&nbsp;систему ценностей, на&nbsp;основе которых мы принимаем те или иные решения в&nbsp;настоящем. Если человек знает, что несколько поколений его предков жили в&nbsp;рабстве, нищете и&nbsp;невежестве, то&nbsp;решения сегодня он примет, исходя из&nbsp;этой «памяти поколений». А&nbsp;если человек знает, что сотни поколений его предков жили на&nbsp;этой земле в&nbsp;достатке, в&nbsp;мире и&nbsp;гармонии с&nbsp;природой, творя великолепные изделия на&nbsp;основе немыслимых сегодня технологий, то&nbsp;принимать решения о&nbsp;своём настоящем и&nbsp;будущем человек будет совсем другие, чем в&nbsp;первом случае. Когда человек ощущает себя мостиком между мудростью предков и&nbsp;благополучием потомков, то&nbsp;это совсем другая история.</p>
+    <p>Можно ли&nbsp;сейчас найти истинные события и&nbsp;действующих лиц нашей истории? Можно ли&nbsp;очистить эти события от&nbsp;политизированных трактовок? Можно ли&nbsp;откопать (в&nbsp;прямом смысле) истинный облик исторических зданий? Можно ли&nbsp;увидеть в&nbsp;кипах документов прошлого фальшивки или просто литературные произведения? Да, можно. Но только на&nbsp;стыке нескольких дисциплин: истории, географии, финансов, русского и&nbsp;других языков, архитектуры, медицины, астрономии, технологий. И&nbsp;есть люди, которые занимаются этим трудом несколько десятков лет.</p>
+    <p>ИГ «Неглинка» фокусируется в&nbsp;своей работе на&nbsp;две дисциплины — историю и&nbsp;географию — и&nbsp;опирается на&nbsp;русский язык, в&nbsp;котором сохранилось много подсказок на&nbsp;исторические (а&nbsp;не&nbsp;выдуманные) события и&nbsp;их истинную географию. Например, правый берег реки — назывался «река», левый берег реки — назывался «море», а&nbsp;значит известное «хождение за три моря» — это просто «хождение через три реки». Или ещё один пример с&nbsp;хорошо известными ныне «историческими» персонажами. «Кириллица» — это забытое ныне «каракулица», а&nbsp;«Мефодий» — это «методия». «Каракулица» и&nbsp;«методия» превратились в&nbsp;народе в&nbsp;созвучных Кирилла и&nbsp;Мефодия. Чистописание и&nbsp;каллиграфия. Из&nbsp;созвучия появились персонажи, которых в&nbsp;реальности не&nbsp;было. Только в&nbsp;начале 20-го века из&nbsp;русского языка убрали примерно 30&nbsp;000 слов, а&nbsp;остальные сильно поменяли свой изначальный смысл. Наверное, поэтому вдруг вся Россия стала неграмотной.</p>
+    <p>Много забытых значений уже разгадано, но есть ещё много непознанного и&nbsp;неожиданного. Именно, поэтому в&nbsp;ИГ «Неглинка» трудятся люди разных специальностей из&nbsp;разных областей знания. Мы будем рады принять в&nbsp;свою команду картографов, геральдистов, переводчиков с&nbsp;древних языков, астрономов, геодезистов, архивариусов, лингвистов, океанографов… Дорогу осилит идущий… знающий свою истинную историю.</p>
+              </div>
+              <div class="fold-veil" aria-hidden="true"></div>
             </div>
+            <button class="fold-more" id="aboutMore" type="button" hidden
+                    aria-expanded="false" aria-controls="aboutBody">Читать целиком</button>
+
+            <div class="mission-box">
+              <div class="label-accent">МИССИЯ</div>
+              <p class="about-text" style="margin-top:6px">Восстановление образа прошлого.</p>
+            </div>
+
+            <div>
+              <div class="label-muted">В ЧЁМ ОСОБЕННОСТЬ</div>
+              <p class="unique-text">Знаниями неизвестными, но&nbsp;подтверждёнными.</p>
+            </div>
+
+            <div>
+              <div class="label-muted">КОГО ЖДЁМ В КОМАНДУ</div>
+              <p class="unique-text">Картографов, геральдистов, переводчиков с&nbsp;древних языков,
+              астрономов, геодезистов, архивариусов, лингвистов, океанографов.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <h3>Для кого</h3>
+            <span class="sub">Кому подходит</span>
+          </div>
+          <div class="panel-body">
+            <div class="for-row"><span class="for-mark">✦</span> Единомышленникам</div>
+            <div class="for-row"><span class="for-mark">✦</span> Ищущим</div>
+            <div class="for-row"><span class="for-mark">✦</span> Неравнодушным</div>
           </div>
         </article>
       </div>
@@ -224,6 +321,13 @@ document.addEventListener('click', function (e) {
             <div class="coord">
               <div class="av">ВЛ</div>
               <div class="info"><b>Воинов Леонид Викторович</b><p>Руководитель управления</p></div>
+            </div>
+            <!-- Куратор из анкеты. Руководителя не трогаем: анкета про него
+                 не спрашивала, и её молчание ничего о нём не сообщает.
+                 Полное имя куратора уточняется — пока стоит так, как прислано. -->
+            <div class="coord">
+              <div class="av">Г</div>
+              <div class="info"><b>Гай Е.&nbsp;М.</b><p>Учитель и&nbsp;координатор</p></div>
             </div>
           </div>
         </article>
@@ -278,6 +382,19 @@ document.addEventListener('click', function (e) {
             <div class="kv-row">
               <span class="dim">Анонсы и разборы</span>
               <b class="kv-val">В каналах</b>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <h3>Издания</h3>
+            <span class="sub">Что вышло</span>
+          </div>
+          <div class="kv-list">
+            <div class="kv-row">
+              <span class="dim">Книга</span>
+              <b class="kv-val">«Город Солнца. Как&nbsp;устроена Москва»</b>
             </div>
           </div>
         </article>
@@ -446,6 +563,40 @@ document.addEventListener('click', function (e) {
   document.getElementById('ckOk').addEventListener('click', function () {
     bar.classList.remove('on');
     try { localStorage.setItem(K, '1'); } catch (e) {}
+  });
+})();
+</script>
+<script>
+/* Свёртка авторского текста. Рез ставится только скриптом: без него текст
+   стоит целиком, и это верное поведение — и для робота, и для человека
+   с выключенным JavaScript. Высоту меряем на месте, чтобы срез прошёл
+   сквозь живые строки середины абзаца: обрыв ровно по границе абзаца
+   читается как конец текста, и до кнопки уже не тянутся. */
+(function () {
+  var fold = document.getElementById('aboutFold');
+  var body = document.getElementById('aboutBody');
+  var btn  = document.getElementById('aboutMore');
+  if (!fold || !body || !btn) return;
+
+  var FOLD = 300;
+  if (body.scrollHeight <= FOLD + 80) return;   // короткий текст резать незачем
+
+  fold.style.setProperty('--fold', FOLD + 'px');
+  fold.classList.add('is-foldable');
+  btn.hidden = false;
+
+  btn.addEventListener('click', function () {
+    var open = fold.classList.toggle('is-open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.textContent = open ? 'Свернуть' : 'Читать целиком';
+    if (open) {
+      fold.style.setProperty('--full', body.scrollHeight + 'px');
+    } else {
+      /* при сворачивании возвращаем человека к началу текста,
+         иначе он остаётся смотреть в пустоту там, где был низ */
+      var t = fold.getBoundingClientRect().top;
+      if (t < 70) window.scrollTo({ top: window.scrollY + t - 90, behavior: 'smooth' });
+    }
   });
 })();
 </script>
