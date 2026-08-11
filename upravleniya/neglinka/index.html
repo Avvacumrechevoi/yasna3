@@ -58,14 +58,15 @@ document.addEventListener('click', function (e) {
      Золотой Ясень › Управления › Неглинка -->
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Золотой Ясень","item":"https://zolotoj-yasen.ru/"},{"@type":"ListItem","position":2,"name":"Управления","item":"https://zolotoj-yasen.ru/#directions"},{"@type":"ListItem","position":3,"name":"Неглинка","item":"https://zolotoj-yasen.ru/upravleniya/neglinka/"}]}</script>
 <style>
-  /* Плитки шапки идут в две колонки (refresh.css:1294), а .val разрешает
-     перенос в любом месте слова (1296) — «Воинов Леонид Викторови/ч».
-     Отчество длиннее колонки, поэтому плитке руководителя даём всю ширину:
-     имя встаёт в одну строку, остальные три плитки ложатся под ней. */
-  .dir-stats .dir-stat:first-child { grid-column: 1 / -1; }
-  /* Плитка «Каналы 3» снята: она повторяла панель «Наши каналы» с тремя
-     живыми ссылками и после растяжки первой плитки оставляла пустую
-     ячейку в третьем ряду. Осталось 1 + 2. */
+  /* Отчество ломалось посреди слова — «Воинов Леонид Викторови/ч».
+     Виновато правило .dir-stat .val { overflow-wrap: anywhere }
+     (refresh.css:1296): это страховка от переполнения, но на ФИО она
+     портит чтение. Разрешаем перенос только между словами — самое
+     длинное слово «Викторович» вдвое уже колонки, переполнения не будет.
+
+     Растягивать плитку на обе колонки, как было сначала, оказалось хуже:
+     при нечётном числе плиток в ряду оставалась пустая серая ячейка. */
+  .dir-stats .dir-stat.is-text .val { overflow-wrap: normal; }
 
   /* Список материалов: заголовок ссылкой, под ним тип, дата и объём. */
   .mat-title { font-weight: 600; font-size: .98rem; line-height: 1.35;
@@ -182,6 +183,7 @@ document.addEventListener('click', function (e) {
         <div class="dir-stat is-text"><div class="lbl">Руководитель</div><div class="val">Воинов Леонид Викторович</div></div>
         <div class="dir-stat is-text"><div class="lbl">Формат</div><div class="val">Москва + онлайн</div></div>
         <div class="dir-stat"><div class="lbl">Участников</div><div class="val">20<small>+</small></div></div>
+        <div class="dir-stat"><div class="lbl">Каналы</div><div class="val">3</div></div>
       </div>
     </div>
 
