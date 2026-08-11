@@ -58,12 +58,6 @@ document.addEventListener('click', function (e) {
      Золотой Ясень › Управления › Неглинка -->
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Золотой Ясень","item":"https://zolotoj-yasen.ru/"},{"@type":"ListItem","position":2,"name":"Управления","item":"https://zolotoj-yasen.ru/#directions"},{"@type":"ListItem","position":3,"name":"Неглинка","item":"https://zolotoj-yasen.ru/upravleniya/neglinka/"}]}</script>
 <style>
-  /* Три активности вместо четырёх. .fmt-grid общий для девяти страниц
-     и задан на repeat(4,1fr) — переопределяем только для этой сетки. */
-  #formats { grid-template-columns: repeat(3, 1fr); }
-  @media (max-width: 760px) { #formats { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 440px) { #formats { grid-template-columns: 1fr; } }
-
   /* Плитки шапки идут в две колонки (refresh.css:1294), а .val разрешает
      перенос в любом месте слова (1296) — «Воинов Леонид Викторови/ч».
      Отчество длиннее колонки, поэтому плитке руководителя даём всю ширину:
@@ -72,6 +66,15 @@ document.addEventListener('click', function (e) {
   /* Плитка «Каналы 3» снята: она повторяла панель «Наши каналы» с тремя
      живыми ссылками и после растяжки первой плитки оставляла пустую
      ячейку в третьем ряду. Осталось 1 + 2. */
+
+  /* Список материалов: заголовок ссылкой, под ним тип, дата и объём. */
+  .mat-title { font-weight: 600; font-size: .98rem; line-height: 1.35;
+    color: var(--ink); text-decoration: none; border-bottom: 1px solid transparent; }
+  .mat-title:hover { color: var(--accent); border-bottom-color: currentColor }
+  .mat-meta { margin-top: 4px; font-family: var(--font-mono);
+    font-size: .72rem; letter-spacing: .06em; color: var(--ink-3); text-transform: uppercase }
+  .mat-all { font-size: .86rem; color: var(--accent); text-decoration: none;
+    border-bottom: 1px solid currentColor; justify-self: start }
 
   /* Свёртка авторского текста. Текст ВСЕГДА лежит в разметке целиком:
      робот видит его весь, а без JavaScript он и человеку виден целиком —
@@ -199,13 +202,12 @@ document.addEventListener('click', function (e) {
       <article class="panel" style="grid-column:1 / -1">
         <div class="panel-head">
           <h3>Чем занимаемся</h3>
-          <span class="sub">Три направления работы</span>
+          <span class="sub">Четыре направления работы</span>
         </div>
-        <!-- Три плитки вместо прежних четырёх: столько активностей назвало
-             само управление. Класс .fmt-grid общий для девяти страниц и жёстко
-             задан на четыре колонки, поэтому ширину переопределяем локально
-             по id — иначе у Неглинки повисла бы пустая четвёртая ячейка,
-             а правка самого класса поехала бы на восьми чужих страницах. -->
+        <!-- Четыре плитки: три активности из анкеты плюс прогулки. Прогулки
+             стоят отдельно по решению управления — они и в полосе анонсов,
+             и в связке с «Ясными маршрутами», и внутрь экспедиций
+             не убираются. Сетка .fmt-grid задана на четыре колонки. -->
         <div class="fmt-grid" id="formats">
           <div>
             <div class="fmt-num">01 · ИССЛЕДОВАНИЯ</div>
@@ -214,11 +216,16 @@ document.addEventListener('click', function (e) {
           </div>
           <div>
             <div class="fmt-num">02 · ЭКСПЕДИЦИИ</div>
-            <h4 class="fmt-title">Выезды и&nbsp;прогулки</h4>
-            <p class="fmt-desc">Разбор на&nbsp;месте, по&nbsp;улицам Москвы и&nbsp;за&nbsp;её&nbsp;пределами.</p>
+            <h4 class="fmt-title">Выезды</h4>
+            <p class="fmt-desc">Работа на&nbsp;местности за&nbsp;пределами Москвы.</p>
           </div>
           <div>
-            <div class="fmt-num">03 · ОНЛАЙН</div>
+            <div class="fmt-num">03 · ПРОГУЛКИ</div>
+            <h4 class="fmt-title">Натурные уроки</h4>
+            <p class="fmt-desc">Разбор на&nbsp;месте, по&nbsp;улицам Москвы.</p>
+          </div>
+          <div>
+            <div class="fmt-num">04 · ОНЛАЙН</div>
             <h4 class="fmt-title">Выступления в&nbsp;онлайне</h4>
             <p class="fmt-desc">Для тех, кто не&nbsp;в&nbsp;Москве. Разборы выходят в&nbsp;каналах группы.</p>
           </div>
@@ -297,12 +304,41 @@ document.addEventListener('click', function (e) {
           </div>
         </article>
 
+        <!-- Материалы взяты с их же дзен-канала «Байки нашего Костра».
+             Видео на канале нет ни одного — проверено. Фотографии лежат
+             внутри статей, права на них оттуда не читаются, поэтому
+             к себе не копируем: ведём на первоисточник.
+             Две статьи про ВДНХ намеренно не вынесены — первая из них
+             открывается посвящением воинам СВО и казачьему батальону,
+             это решение заказчика, а не моё. -->
+        <article class="panel">
+          <div class="panel-head">
+            <h3>Материалы</h3>
+            <span class="sub">Дзен · «Байки нашего Костра»</span>
+          </div>
+          <div class="panel-body" style="padding:22px 24px;display:grid;gap:16px">
+            <div>
+              <a class="mat-title" href="https://dzen.ru/a/ZGFqHUumAiQFTbZF" target="_blank" rel="noopener">Как устроена Москва. Город Солнца&nbsp;→</a>
+              <div class="mat-meta">Статья · 15&nbsp;мая 2023 · 19&nbsp;минут чтения</div>
+            </div>
+            <div>
+              <a class="mat-title" href="https://dzen.ru/a/ZDFn-JkZ_iBQDXcC" target="_blank" rel="noopener">Как устроена Москва. Небесная река Москвы&nbsp;→</a>
+              <div class="mat-meta">Статья · 8&nbsp;апреля 2023 · 6&nbsp;минут чтения</div>
+            </div>
+            <a class="mat-all" href="https://dzen.ru/id/629888dd626c9e4130ceb7ea" target="_blank" rel="noopener">Все материалы канала&nbsp;→</a>
+          </div>
+        </article>
+
         <article class="panel">
           <div class="panel-head">
             <h3>Для кого</h3>
             <span class="sub">Кому подходит</span>
           </div>
-          <div class="panel-body">
+          <!-- Базовый .panel-body даёт padding:6px 0 (styles.css:451) — без
+               боковых отступов строки прижимались к рамке. На всех страницах,
+               где есть .for-row, отступ задан на месте; повторяем. Одна
+               колонка вместо двух: пунктов три, во втором столбце пусто. -->
+          <div class="panel-body" style="padding:22px 24px;display:grid;gap:12px">
             <div class="for-row"><span class="for-mark">✦</span> Единомышленникам</div>
             <div class="for-row"><span class="for-mark">✦</span> Ищущим</div>
             <div class="for-row"><span class="for-mark">✦</span> Неравнодушным</div>
@@ -321,13 +357,6 @@ document.addEventListener('click', function (e) {
             <div class="coord">
               <div class="av">ВЛ</div>
               <div class="info"><b>Воинов Леонид Викторович</b><p>Руководитель управления</p></div>
-            </div>
-            <!-- Куратор из анкеты. Руководителя не трогаем: анкета про него
-                 не спрашивала, и её молчание ничего о нём не сообщает.
-                 Полное имя куратора уточняется — пока стоит так, как прислано. -->
-            <div class="coord">
-              <div class="av">Г</div>
-              <div class="info"><b>Гай Е.&nbsp;М.</b><p>Учитель и&nbsp;координатор</p></div>
             </div>
           </div>
         </article>
@@ -360,6 +389,12 @@ document.addEventListener('click', function (e) {
               </div>
             </div>
             <a class="btn btn-primary join-cta" href="/zayavka/?dir=neglinka">Оставить заявку <span class="arr">→</span></a>
+            <!-- Прямой контакт из анкеты. Заявка через форму остаётся главным
+                 путём: по ней управление получает контакт и согласие. Телеграм
+                 стоит рядом для тех, кому проще написать. -->
+            <p class="unique-text" style="margin-top:12px;text-align:center">
+              Или напишите в&nbsp;<a href="https://t.me/neglinka78" target="_blank" rel="noopener">Telegram&nbsp;— @neglinka78</a>
+            </p>
           </div>
         </article>
 
