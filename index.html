@@ -667,6 +667,7 @@ document.addEventListener('click', function (e) {
       <a class="lnk" href="#event">Обращение</a>
       <a class="lnk" href="/bolshoy-list/">26 сентября</a>
       <a class="lnk" href="#directions">Управления</a>
+        <a class="lnk" href="#sobytiya">События</a>
       <a class="lnk" href="#ways">Участие</a>
       <a class="lnk" href="#method">Метод</a>
       <a class="lnk" href="#faq">Вопросы</a>
@@ -679,6 +680,7 @@ document.addEventListener('click', function (e) {
   <a href="#event">Обращение <span class="ar">→</span></a>
   <a href="/bolshoy-list/">26 сентября <span class="ar">→</span></a>
   <a href="#directions">Управления <span class="ar">→</span></a>
+      <a href="#sobytiya">События <span class="ar">→</span></a>
   <a href="#ways">Участие <span class="ar">→</span></a>
   <a href="#method">Метод <span class="ar">→</span></a>
   <a href="#faq">Вопросы <span class="ar">→</span></a>
@@ -866,6 +868,65 @@ document.addEventListener('click', function (e) {
     </div>
   </div>
 </section>
+
+<!-- Афиша стоит между «Двенадцатью управлениями» и «Четырьмя путями»
+     намеренно: сперва читатель узнаёт, кто это, потом видит, что у них
+     происходит, и только потом — как участвовать. Содержимое блока
+     собирает tools/events/stranicy.py из content/events.json. -->
+<!-- АФИША:НАЧАЛО — собрано tools/events/stranicy.py, руками не править -->
+<section id="sobytiya">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow" data-reveal>Афиша</span>
+      <h2 data-reveal>Ближайшие события</h2>
+      <p data-reveal>Управления ведут занятия, прогулки и встречи круглый год. Приходить можно впервые.</p>
+    </div>
+    <style>
+      #sobytiya .way .kogda { display: block; margin-bottom: 12px; }
+      #sobytiya .way h3 { font-size: 21px; }
+      #sobytiya .zovem { display: flex; flex-wrap: wrap; align-items: center;
+        gap: 14px 20px; margin-top: 34px; }
+      #sobytiya .zovem .kto { color: var(--ink-70); font-size: 15.5px; }
+      #sobytiya .zovem .kto b { color: var(--ink); white-space: nowrap; }
+    </style>
+    <div class="ways-grid">
+      <div class="way" data-reveal>
+        <span class="ghost">22</span>
+        <span class="eyebrow kogda">22 августа · суббота</span>
+        <h3>Лесной урок</h3>
+        <p>Практическое занятие на природе. Время и место уточняйте по телефону.</p>
+        <a href="tel:+79082939363">Записаться <span class="ar">→</span></a>
+      </div>
+      <div class="way" data-reveal>
+        <span class="ghost">23</span>
+        <span class="eyebrow kogda">23 августа · воскресенье</span>
+        <h3>Костный массаж. Открытый урок</h3>
+        <p>Делаем полноценный сеанс массажа, отрабатываем технику, делимся опытом. Разбираем то, как устроено тело человека. Время и место уточняйте по телефону.</p>
+        <a href="tel:+79082939363">Записаться <span class="ar">→</span></a>
+      </div>
+      <div class="way" data-reveal>
+        <span class="ghost">26</span>
+        <span class="eyebrow kogda">26 августа · среда</span>
+        <h3>Ясная Среда</h3>
+        <p>Разговор о жизни и русском языке. Ссылку на встречу высылаем записавшимся.</p>
+        <a href="tel:+79082939363">Записаться <span class="ar">→</span></a>
+      </div>
+      <div class="way" data-reveal>
+        <span class="ghost">29</span>
+        <span class="eyebrow kogda">29 августа · суббота</span>
+        <h3>Лесной урок</h3>
+        <p>Продолжаем практические занятия на природе. Время и место уточняйте по телефону.</p>
+        <a href="tel:+79082939363">Записаться <span class="ar">→</span></a>
+      </div>
+    </div>
+    <div class="zovem">
+      <a class="btn btn-pri" href="tel:+79082939363">Записаться по телефону <span class="ar">→</span></a>
+      <a class="btn btn-sec" href="/sobytiya/">Все события</a>
+      <span class="kto"><b>+7 908 293-93-63</b> · Вишня Владимировна</span>
+    </div>
+  </div>
+</section>
+<!-- АФИША:КОНЕЦ -->
 
 <!-- УЧАСТИЕ -->
 <section class="ways" id="ways">
@@ -1208,7 +1269,7 @@ document.addEventListener('click', function (e) {
     /* Порядок обязан совпадать с порядком секций в разметке: массив
      перебирается сверху вниз и активным считается последний подошедший.
      После обмена Обращения и Большого листа местами — day идёт первым. */
-  var spyIds=['day','event','directions','ways','method','faq'];
+  var spyIds=['day','event','directions','sobytiya','ways','method','faq'];
   var spyEls=spyIds.map(function(id){ return {id:id, el:document.getElementById(id)}; }).filter(function(o){ return o.el; });
   var spyLinks={};
   document.querySelectorAll('.navlinks a.lnk').forEach(function(a){ spyLinks[a.getAttribute('href').slice(1)]=a; });
