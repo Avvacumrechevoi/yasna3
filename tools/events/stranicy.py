@@ -325,6 +325,15 @@ BLOK_GLAVNAYA = """<!-- АФИША:НАЧАЛО — собрано tools/events/
 # Держим отдельно от строки-шаблона: фигурные скобки CSS внутри .format()
 # читаются как подстановки и роняют сборку.
 BLOK_STILI = """    <style>
+      /* Отступы секции. На главной нет общего правила для section: каждая
+         берёт поля из своего класса (.directions, .ways — по 110px). У этой
+         секции класса нет, поэтому поля были нулевые, и блок сидел вплотную
+         к соседям — вдвое теснее, чем весь остальной ритм страницы.
+         Порог 600px и величина 68px повторяют мобильное правило главной. */
+      #sobytiya { padding: 110px 0; }
+      @media (max-width: 600px), (max-height: 560px) and (orientation: landscape) {
+        #sobytiya { padding-top: 68px; padding-bottom: 68px; }
+      }
       #sobytiya .way .kogda { display: block; margin-bottom: 12px; }
       #sobytiya .way h3 { font-size: 21px; }
       #sobytiya .zovem { display: flex; flex-wrap: wrap; align-items: center;
