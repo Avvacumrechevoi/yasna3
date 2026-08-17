@@ -274,7 +274,7 @@ STRANICA = """<!doctype html>
     <div class="cta-banner">
       <div>
         <div class="eyebrow">Запись и вопросы</div>
-        <h2 style="margin-top:14px">Позвоните<br/>{imya_bez_otchestva}</h2>
+        <h2 style="margin-top:14px">Позвоните<br/>{imya_komu}</h2>
         <p style="margin-top:18px">Запишет на любое событие, подскажет время и место сбора,
         ответит на вопросы. Если сомневаетесь, подходит ли вам занятие, — это тоже к ней.</p>
       </div>
@@ -386,7 +386,7 @@ def sobrat_stranicu(sobytiya, kontakt, segodnya):
         razmetka=json.dumps(razmetka(budushchie, kontakt), ensure_ascii=False),
         mesyacy="\n".join(kuski), kratko=kratko,
         tel=kontakt["telefon"], tel_href=kontakt["tel_href"],
-        imya=imya, imya_bez_otchestva=imya.split()[0],
+        imya=imya, imya_komu=kontakt["imya_komu"],
     )
 
 
