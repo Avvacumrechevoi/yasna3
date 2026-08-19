@@ -64,6 +64,47 @@ jobs:
             --exclude '*.py'
           echo "— в витрине:"; find _site -maxdepth 1 | sort
 
+      # ─────────────────────────────────────────────────────────────
+      # Боевая выкладка: Object Storage в Яндекс Облаке.
+      #
+      # Домен смотрит сюда с 19.08.2026 — GitHub Pages фильтровался
+      # из московских сетей, а вся аудитория и реклама у нас Москва.
+      # Выкладка на Pages ниже сохранена намеренно: это рабочая запасная
+      # площадка, на которую можно вернуть домен одной правкой DNS,
+      # и держать её свежей ничего не стоит.
+      #
+      # Ключ — служебного аккаунта yasna-deploy, у него единственная роль
+      # storage.editor: он может писать в хранилище и больше ничего.
+      - name: Выложить в Object Storage
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.YC_S3_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.YC_S3_SECRET }}
+          AWS_DEFAULT_REGION: ru-central1
+          EP: https://storage.yandexcloud.net
+        run: |
+          set -eu
+          aws s3 sync _site/ s3://zolotoj-yasen.ru/ \
+            --endpoint-url "$EP" --delete --no-progress
+
+          # Хранилище само тип файла не проставляет: .css уезжает как
+          # text/plain, и браузер такие стили просто не применяет — сайт
+          # открывается голым текстом. Поэтому типы задаём явно.
+          # Файлов тут полтора десятка, проход дешёвый.
+          fix() {
+            aws s3 cp "s3://zolotoj-yasen.ru/" "s3://zolotoj-yasen.ru/" \
+              --endpoint-url "$EP" --recursive --no-progress \
+              --exclude "*" --include "$1" \
+              --content-type "$2" --metadata-directive REPLACE
+          }
+          fix "*.css"  "text/css; charset=utf-8"
+          fix "*.js"   "text/javascript; charset=utf-8"
+          fix "*.svg"  "image/svg+xml"
+          fix "*.ics"  "text/calendar; charset=utf-8"
+          fix "*.html" "text/html; charset=utf-8"
+
+          echo "— в хранилище:"
+          aws s3 ls s3://zolotoj-yasen.ru/ --endpoint-url "$EP" | head -20
+
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:
