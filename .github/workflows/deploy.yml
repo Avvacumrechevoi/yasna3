@@ -59,6 +59,7 @@ jobs:
             --exclude '.claude' \
             --exclude 'content' \
             --exclude 'README.md' \
+            --exclude '*.md' \
             --exclude '.gitignore' \
             --exclude '.DS_Store' \
             --exclude '*.py'
