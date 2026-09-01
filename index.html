@@ -66,7 +66,7 @@ document.addEventListener('click', function (e) {
     --line:rgba(33,27,20,.14); --line-2:rgba(33,27,20,.08);
     --gold-line:rgba(185,138,60,.45);
     /* светлые токены для тёмной секции и футера */
-    --pg:rgba(243,236,224,.72); --pg-2:rgba(243,236,224,.52); --pg-line:rgba(243,236,224,.16);
+    --pg:rgba(243,236,224,.74); --pg-2:rgba(243,236,224,.62); --pg-line:rgba(243,236,224,.16);
     /* геометрия: два радиуса, одна тень покоя нет, одна тень поднятого */
     --r-s:4px; --r-m:12px;
     --sh:0 14px 40px rgba(33,27,20,.10);
@@ -93,7 +93,7 @@ document.addEventListener('click', function (e) {
   section[id],header[id]{scroll-margin-top:76px}
 
   /* капительная метка: ЕДИНСТВЕННОЕ исполнение на весь сайт */
-  .cap{font:500 12.5px/1.4 var(--f-m); letter-spacing:.14em; text-transform:uppercase; color:var(--ink-58)}
+  .cap{font:500 12.5px/1.4 var(--f-m); letter-spacing:.14em; text-transform:uppercase; color:var(--ink-74)}
   .cap.a{color:var(--accent)}
 
   /* кнопки: прямоугольник, без подъёмов; движение только у стрелки */
@@ -105,7 +105,7 @@ document.addEventListener('click', function (e) {
   .btn:active{transform:translateY(1px)}
   .btn-pri{background:var(--accent); color:var(--paper)}
   .btn-pri:hover{background:#8C3320}
-  .btn-sec{border:1px solid var(--ink-38); color:var(--ink)}
+  .btn-sec{border:1px solid var(--ink-74); color:var(--ink)}
   .btn-sec:hover{border-color:var(--ink)}
 
   /* шапка раздела: линейка во всю ширину, заголовок, подводка стеком */
@@ -121,7 +121,7 @@ document.addEventListener('click', function (e) {
   .brand img{width:38px; height:38px; border-radius:50%; object-fit:cover; box-shadow:0 0 0 1px var(--gold)}
   .brand .bt{display:flex; flex-direction:column; line-height:1.12}
   .brand .bt b{font:600 18px/1.1 var(--f-d); white-space:nowrap}
-  .brand .bt span{font:500 10.5px/1.4 var(--f-m); letter-spacing:.14em; text-transform:uppercase; color:var(--ink-58); white-space:nowrap}
+  .brand .bt span{font:500 10.5px/1.4 var(--f-m); letter-spacing:.14em; text-transform:uppercase; color:var(--ink-74); white-space:nowrap}
   .navlinks{display:flex; gap:24px; align-items:center; font:500 14.5px/1.2 var(--f-t)}
   .navlinks a.lnk{position:relative; color:var(--ink-74); padding:4px 0; transition:color .25s}
   .navlinks a.lnk::after{content:""; position:absolute; left:0; bottom:-2px; width:0; height:1px; background:var(--accent); transition:width .3s var(--ease)}
@@ -156,7 +156,7 @@ document.addEventListener('click', function (e) {
     transition:border-color .3s}
   .badge:hover{border-color:var(--accent)}
   .badge .ar{color:var(--accent)}
-  .hero h1{font-size:clamp(38px,5.4vw,62px); line-height:1.06; margin:0 0 22px -.06em; max-width:15ch; text-wrap:balance}
+  .hero h1{font-size:clamp(36px,4.6vw,56px); line-height:1.08; margin:0 0 22px -.06em; max-width:560px; text-wrap:balance}
   .hero p.lead{font-size:20px; line-height:1.55; color:var(--ink-74); max-width:30ch; margin:0 0 32px; text-wrap:pretty}
   .btn-row{display:flex; gap:14px; flex-wrap:wrap}
   /* дерево: авторский знак; отрисовывается один раз при загрузке */
@@ -248,9 +248,9 @@ document.addEventListener('click', function (e) {
     padding:22px 26px 20px; transition:border-color .3s var(--ease), background .3s var(--ease)}
   .kard .khead{display:flex; justify-content:space-between; align-items:baseline; gap:10px;
     padding-bottom:16px; margin-bottom:20px; border-bottom:1px solid var(--line-2)}
-  .kard .num{font:400 14px/1 var(--f-d); color:var(--ink-58); font-variant-numeric:tabular-nums}
+  .kard .num{font:400 14px/1 var(--f-d); color:var(--ink-74); font-variant-numeric:tabular-nums}
   .kard .num b{font-weight:500; color:var(--ink)}
-  .kard .loc{font:500 10.5px/1.5 var(--f-m); letter-spacing:.14em; text-transform:uppercase; color:var(--ink-58); text-align:right}
+  .kard .loc{font:500 10.5px/1.5 var(--f-m); letter-spacing:.14em; text-transform:uppercase; color:var(--ink-74); text-align:right}
   /* медальон в кольце с двенадцатью рисками: общий знак каталога */
   .kard .emb{position:relative; width:72px; height:72px; margin-bottom:18px}
   .kard .emb img{position:absolute; inset:8px; width:56px; height:56px; border-radius:50%; object-fit:cover}
@@ -274,7 +274,7 @@ document.addEventListener('click', function (e) {
   .ev{display:grid; grid-template-columns:96px 1fr auto; gap:24px; align-items:baseline;
     padding:22px 0; border-bottom:1px solid var(--line)}
   .ev .data .d{font:500 30px/1 var(--f-d); font-variant-numeric:tabular-nums}
-  .ev .data .m{font:500 11.5px/1.6 var(--f-m); letter-spacing:.14em; text-transform:uppercase; color:var(--ink-58); margin-top:4px}
+  .ev .data .m{font:500 11.5px/1.6 var(--f-m); letter-spacing:.14em; text-transform:uppercase; color:var(--ink-74); margin-top:4px}
   .ev h3{font-size:20px; margin-bottom:5px}
   .ev p{margin:0; font-size:15px; line-height:1.55; color:var(--ink-74); max-width:58ch}
   .ev .act{font:600 15px/1.2 var(--f-t); color:var(--accent); display:inline-flex; gap:8px; align-items:center; min-height:44px}
@@ -312,7 +312,7 @@ document.addEventListener('click', function (e) {
   .pcard[data-p="gos"]{grid-area:t} .pcard[data-p="otec"]{grid-area:l} .pcard[data-p="deti"]{grid-area:r} .pcard[data-p="mat"]{grid-area:b}
   .pcard h3{font-size:19px; letter-spacing:.1em; text-transform:uppercase; margin-bottom:12px; transition:color .6s}
   .prow{display:flex; justify-content:space-between; align-items:baseline; gap:14px; padding:10px 0; border-bottom:1px solid var(--line); transition:border-color .6s}
-  .prow .pl,.pgive .pl{font:500 11px/1.5 var(--f-m); letter-spacing:.14em; color:var(--ink-58); transition:color .6s}
+  .prow .pl,.pgive .pl{font:500 11px/1.5 var(--f-m); letter-spacing:.14em; color:var(--ink-74); transition:color .6s}
   .prow .pv{font-family:var(--f-d); font-style:italic; font-size:17.5px; text-align:right; transition:color .6s}
   .prow .pv.g{color:var(--accent)}
   .pgive{display:flex; gap:12px; align-items:baseline; padding-top:16px; margin-top:auto}
@@ -336,7 +336,7 @@ document.addEventListener('click', function (e) {
     font:500 20px/1.35 var(--f-d); transition:color .25s}
   .qa summary::-webkit-details-marker{display:none}
   .qa summary:hover{color:var(--accent)}
-  .qa .n{flex:none; font:400 13px/1 var(--f-d); color:var(--ink-58); width:26px; font-variant-numeric:tabular-nums}
+  .qa .n{flex:none; font:400 13px/1 var(--f-d); color:var(--ink-74); width:26px; font-variant-numeric:tabular-nums}
   .qa .q{flex:1}
   .qa .ico{flex:none; width:26px; height:26px; position:relative}
   .qa .ico::before,.qa .ico::after{content:""; position:absolute; background:var(--accent); transition:transform .35s var(--ease)}
@@ -375,7 +375,7 @@ document.addEventListener('click', function (e) {
   .ck-bar .wrap{display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap}
   .ck-bar a{text-decoration:underline}
   .ck-bar button{background:var(--paper); color:var(--ink); border:0; border-radius:var(--r-s);
-    padding:8px 18px; font:600 14px/1.2 var(--f-t); cursor:pointer}
+    padding:12px 20px; font:600 14px/1.2 var(--f-t); cursor:pointer; min-height:44px}
 
   /* ---------- адаптив ---------- */
   @media(max-width:1020px){
@@ -422,7 +422,7 @@ document.addEventListener('click', function (e) {
     .btn-row .btn{width:100%; justify-content:center}
   }
   @media(prefers-reduced-motion:reduce){
-    *{animation:none !important; scroll-behavior:auto !important; transition:none !important}
+    *,*::before,*::after{animation:none !important; scroll-behavior:auto !important; transition:none !important}
     .tree path{stroke-dashoffset:0 !important}
     .tree .leaf,.tree .berry{opacity:1 !important}
   }
@@ -474,18 +474,20 @@ document.addEventListener('click', function (e) {
       <a class="lnk" href="#directions">Управления</a>
       <a class="lnk" href="#sobytiya">События</a>
       <a class="lnk" href="#ways">Участие</a>
+      <a class="lnk" href="#method">Метод</a>
       <a class="lnk" href="#faq">Вопросы</a>
       <a class="nav-cta" href="/zayavka/">Оставить заявку</a>
       <details id="mnav">
         <summary aria-label="Меню"><i></i></summary>
         <div class="sheet">
-          <a href="#event">Обращение <span class="ar">→</span></a>
-          <a href="/bolshoy-list/">26 сентября <span class="ar">→</span></a>
-          <a href="#directions">Управления <span class="ar">→</span></a>
-          <a href="#sobytiya">События <span class="ar">→</span></a>
-          <a href="#ways">Участие <span class="ar">→</span></a>
-          <a href="#faq">Вопросы <span class="ar">→</span></a>
-          <a href="/zayavka/">Оставить заявку <span class="ar">→</span></a>
+          <a href="#event">Обращение <span class="ar" aria-hidden="true">→</span></a>
+          <a href="/bolshoy-list/">26 сентября <span class="ar" aria-hidden="true">→</span></a>
+          <a href="#directions">Управления <span class="ar" aria-hidden="true">→</span></a>
+          <a href="#sobytiya">События <span class="ar" aria-hidden="true">→</span></a>
+          <a href="#ways">Участие <span class="ar" aria-hidden="true">→</span></a>
+          <a href="#method">Метод <span class="ar" aria-hidden="true">→</span></a>
+          <a href="#faq">Вопросы <span class="ar" aria-hidden="true">→</span></a>
+          <a href="/zayavka/">Оставить заявку <span class="ar" aria-hidden="true">→</span></a>
         </div>
       </details>
     </div>
@@ -496,11 +498,11 @@ document.addEventListener('click', function (e) {
 <header class="hero">
   <div class="wrap hero-grid">
     <div>
-      <a class="badge" href="/bolshoy-list/"><b>26 сентября</b><span>·</span><span>Большой лист 2026</span><span class="ar">→</span></a>
+      <a class="badge" href="/bolshoy-list/"><b>26 сентября</b><span>·</span><span>Большой лист 2026</span><span class="ar" aria-hidden="true">→</span></a>
       <h1>Возвращаем исходные смыслы в&nbsp;современную <em>жизнь</em></h1>
       <p class="lead">Открытое сообщество исследователей русского языка, истории и культуры. Двенадцать управлений, общие праздники, совместный поиск.</p>
       <div class="btn-row">
-        <a class="btn btn-pri" href="/zayavka/">Оставить заявку <span class="ar">→</span></a>
+        <a class="btn btn-pri" href="/zayavka/">Оставить заявку <span class="ar" aria-hidden="true">→</span></a>
         <a class="btn btn-sec" href="#directions">Выбрать управление</a>
       </div>
     </div>
@@ -605,7 +607,7 @@ document.addEventListener('click', function (e) {
         <p class="lead">26 сентября зовём в Москву всех — и тех, кто рядом с самого начала, и тех, кто давно не заглядывал, и тех, кто знает о нас понаслышке.</p>
         <p class="lead">Расскажем, чем заняты и что задумали на будущий год, послушаем вас и вместе подумаем, как жить дальше.</p>
         <div class="btn-row">
-          <a class="btn btn-pri" href="/zayavka/?goal=day">Записаться на 26 сентября <span class="ar">→</span></a>
+          <a class="btn btn-pri" href="/zayavka/?goal=day">Записаться на 26 сентября <span class="ar" aria-hidden="true">→</span></a>
           <a class="btn btn-sec" href="/bolshoy-list/">Программа дня</a>
         </div>
       </div>
@@ -685,26 +687,26 @@ document.addEventListener('click', function (e) {
       <div class="ev">
         <div class="data"><div class="d">22</div><div class="m">авг · сб</div></div>
         <div><h3>Лесной урок</h3><p>Практическое занятие на природе. Время и место уточняйте по телефону.</p></div>
-        <a class="act" href="tel:+79082939363">Записаться <span class="ar">→</span></a>
+        <a class="act" href="tel:+79082939363">Записаться <span class="ar" aria-hidden="true">→</span></a>
       </div>
       <div class="ev">
         <div class="data"><div class="d">23</div><div class="m">авг · вс</div></div>
         <div><h3>Костный массаж. Открытый урок</h3><p>Делаем полноценный сеанс массажа, отрабатываем технику, делимся опытом. Разбираем то, как устроено тело человека. Время и место уточняйте по телефону.</p></div>
-        <a class="act" href="tel:+79082939363">Записаться <span class="ar">→</span></a>
+        <a class="act" href="tel:+79082939363">Записаться <span class="ar" aria-hidden="true">→</span></a>
       </div>
       <div class="ev">
         <div class="data"><div class="d">26</div><div class="m">авг · ср</div></div>
         <div><h3>Ясная Среда</h3><p>Разговор о жизни и русском языке. Ссылку на встречу высылаем записавшимся.</p></div>
-        <a class="act" href="tel:+79082939363">Записаться <span class="ar">→</span></a>
+        <a class="act" href="tel:+79082939363">Записаться <span class="ar" aria-hidden="true">→</span></a>
       </div>
       <div class="ev">
         <div class="data"><div class="d">29</div><div class="m">авг · сб</div></div>
         <div><h3>Лесной урок</h3><p>Продолжаем практические занятия на природе. Время и место уточняйте по телефону.</p></div>
-        <a class="act" href="tel:+79082939363">Записаться <span class="ar">→</span></a>
+        <a class="act" href="tel:+79082939363">Записаться <span class="ar" aria-hidden="true">→</span></a>
       </div>
     </div>
     <div class="zovem">
-      <a class="btn btn-pri" href="tel:+79082939363">Записаться по телефону <span class="ar">→</span></a>
+      <a class="btn btn-pri" href="tel:+79082939363">Записаться по телефону <span class="ar" aria-hidden="true">→</span></a>
       <a class="btn btn-sec" href="/sobytiya/">Все события</a>
       <span class="kto"><b>+7 908 293-93-63</b> · Вишня Владимировна</span>
     </div>
@@ -720,10 +722,10 @@ document.addEventListener('click', function (e) {
       <p>Ясну исследуют по-разному — пути можно совмещать и менять.</p>
     </div>
     <div class="ways-grid">
-      <div class="way"><span class="n">1</span><div><h3>Войти в управление</h3><p>Работать в команде управления — вместе разбирать, ходить, исследовать.</p><a href="#directions">Выбрать управление <span class="ar">→</span></a></div></div>
-      <div class="way"><span class="n">2</span><div><h3>Прийти со своим проектом</h3><p>Принесите свою разработку или проект — управление посмотрит. Авторство остаётся за вами.</p><a href="/zayavka/?goal=project">Рассказать о проекте <span class="ar">→</span></a></div></div>
-      <div class="way"><span class="n">3</span><div><h3>Учиться</h3><p>Групповые занятия и разборы — или индивидуально, если хочется в своём темпе. Начать можно без подготовки.</p><a href="/zayavka/?goal=ask">Спросить про занятия <span class="ar">→</span></a></div></div>
-      <div class="way"><span class="n">4</span><div><h3>Просто быть рядом</h3><p>Общие праздники, творческие вечера, живое общение. Приходите и смотрите.</p><a href="/bolshoy-list/">Ближайший сбор <span class="ar">→</span></a></div></div>
+      <div class="way"><span class="n">1</span><div><h3>Войти в управление</h3><p>Работать в команде управления — вместе разбирать, ходить, исследовать.</p><a href="#directions">Выбрать управление <span class="ar" aria-hidden="true">→</span></a></div></div>
+      <div class="way"><span class="n">2</span><div><h3>Прийти со своим проектом</h3><p>Принесите свою разработку или проект — управление посмотрит. Авторство остаётся за вами.</p><a href="/zayavka/?goal=project">Рассказать о проекте <span class="ar" aria-hidden="true">→</span></a></div></div>
+      <div class="way"><span class="n">3</span><div><h3>Учиться</h3><p>Групповые занятия и разборы — или индивидуально, если хочется в своём темпе. Начать можно без подготовки.</p><a href="/zayavka/?goal=ask">Спросить про занятия <span class="ar" aria-hidden="true">→</span></a></div></div>
+      <div class="way"><span class="n">4</span><div><h3>Просто быть рядом</h3><p>Общие праздники, творческие вечера, живое общение. Приходите и смотрите.</p><a href="/bolshoy-list/">Ближайший сбор <span class="ar" aria-hidden="true">→</span></a></div></div>
     </div>
   </div>
 </section>
@@ -752,13 +754,13 @@ document.addEventListener('click', function (e) {
       <p>Взаимная ответственность: на этой конструкции держится и семья, и страна. Так мы разбираем привычные вещи на занятиях.</p>
     </div>
     <div class="pgrid" id="pgrid">
-      <div class="pcard" data-p="gos" tabindex="0">
+      <div class="pcard" data-p="gos">
         <h3>Государство</h3>
         <div class="prow"><span class="pl">ОТВЕЧАЕТ ЗА</span><span class="pv">отца</span></div>
         <div class="prow"><span class="pl">ПЕРЕД</span><span class="pv g">будущим детей</span></div>
         <div class="pgive"><span class="pl">ДАЁТ</span><span class="pw">СТРОЙ · СМЫСЛ · МЕСТО</span></div>
       </div>
-      <div class="pcard on" data-p="otec" tabindex="0">
+      <div class="pcard on" data-p="otec">
         <h3>Отец</h3>
         <div class="prow"><span class="pl">ОТВЕЧАЕТ ЗА</span><span class="pv">семью</span></div>
         <div class="prow"><span class="pl">ПЕРЕД</span><span class="pv g">государством</span></div>
@@ -780,13 +782,13 @@ document.addEventListener('click', function (e) {
           <circle cx="0" cy="0" r="3.5" fill="#B98A3C"/>
         </svg>
       </div>
-      <div class="pcard" data-p="deti" tabindex="0">
+      <div class="pcard" data-p="deti">
         <h3>Дети</h3>
         <div class="prow"><span class="pl">ОТВЕЧАЮТ ЗА</span><span class="pv">будущее</span></div>
         <div class="prow"><span class="pl">ПЕРЕД</span><span class="pv g">матерью</span></div>
         <div class="pgive"><span class="pl">ДАЮТ</span><span class="pw">ПРОДОЛЖЕНИЕ · НАДЕЖДУ</span></div>
       </div>
-      <div class="pcard" data-p="mat" tabindex="0">
+      <div class="pcard" data-p="mat">
         <h3>Мать</h3>
         <div class="prow"><span class="pl">ОТВЕЧАЕТ ЗА</span><span class="pv">детей</span></div>
         <div class="prow"><span class="pl">ПЕРЕД</span><span class="pv g">отцом</span></div>
@@ -824,7 +826,7 @@ document.addEventListener('click', function (e) {
     <h2>Приходите 26 сентября.<br>Познакомьтесь со всеми <em>управлениями</em> сразу.</h2>
     <p>Суббота, 12:00–16:00. Москва, Большая Никитская, 46/17, стр. 1. Зал вмещает 80 человек — оставьте заявку, и мы закрепим место и напомним накануне.</p>
     <div class="btn-row">
-      <a class="btn btn-pri" href="/zayavka/?goal=day">Записаться на 26 сентября <span class="ar">→</span></a>
+      <a class="btn btn-pri" href="/zayavka/?goal=day">Записаться на 26 сентября <span class="ar" aria-hidden="true">→</span></a>
       <a class="btn btn-sec" href="/bolshoy-list/">Программа дня</a>
     </div>
   </div>
@@ -889,13 +891,23 @@ document.addEventListener('click', function (e) {
   </div>
 </footer>
 
-<div class="ck-bar" id="ckBar">
+<div class="ck-bar" id="ckBar" role="region" aria-label="Уведомление о файлах cookie">
   <div class="wrap">
     <span>Сайт использует cookie и Метрику — <a href="/privacy/">подробнее</a>.</span>
     <button id="ckOk" type="button">Понятно</button>
   </div>
 </div>
 <script>
+/* Мобильное меню: закрыть по переходу и по Escape. Без скрипта меню
+   работает, просто остаётся открытым до повторного нажатия. */
+(function(){
+  var m=document.getElementById('mnav');
+  if(!m) return;
+  m.addEventListener('click',function(e){ if(e.target.closest('a')) m.removeAttribute('open'); });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'&&m.hasAttribute('open')){ m.removeAttribute('open'); m.querySelector('summary').focus(); }
+  });
+})();
 (function(){
   try{
     var k='yasna_cookie_notice';
