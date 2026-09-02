@@ -113,6 +113,7 @@ FOOTER = r"""<!-- FOOTER -->
         </ul>
       </div>
     </div>
+    <div class="foot-note">Материалы подготовили авторы&nbsp;— управления и&nbsp;участники центра. За&nbsp;содержание материала отвечает его автор. О&nbsp;нарушении: <a href="mailto:proyasna@yandex.ru">proyasna@yandex.ru</a>, <a href="/pravila/">правила публикации</a>.</div>
     <div class="foot-bottom">
       <span>© 2026 Интеграционный центр «Золотой Ясень» · ИП&nbsp;Архипов&nbsp;Сергей&nbsp;Юрьевич, ОГРНИП&nbsp;317774600605551, ИНН&nbsp;771409900020</span>
       <span><a href="/pravila/">Правила публикации</a> · <a href="/">На главную</a></span>

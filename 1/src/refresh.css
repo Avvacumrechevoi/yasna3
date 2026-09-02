@@ -1739,3 +1739,10 @@ html { scroll-padding-top: 74px; }
 @media (prefers-reduced-motion: reduce) {
   .reel .letterfly, .reel .ring-rot { animation: none; }
 }
+
+/* Сноска об авторстве материалов. Короткая суть в подвале, подробности
+   на странице правил: за содержание отвечает автор, а не центр. */
+.foot-note{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);
+  font-size:.82rem;line-height:1.55;color:var(--ink-3);max-width:78ch}
+.foot-note a{color:var(--accent);text-decoration:underline;text-underline-offset:2px}
+.foot-note + .foot-bottom{margin-top:14px;padding-top:0;border-top:0}

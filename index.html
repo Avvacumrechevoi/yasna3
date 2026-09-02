@@ -421,7 +421,12 @@ document.addEventListener('click', function (e) {
   footer ul a{display:inline-block; padding:6px 0; line-height:1.35; transition:color .25s} footer ul a:hover{color:var(--paper)}
   footer h4{font:500 12.5px/1.5 var(--f-m); letter-spacing:.14em; text-transform:uppercase; color:var(--gold); margin:22px 0 12px; font-weight:500}
   @media(hover:none){ footer ul a{padding:11.5px 0} footer .social a{display:inline-block; padding:11.5px 0} }
-  .foot-bot{border-top:1px solid var(--pg-line); padding-top:24px; font-size:14px; color:var(--pg-2); display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap}
+  /* Сноска об авторстве. Ставится над реквизитами: короткая суть
+     и путь к правилам, подробности на отдельной странице. */
+  .foot-note{border-top:1px solid var(--pg-line); padding-top:22px; margin-bottom:14px;
+    font-size:13.5px; line-height:1.55; color:var(--pg-2); max-width:78ch}
+  .foot-note a{text-decoration:underline; text-underline-offset:2px}
+  .foot-bot{border-top:0; padding-top:24px; font-size:14px; color:var(--pg-2); display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap}
 
   /* ---------- cookie ---------- */
   .ck-bar{position:fixed; left:0; right:0; bottom:0; z-index:70; display:none;
@@ -984,6 +989,7 @@ document.addEventListener('click', function (e) {
         </ul>
       </div>
     </div>
+    <div class="foot-note">Материалы подготовили авторы&nbsp;— управления и&nbsp;участники центра. За&nbsp;содержание материала отвечает его автор. О&nbsp;нарушении: <a href="mailto:proyasna@yandex.ru">proyasna@yandex.ru</a>, <a href="/pravila/">правила публикации</a>.</div>
     <div class="foot-bot"><span>© 2026 Интеграционный центр «Золотой Ясень» · ИП&nbsp;Архипов&nbsp;Сергей&nbsp;Юрьевич, ОГРНИП&nbsp;317774600605551, ИНН&nbsp;771409900020</span></div>
   </div>
 </footer>
