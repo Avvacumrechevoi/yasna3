@@ -466,14 +466,14 @@ document.addEventListener('click', function (e) {
     .nav-cta .cta-short{display:inline}
     .wrap{padding-left:20px; padding-right:20px}
     .dir-grid,.steps{grid-template-columns:1fr}
-    /* Подпись остаётся в кольце. Чтобы длинная строка с местом встречи
-       не легла на медальоны, свободную середину расширяем: медальоны
-       мельче, кегли ниже. Замер: внутренний край круга 130px от центра. */
-    .reel .med{width:40px; height:40px}
-    .reel .center{width:min(218px,66%)}
-    .reel .center .d{font-size:11px; letter-spacing:.1em; margin-bottom:5px}
-    .reel .center .t{font-size:26px}
-    .reel .center .s{font-size:12px; line-height:1.5; margin-top:7px}
+    /* Подпись в кольце: место встречи из неё убрано, поэтому строк стало
+       меньше, а кегль и медальоны — крупнее: с телефона читается тяжело,
+       когда всё сжато. Замер: внутренний край круга 126px от центра. */
+    .reel .med{width:48px; height:48px}
+    .reel .center{width:min(214px,64%)}
+    .reel .center .d{font-size:12px; letter-spacing:.1em; margin-bottom:7px}
+    .reel .center .t{font-size:32px}
+    .reel .center .s{font-size:13.5px; line-height:1.5; margin-top:9px}
     /* Метка «Наш взгляд» над списком: в две колонки списку оставалось 198px */
     .credo .wrap{grid-template-columns:1fr; gap:14px}
     .hero p.lead{font-size:18px; max-width:none}
@@ -680,7 +680,7 @@ document.addEventListener('click', function (e) {
         <div class="center">
           <div class="d">26 сентября 2026 · общий сбор</div>
           <h2 class="t">Большой лист</h2>
-          <div class="s">суббота · 16:00–20:00 · конференц-зал в историческом центре Москвы</div>
+          <div class="s">суббота · 16:00–20:00</div>
         </div>
       </div>
       <div>

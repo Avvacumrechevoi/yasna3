@@ -441,15 +441,9 @@ var DIR_NONE = '9008983973814372';
 
     /* Короткая форма спрашивает только имя и контакт. Тому, кто пришёл
        за другим, нужен видимый путь к длинной форме. */
-    var mountEl = document.getElementById('ya-form-mount');
-    if (mountEl && mountEl.parentNode) {
-      var more = document.createElement('p');
-      more.className = 'zv-fallback';
-      more.style.paddingTop = '10px';
-      more.innerHTML = 'Вступить в&nbsp;управление, предложить проект или задать вопрос&nbsp;— ' +
-        '<a href="/zayavka/">здесь</a>.';
-      mountEl.parentNode.insertBefore(more, mountEl.nextSibling);
-    }
+    /* Ссылку на другие обращения ставим ниже, вместе с прямой ссылкой
+       на форму: раньше она стояла отдельным абзацем над ними и попадала
+       внутрь карточки виджета. */
   }
 
   /* Запись на сбор идёт в форму школы. Скрипт виджета рендерит её прямо
@@ -474,15 +468,43 @@ var DIR_NONE = '9008983973814372';
     w.async = true;
     mount.appendChild(w);
 
-    /* Запасной путь ставим ПОСЛЕ формы и ровно один раз: заглушка загрузки
-       уехала вместе с очисткой блока, а без прямой ссылки человеку,
-       у которого виджет не поднялся, записаться нечем. */
+    /* Пояснения ниже написаны под Яндекс-форму: про галочку согласия
+       и про то, что делать, если рамка не поднялась. У виджета согласие
+       и подсказки свои, а соседние абзацы он затягивает внутрь карточки —
+       один и тот же текст читался дважды. Убираем их из этого сценария. */
+    var panel = mount.closest('article') || mount.parentNode;
+    if (panel) {
+      var lishnie = panel.querySelectorAll('.zv-fallback');
+      for (var k = 0; k < lishnie.length; k++) lishnie[k].remove();
+    }
+
+    /* Оставляем одну строку: прямую ссылку на форму. Если виджет
+       не поднялся, записаться всё равно есть чем. */
     var alt = document.createElement('p');
     alt.className = 'zv-fallback';
     alt.style.paddingTop = '10px';
-    alt.innerHTML = 'Форму можно открыть и&nbsp;отдельной страницей: ' +
-      '<a href="' + zayavkaUrl + '" target="_blank" rel="noopener">записаться на&nbsp;26&nbsp;сентября&nbsp;→</a>';
+    alt.innerHTML = 'Форму можно открыть и&nbsp;<a href="' + zayavkaUrl +
+      '" target="_blank" rel="noopener">отдельной страницей</a>. ' +
+      'Вступить в&nbsp;управление, предложить проект или задать вопрос&nbsp;— ' +
+      '<a href="/zayavka/">здесь</a>.';
     if (mount.parentNode) mount.parentNode.insertBefore(alt, mount.nextSibling);
+
+    /* Точная высота рамки. Минимум в стилях — страховка, чтобы кнопка
+       «Отправить» не осталась за внутренней прокруткой, пока форма
+       не сообщила свой размер. Как только сообщит — ставим ровно её,
+       иначе под короткой формой висит пустое поле. Формат сообщения
+       у сервиса свой, поэтому принимаем несколько привычных видов. */
+    window.addEventListener('message', function (e) {
+      if (String(e.origin).indexOf('yasna-shkola.ru') < 0) return;
+      var d = e.data, h = 0;
+      try { if (typeof d === 'string') d = JSON.parse(d); } catch (err) {}
+      if (typeof d === 'number') h = d;
+      else if (d && typeof d === 'object') h = d.height || d['iframe-height'] || d.frameHeight || 0;
+      h = parseInt(h, 10);
+      if (!(h > 300)) return;
+      var f = mount.querySelector('iframe');
+      if (f) { f.style.height = h + 'px'; f.style.minHeight = '0'; }
+    }, false);
     return;
   }
 
