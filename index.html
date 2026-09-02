@@ -190,7 +190,8 @@ document.addEventListener('click', function (e) {
   .day .btn-sec{border-color:rgba(243,236,224,.35); color:var(--paper)}
   .day .btn-sec:hover{border-color:var(--paper)}
   /* циферблат: кольцо с рисками и 12 эмблем по кругу */
-  .reel{position:relative; aspect-ratio:1; max-width:470px; margin:0 auto; width:100%}
+  .reel{position:relative; max-width:470px; margin:0 auto; width:100%}
+  .ring-wrap{position:relative; aspect-ratio:1}
   .reel svg.ring{position:absolute; inset:0; width:100%; height:100%; overflow:visible}
   .reel .ringspin{transform-box:fill-box; transform-origin:center; animation:spinR 120s linear infinite}
   .reel .med{position:absolute; left:var(--x); top:var(--y); transform:translate(-50%,-50%);
@@ -388,8 +389,8 @@ document.addEventListener('click', function (e) {
     .credo ul{grid-template-columns:repeat(2,1fr)}
   }
   @media(max-width:900px){
-    .hero-grid{grid-template-columns:1fr; gap:12px; min-height:0; padding:44px 0 40px}
-    .treewrap{max-width:340px; margin:0 auto; order:-1; opacity:.85}
+    .hero-grid{grid-template-columns:1fr; gap:26px; min-height:0; padding:36px 0 44px}
+    .treewrap{max-width:300px; margin:0 auto; opacity:.9}
     .day-grid{grid-template-columns:1fr; gap:48px}
     .ways-grid,.slovar{grid-template-columns:1fr}
     .pgrid{grid-template-columns:1fr; grid-template-areas:"l" "t" "r" "b"}
@@ -401,6 +402,13 @@ document.addEventListener('click', function (e) {
     nav .brand .bt span{display:none}
     .wrap{padding-left:20px; padding-right:20px}
     .dir-grid,.steps{grid-template-columns:1fr}
+    /* Подпись выходит из круга вниз: в кольце для неё остаётся 248px,
+       а строка с местом встречи длиннее и ложилась на медальоны. */
+    .reel .center{position:static; transform:none; width:auto; margin-top:20px}
+    .reel .med{width:46px; height:46px}
+    .reel .center .t{font-size:30px}
+    /* Метка «Наш взгляд» над списком: в две колонки списку оставалось 198px */
+    .credo .wrap{grid-template-columns:1fr; gap:14px}
     .hero p.lead{font-size:18px; max-width:none}
     .hero h1{max-width:none}
     .credo ul{grid-template-columns:1fr}
@@ -418,8 +426,10 @@ document.addEventListener('click', function (e) {
   @media(max-width:460px){
     .brand .bt{display:none}
     .navlinks{gap:14px}
-    .navlinks .nav-cta{padding:8px 13px; font-size:13.5px}
+    /* Мишень под палец: прежние 8px давали кнопку в 32px высотой */
+    .navlinks .nav-cta{padding:12px 14px; font-size:13.5px}
     .btn-row .btn{width:100%; justify-content:center}
+    .badge{padding:11px 15px}
   }
   @media(prefers-reduced-motion:reduce){
     *,*::before,*::after{animation:none !important; scroll-behavior:auto !important; transition:none !important}
@@ -570,6 +580,7 @@ document.addEventListener('click', function (e) {
   <div class="wrap">
     <div class="day-grid">
       <div class="reel">
+        <div class="ring-wrap">
         <svg class="ring" viewBox="-190 -190 380 380" aria-hidden="true">
           <g class="ringspin">
             <circle cx="0" cy="0" r="168" fill="none" stroke="rgba(243,236,224,.12)"/>
@@ -595,6 +606,7 @@ document.addEventListener('click', function (e) {
         <span class="med" style="--x:5%; --y:50%"><img src="src/img/dzhiva.png" alt="" loading="lazy"></span>
         <span class="med" style="--x:11%; --y:27.5%"><img src="src/img/parad.png" alt="" loading="lazy"></span>
         <span class="med" style="--x:27.5%; --y:11%"><img src="src/img/geraldika.png" alt="" loading="lazy"></span>
+        </div>
         <div class="center">
           <div class="d">26 сентября 2026 · общий сбор</div>
           <h2 class="t">Большой лист</h2>
