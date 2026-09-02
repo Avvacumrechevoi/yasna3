@@ -295,25 +295,24 @@ STRANICA = """<!doctype html>
 """
 
 DNI_POLN = ["понедельник", "вторник", "среда", "четверг", "пятница", "суббота", "воскресенье"]
+DNI_K = ["пн", "вт", "ср", "чт", "пт", "сб", "вс"]
 
 # Главная — самодостаточная страница: 43 КБ собственных стилей и ни одного
-# внешнего файла, кроме шрифтов. Компонентов .panel и .ev, на которых собрана
-# афиша, там нет вовсе — блок, свёрстанный на них, вышел бы голым текстом.
-# Поэтому здесь берём .way из «Четырёх путей»: он на главной есть, а его
-# крупная бледная цифра в углу как раз просит поставить туда число месяца.
+# внешнего файла, кроме шрифтов. Компонентов .panel и .ev из 1/src там нет.
+# После редизайна 09.2026 у главной своя ведомость событий: секция .afisha,
+# строки .ev с датой слева. Отступы приходят из класса .afisha в стилях
+# главной, поэтому своего <style> блоку больше не нужно.
 BLOK_GLAVNAYA = """<!-- АФИША:НАЧАЛО — собрано tools/events/stranicy.py, руками не править -->
-<section id="sobytiya">
+<section class="afisha" id="sobytiya">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow" data-reveal>Афиша</span>
-      <h2 data-reveal>Ближайшие события</h2>
-      <p data-reveal>Управления ведут занятия, прогулки и встречи круглый год. Приходить можно впервые.</p>
+    <div class="shead" style="border-top:0; padding-top:0">
+      <h2>Ближайшие события</h2>
+      <p>Управления ведут занятия, прогулки и встречи круглый год. Приходить можно впервые.</p>
     </div>
-{stili}
-    <div class="ways-grid">
+    <div class="vedomost">
 {kartochki}    </div>
     <div class="zovem">
-      <a class="btn btn-pri" href="tel:{tel_href}">Записаться по телефону <span class="ar">→</span></a>
+      <a class="btn btn-pri" href="tel:{tel_href}">Записаться по телефону <span class="ar" aria-hidden="true">→</span></a>
       <a class="btn btn-sec" href="/sobytiya/">Все события</a>
       <span class="kto"><b>{tel}</b> · {imya}</span>
     </div>
@@ -322,43 +321,26 @@ BLOK_GLAVNAYA = """<!-- АФИША:НАЧАЛО — собрано tools/events/
 <!-- АФИША:КОНЕЦ -->"""
 
 
-# Держим отдельно от строки-шаблона: фигурные скобки CSS внутри .format()
-# читаются как подстановки и роняют сборку.
-BLOK_STILI = """    <style>
-      /* Отступы секции. На главной нет общего правила для section: каждая
-         берёт поля из своего класса (.directions, .ways — по 110px). У этой
-         секции класса нет, поэтому поля были нулевые, и блок сидел вплотную
-         к соседям — вдвое теснее, чем весь остальной ритм страницы.
-         Порог 600px и величина 68px повторяют мобильное правило главной. */
-      #sobytiya { padding: 110px 0; }
-      @media (max-width: 600px), (max-height: 560px) and (orientation: landscape) {
-        #sobytiya { padding-top: 68px; padding-bottom: 68px; }
-      }
-      #sobytiya .way .kogda { display: block; margin-bottom: 12px; }
-      #sobytiya .way h3 { font-size: 21px; }
-      #sobytiya .zovem { display: flex; flex-wrap: wrap; align-items: center;
-        gap: 14px 20px; margin-top: 34px; }
-      #sobytiya .zovem .kto { color: var(--ink-70); font-size: 15.5px; }
-      #sobytiya .zovem .kto b { color: var(--ink); white-space: nowrap; }
-    </style>"""
+# Свой <style> у блока убран вместе с редизайном: секция получила класс
+# .afisha, отступы приходят из стилей главной. Держать правило в двух
+# местах — значит однажды дать им разойтись молча.
 
 
 def kartochka(ev, kontakt):
-    """Карточка для главной. Компонент .way, число месяца — в бледную цифру."""
+    """Строка ведомости для главной: число и месяц слева, действие справа."""
     dt = d(ev["data"])
-    kogda = f"{dt.day} {MES_R[dt.month - 1]} · {DNI_POLN[dt.weekday()]}"
+    kogda = f"{MES_K[dt.month - 1]} · {DNI_K[dt.weekday()]}"
     if ev.get("vremya"):
         kogda += f" · {ev['vremya']}"
     if ev.get("stranica"):
-        deystvie = f'<a href="{e(ev["stranica"])}">Подробнее <span class="ar">→</span></a>'
+        deystvie = (f'<a class="act" href="{e(ev["stranica"])}">Подробнее '
+                    f'<span class="ar" aria-hidden="true">→</span></a>')
     else:
-        deystvie = (f'<a href="tel:{e(kontakt["tel_href"])}">Записаться '
-                    f'<span class="ar">→</span></a>')
-    return f"""      <div class="way" data-reveal>
-        <span class="ghost">{dt.day}</span>
-        <span class="eyebrow kogda">{e(kogda)}</span>
-        <h3>{e(ev["nazvanie"])}</h3>
-        <p>{opisanie_stroki(ev, kontakt)}</p>
+        deystvie = (f'<a class="act" href="tel:{e(kontakt["tel_href"])}">Записаться '
+                    f'<span class="ar" aria-hidden="true">→</span></a>')
+    return f"""      <div class="ev">
+        <div class="data"><div class="d">{dt.day}</div><div class="m">{e(kogda)}</div></div>
+        <div><h3>{e(ev["nazvanie"])}</h3><p>{opisanie_stroki(ev, kontakt)}</p></div>
         {deystvie}
       </div>
 """
@@ -399,10 +381,9 @@ def sobrat_stranicu(sobytiya, kontakt, segodnya):
     )
 
 
-def vstavit_v_glavnuyu(sobytiya, kontakt, segodnya, skolko=4):
+def vstavit_v_glavnuyu(sobytiya, kontakt, segodnya, skolko=5):
     budushchie = [s for s in sobytiya if d(s["data"]) >= segodnya][:skolko]
     blok = BLOK_GLAVNAYA.format(
-        stili=BLOK_STILI,
         kartochki="".join(kartochka(ev, kontakt) for ev in budushchie),
         tel=kontakt["telefon"], tel_href=kontakt["tel_href"], imya=kontakt["imya"])
     s = GLAVNAYA.read_text(encoding="utf-8")
