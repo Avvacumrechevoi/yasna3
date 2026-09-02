@@ -22,7 +22,7 @@ document.addEventListener('click', function (e) {
   var goal = h.indexOf('tel:') === 0 ? 'zvonok'
            : h.indexOf('mailto:') === 0 ? 'pochta'
            : h.indexOf('.ics') > -1 ? 'calendar'
-           : h.indexOf('forms.yandex.ru') > -1 ? 'zapasnaya'
+           : (h.indexOf('forms.yandex.ru') > -1 || h.indexOf('site.yasna-shkola.ru') > -1) ? 'zapasnaya'
            : h.indexOf('/zayavka/') === 0 ? 'zapis'
            : h.indexOf('/bolshoy-list/') === 0 ? 'sbor' : '';
   if (goal) ym(111443194, 'reachGoal', goal);

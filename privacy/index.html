@@ -27,7 +27,7 @@ document.addEventListener('click', function (e) {
   var goal = h.indexOf('tel:') === 0 ? 'zvonok'
            : h.indexOf('mailto:') === 0 ? 'pochta'
            : h.indexOf('.ics') > -1 ? 'calendar'
-           : h.indexOf('forms.yandex.ru') > -1 ? 'zapasnaya'
+           : (h.indexOf('forms.yandex.ru') > -1 || h.indexOf('site.yasna-shkola.ru') > -1) ? 'zapasnaya'
            : h.indexOf('/zayavka/') === 0 ? 'zapis'
            : h.indexOf('/bolshoy-list/') === 0 ? 'sbor' : '';
   if (goal) ym(111443194, 'reachGoal', goal);
@@ -181,10 +181,14 @@ document.addEventListener('click', function (e) {
       последствия, исключительно автоматизированной обработкой мы&nbsp;не&nbsp;принимаем.</p>
 
       <h2>6. Кому передаются данные</h2>
-      <p>Мы&nbsp;поручаем обработку двум сервисам, каждый из&nbsp;которых действует
+      <p>Мы&nbsp;поручаем обработку сервисам, каждый из&nbsp;которых действует
       по&nbsp;собственным условиям и&nbsp;хранит данные на&nbsp;серверах в&nbsp;России:</p>
       <ul>
-        <li><b>Яндекс&nbsp;Формы</b> (ООО «ЯНДЕКС») — принимает и&nbsp;хранит заявки.
+        <li><b>Форма записи на&nbsp;общий сбор</b> — принимает и&nbsp;хранит заявки
+        на&nbsp;сбор 26&nbsp;сентября. Форма размещена на&nbsp;сервисе
+        <b>site.yasna-shkola.ru</b>, встраивается на&nbsp;страницу заявки.</li>
+        <li><b>Яндекс&nbsp;Формы</b> (ООО «ЯНДЕКС») — принимает и&nbsp;хранит остальные
+        обращения: вступление в&nbsp;управление, предложение проекта, вопрос.
         Ответы попадают в&nbsp;таблицу внутри сервиса.</li>
         <li><b>Яндекс&nbsp;Метрика</b> (ООО «ЯНДЕКС») — считает посещаемость.
         Условия — на&nbsp;<a href="https://yandex.ru/legal/confidential/" target="_blank" rel="noopener">странице

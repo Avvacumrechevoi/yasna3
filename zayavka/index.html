@@ -27,7 +27,7 @@ document.addEventListener('click', function (e) {
   var goal = h.indexOf('tel:') === 0 ? 'zvonok'
            : h.indexOf('mailto:') === 0 ? 'pochta'
            : h.indexOf('.ics') > -1 ? 'calendar'
-           : h.indexOf('forms.yandex.ru') > -1 ? 'zapasnaya'
+           : (h.indexOf('forms.yandex.ru') > -1 || h.indexOf('site.yasna-shkola.ru') > -1) ? 'zapasnaya'
            : h.indexOf('/zayavka/') === 0 ? 'zapis'
            : h.indexOf('/bolshoy-list/') === 0 ? 'sbor' : '';
   if (goal) ym(111443194, 'reachGoal', goal);
@@ -121,7 +121,8 @@ document.addEventListener('click', function (e) {
           </p>
           <noscript>
             <p class="zv-loading">Для формы нужен включённый JavaScript.
-              <a href="https://forms.yandex.ru/u/6a60a61b493639002bc66bcb/" target="_blank" rel="noopener">Открыть форму заявки&nbsp;→</a>
+              <a href="https://site.yasna-shkola.ru/sw/oYz26LBToUWe6--9WyZ9sA" target="_blank" rel="noopener">Записаться на&nbsp;26&nbsp;сентября&nbsp;→</a><br/>
+              <a href="https://forms.yandex.ru/u/6a60a61b493639002bc66bcb/" target="_blank" rel="noopener">Другие обращения: форма заявки&nbsp;→</a>
             </p>
           </noscript>
         </div>
@@ -312,9 +313,11 @@ document.addEventListener('click', function (e) {
 /* ─────────────────────────────────────────────────────────────────────
    КУДА УХОДЯТ ЗАЯВКИ.
 
-   Заявки уходят в Яндекс.Форму (forms.yandex.ru) — все ответы копятся
-   в таблице внутри формы (вкладка «Ответы»), а на почту оргкомитета
-   приходит уведомление о каждой новой заявке.
+   Запись на сбор 26 сентября (?goal=day) уходит в форму школы:
+   виджет site.yasna-shkola.ru, встраивается скриптом idx.xl.ru.
+   Остальные обращения — вступить в управление, предложить проект,
+   задать вопрос — по-прежнему уходят в Яндекс.Форму (forms.yandex.ru),
+   ответы копятся в таблице формы, на почту приходит уведомление.
 
    Форма встроена прямо в страницу (iframe), человек не уходит с сайта.
    Со страниц управлений и из блока «26 сентября» в неё передаётся
@@ -430,6 +433,24 @@ var DIR_NONE = '9008983973814372';
         '<a href="/zayavka/">здесь</a>.';
       mountEl.parentNode.insertBefore(more, mountEl.nextSibling);
     }
+  }
+
+  /* Запись на сбор идёт в форму школы. Скрипт виджета рендерит её прямо
+     в контейнер; Яндекс-рамку в этом сценарии не поднимаем вовсе.
+     Прямая ссылка остаётся видимой: если виджет не поднялся (блокировщик,
+     офисная сеть), записаться всё равно есть чем. */
+  if (IS_DAY) {
+    var zayavkaUrl = 'https://site.yasna-shkola.ru/sw/oYz26LBToUWe6--9WyZ9sA';
+    var d0 = document.getElementById('zvDirect');
+    if (d0) { d0.href = zayavkaUrl; d0.textContent = 'открыть форму напрямую →'; }
+    var w = document.createElement('script');
+    w.setAttribute('ao-number', '7082');
+    w.setAttribute('ao-widget-id', 'oYz26LBToUWe6--9WyZ9sA');
+    w.setAttribute('ao-domain', 'site.yasna-shkola.ru');
+    w.src = 'https://idx.xl.ru/site/widget/widget.min.js';
+    w.async = true;
+    mount.appendChild(w);
+    return;
   }
 
   var src = 'https://forms.yandex.ru/u/' + FORM_ID + '/?' + pre.join('&');
