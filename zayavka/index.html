@@ -54,6 +54,23 @@ document.addEventListener('click', function (e) {
 <meta name="twitter:card" content="summary_large_image"/>
 <link rel="stylesheet" href="/1/src/styles.css"/>
 <link rel="stylesheet" href="/1/src/refresh.css"/>
+<style>
+  /* Форма записи на сбор приходит виджетом в своей рамке. Высоту она
+     подгоняет сама, но пока подгонка не пришла, рамка стоит низкой —
+     и кнопка «Отправить» оказывается за внутренней прокруткой.
+     Держим минимум по замеру формы: поля, пять вариантов вопроса,
+     согласие и кнопка. Если виджет пришлёт свою высоту, она больше. */
+  .zv-widget { padding: 12px 8px 8px; min-height: 0; }
+  /* Если форма приходит рамкой — даём ей запас по высоте: пока рамка не
+     сообщила свой размер, она стоит низкой и кнопка «Отправить» остаётся
+     за внутренней прокруткой. */
+  .zv-widget iframe { width: 100%; border: 0; display: block; min-height: 1150px; }
+  @media (min-width: 761px) { .zv-widget iframe { min-height: 980px; } }
+  /* Если форма приходит обычной разметкой — снимаем ограничение высоты
+     с её внешнего блока по той же причине. Внутренности не трогаем:
+     выпадающим спискам своя прокрутка нужна. */
+  .zv-widget > * { max-height: none; overflow: visible; }
+</style>
 <!-- Хлебные крошки: страница не управление, путь короткий -->
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Золотой Ясень","item":"https://zolotoj-yasen.ru/"},{"@type":"ListItem","position":2,"name":"Оставить заявку","item":"https://zolotoj-yasen.ru/zayavka/"}]}</script>
 </head>
@@ -441,8 +458,14 @@ var DIR_NONE = '9008983973814372';
      офисная сеть), записаться всё равно есть чем. */
   if (IS_DAY) {
     var zayavkaUrl = 'https://site.yasna-shkola.ru/sw/oYz26LBToUWe6--9WyZ9sA';
-    var d0 = document.getElementById('zvDirect');
-    if (d0) { d0.href = zayavkaUrl; d0.textContent = 'открыть форму напрямую →'; }
+
+    /* Виджету нужен ПУСТОЙ контейнер. В первой версии скрипт вставлялся
+       в блок, где уже лежали заглушка загрузки и noscript, и виджет
+       продублировал соседние абзацы внутри своей карточки. Чистим блок
+       целиком и отдаём его виджету одному. */
+    mount.innerHTML = '';
+    mount.classList.add('zv-widget');
+
     var w = document.createElement('script');
     w.setAttribute('ao-number', '7082');
     w.setAttribute('ao-widget-id', 'oYz26LBToUWe6--9WyZ9sA');
@@ -450,6 +473,16 @@ var DIR_NONE = '9008983973814372';
     w.src = 'https://idx.xl.ru/site/widget/widget.min.js';
     w.async = true;
     mount.appendChild(w);
+
+    /* Запасной путь ставим ПОСЛЕ формы и ровно один раз: заглушка загрузки
+       уехала вместе с очисткой блока, а без прямой ссылки человеку,
+       у которого виджет не поднялся, записаться нечем. */
+    var alt = document.createElement('p');
+    alt.className = 'zv-fallback';
+    alt.style.paddingTop = '10px';
+    alt.innerHTML = 'Форму можно открыть и&nbsp;отдельной страницей: ' +
+      '<a href="' + zayavkaUrl + '" target="_blank" rel="noopener">записаться на&nbsp;26&nbsp;сентября&nbsp;→</a>';
+    if (mount.parentNode) mount.parentNode.insertBefore(alt, mount.nextSibling);
     return;
   }
 
