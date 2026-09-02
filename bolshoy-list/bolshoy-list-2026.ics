@@ -15,8 +15,8 @@ END:VTIMEZONE
 BEGIN:VEVENT
 UID:bolshoy-list-2026@zolotoj-yasen.ru
 DTSTAMP:20260810T000000Z
-DTSTART;TZID=Europe/Moscow:20260926T120000
-DTEND;TZID=Europe/Moscow:20260926T160000
+DTSTART;TZID=Europe/Moscow:20260926T160000
+DTEND;TZID=Europe/Moscow:20260926T200000
 SUMMARY:Большой лист 2026 — общий сбор «Золот
  ого Ясеня»
 DESCRIPTION:Открытый сбор интеграционного це
@@ -34,7 +34,7 @@ STATUS:CONFIRMED
 BEGIN:VALARM
 TRIGGER:-P1D
 ACTION:DISPLAY
-DESCRIPTION:Завтра Большой лист — 12:00, конфер
+DESCRIPTION:Завтра Большой лист — 16:00, конфер
  енц-зал в историческом центре Москвы
 END:VALARM
 END:VEVENT
