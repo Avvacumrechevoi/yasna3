@@ -115,7 +115,7 @@ FOOTER = r"""<!-- FOOTER -->
     </div>
     <div class="foot-bottom">
       <span>© 2026 Интеграционный центр «Золотой Ясень» · ИП&nbsp;Архипов&nbsp;Сергей&nbsp;Юрьевич, ОГРНИП&nbsp;317774600605551, ИНН&nbsp;771409900020</span>
-      <span><a href="/">На главную</a></span>
+      <span><a href="/pravila/">Правила публикации</a> · <a href="/">На главную</a></span>
     </div>
   </div>
 </footer>"""

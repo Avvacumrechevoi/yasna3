@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<!-- Яндекс.Метрика. Без счётчика реклама идёт вслепую: нет ни целей,
+     ни ретаргетинга, ни ответа на вопрос «сколько людей пришло». Стоит
+     в самом начале страницы, чтобы засчитать и тех, кто закрыл страницу
+     через секунду. Стоит на всех живых страницах, кроме заглушек-
+     перенаправлений: там просмотр был бы засчитан и тут же брошен. -->
+<script type="text/javascript">
+(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+m[i].l=1*new Date();
+for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=111443194', 'ym');
+ym(111443194, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+
+/* Цели. Один слушатель на весь документ: кнопки на страницах меняются,
+   а правила остаются, и не надо помечать каждую ссылку руками. */
+document.addEventListener('click', function (e) {
+  var a = e.target && e.target.closest && e.target.closest('a');
+  if (!a || !window.ym) return;
+  var h = a.getAttribute('href') || '';
+  var goal = h.indexOf('tel:') === 0 ? 'zvonok'
+           : h.indexOf('mailto:') === 0 ? 'pochta'
+           : h.indexOf('.ics') > -1 ? 'calendar'
+           : h.indexOf('forms.yandex.ru') > -1 ? 'zapasnaya'
+           : h.indexOf('/zayavka/') === 0 ? 'zapis'
+           : h.indexOf('/bolshoy-list/') === 0 ? 'sbor' : '';
+  if (goal) ym(111443194, 'reachGoal', goal);
+}, true);
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/111443194" style="position:absolute; left:-9999px;" alt=""/></div></noscript>
+<!-- /Яндекс.Метрика -->
+<title>Правила публикации материалов — Золотой Ясень</title>
+<meta name="description" content="Кто автор материалов на сайте «Золотой Ясень», чьи суждения в них выражены, каким требованиям следуют авторы и как сообщить о материале, нарушающем закон."/>
+<link rel="icon" href="/favicon.ico" sizes="any"/>
+<link rel="icon" type="image/jpeg" href="/1/src/img/yasna-mark.jpg"/>
+<link rel="stylesheet" href="/src/fonts.css"/>
+<link rel="canonical" href="https://zolotoj-yasen.ru/pravila/"/>
+<link rel="stylesheet" href="/1/src/styles.css"/>
+<link rel="stylesheet" href="/1/src/refresh.css"/>
+<style>
+  .doc { max-width: 72ch; margin: 0 auto; padding: 40px 24px 72px; }
+  .doc h2 { font-family: var(--font-display); font-size: 1.2rem; margin: 32px 0 10px; }
+  .doc h2:first-of-type { margin-top: 22px; }
+  .doc p, .doc li { line-height: 1.65; color: var(--ink-2); }
+  .doc ul, .doc ol { padding-left: 20px; margin: 10px 0; }
+  .doc li { margin-bottom: 7px; }
+  .doc .lead { font-size: 1.05rem; color: var(--ink); }
+  .doc .upd { font-family: var(--font-mono); font-size: .78rem; color: var(--ink-3); margin-top: 44px; }
+  .doc .req { background: var(--warm); border-radius: var(--radius); padding: 18px 20px; margin: 18px 0; }
+  .doc .req dl { display: grid; grid-template-columns: minmax(120px, auto) 1fr; gap: 8px 18px; margin: 0; }
+  .doc .req dt { font-family: var(--font-mono); font-size: .72rem; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--ink-3); }
+  .doc .req dd { margin: 0; color: var(--ink); }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Золотой Ясень","item":"https://zolotoj-yasen.ru/"},{"@type":"ListItem","position":2,"name":"Правила публикации материалов","item":"https://zolotoj-yasen.ru/pravila/"}]}</script>
+</head>
+<body data-palette="iney" data-fontpair="modern" data-density="regular">
+
+<a class="skip" href="#content">К содержанию</a>
+
+<header class="nav">
+  <div class="wrap nav-row">
+    <a class="brand" href="/">
+      <img class="mark" src="/1/src/img/yasna-mark.jpg" alt="Золотой Ясень" width="160" height="160"/>
+      <span class="brand-text">
+        <span class="brand-name">Золотой Ясень</span>
+        <span class="brand-sub">Интеграционный центр</span>
+      </span>
+    </a>
+    <details class="nav-menu">
+      <summary class="nav-burger"><span class="bars" aria-hidden="true"></span><span class="cap">Разделы</span></summary>
+    </details>
+    <nav class="nav-links">
+      <a href="/#event">Обращение</a>
+      <a href="/bolshoy-list/">26&nbsp;сентября</a>
+      <a href="/#directions">Управления</a>
+      <a href="/#faq">Вопросы</a>
+      <a class="nav-cta" href="/zayavka/">Вступить</a>
+    </nav>
+  </div>
+</header>
+
+<main id="content">
+<section class="dir-hero">
+  <div class="wrap">
+    <a class="dir-back" href="/"><span>← </span><span>НА ГЛАВНУЮ</span></a>
+    <h1 class="dir-title" style="margin-top:18px">Правила публикации материалов</h1>
+    <p class="dir-sub">Кто автор текстов на&nbsp;сайте, чьи суждения в&nbsp;них выражены и&nbsp;как сообщить о&nbsp;материале, который нарушает закон.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="doc">
+
+      <p class="lead">Сайт объединяет двенадцать управлений интеграционного центра
+      «Золотой&nbsp;Ясень». Материалы для него готовят руководители управлений,
+      исследовательские группы и&nbsp;участники: это тексты об&nbsp;их&nbsp;собственных
+      исследованиях, разборах и&nbsp;занятиях.</p>
+
+      <h2>1. Кто автор материала</h2>
+      <p>У&nbsp;каждого материала есть автор&nbsp;— управление, исследовательская группа
+      или человек, чьё имя указано рядом с&nbsp;текстом. Автор отвечает за&nbsp;содержание
+      своего материала: за&nbsp;приведённые сведения, выводы, оценки и&nbsp;источники.
+      Центр размещает материалы авторов на&nbsp;сайте и&nbsp;указывает авторство.</p>
+
+      <h2>2. Чьи суждения выражены в материалах</h2>
+      <p>Суждения, гипотезы и&nbsp;оценки в&nbsp;авторских материалах принадлежат их&nbsp;авторам.
+      Они отражают ход собственного исследования автора и&nbsp;могут расходиться
+      с&nbsp;мнением других участников, руководителей управлений и&nbsp;центра в&nbsp;целом.
+      Совпадение позиции центра с&nbsp;позицией автора устанавливается только прямым
+      указанием на&nbsp;это в&nbsp;самом материале.</p>
+      <p>Исследовательские материалы сайта посвящены языку, истории и&nbsp;культуре.
+      Они выражают взгляд авторов и&nbsp;оставляют читателю право на&nbsp;собственные выводы.</p>
+
+      <h2>3. Требования к авторам</h2>
+      <p>Автор, передавая материал для размещения, подтверждает, что материал:</p>
+      <ul>
+        <li>уважает чувства верующих и&nbsp;религиозные убеждения людей;</li>
+        <li>уважает достоинство человека независимо от&nbsp;его национальности,
+        происхождения, языка, отношения к&nbsp;религии и&nbsp;убеждений;</li>
+        <li>обходится без призывов к&nbsp;вражде, насилию и&nbsp;розни;</li>
+        <li>написан автором самостоятельно либо содержит цитаты с&nbsp;указанием
+        источника в&nbsp;объёме, допустимом законом;</li>
+        <li>обходится без сведений, распространение которых ограничено законом;</li>
+        <li>содержит изображения людей, размещённые с&nbsp;их&nbsp;согласия.</li>
+      </ul>
+      <p>Материал, который расходится с&nbsp;этими требованиями, снимается с&nbsp;публикации.</p>
+
+      <h2>4. Как сообщить о материале, нарушающем закон</h2>
+      <p>Если вы&nbsp;считаете, что материал на&nbsp;сайте нарушает закон или ваши права,
+      напишите нам: <a href="mailto:proyasna@yandex.ru">proyasna@yandex.ru</a>.
+      Укажите в&nbsp;обращении:</p>
+      <ul>
+        <li>адрес страницы и&nbsp;название материала;</li>
+        <li>какая именно часть материала вызывает возражение;</li>
+        <li>в&nbsp;чём состоит нарушение;</li>
+        <li>как с&nbsp;вами связаться;</li>
+        <li>для правообладателя&nbsp;— подтверждение прав на&nbsp;произведение.</li>
+      </ul>
+
+      <h2>5. Что мы делаем по обращению</h2>
+      <p>Мы&nbsp;рассматриваем каждое обращение и&nbsp;отвечаем на&nbsp;него в&nbsp;течение
+      <b>десяти рабочих дней</b>. На&nbsp;время проверки доступ к&nbsp;спорному материалу
+      ограничивается. Если нарушение подтверждается, материал снимается с&nbsp;сайта
+      или исправляется, а&nbsp;заявителю сообщается результат. Требования Роскомнадзора,
+      суда и&nbsp;других уполномоченных органов исполняются в&nbsp;срок, установленный
+      законом.</p>
+
+      <h2>6. Права на материалы</h2>
+      <p>Права на&nbsp;авторские тексты, фотографии и&nbsp;видео принадлежат их&nbsp;авторам.
+      Материалы сайта разрешено цитировать с&nbsp;указанием автора и&nbsp;ссылкой
+      на&nbsp;страницу. Полная перепечатка согласуется с&nbsp;автором.</p>
+
+      <h2>7. Кто размещает сайт</h2>
+      <div class="req">
+        <dl>
+          <dt>Владелец сайта</dt><dd>Индивидуальный предприниматель Архипов&nbsp;Сергей&nbsp;Юрьевич</dd>
+          <dt>ОГРНИП</dt><dd>317774600605551</dd>
+          <dt>ИНН</dt><dd>771409900020</dd>
+          <dt>Электронная почта</dt><dd><a href="mailto:proyasna@yandex.ru">proyasna@yandex.ru</a></dd>
+          <dt>Телефон</dt><dd><a href="tel:+79082939363">+7&nbsp;908&nbsp;293-93-63</a></dd>
+        </dl>
+      </div>
+      <p>Как мы&nbsp;обращаемся с&nbsp;персональными данными, описано
+      в&nbsp;<a href="/privacy/">Политике обработки персональных данных</a>.</p>
+
+      <p class="upd">Редакция от 2 сентября 2026 года</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-bottom">
+      <span>© 2026 Интеграционный центр «Золотой Ясень» · ИП&nbsp;Архипов&nbsp;Сергей&nbsp;Юрьевич, ОГРНИП&nbsp;317774600605551, ИНН&nbsp;771409900020</span>
+      <span><a href="/privacy/">Политика обработки данных</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="/1/src/nav.js" defer></script>
+<!-- Уведомление о файлах cookie. В России нет прямого требования
+     спрашивать разрешение, как в Европе, но информировать надо: Метрика
+     ставит свои cookie, а Вебвизор пишет поведение. Полоса не перекрывает
+     кнопки и гаснет навсегда после первого «Понятно» — иначе она била бы
+     по конверсии рекламы, ради которой всё и делалось. -->
+<style>
+  .ck-bar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;
+    background:#211B14;color:#EFE9DE;padding:9px 16px;font-size:.8rem;line-height:1.35;
+    box-shadow:0 -6px 24px rgba(0,0,0,.18)}
+  .ck-bar.on{display:block}
+  .ck-in{max-width:1100px;margin:0 auto;display:flex;gap:14px;align-items:center;
+    justify-content:space-between;flex-wrap:wrap}
+  .ck-bar a{color:#EFE9DE;text-decoration:underline;text-underline-offset:2px}
+  .ck-bar button{flex:none;background:#EFE9DE;color:#211B14;border:0;border-radius:999px;
+    padding:8px 20px;font:inherit;font-weight:600;cursor:pointer}
+  .ck-bar button:hover{background:#fff}
+  @media (max-width:560px){.ck-in{gap:8px}.ck-bar{padding:8px 12px;font-size:.76rem}
+    .ck-bar button{padding:6px 16px}}
+</style>
+<div class="ck-bar" id="ckBar" role="region" aria-label="Уведомление о файлах cookie">
+  <div class="ck-in">
+    <span>Сайт использует cookie и&nbsp;Метрику&nbsp;— <a href="/privacy/">подробнее</a>.</span>
+    <button type="button" id="ckOk">Понятно</button>
+  </div>
+</div>
+<script>
+(function () {
+  var K = 'yasna_cookie_notice', bar = document.getElementById('ckBar');
+  if (!bar) return;
+  var seen;
+  try { seen = localStorage.getItem(K); } catch (e) { seen = '1'; }
+  if (seen) return;
+  bar.classList.add('on');
+  document.getElementById('ckOk').addEventListener('click', function () {
+    bar.classList.remove('on');
+    try { localStorage.setItem(K, '1'); } catch (e) {}
+  });
+})();
+</script>
+</body>
+</html>
