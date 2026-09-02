@@ -128,6 +128,7 @@ document.addEventListener('click', function (e) {
   .navlinks a.lnk:hover{color:var(--ink)} .navlinks a.lnk:hover::after{width:100%}
   .nav-cta{padding:9px 18px; background:var(--ink); color:var(--paper); border-radius:var(--r-s); font-weight:600; transition:background .25s}
   .nav-cta:hover{background:var(--accent)}
+  .nav-cta .cta-short{display:none}
   /* мобильное меню на details: работает без JavaScript */
   #mnav{display:none; position:relative}
   #mnav summary{list-style:none; cursor:pointer; width:42px; height:42px; border:1px solid var(--ink-38);
@@ -456,6 +457,13 @@ document.addEventListener('click', function (e) {
   }
   @media(max-width:620px){
     nav .brand .bt span{display:none}
+    /* Имя переносится на две строки: в строку оно занимает 139px и вытесняет
+       кнопку, в две — 72px и помещается даже на 320px. Высоту держит логотип,
+       поэтому шапка не растёт. Подпись кнопки короче: в шапке нужен ярлык,
+       призыв целиком остаётся в первом экране и внизу страницы. */
+    nav .brand .bt b{white-space:normal; max-width:7ch; font-size:16px; line-height:1.1}
+    .nav-cta .cta-full{display:none}
+    .nav-cta .cta-short{display:inline}
     .wrap{padding-left:20px; padding-right:20px}
     .dir-grid,.steps{grid-template-columns:1fr}
     /* Подпись остаётся в кольце. Чтобы длинная строка с местом встречи
@@ -485,8 +493,7 @@ document.addEventListener('click', function (e) {
     .slovar .st{grid-template-columns:1fr; gap:6px}
   }
   @media(max-width:460px){
-    .brand .bt{display:none}
-    .navlinks{gap:14px}
+    .navlinks{gap:10px}
     /* Мишень под палец: прежние 8px давали кнопку в 32px высотой */
     .navlinks .nav-cta{padding:12px 14px; font-size:13.5px}
     .btn-row .btn{width:100%; justify-content:center}
@@ -548,7 +555,7 @@ document.addEventListener('click', function (e) {
       <a class="lnk" href="#ways">Участие</a>
       <a class="lnk" href="#method">Метод</a>
       <a class="lnk" href="#faq">Вопросы</a>
-      <a class="nav-cta" href="/zayavka/">Оставить заявку</a>
+      <a class="nav-cta" href="/zayavka/"><span class="cta-full">Оставить заявку</span><span class="cta-short">Заявка</span></a>
       <details id="mnav">
         <summary aria-label="Меню"><i></i></summary>
         <div class="sheet">
