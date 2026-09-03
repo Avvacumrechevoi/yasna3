@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<!-- Горизонтальное приглашение 1200×630: для превью ссылок и каналов,
+     где вертикальная картинка обрезается. Рендер — sobrat.py. -->
+<link rel="stylesheet" href="/src/fonts.css"/>
+<style>
+  :root{--paper:#F3ECE0; --ink:#211B14; --accent:#A23C24; --gold:#B98A3C;
+    --pg:rgba(243,236,224,.74); --pg-2:rgba(243,236,224,.55)}
+  *{box-sizing:border-box; margin:0; padding:0}
+  body{background:var(--ink); color:var(--paper); font-family:'Manrope',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  .card{width:1200px; height:630px; position:relative; overflow:hidden;
+    display:flex; align-items:center; gap:56px; padding:46px 64px}
+  .glow{position:absolute; left:22%; top:50%; width:760px; height:760px;
+    transform:translate(-50%,-50%); pointer-events:none;
+    background:radial-gradient(circle, rgba(185,138,60,.14), rgba(33,27,20,0) 62%)}
+
+  .ring{position:relative; width:470px; height:470px; flex:none}
+  .ring .circle{position:absolute; inset:0; border-radius:50%; border:1px solid rgba(185,138,60,.42)}
+  .ring .med{position:absolute; left:var(--x); top:var(--y); transform:translate(-50%,-50%);
+    width:64px; height:64px; border-radius:50%; overflow:hidden; background:var(--paper);
+    box-shadow:0 0 0 1.5px rgba(185,138,60,.6), 0 6px 18px rgba(0,0,0,.45)}
+  .ring .med img{width:100%; height:100%; object-fit:cover; padding:5px; border-radius:50%}
+  .ring .center{position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+    width:300px; text-align:center}
+  .ring .kicker{font:500 12px/1.5 'IBM Plex Mono',monospace; letter-spacing:.22em;
+    text-transform:uppercase; color:var(--gold); margin-bottom:8px}
+  .ring .title{font:500 56px/.98 'Spectral',Georgia,serif}
+
+  .right{flex:1; display:flex; flex-direction:column; gap:20px; position:relative}
+  .top{display:flex; align-items:center; gap:14px}
+  .top img{width:54px; height:54px; border-radius:50%; box-shadow:0 0 0 2px var(--gold)}
+  .top b{font:600 23px/1.1 'Spectral',Georgia,serif; display:block}
+  .top span{font:500 11.5px/1.5 'IBM Plex Mono',monospace; letter-spacing:.2em;
+    text-transform:uppercase; color:var(--pg-2)}
+  .date{font:600 34px/1.2 'Manrope',sans-serif}
+  .time{font:500 17px/1.5 'IBM Plex Mono',monospace; letter-spacing:.1em; color:var(--pg); margin-top:6px}
+  .lead{font:400 23px/1.5 'Spectral',Georgia,serif; color:var(--pg); max-width:46ch}
+  .lead em{font-style:italic; color:var(--gold)}
+  .facts{display:flex; align-items:center; gap:18px;
+    font:500 15px/1 'IBM Plex Mono',monospace; letter-spacing:.08em; color:var(--pg)}
+  .facts i{font-style:normal; color:var(--gold)}
+  .site{align-self:flex-start; padding:13px 26px; border:1.5px solid var(--accent);
+    border-radius:100px; font:600 19px/1 'Manrope',sans-serif; background:rgba(162,60,36,.22)}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="glow"></div>
+  <div class="ring">
+    <div class="circle"></div>
+    <span class="med" style="--x:50%;--y:0%"><img src="/src/img/yasna-shkola.png" alt=""></span>
+    <span class="med" style="--x:75%;--y:6.7%"><img src="/src/img/vospitanie.svg" alt=""></span>
+    <span class="med" style="--x:93.3%;--y:25%"><img src="/src/img/alexandria-emblem.jpg" alt=""></span>
+    <span class="med" style="--x:100%;--y:50%"><img src="/src/img/neglinka-emblem.png" alt=""></span>
+    <span class="med" style="--x:93.3%;--y:75%"><img src="/src/img/granika.png" alt=""></span>
+    <span class="med" style="--x:75%;--y:93.3%"><img src="/src/img/astronevod.png" alt=""></span>
+    <span class="med" style="--x:50%;--y:100%"><img src="/src/img/marshruty.png" alt=""></span>
+    <span class="med" style="--x:25%;--y:93.3%"><img src="/src/img/litprosvet-mark.svg" alt=""></span>
+    <span class="med" style="--x:6.7%;--y:75%"><img src="/src/img/izvod.png" alt=""></span>
+    <span class="med" style="--x:0%;--y:50%"><img src="/src/img/dzhiva.png" alt=""></span>
+    <span class="med" style="--x:6.7%;--y:25%"><img src="/src/img/parad.png" alt=""></span>
+    <span class="med" style="--x:25%;--y:6.7%"><img src="/src/img/geraldika.png" alt=""></span>
+    <div class="center">
+      <div class="kicker">Съезд Ясны</div>
+      <div class="title">Большой<br/>лист</div>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="top">
+      <img src="/src/img/yasna-mark.jpg" alt=""/>
+      <span><b>Золотой Ясень</b><span>Интеграционный центр</span></span>
+    </div>
+    <div>
+      <div class="date">26 сентября 2026</div>
+      <div class="time">суббота · 16:00–20:00 · Москва</div>
+    </div>
+    <p class="lead">Соберёмся все, кто имеет отношение к&nbsp;Ясне: кто занимается давно,
+      кто пришёл недавно и&nbsp;кто пока <em>только присматривается</em>.</p>
+    <div class="facts"><span>вход свободный</span><i>·</i><span>по записи</span></div>
+    <div class="site">zolotoj-yasen.ru</div>
+  </div>
+</div>
+</body>
+</html>

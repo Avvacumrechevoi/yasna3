@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<!-- Макет приглашения для рассылки. Рендерится в PNG скриптом рядом:
+     python3 tools/priglashenie/sobrat.py
+     Размер задаётся классом на body: .v — вертикальный пост (1080×1350),
+     .g — горизонтальный для превью ссылок (1200×630). -->
+<link rel="stylesheet" href="/src/fonts.css"/>
+<style>
+  :root{
+    --paper:#F3ECE0; --ink:#211B14; --accent:#A23C24; --gold:#B98A3C;
+    --pg:rgba(243,236,224,.74); --pg-2:rgba(243,236,224,.55);
+  }
+  *{box-sizing:border-box; margin:0; padding:0}
+  body{background:var(--ink); color:var(--paper); font-family:'Manrope',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  .card{position:relative; overflow:hidden; background:var(--ink);
+    display:flex; flex-direction:column; align-items:center}
+  body.v .card{width:1080px; height:1350px; padding:58px 70px 62px}
+  body.g .card{width:1200px; height:630px; padding:44px 60px 40px}
+
+  /* тёплое свечение за кольцом — тот же приём, что на сайте */
+  .glow{position:absolute; left:50%; top:46%; width:960px; height:960px;
+    transform:translate(-50%,-50%); pointer-events:none;
+    background:radial-gradient(circle, rgba(185,138,60,.13), rgba(33,27,20,0) 62%)}
+
+  .top{display:flex; align-items:center; gap:16px; position:relative}
+  .top img{width:64px; height:64px; border-radius:50%; box-shadow:0 0 0 2px var(--gold)}
+  .top b{font:600 26px/1.1 'Spectral',Georgia,serif; display:block}
+  .top span{font:500 13px/1.5 'IBM Plex Mono',monospace; letter-spacing:.2em;
+    text-transform:uppercase; color:var(--pg-2)}
+
+  /* кольцо: двенадцать управлений вокруг названия — образ съезда */
+  .ring{position:relative; margin:0 auto}
+  body.v .ring{width:760px; height:760px; margin-top:82px}
+  .ring .circle{position:absolute; inset:0; border-radius:50%;
+    border:1px solid rgba(185,138,60,.42)}
+  .ring .med{position:absolute; left:var(--x); top:var(--y); transform:translate(-50%,-50%);
+    width:98px; height:98px; border-radius:50%; overflow:hidden; background:var(--paper);
+    box-shadow:0 0 0 2px rgba(185,138,60,.6), 0 10px 28px rgba(0,0,0,.45)}
+  .ring .med img{width:100%; height:100%; object-fit:cover; padding:8px; border-radius:50%}
+
+  .center{position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+    width:520px; text-align:center}
+  .kicker{font:500 17px/1.5 'IBM Plex Mono',monospace; letter-spacing:.24em;
+    text-transform:uppercase; color:var(--gold); margin-bottom:18px}
+  .title{font:500 96px/.98 'Spectral',Georgia,serif; letter-spacing:-.01em}
+  .date{margin-top:22px; font:600 30px/1.3 'Manrope',sans-serif; color:var(--paper)}
+  .time{margin-top:8px; font:500 20px/1.5 'IBM Plex Mono',monospace;
+    letter-spacing:.1em; color:var(--pg)}
+
+  .bottom{margin-top:auto; width:100%; text-align:center; position:relative}
+  .lead{font:400 26px/1.52 'Spectral',Georgia,serif; color:var(--pg);
+    max-width:740px; margin:0 auto 28px}
+  .lead em{font-style:italic; color:var(--gold)}
+  .facts{display:flex; justify-content:center; align-items:center; gap:26px;
+    font:500 19px/1 'IBM Plex Mono',monospace; letter-spacing:.08em; color:var(--pg)}
+  .facts i{font-style:normal; color:var(--gold)}
+  .site{margin-top:26px; display:inline-block; padding:16px 34px;
+    border:1.5px solid var(--accent); border-radius:100px;
+    font:600 22px/1 'Manrope',sans-serif; color:var(--paper); background:rgba(162,60,36,.22)}
+
+  /* горизонтальный вариант: кольцо слева, слово справа */
+  body.g .card{flex-direction:row; align-items:center; gap:48px; text-align:left}
+  body.g .ring{width:470px; height:470px; flex:none; margin:0}
+  body.g .ring .med{width:64px; height:64px}
+  body.g .ring .med img{padding:5px}
+  body.g .center{width:300px}
+  body.g .kicker{font-size:12px; letter-spacing:.2em; margin-bottom:10px}
+  body.g .title{font-size:58px}
+  body.g .date{font-size:19px; margin-top:14px}
+  body.g .time{font-size:13px}
+  body.g .right{flex:1; display:flex; flex-direction:column; gap:18px}
+  body.g .top{margin-bottom:6px}
+  body.g .lead{font-size:25px; margin:0; max-width:none}
+  body.g .facts{justify-content:flex-start; font-size:16px; gap:18px}
+  body.g .site{margin-top:6px; font-size:19px; padding:14px 28px; align-self:flex-start}
+  body.g .bottom{margin:0; text-align:left}
+  body.g .glow{left:24%; width:720px; height:720px}
+</style>
+</head>
+<body class="v">
+<div class="card">
+  <div class="glow"></div>
+
+  <div class="top">
+    <img src="/src/img/yasna-mark.jpg" alt=""/>
+    <span class="tt"><b>Золотой Ясень</b><span>Интеграционный центр</span></span>
+  </div>
+
+  <div class="ring">
+    <div class="circle"></div>
+    <span class="med" style="--x:50%;--y:0%"><img src="/src/img/yasna-shkola.png" alt=""></span>
+    <span class="med" style="--x:75%;--y:6.7%"><img src="/src/img/vospitanie.svg" alt=""></span>
+    <span class="med" style="--x:93.3%;--y:25%"><img src="/src/img/alexandria-emblem.jpg" alt=""></span>
+    <span class="med" style="--x:100%;--y:50%"><img src="/src/img/neglinka-emblem.png" alt=""></span>
+    <span class="med" style="--x:93.3%;--y:75%"><img src="/src/img/granika.png" alt=""></span>
+    <span class="med" style="--x:75%;--y:93.3%"><img src="/src/img/astronevod.png" alt=""></span>
+    <span class="med" style="--x:50%;--y:100%"><img src="/src/img/marshruty.png" alt=""></span>
+    <span class="med" style="--x:25%;--y:93.3%"><img src="/src/img/litprosvet-mark.svg" alt=""></span>
+    <span class="med" style="--x:6.7%;--y:75%"><img src="/src/img/izvod.png" alt=""></span>
+    <span class="med" style="--x:0%;--y:50%"><img src="/src/img/dzhiva.png" alt=""></span>
+    <span class="med" style="--x:6.7%;--y:25%"><img src="/src/img/parad.png" alt=""></span>
+    <span class="med" style="--x:25%;--y:6.7%"><img src="/src/img/geraldika.png" alt=""></span>
+
+    <div class="center">
+      <div class="kicker">Съезд Ясны</div>
+      <div class="title">Большой<br/>лист</div>
+      <div class="date">26 сентября 2026</div>
+      <div class="time">суббота · 16:00–20:00</div>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <p class="lead">Соберёмся все, кто имеет отношение к&nbsp;Ясне: кто занимается давно,
+      кто пришёл недавно и&nbsp;кто пока <em>только присматривается</em>.</p>
+    <div class="facts">
+      <span>Москва</span><i>·</i><span>вход свободный</span><i>·</i><span>по записи</span>
+    </div>
+    <div class="site">zolotoj-yasen.ru</div>
+  </div>
+</div>
+</body>
+</html>
