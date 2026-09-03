@@ -414,7 +414,7 @@ document.addEventListener('click', function (e) {
   footer .brand{color:var(--paper); margin-bottom:16px}
   footer .brand .bt span{color:var(--pg-2)}
   footer p.about{font-size:15px; line-height:1.6; max-width:320px; margin:0 0 18px}
-  footer .social{display:flex; flex-wrap:wrap; gap:10px 16px; font-size:14px}
+  footer .social{display:flex; flex-wrap:wrap; align-items:center; gap:4px 16px; font-size:14px}
   footer .social span{white-space:nowrap}
   footer .social a:hover{color:var(--paper)}
   footer ul{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:2px; font-size:15px}
@@ -461,6 +461,14 @@ document.addEventListener('click', function (e) {
     .foot-grid>div:first-child{grid-column:1 / -1}
   }
   @media(max-width:620px){
+    /* Футер занимал 1689px — две высоты экрана: двенадцать управлений шли
+       узким столбцом, «Разделы» растягивались пустотой до их высоты,
+       «Контакты» уезжали в третий ряд. Блоки ставим друг под друга,
+       а списки внутри разводим на две колонки: строк вдвое меньше. */
+    .foot-grid{grid-template-columns:1fr; gap:26px}
+    .foot-grid>div:first-child{grid-column:auto}
+    footer ul{display:grid; grid-template-columns:1fr 1fr; gap:0 18px}
+    footer h4{margin-top:18px}
     nav .brand .bt span{display:none}
     /* Имя переносится на две строки: в строку оно занимает 139px и вытесняет
        кнопку, в две — 72px и помещается даже на 320px. Высоту держит логотип,
