@@ -222,6 +222,37 @@ document.addEventListener('click', function (e) {
   .step h3{font-size:21px; margin-bottom:9px}
   .step p{margin:0; font-size:14.5px; line-height:1.6; color:var(--pg-2)}
 
+  /* ---------- Цвет съезда 2026: изумруд и золото, только разворот «Большой лист».
+     Совпадает с афишей рассылки. Снять после 26.09.2026 — удалить этот блок целиком,
+     разворот вернётся к чернилам сам. Правило внутри: жёлтый — даты, метки, кнопка;
+     золото — заголовки; бумага — текст. ---------- */
+  .day{--bl-bg:#082F1E; --bl-gold:#E8C15A; --bl-sun:#FFD400; --bl-sun-ink:#0B3B25;
+    --bl-text:rgba(243,236,224,.88); --bl-text-2:rgba(243,236,224,.78);
+    --bl-rim:rgba(255,212,0,.55); --bl-line:rgba(255,212,0,.22);
+    background:var(--bl-bg)}
+  .day .cap{color:var(--bl-sun)}
+  .day h2{color:var(--bl-gold)}
+  .day p.lead{color:var(--bl-text)}
+  .day .btn-pri{background:var(--bl-sun); color:var(--bl-sun-ink)}
+  .day .btn-pri:hover{background:#FFE04A}
+  .day .btn-sec{border-color:rgba(243,236,224,.45)}
+  .day .ring circle{stroke:var(--bl-line)}
+  .day .ring line{stroke:rgba(255,212,0,.6)}
+  .day .reel .med{box-shadow:0 0 0 1.5px var(--bl-rim)}
+  .day .reel .center .d{color:var(--bl-sun)}
+  .day .reel .center .t{color:var(--bl-gold)}
+  .day .reel .center .s{color:var(--bl-text-2)}
+  .day .program h3,.day .step h3{color:var(--bl-gold)}
+  .day .program .phead span{color:var(--bl-text-2)}
+  .day .steps::before{background:var(--bl-line)}
+  .day .step .node{border-color:var(--bl-sun); background:var(--bl-bg)}
+  .day .step .node::after{background:var(--bl-sun)}
+  .day .step p{color:var(--bl-text-2)}
+  /* шов перед разворотом: те же ступени, но из золота в зелень — лист поворачивается */
+  .seam{background:linear-gradient(180deg,
+    var(--paper) 0%, #E8DCCB 10%, #DCCAB3 20%, #CBB48E 30%, #B09B66 40%, #8E8A4E 50%,
+    #6A7A3E 60%, #476635 70%, #2A522C 80%, #164024 90%, var(--bl-bg,#082F1E) 100%)}
+
   /* ---------- Обращение: документ ---------- */
   .address{padding:104px 0; background:var(--paper-2); position:relative}
   .ornament{display:flex; align-items:center; justify-content:center; gap:15px; line-height:1;
