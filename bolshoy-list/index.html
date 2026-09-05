@@ -191,9 +191,7 @@ document.addEventListener('click', function (e) {
   [data-sezd]{--bl-bg:#082F1E; --bl-card:#0E4A30; --bl-gold:#E8C15A; --bl-sun:#FFD400; --bl-sun-ink:#0B3B25;
     --bl-paper:#F3ECE0; --bl-text:rgba(243,236,224,.88); --bl-text-2:rgba(243,236,224,.78);
     --bl-rim:rgba(255,212,0,.55); --bl-line:rgba(255,212,0,.22)}
-  /* кнопки записи везде, включая шапку и липкую кнопку на телефоне */
-  [data-sezd] .btn-primary, [data-sezd] .nav-cta{background:var(--bl-sun); color:var(--bl-sun-ink)}
-  [data-sezd] .btn-primary:hover, [data-sezd] .nav-cta:hover{background:#FFE04A}
+  /* кнопки на бумаге — общей терракотой сайта; жёлтые только на изумруде (баннер внизу) */
   /* плитка фактов в первом экране */
   [data-sezd] .hero-facts{background:var(--bl-bg); border-color:transparent}
   [data-sezd] .hero-facts dt{color:var(--bl-sun)}
@@ -220,6 +218,7 @@ document.addEventListener('click', function (e) {
   [data-sezd] .cta-banner h2{color:var(--bl-gold)}
   [data-sezd] .cta-banner p{color:var(--bl-text)}
   [data-sezd] .cta-banner .btn-primary{background:var(--bl-sun); color:var(--bl-sun-ink)}
+  [data-sezd] .cta-banner .btn-primary:hover{background:#FFE04A}
   [data-sezd] .cta-banner .btn-ghost{border-color:rgba(243,236,224,.4); color:var(--bl-paper)}
 </style>
 </head>

@@ -132,14 +132,16 @@ section.tight{padding-top:calc(56px * var(--dens));padding-bottom:calc(56px * va
 .nav-links{display:flex;gap:28px;align-items:center}
 .nav-links a{font-size:.92rem;color:var(--ink-2);transition:color .15s}
 .nav-links a:hover{color:var(--ink)}
-.nav-cta{padding:10px 18px;background:var(--ink);color:var(--bg);border-radius:999px;font-size:.88rem;font-weight:500;transition:transform .15s}
-.nav-cta:hover{transform:translateY(-1px)}
+/* Кнопка шапки и основные кнопки — одной терракотой на всём сайте, как на главной
+   (--accent там #A23C24). Прежние чернильные кнопки остались от старого дизайна. */
+.nav-cta{padding:10px 18px;background:#A23C24;color:#F3ECE0;border-radius:999px;font-size:.88rem;font-weight:500;transition:transform .15s,background .15s}
+.nav-cta:hover{transform:translateY(-1px);background:#8C3320}
 @media (max-width:760px){ .nav-links a:not(.nav-cta){display:none} }
 
 /* buttons */
 .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:999px;font-weight:500;font-size:.96rem;transition:transform .15s,background .15s,color .15s}
-.btn-primary{background:var(--ink);color:var(--bg)}
-.btn-primary:hover{transform:translateY(-1px)}
+.btn-primary{background:#A23C24;color:#F3ECE0}
+.btn-primary:hover{transform:translateY(-1px);background:#8C3320}
 .btn-ghost{border:1px solid var(--line-strong);color:var(--ink)}
 .btn-ghost:hover{background:var(--paper)}
 .btn .arr{transition:transform .2s}
@@ -405,7 +407,7 @@ section.tight{padding-top:calc(56px * var(--dens));padding-bottom:calc(56px * va
 .cta-banner h2{font-family:var(--font-display);font-weight:700;font-size:clamp(1.8rem, 1.3rem + 1.6vw, 2.6rem);letter-spacing:-0.022em;line-height:1.04;margin:0;text-wrap:balance}
 .cta-banner p{margin:0;font-size:1.02rem;line-height:1.5;color:rgba(255,255,255,.7);max-width:48ch}
 .cta-banner .acts{display:flex;flex-direction:column;gap:14px;align-items:flex-start}
-.cta-banner .btn-primary{background:var(--bg);color:var(--ink)}
+.cta-banner .btn-primary{background:#A23C24;color:#F3ECE0}
 .cta-banner .btn-ghost{border-color:rgba(255,255,255,.3);color:var(--bg)}
 
 /* footer */
