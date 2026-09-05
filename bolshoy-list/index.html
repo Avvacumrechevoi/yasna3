@@ -182,8 +182,48 @@ document.addEventListener('click', function (e) {
     .btn-live .arr { transition: none; }
   }
 </style>
+<style>
+  /* ---------- Цвет съезда 2026: изумруд и золото на странице сбора.
+     Совпадает с разворотом «Большой лист» на главной и с афишей рассылки.
+     Снять после 26.09.2026: удалить этот блок и атрибут data-sezd у <body>.
+     Правило: жёлтый — даты, метки, кнопки; золото — заголовки; бумага — текст;
+     эмблемы всегда на светлых дисках. ---------- */
+  [data-sezd]{--bl-bg:#082F1E; --bl-card:#0E4A30; --bl-gold:#E8C15A; --bl-sun:#FFD400; --bl-sun-ink:#0B3B25;
+    --bl-paper:#F3ECE0; --bl-text:rgba(243,236,224,.88); --bl-text-2:rgba(243,236,224,.78);
+    --bl-rim:rgba(255,212,0,.55); --bl-line:rgba(255,212,0,.22)}
+  /* кнопки записи везде, включая шапку и липкую кнопку на телефоне */
+  [data-sezd] .btn-primary, [data-sezd] .nav-cta{background:var(--bl-sun); color:var(--bl-sun-ink)}
+  [data-sezd] .btn-primary:hover, [data-sezd] .nav-cta:hover{background:#FFE04A}
+  /* плитка фактов в первом экране */
+  [data-sezd] .hero-facts{background:var(--bl-bg); border-color:transparent}
+  [data-sezd] .hero-facts dt{color:var(--bl-sun)}
+  [data-sezd] .hero-facts dd{color:var(--bl-paper)}
+  [data-sezd] .hero-facts dd span{color:var(--bl-text-2)}
+  /* кольцо двенадцати */
+  [data-sezd] .sbor-day{background:var(--bl-bg); --gold:var(--bl-sun)}
+  [data-sezd] .sbor-day .ring > .ring-rot > circle{stroke:var(--bl-line)}
+  [data-sezd] .sbor-day #sborPoly{stroke:rgba(255,212,0,.6)}
+  [data-sezd] .sbor-day #sborNodes circle{fill:var(--bl-sun)}
+  [data-sezd] .reel .letterfly .med{box-shadow:0 0 0 1.5px var(--bl-rim), 0 4px 18px rgba(0,0,0,.35)}
+  [data-sezd] .reel .center .num{color:var(--bl-sun)}
+  [data-sezd] .reel .center .t{color:var(--bl-gold)}
+  [data-sezd] .reel .center .s{color:var(--bl-text-2)}
+  [data-sezd] .sbor-day .sbor-lead{color:var(--bl-text)}
+  /* панель «Зал»: фото на изумруде */
+  [data-sezd] .panel:has(.zal-foto){background:var(--bl-card); border-color:transparent}
+  [data-sezd] .panel:has(.zal-foto) .panel-head{border-bottom-color:var(--bl-line)}
+  [data-sezd] .panel:has(.zal-foto) h3{color:var(--bl-paper)}
+  [data-sezd] .panel:has(.zal-foto) .sub{color:var(--bl-sun)}
+  /* нижний призыв */
+  [data-sezd] .cta-banner{background:var(--bl-bg)}
+  [data-sezd] .cta-banner .eyebrow{color:var(--bl-sun)}
+  [data-sezd] .cta-banner h2{color:var(--bl-gold)}
+  [data-sezd] .cta-banner p{color:var(--bl-text)}
+  [data-sezd] .cta-banner .btn-primary{background:var(--bl-sun); color:var(--bl-sun-ink)}
+  [data-sezd] .cta-banner .btn-ghost{border-color:rgba(243,236,224,.4); color:var(--bl-paper)}
+</style>
 </head>
-<body data-palette="iney" data-fontpair="modern" data-density="regular" data-screen-label="Большой лист">
+<body data-sezd="2026" data-palette="iney" data-fontpair="modern" data-density="regular" data-screen-label="Большой лист">
 
 <!-- NAV -->
 <header class="nav">
