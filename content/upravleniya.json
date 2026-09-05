@@ -1,0 +1,323 @@
+{
+  "_o_fajle": "Двенадцать управлений «Золотого Ясеня». Источник — карточки главной zolotoj-yasen.ru и страницы /upravleniya/*. Собрано скриптом из разметки сайта; при расхождении прав сайт. Подразделения называются «управления», названия только по-русски (Гербальдика, ЛитПроСвет).",
+  "obnovleno": "2026-09-05",
+  "centr": {
+    "nazvanie": "Золотой Ясень",
+    "podzagolovok": "Интеграционный центр",
+    "sajt": "https://zolotoj-yasen.ru",
+    "zerkalo": "http://zolotoj-yasen.ru.website.yandexcloud.net/",
+    "telefony": [
+      "+7 908 293-93-63",
+      "+7 915 259-52-50"
+    ],
+    "telegram": "https://t.me/russkaya_yasna",
+    "emblema": "https://zolotoj-yasen.ru/src/img/yasna-mark.jpg",
+    "operator": "ИП Архипов Сергей Юрьевич, ИНН 771409900020, ОГРНИП 317774600605551"
+  },
+  "sobytie": {
+    "nazvanie": "Большой лист",
+    "chto": "Съезд Ясны: общий сбор всех двенадцати управлений",
+    "data": "2026-09-26",
+    "vremya": "16:00–20:00",
+    "den": "суббота",
+    "mesto": "Конференц-зал в историческом центре Москвы, 3 минуты пешком от метро Марксистская и Таганская; точный адрес присылают после регистрации",
+    "vhod": "свободный, по записи",
+    "stranica": "https://zolotoj-yasen.ru/bolshoy-list/",
+    "zapis": "https://zolotoj-yasen.ru/zayavka/?goal=day",
+    "kalendar": "https://zolotoj-yasen.ru/bolshoy-list/bolshoy-list.ics"
+  },
+  "upravleniya": [
+    {
+      "nomer": 1,
+      "id": "yasna-shkola",
+      "nazvanie": "Ясна-Школа",
+      "temy": [
+        "Обучение",
+        "информационное"
+      ],
+      "opisanie": "Русская Школа Русского Языка. Уроки РШРЯ, курсы и статьи о русском языке, взгляде на мир и русской семье.",
+      "rukovoditel": "Архипов Сергей Юрьевич",
+      "format": "Онлайн · очно возможно",
+      "emblema": {
+        "fajl": "yasna-shkola.png",
+        "na_sajte": "https://zolotoj-yasen.ru/src/img/yasna-shkola.png",
+        "v_repozitorii": "https://raw.githubusercontent.com/Avvacumrechevoi/yasna3/main/src/img/yasna-shkola.png"
+      },
+      "zayavka": "https://zolotoj-yasen.ru/zayavka/?dir=yasna-shkola",
+      "stranica": "https://zolotoj-yasen.ru/upravleniya/yasna-shkola/",
+      "stranica_opisanie": "Ясна-Школа — Русская Школа Русского Языка центра «Золотой Ясень». Уроки, курсы и статьи о русском учении, мировоззрении и семье.",
+      "stranica_istochnik": "https://github.com/Avvacumrechevoi/yasna3/blob/main/upravleniya/yasna-shkola/index.html",
+      "kontakty": [
+        "https://rutube.ru/channel/24295181",
+        "https://t.me/Yasna_axlbot",
+        "https://t.me/russkaya_yasna",
+        "https://vk.com/yasnaslovo",
+        "https://youtube.com/@russkaya_yasna"
+      ]
+    },
+    {
+      "nomer": 2,
+      "id": "vospitanie",
+      "nazvanie": "Воспитание и Образование",
+      "temy": [
+        "Воспитание",
+        "образование"
+      ],
+      "opisanie": "Родителям рассказываем, что такое воспитание, детям предлагаем образовательный курс. Четыре опоры: телосложение, обучение, образование, просвещение.",
+      "rukovoditel": "Костромитин Руслан Александрович",
+      "format": "Москва · Петербург · онлайн",
+      "emblema": {
+        "fajl": "vospitanie.svg",
+        "na_sajte": "https://zolotoj-yasen.ru/src/img/vospitanie.svg",
+        "v_repozitorii": "https://raw.githubusercontent.com/Avvacumrechevoi/yasna3/main/src/img/vospitanie.svg"
+      },
+      "zayavka": null,
+      "stranica": "https://zolotoj-yasen.ru/upravleniya/vospitanie/",
+      "stranica_opisanie": "Воспитание и Образование — управление центра «Золотой Ясень». Родителям о воспитании, детям образовательный курс. Четыре опоры воспитания.",
+      "stranica_istochnik": "https://github.com/Avvacumrechevoi/yasna3/blob/main/upravleniya/vospitanie/index.html",
+      "kontakty": [
+        "mailto:proyasna@yandex.ru"
+      ]
+    },
+    {
+      "nomer": 3,
+      "id": "alexandria",
+      "nazvanie": "Александрия",
+      "temy": [
+        "Раскладки",
+        "теория и практика"
+      ],
+      "opisanie": "Теоретическое ядро Ясны: изучаем построение раскладок — «разложи всё и соедини всё». От медицины до истории.",
+      "rukovoditel": "Фахрутдинов Тимур Михайлович",
+      "format": "Петербург + онлайн",
+      "emblema": {
+        "fajl": "alexandria-emblem.jpg",
+        "na_sajte": "https://zolotoj-yasen.ru/src/img/alexandria-emblem.jpg",
+        "v_repozitorii": "https://raw.githubusercontent.com/Avvacumrechevoi/yasna3/main/src/img/alexandria-emblem.jpg"
+      },
+      "zayavka": "https://zolotoj-yasen.ru/zayavka/?dir=alexandria",
+      "stranica": "https://zolotoj-yasen.ru/upravleniya/alexandria/",
+      "stranica_opisanie": "Александрия — теоретическое управление центра «Золотой Ясень». Изучаем построение раскладок: разложи всё и соедини всё. Петербург и онлайн.",
+      "stranica_istochnik": "https://github.com/Avvacumrechevoi/yasna3/blob/main/upravleniya/alexandria/index.html",
+      "kontakty": [
+        "https://t.me/aleksandriya_2026",
+        "https://t.me/mobictas",
+        "https://t.me/yasna_besedy",
+        "mailto:admin@yasna.spb.ru"
+      ]
+    },
+    {
+      "nomer": 4,
+      "id": "neglinka",
+      "nazvanie": "Неглинка",
+      "temy": [
+        "История",
+        "география"
+      ],
+      "opisanie": "Проясняем историю и географию России — гуляем по Москве, читаем то, что зашифровано в улицах.",
+      "rukovoditel": "Воинов Леонид Викторович",
+      "format": "Москва + онлайн",
+      "emblema": {
+        "fajl": "neglinka-emblem.png",
+        "na_sajte": "https://zolotoj-yasen.ru/src/img/neglinka-emblem.png",
+        "v_repozitorii": "https://raw.githubusercontent.com/Avvacumrechevoi/yasna3/main/src/img/neglinka-emblem.png"
+      },
+      "zayavka": "https://zolotoj-yasen.ru/zayavka/?dir=neglinka",
+      "stranica": "https://zolotoj-yasen.ru/upravleniya/neglinka/",
+      "stranica_opisanie": "Управление истории и географии «Золотого Ясеня». Восстанавливаем образ прошлого: исследования, экспедиции и выступления в онлайне. Москва и онлайн, 20+ участников.",
+      "stranica_istochnik": "https://github.com/Avvacumrechevoi/yasna3/blob/main/upravleniya/neglinka/index.html",
+      "kontakty": [
+        "https://dzen.ru/a/ZDFn-JkZ_iBQDXcC",
+        "https://dzen.ru/a/ZGFqHUumAiQFTbZF",
+        "https://dzen.ru/id/629888dd626c9e4130ceb7ea",
+        "https://t.me/neglinka78",
+        "https://vk.com/public_38meridian"
+      ]
+    },
+    {
+      "nomer": 5,
+      "id": "granika",
+      "nazvanie": "Граника",
+      "temy": [
+        "Архитектура",
+        "астрономия"
+      ],
+      "opisanie": "Читаем язык предков в камне — усадьбы, крепости, монастыри и храмовые комплексы. Русский классицизм и деревянное зодчество.",
+      "rukovoditel": "Акимов Александр Анатольевич",
+      "format": "Москва + онлайн",
+      "emblema": {
+        "fajl": "granika.png",
+        "na_sajte": "https://zolotoj-yasen.ru/src/img/granika.png",
+        "v_repozitorii": "https://raw.githubusercontent.com/Avvacumrechevoi/yasna3/main/src/img/granika.png"
+      },
+      "zayavka": "https://zolotoj-yasen.ru/zayavka/?dir=granika",
+      "stranica": "https://zolotoj-yasen.ru/upravleniya/granika/",
+      "stranica_opisanie": "Граника — архитектурное управление центра «Золотой Ясень». Читаем русский классицизм: усадьбы, крепости, монастыри и храмовые комплексы.",
+      "stranica_istochnik": "https://github.com/Avvacumrechevoi/yasna3/blob/main/upravleniya/granika/index.html",
+      "kontakty": [
+        "https://t.me/russkaya_yasna"
+      ]
+    },
+    {
+      "nomer": 6,
+      "id": "astronevod",
+      "nazvanie": "Астроневод",
+      "temy": [
+        "Астросмыслы",
+        "астрокоды"
+      ],
+      "opisanie": "Астрономия наших предков: археоастрономия древних поселений, звёздный язык сказок и баллад, астрономические сюжеты в иконописи. Как небо отражалось в земной планировке.",
+      "rukovoditel": "Виноградова Анна Львовна",
+      "format": "Москва + онлайн",
+      "emblema": {
+        "fajl": "astronevod.png",
+        "na_sajte": "https://zolotoj-yasen.ru/src/img/astronevod.png",
+        "v_repozitorii": "https://raw.githubusercontent.com/Avvacumrechevoi/yasna3/main/src/img/astronevod.png"
+      },
+      "zayavka": "https://zolotoj-yasen.ru/zayavka/?dir=astronevod",
+      "stranica": "https://zolotoj-yasen.ru/upravleniya/astronevod/",
+      "stranica_opisanie": "Астроневод — астрономическое управление интеграционного центра «Золотой Ясень». Исследуем проявление закона подобия: как на Небе, так и на Земле.",
+      "stranica_istochnik": "https://github.com/Avvacumrechevoi/yasna3/blob/main/upravleniya/astronevod/index.html",
+      "kontakty": [
+        "https://dzen.ru/astronevod",
+        "https://t.me/astronevod"
+      ]
+    },
+    {
+      "nomer": 7,
+      "id": "marshruty",
+      "nazvanie": "Ясные маршруты",
+      "temy": [
+        "Натурные уроки",
+        "исследование"
+      ],
+      "opisanie": "Натурные уроки по городам: читаем устройство поселений через астрономию, географию, архитектуру и историю. Москва, Петербург, Кронштадт.",
+      "rukovoditel": "Дрожжина Лидия Андреевна",
+      "format": "Москва · Петербург · Кронштадт",
+      "emblema": {
+        "fajl": "marshruty.png",
+        "na_sajte": "https://zolotoj-yasen.ru/src/img/marshruty.png",
+        "v_repozitorii": "https://raw.githubusercontent.com/Avvacumrechevoi/yasna3/main/src/img/marshruty.png"
+      },
+      "zayavka": "https://zolotoj-yasen.ru/zayavka/?dir=marshruty",
+      "stranica": "https://zolotoj-yasen.ru/upravleniya/marshruty/",
+      "stranica_opisanie": "Ясные маршруты — управление натурных уроков интеграционного центра «Золотой Ясень». Исследуем связи между природой, небом и историей в архитектуре городов.",
+      "stranica_istochnik": "https://github.com/Avvacumrechevoi/yasna3/blob/main/upravleniya/marshruty/index.html",
+      "kontakty": [
+        "https://t.me/naturnie_uroki"
+      ]
+    },
+    {
+      "nomer": 8,
+      "id": "litprosvet",
+      "nazvanie": "ЛитПроСвет",
+      "temy": [
+        "Литература"
+      ],
+      "opisanie": "Литература как способ думать и чувствовать. Возвращаем людей к чтению — клубы, аудиолекторий, разборы классики.",
+      "rukovoditel": "Скиба Анастасия Александровна",
+      "format": "Москва + онлайн",
+      "emblema": {
+        "fajl": "litprosvet-mark.svg",
+        "na_sajte": "https://zolotoj-yasen.ru/src/img/litprosvet-mark.svg",
+        "v_repozitorii": "https://raw.githubusercontent.com/Avvacumrechevoi/yasna3/main/src/img/litprosvet-mark.svg"
+      },
+      "zayavka": "https://zolotoj-yasen.ru/zayavka/?dir=litprosvet",
+      "stranica": null,
+      "stranica_opisanie": null,
+      "stranica_istochnik": null,
+      "kontakty": []
+    },
+    {
+      "nomer": 9,
+      "id": "izvod",
+      "nazvanie": "Извод",
+      "temy": [
+        "Языки"
+      ],
+      "opisanie": "Устройство языка и изводы слов — тех, что сформировали смыслы русского мировоззрения. Фольклор, история, истинные смыслы фразеологизмов.",
+      "rukovoditel": "Ванин Александр Николаевич",
+      "format": "Москва + онлайн",
+      "emblema": {
+        "fajl": "izvod.png",
+        "na_sajte": "https://zolotoj-yasen.ru/src/img/izvod.png",
+        "v_repozitorii": "https://raw.githubusercontent.com/Avvacumrechevoi/yasna3/main/src/img/izvod.png"
+      },
+      "zayavka": "https://zolotoj-yasen.ru/zayavka/?dir=izvod",
+      "stranica": "https://zolotoj-yasen.ru/upravleniya/izvod/",
+      "stranica_opisanie": "Извод — языковое управление интеграционного центра «Золотой Ясень». Изучаем устройство языка и ищем изводы слов, сформировавших смыслы русского мировоззрения.",
+      "stranica_istochnik": "https://github.com/Avvacumrechevoi/yasna3/blob/main/upravleniya/izvod/index.html",
+      "kontakty": [
+        "https://dzen.ru/id/5e9a2d632385352365504c51",
+        "https://t.me/+9ZxiZ56f8zY3ODhi",
+        "https://t.me/+zWpMyIdJOJdlNjBi"
+      ]
+    },
+    {
+      "nomer": 10,
+      "id": "dzhiva",
+      "nazvanie": "Джива",
+      "temy": [
+        "Здоровье",
+        "тело"
+      ],
+      "opisanie": "Здоровье и тело в русской традиции. Дыхание, движение, голос, уклад — практики возвращения к себе.",
+      "rukovoditel": "Белова Екатерина Андреевна",
+      "format": "Москва + онлайн",
+      "emblema": {
+        "fajl": "dzhiva.png",
+        "na_sajte": "https://zolotoj-yasen.ru/src/img/dzhiva.png",
+        "v_repozitorii": "https://raw.githubusercontent.com/Avvacumrechevoi/yasna3/main/src/img/dzhiva.png"
+      },
+      "zayavka": "https://zolotoj-yasen.ru/zayavka/?dir=dzhiva",
+      "stranica": "https://zolotoj-yasen.ru/upravleniya/dzhiva/",
+      "stranica_opisanie": "Джива — медицинское управление центра «Золотой Ясень». Изучаем тело человека сообразно его природному устройству и способы лечения, которыми пользовались предки.",
+      "stranica_istochnik": "https://github.com/Avvacumrechevoi/yasna3/blob/main/upravleniya/dzhiva/index.html",
+      "kontakty": []
+    },
+    {
+      "nomer": 11,
+      "id": "parad",
+      "nazvanie": "Парад Красоты",
+      "temy": [
+        "Красота",
+        "лад"
+      ],
+      "opisanie": "Красота, лад и любовь как уклад жизни. Эстетика русской традиции — от образа до отношений между людьми.",
+      "rukovoditel": "Стефарова Вишня Владимировна",
+      "format": "Москва + онлайн",
+      "emblema": {
+        "fajl": "parad.png",
+        "na_sajte": "https://zolotoj-yasen.ru/src/img/parad.png",
+        "v_repozitorii": "https://raw.githubusercontent.com/Avvacumrechevoi/yasna3/main/src/img/parad.png"
+      },
+      "zayavka": "https://zolotoj-yasen.ru/zayavka/?dir=parad",
+      "stranica": null,
+      "stranica_opisanie": null,
+      "stranica_istochnik": null,
+      "kontakty": []
+    },
+    {
+      "nomer": 12,
+      "id": "geraldika",
+      "nazvanie": "Гербальдика",
+      "temy": [
+        "Символика",
+        "гербы"
+      ],
+      "opisanie": "Родовые знаки, гербы и символика. Читаем язык образов — что и зачем зашифровано в гербах городов и родов.",
+      "rukovoditel": "Грачёв Алексей Анатольевич",
+      "format": "Москва + онлайн",
+      "emblema": {
+        "fajl": "geraldika.png",
+        "na_sajte": "https://zolotoj-yasen.ru/src/img/geraldika.png",
+        "v_repozitorii": "https://raw.githubusercontent.com/Avvacumrechevoi/yasna3/main/src/img/geraldika.png"
+      },
+      "zayavka": "https://zolotoj-yasen.ru/zayavka/?dir=geraldika",
+      "stranica": "https://zolotoj-yasen.ru/upravleniya/geraldika/",
+      "stranica_opisanie": "Гербальдика — управление знаков и символов центра «Золотой Ясень». Исследуем гербы, родовые знаки и символику, разбираем церемонии, протоколы и порядок следования.",
+      "stranica_istochnik": "https://github.com/Avvacumrechevoi/yasna3/blob/main/upravleniya/geraldika/index.html",
+      "kontakty": []
+    }
+  ]
+}
