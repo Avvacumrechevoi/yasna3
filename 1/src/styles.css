@@ -395,8 +395,11 @@ section.tight{padding-top:calc(56px * var(--dens));padding-bottom:calc(56px * va
 .faq-list details p{margin:0 4px 24px;color:var(--ink-2);line-height:1.55;max-width:78ch;font-size:.96rem}
 
 /* CTA banner */
+/* Тёмная плашка по замыслу, а не «цвета чернил»: в тёмной теме чернила
+   светлеют, и баннер выворачивался наизнанку. Роль --tyomnaya остаётся
+   тёмной в обеих темах (src/sistema/oblik-tsentra.css). */
 .cta-banner{
-  background:var(--ink);color:var(--bg);
+  background:var(--tyomnaya,var(--ink));color:var(--na-tyomnoy,var(--bg));
   border-radius:var(--radius-lg);
   padding:clamp(40px,5vw,72px);
   display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:end;

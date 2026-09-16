@@ -1,0 +1,72 @@
+/* КАРКАС ЯСНЫ · общие меры двух сайтов
+   ═══════════════════════════════════════════════════════════════════════
+   ФАЙЛ СОБРАН СКРИПТОМ — РУКАМИ НЕ ПРАВИТЬ.
+   Источник: docs/core/tokeny.css в репозитории платформы (yasnaneg-pr).
+   Обновить: node scripts/sinhronizatsiya-stiley.mjs
+   Сверить:  node scripts/sinhronizatsiya-stiley.mjs --proverit
+   Отпечаток источника: a9c1a33ca2e3
+
+   Здесь только КАРКАС и общие части. Ни одного цветного значения платформы
+   и ни одного блока её тёмной темы: краска и темнота у сайта свои, они
+   живут в src/sistema/oblik-tsentra.css.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+:root{
+  --ya-font-display: 'Manrope','Inter',system-ui,sans-serif;
+  --ya-font-text: 'Inter',system-ui,sans-serif;
+  --ya-font-quote: 'Cormorant Garamond',Georgia,serif;
+  --ya-font-mono: 'PT Mono',ui-monospace,monospace;
+  --type-display-s: 600 32px/40px var(--ya-font-display);
+  --type-headline-l: 600 30px/36px var(--ya-font-display);
+  --type-headline-m: 600 26px/32px var(--ya-font-display);
+  --type-headline-s: 600 22px/28px var(--ya-font-display);
+  --type-title-l: 600 19px/24px var(--ya-font-display);
+  --type-title-m: 600 16px/24px var(--ya-font-display);
+  --type-title-s: 600 14px/20px var(--ya-font-display);
+  --type-body-l: 400 17px/26px var(--ya-font-text);
+  --type-body-m: 400 15px/22px var(--ya-font-text);
+  --type-body-s: 400 13px/18px var(--ya-font-text);
+  --type-label-l: 600 14px/20px var(--ya-font-display);
+  --type-label-m: 600 12px/16px var(--ya-font-display);
+  --type-label-s: 500 12px/16px var(--ya-font-display);
+  --type-quote: italic 500 20px/30px var(--ya-font-quote);
+  --type-reader-title: 600 24px/32px var(--ya-font-quote);
+  --type-reader-body: 400 18px/29px var(--ya-font-quote);
+  --type-mono: 400 14px/20px var(--ya-font-mono);
+  --track-label: .08em;
+  --shape-xs: 4px;
+  --shape-s: 8px;
+  --shape-m: 12px;
+  --shape-l: 16px;
+  --shape-xl: 28px;
+  --shape-full: 999px;
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-6: 24px;
+  --sp-8: 32px;
+  --polosa: 1120px;
+  --polosa-uzkaya: 720px;
+  --pole-polosy: var(--sp-4);
+  --stroka-max: 64ch;
+  --cel-min: 48px;
+  --h-btn: 48px;
+  --h-btn-compact: 40px;
+  --h-btn-hero: 56px;
+  --h-pole: 56px;
+  --h-chip: 40px;
+  --h-ib: 40px;
+  --dur-short: 150ms;
+  --dur-medium: 300ms;
+  --dur-long: 400ms;
+  --ease-standard: cubic-bezier(.2,0,0,1);
+  --ease-emphasized-decel: cubic-bezier(.05,.7,.1,1);
+  --ease-emphasized-accel: cubic-bezier(.3,0,.8,.15);
+  --state-hover: .08;
+  --state-focus: .10;
+  --state-pressed: .12;
+  --state-drag: .16;
+  --state-disabled-content: .38;
+  --state-disabled-fon: .12;
+}

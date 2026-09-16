@@ -1,0 +1,240 @@
+/* ОБЛИК ЦЕНТРА · краска и темнота сайта «Золотой Ясень»
+   ═══════════════════════════════════════════════════════════════════════
+   Этот файл — ЕДИНСТВЕННОЕ место, где у сайта живёт цвет. Меры (отступы,
+   высоты, шкала шрифта, движение, радиусы) приезжают из общего каркаса
+   yasna-karkas.css, собранного из системы платформы: одна семья решений
+   на два сайта.
+
+   ПОЧЕМУ КРАСКА НЕ ОБЩАЯ. Сайт — бумажный: тёплая страница, чернила,
+   терракота, золото знаком. Платформа — нейтральный инструмент. Единство
+   читается на каркасе и частях, а не на одинаковом синем; перекрасив сайт
+   в цвета приложения, мы потеряли бы его лицо и ничего не выиграли.
+
+   МОСТ СТАРЫХ ИМЁН. Вёрстка сорока четырёх страниц написана на прежних
+   именах (--bg, --ink, --accent, --paper, --line). Мы их не выбрасываем:
+   внизу они объявлены через новые роли. Поэтому тёмная тема приходит на
+   все страницы разом, без переписывания разметки — а новые куски пишутся
+   уже на ролях.
+
+   ТЁМНАЯ ТЕМА — тёплая, а не серая. Тот же приём, что на платформе: три
+   состояния (выбор руками перебивает настройку телефона), и ни один цвет
+   не объявлен ТОЛЬКО внутри тёмного блока — иначе страница в одной теме
+   получила бы чернила другой.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ═══ СВЕТЛАЯ · бумага ═══════════════════════════════════════════════════ */
+:root{
+  /* Поверхности: страница, панель, приподнятое. Высоту передаёт тон. */
+  --surface:                    #F3ECE0;
+  --surface-container-lowest:   #FBF7EF;
+  --surface-container:          #ECE3D4;
+  --surface-container-high:     #E4D9C7;
+
+  /* Чернила. Второстепенный — 4.86:1, а не прежние 4.00:1: прежний
+     --ink-58 нормы не проходил, и это чинится здесь раз и навсегда. */
+  --on-surface:                 #211B14;
+  --on-surface-variant:         #6B665C;
+
+  /* Терракота — главное действие и акцент словом. 5.58:1 на бумаге. */
+  --primary:                    #A23C24;
+  --on-primary:                 #F3ECE0;
+  --primary-ink:                #8C3320;   /* слово, ссылка: 6.4:1 */
+  --primary-container:          #F6DFD6;
+  --on-primary-container:       #3B1108;
+
+  /* ЗОЛОТО — ЗНАК, А НЕ СЛОВО. На бумаге даёт 2.64:1 и текстом быть не
+     может; на чернилах 5.49:1 — там оно и живёт: обод знака, линейка,
+     кольцо двенадцати рисок, ягоды ясеня. Правило простое: золотом мы
+     ничего не пишем на светлом. */
+  --znak:                       #B98A3C;
+  --znak-yarkiy:                #E8C15A;
+
+  /* Линии: граница как единственный признак — не ниже 3:1; декоративная
+     линейка может быть тише, она ничего не сообщает одна. */
+  --outline:                    #6E655A;
+  --outline-variant:            rgba(33,27,20,.14);
+
+  --error:                      #8E2C1B;
+  --on-error:                   #F3ECE0;
+
+  /* ВСЕГДА ТЁМНАЯ ПОВЕРХНОСТЬ. Подвал, разворот сбора, полоса cookie —
+     они тёмные по замыслу, а не «цвета чернил»: в тёмной теме чернила
+     светлеют, и такие блоки вывернулись бы наизнанку. Здесь они остаются
+     тёмными в обеих темах, меняя лишь глубину. */
+  --tyomnaya:                   #211B14;
+  --na-tyomnoy:                 #F3ECE0;
+  --na-tyomnoy-tiho:            rgba(243,236,224,.74);
+
+  /* ШОВ — переход от страницы к тёмному развороту. В светлой теме это
+     тёплая лестница из десяти ступеней (авторский приём главной), в тёмной
+     перепада почти нет, и лестница превратилась бы в светлую полосу поперёк
+     тёмной страницы — там короткий переход. */
+  --shov: linear-gradient(180deg, var(--surface) 0%, #E8DCCB 10%, #DCCAB3 20%,
+          #CBAF90 30%, #B3916B 40%, #94724B 50%, #725534 60%, #523E26 70%,
+          #372B1C 80%, #262017 90%, var(--tyomnaya) 100%);
+
+  /* Тень тёплая: у бумаги не бывает серой тени. */
+  --elev-1: 0 1px 2px rgba(33,27,20,.06);
+  --elev-2: 0 4px 14px rgba(33,27,20,.08);
+  --elev-3: 0 14px 40px rgba(33,27,20,.10);
+
+  /* Гарнитуры сайта. Роли объявлены в каркасе, значения — свои: шкала
+     общая, голос свой. */
+  --ya-font-display: 'Manrope', system-ui, sans-serif;
+  --ya-font-text:    'Inter', system-ui, sans-serif;
+  --ya-font-quote:   'Cormorant Garamond', Georgia, serif;
+
+  color-scheme: light;
+}
+
+/* ═══ ТЁМНАЯ · тёплый уголь ══════════════════════════════════════════════
+   Значения посчитаны, а не подобраны на глаз: текст 15.2:1, второстепенный
+   6.6:1, терракота словом 6.3:1, золото 8:1, граница 3.2:1. Терракота на
+   тёмном осветляется — исходная #A23C24 даёт там 2.85:1 и читаться не может.
+   ──────────────────────────────────────────────────────────────────────── */
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --surface:                  #16120D;
+    --surface-container-lowest: #110E0A;
+    --surface-container:        #1E1913;
+    --surface-container-high:   #262019;
+
+    --on-surface:               #EFE7DA;
+    --on-surface-variant:       #A39887;
+
+    --primary:                  #E07A5F;
+    --on-primary:               #1A0F0A;
+    --primary-ink:              #EB8A6B;
+    --primary-container:        #4A1C0F;
+    --on-primary-container:     #FFDBCF;
+
+    --znak:                     #D0A24E;
+    --znak-yarkiy:              #E8C15A;
+
+    --outline:                  #726450;
+    --outline-variant:          rgba(239,231,218,.14);
+
+    --error:                    #F2B8A8;
+    --on-error:                 #1A0F0A;
+
+    /* Тёмная поверхность в темноте чуть выше страницы: иначе подвал
+       сольётся с фоном и перестанет читаться как отдельный блок. */
+    --tyomnaya:                 #241E17;
+  --shov: linear-gradient(180deg, var(--surface) 0%, #1C1712 45%, var(--tyomnaya) 100%);
+    --shov: linear-gradient(180deg, var(--surface) 0%, #1C1712 45%, var(--tyomnaya) 100%);
+    --na-tyomnoy:               #EFE7DA;
+    --na-tyomnoy-tiho:          rgba(239,231,218,.74);
+
+    /* В темноте высоту передаёт тон поверхности, а не тень. */
+    --elev-1: none;
+    --elev-2: none;
+    --elev-3: 0 14px 40px rgba(0,0,0,.45);
+
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --surface:                  #16120D;
+  --surface-container-lowest: #110E0A;
+  --surface-container:        #1E1913;
+  --surface-container-high:   #262019;
+
+  --on-surface:               #EFE7DA;
+  --on-surface-variant:       #A39887;
+
+  --primary:                  #E07A5F;
+  --on-primary:               #1A0F0A;
+  --primary-ink:              #EB8A6B;
+  --primary-container:        #4A1C0F;
+  --on-primary-container:     #FFDBCF;
+
+  --znak:                     #D0A24E;
+  --znak-yarkiy:              #E8C15A;
+
+  --outline:                  #726450;
+  --outline-variant:          rgba(239,231,218,.14);
+
+  --error:                    #F2B8A8;
+  --on-error:                 #1A0F0A;
+
+  --tyomnaya:                 #241E17;
+  --na-tyomnoy:               #EFE7DA;
+  --na-tyomnoy-tiho:          rgba(239,231,218,.74);
+
+  --elev-1: none;
+  --elev-2: none;
+  --elev-3: 0 14px 40px rgba(0,0,0,.45);
+
+  color-scheme: dark;
+}
+
+/* ═══ МОСТ СТАРЫХ ИМЁН ═══════════════════════════════════════════════════
+   Прежние токены сайта продолжают работать — но значения берут у ролей.
+   Благодаря этому тёмная тема приходит на всю прежнюю вёрстку разом.
+   Объявлены ПОСЛЕ тем, чтобы подхватывать переопределённые значения.
+   ──────────────────────────────────────────────────────────────────────── */
+:root, [data-palette]{
+  --bg:          var(--surface);
+  --bg-deep:     var(--surface-container);
+  --paper:       var(--surface-container-lowest);
+  --ink:         var(--on-surface);
+  --ink-2:       var(--on-surface-variant);
+  --ink-3:       var(--on-surface-variant);
+  --line:        var(--outline-variant);
+  --line-strong: var(--outline);
+  --accent:      var(--primary);
+  --accent-ink:  var(--on-primary);
+  --gold:        var(--znak);
+  --gold-line:   var(--znak);
+  --radius:      var(--shape-l, 16px);
+  --radius-lg:   var(--shape-xl, 28px);
+
+  /* Прозрачности чернил главной. Считаем от роли, а не от жёсткого чёрного:
+     в темноте «чернила на 58%» обязаны стать светлыми на 58%, иначе текст
+     исчезает. color-mix делает это сам, одним объявлением на обе темы. */
+  --ink-74:   color-mix(in srgb, var(--on-surface) 74%, transparent);
+  --ink-58:   color-mix(in srgb, var(--on-surface) 62%, transparent);
+  --ink-38:   color-mix(in srgb, var(--on-surface) 38%, transparent);
+  --line-2:   color-mix(in srgb, var(--on-surface) 8%, transparent);
+  --gold-line:color-mix(in srgb, var(--znak) 45%, transparent);
+  --paper-2:  var(--surface-container);
+  --card:     var(--surface-container-lowest);
+  /* Светлые чернила тёмных секций (подвал, разворот сбора) — там фон
+     всегда тёмный в обеих темах, поэтому значения не зависят от темы. */
+  --pg:       rgba(243,236,224,.74);
+  --pg-2:     rgba(243,236,224,.62);
+  --pg-line:  rgba(243,236,224,.16);
+  --r-s:      var(--shape-xs, 4px);
+  --r-m:      var(--shape-m, 12px);
+  --sh:       var(--elev-3);
+}
+
+/* Страница красится ролями — без этого тёмная тема не доедет до фона. */
+html{ background: var(--surface); }
+body{ background: var(--surface); color: var(--on-surface); }
+
+/* ═══ ПЕРЕКЛЮЧАТЕЛЬ ТЕМЫ ════════════════════════════════════════════════ */
+.tema-knop{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:34px; height:34px; padding:0; flex:0 0 auto; align-self:center;
+  /* Нажимаемая площадь добирается невидимым полем, а высоту ряда кнопка
+     не трогает: иначе шапка выросла бы, и вся страница поехала вниз. */
+  margin:-7px 0;
+  border:1px solid var(--outline-variant); border-radius:var(--shape-full,999px);
+  background:transparent; color:var(--on-surface-variant);
+  cursor:pointer; transition:background-color var(--dur-short,.15s) var(--ease-standard,ease),
+                             color var(--dur-short,.15s) var(--ease-standard,ease);
+}
+.tema-knop:hover{ background:var(--surface-container); color:var(--on-surface); }
+.tema-knop:focus-visible{ outline:2px solid var(--primary); outline-offset:2px; }
+.tema-knop svg{ width:18px; height:18px; display:block; }
+/* Показываем тот значок, который предлагает ПЕРЕКЛЮЧИТЬ: в светлой — луну. */
+.tema-knop .tema-luna{ display:block; }
+.tema-knop .tema-solnce{ display:none; }
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .tema-knop .tema-luna{ display:none; }
+  :root:not([data-theme="light"]) .tema-knop .tema-solnce{ display:block; }
+}
+:root[data-theme="dark"] .tema-knop .tema-luna{ display:none; }
+:root[data-theme="dark"] .tema-knop .tema-solnce{ display:block; }
+@media (prefers-reduced-motion: reduce){ .tema-knop{ transition:none; } }

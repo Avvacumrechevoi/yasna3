@@ -2,6 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8"/>
+<script src="/src/sistema/tema.js"></script>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <!-- Счётчик нужен и здесь. Опечатка в адресе из объявления или устаревшая
      ссылка из чата приводили человека сюда, и он исчезал бесследно:
@@ -18,12 +19,16 @@ ym(111443194, 'init', {ssr:true, webvisor:true, clickmap:true, referrer: documen
 <title>Страница не найдена — Золотой Ясень</title>
 <meta name="robots" content="noindex"/>
 <link rel="stylesheet" href="/src/fonts.css"/>
+<!-- ЕДИНАЯ СИСТЕМА ЯСНЫ: каркас собран из системы платформы
+     (руками не править), облик и тёмная тема — свои. -->
+<link rel="stylesheet" href="/src/sistema/yasna-karkas.css"/>
+<link rel="stylesheet" href="/src/sistema/oblik-tsentra.css"/>
 <style>
-  html,body{margin:0;background:#F3ECE0;color:#211B14;font-family:'Manrope',-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+  html,body{margin:0;background:var(--surface);color:var(--on-surface);font-family:'Manrope',-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
   .center{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;gap:14px}
   h1{font-family:'Spectral',Georgia,serif;font-size:2rem;margin:0;font-weight:500}
   p{margin:0;color:rgba(33,27,20,.7)}
-  a{color:#A23C24;text-decoration:none;border-bottom:1px solid currentColor}
+  a{color:var(--primary);text-decoration:none;border-bottom:1px solid currentColor}
   /* Тупик превращаем в развилку: человек шёл на конкретную страницу,
      дадим ему две самые нужные вместо одной общей. */
   .go{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;margin-top:6px}

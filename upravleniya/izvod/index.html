@@ -2,6 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8"/>
+<script src="/src/sistema/tema.js"></script>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <!-- Яндекс.Метрика. Без счётчика реклама идёт вслепую: нет ни целей,
      ни ретаргетинга, ни ответа на вопрос «сколько людей пришло». Стоит
@@ -54,6 +55,10 @@ document.addEventListener('click', function (e) {
 <meta name="twitter:card" content="summary_large_image"/>
 <link rel="stylesheet" href="/1/src/styles.css"/>
 <link rel="stylesheet" href="/1/src/refresh.css"/>
+<!-- ЕДИНАЯ СИСТЕМА ЯСНЫ: каркас собран из системы платформы
+     (руками не править), облик и тёмная тема — свои. -->
+<link rel="stylesheet" href="/src/sistema/yasna-karkas.css"/>
+<link rel="stylesheet" href="/src/sistema/oblik-tsentra.css"/>
 <!-- Хлебные крошки: в выдаче вместо голого адреса показывается путь
      Золотой Ясень › Управления › Извод -->
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Золотой Ясень","item":"https://zolotoj-yasen.ru/"},{"@type":"ListItem","position":2,"name":"Управления","item":"https://zolotoj-yasen.ru/#directions"},{"@type":"ListItem","position":3,"name":"Извод","item":"https://zolotoj-yasen.ru/upravleniya/izvod/"}]}</script>
@@ -80,6 +85,7 @@ document.addEventListener('click', function (e) {
       <a href="/#method">Метод</a>
       <a href="/#faq">Вопросы</a>
       <a class="nav-cta" href="/zayavka/?dir=izvod">Вступить</a>
+      <span class="tema-mesto" data-tema-mesto></span>
     </nav>
   </div>
 </header>

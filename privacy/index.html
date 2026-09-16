@@ -2,6 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8"/>
+<script src="/src/sistema/tema.js"></script>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <!-- Яндекс.Метрика. Без счётчика реклама идёт вслепую: нет ни целей,
      ни ретаргетинга, ни ответа на вопрос «сколько людей пришло». Стоит
@@ -45,6 +46,10 @@ document.addEventListener('click', function (e) {
 <link rel="canonical" href="https://zolotoj-yasen.ru/privacy/"/>
 <link rel="stylesheet" href="/1/src/styles.css"/>
 <link rel="stylesheet" href="/1/src/refresh.css"/>
+<!-- ЕДИНАЯ СИСТЕМА ЯСНЫ: каркас собран из системы платформы
+     (руками не править), облик и тёмная тема — свои. -->
+<link rel="stylesheet" href="/src/sistema/yasna-karkas.css"/>
+<link rel="stylesheet" href="/src/sistema/oblik-tsentra.css"/>
 <style>
   .doc { max-width: 72ch; margin: 0 auto; padding: 40px 24px 72px; }
   .doc h2 { font-family: var(--font-display); font-size: 1.35rem; margin: 38px 0 12px; }
@@ -89,6 +94,7 @@ document.addEventListener('click', function (e) {
       <a href="/#directions">Управления</a>
       <a href="/#faq">Вопросы</a>
       <a class="nav-cta" href="/zayavka/">Вступить</a>
+      <span class="tema-mesto" data-tema-mesto></span>
     </nav>
   </div>
 </header>

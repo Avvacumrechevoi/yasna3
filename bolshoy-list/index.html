@@ -2,6 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8"/>
+<script src="/src/sistema/tema.js"></script>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <!-- Яндекс.Метрика. Без счётчика реклама идёт вслепую: нет ни целей,
      ни ретаргетинга, ни ответа на вопрос «сколько людей пришло». Стоит
@@ -57,6 +58,10 @@ document.addEventListener('click', function (e) {
 <meta name="twitter:card" content="summary_large_image"/>
 <link rel="stylesheet" href="/1/src/styles.css"/>
 <link rel="stylesheet" href="/1/src/refresh.css"/>
+<!-- ЕДИНАЯ СИСТЕМА ЯСНЫ: каркас собран из системы платформы
+     (руками не править), облик и тёмная тема — свои. -->
+<link rel="stylesheet" href="/src/sistema/yasna-karkas.css"/>
+<link rel="stylesheet" href="/src/sistema/oblik-tsentra.css"/>
 <!-- Разметка события: в выдаче показывается дата и место, а рекламные
      площадки берут отсюда же название и время. Точный адрес зала
      не публикуется, пока он не подтверждён, поэтому streetAddress
@@ -246,6 +251,7 @@ document.addEventListener('click', function (e) {
       <a href="/#directions">Управления</a>
       <a href="#voprosy">Вопросы</a>
       <a class="nav-cta" href="/zayavka/?goal=day">Записаться</a>
+      <span class="tema-mesto" data-tema-mesto></span>
     </nav>
   </div>
 </header>
