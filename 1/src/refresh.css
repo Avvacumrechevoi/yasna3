@@ -1100,15 +1100,6 @@ section.tight { padding-top: calc(48px * var(--dens)); padding-bottom: calc(48px
 /* Надстройка в подвале */
 
 
-/* ─── Логотип-плашка в hero страницы управления (Ясна-Школа) ─────── */
-.dir-logo.dir-logo-tile {
-  background: transparent;
-  border: 0;
-  box-shadow: none;
-  border-radius: 20px;
-  overflow: hidden;
-}
-.dir-logo.dir-logo-tile img { object-fit: cover; border-radius: 20px; }
 
 /* Честная сноска о текущем состоянии управления */
 .dir-note-quiet {
