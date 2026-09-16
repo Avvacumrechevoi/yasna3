@@ -357,7 +357,12 @@ document.addEventListener('click', function (e) {
   .kard .loc{font:500 10.5px/1.5 var(--f-m); letter-spacing:.14em; text-transform:uppercase; color:var(--ink-74); text-align:right}
   /* медальон в кольце с двенадцатью рисками: общий знак каталога */
   .kard .emb{position:relative; width:72px; height:72px; margin-bottom:18px}
-  .kard .emb img{position:absolute; inset:8px; width:56px; height:56px; border-radius:50%; object-fit:cover}
+  /* Эмблемы управлений рисовали кто чем: у ЛитПроСвета обводка зашита
+     тёмным #211b14, у Извода и Неглинки почти чёрная графика. На тёмной
+     карточке они пропадали (контраст 1.1). Светлый диск под рисунком
+     решает это для всех двенадцати и не трогает чужие эмблемы. */
+  .kard .emb img{position:absolute; inset:8px; width:56px; height:56px; border-radius:50%;
+    object-fit:cover; background:var(--na-tyomnoy); padding:3px}
   .kard .emb svg{position:absolute; inset:0; width:100%; height:100%; color:var(--gold); transition:color .3s}
   .kard h3{font-size:22px; margin-bottom:4px}
   .kard .tema{font:500 12.5px/1.5 var(--f-m); letter-spacing:.1em; text-transform:uppercase; color:var(--accent); margin-bottom:12px}
