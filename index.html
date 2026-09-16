@@ -131,8 +131,9 @@ document.addEventListener('click', function (e) {
   .brand{display:flex; align-items:center; gap:12px}
   .brand img{width:38px; height:38px; border-radius:50%; object-fit:cover; box-shadow:0 0 0 1px var(--gold)}
   .brand .bt{display:flex; flex-direction:column; line-height:1.12}
-  .brand .bt b{font:600 18px/1.1 var(--f-d); white-space:nowrap}
-  .brand .bt span{font:500 10.5px/1.4 var(--f-m); letter-spacing:.14em; text-transform:uppercase; color:var(--ink-74); white-space:nowrap}
+  .brand .bt b{font:var(--type-title-l); letter-spacing:-.01em; color:var(--on-surface)}
+  .brand .bt span{font:var(--type-label-s); letter-spacing:.02em; text-transform:none;
+    color:var(--on-surface-variant); white-space:nowrap}
   .navlinks{display:flex; gap:24px; align-items:center; font:500 14.5px/1.2 var(--f-t)}
   .navlinks a.lnk{position:relative; color:var(--ink-74); padding:4px 0; transition:color .25s}
   .navlinks a.lnk::after{content:""; position:absolute; left:0; bottom:-2px; width:0; height:1px; background:var(--accent); transition:width .3s var(--ease)}
@@ -599,7 +600,7 @@ document.addEventListener('click', function (e) {
 <nav id="nav">
   <div class="wrap">
     <a class="brand" href="#top">
-      <img src="src/img/yasna-mark.jpg" alt="Золотой Ясень" width="38" height="38">
+      <span class="mark" aria-hidden="true"><svg viewBox="31.5 31.5 45 45" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round"><line x1="54" y1="44.8" x2="54" y2="35.4" stroke-width="7.81"/><line x1="61.69" y1="40.68" x2="63.94" y2="36.78" stroke-width="4.96"/><line x1="67.32" y1="46.31" x2="71.22" y2="44.06" stroke-width="4.96"/><line x1="63.2" y1="54" x2="72.6" y2="54" stroke-width="7.81"/><line x1="67.32" y1="61.69" x2="71.22" y2="63.94" stroke-width="4.96"/><line x1="61.69" y1="67.32" x2="63.94" y2="71.22" stroke-width="4.96"/><line x1="54" y1="63.2" x2="54" y2="72.6" stroke-width="7.81"/><line x1="46.31" y1="67.32" x2="44.06" y2="71.22" stroke-width="4.96"/><line x1="40.68" y1="61.69" x2="36.78" y2="63.94" stroke-width="4.96"/><line x1="44.8" y1="54" x2="35.4" y2="54" stroke-width="7.81"/><line x1="40.68" y1="46.31" x2="36.78" y2="44.06" stroke-width="4.96"/><line x1="46.31" y1="40.68" x2="44.06" y2="36.78" stroke-width="4.96"/></g></svg></span>
       <span class="bt"><b>Золотой Ясень</b><span>Интеграционный центр</span></span>
     </a>
     <div class="navlinks">
@@ -991,7 +992,7 @@ document.addEventListener('click', function (e) {
     <div class="foot-grid">
       <div>
         <a class="brand" href="#top">
-          <img src="src/img/yasna-mark.jpg" alt="Золотой Ясень" width="38" height="38">
+          <span class="mark" aria-hidden="true"><svg viewBox="31.5 31.5 45 45" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round"><line x1="54" y1="44.8" x2="54" y2="35.4" stroke-width="7.81"/><line x1="61.69" y1="40.68" x2="63.94" y2="36.78" stroke-width="4.96"/><line x1="67.32" y1="46.31" x2="71.22" y2="44.06" stroke-width="4.96"/><line x1="63.2" y1="54" x2="72.6" y2="54" stroke-width="7.81"/><line x1="67.32" y1="61.69" x2="71.22" y2="63.94" stroke-width="4.96"/><line x1="61.69" y1="67.32" x2="63.94" y2="71.22" stroke-width="4.96"/><line x1="54" y1="63.2" x2="54" y2="72.6" stroke-width="7.81"/><line x1="46.31" y1="67.32" x2="44.06" y2="71.22" stroke-width="4.96"/><line x1="40.68" y1="61.69" x2="36.78" y2="63.94" stroke-width="4.96"/><line x1="44.8" y1="54" x2="35.4" y2="54" stroke-width="7.81"/><line x1="40.68" y1="46.31" x2="36.78" y2="44.06" stroke-width="4.96"/><line x1="46.31" y1="40.68" x2="44.06" y2="36.78" stroke-width="4.96"/></g></svg></span>
           <span class="bt"><b>Золотой Ясень</b><span>Интеграционный центр</span></span>
         </a>
         <p class="about">Открытое сообщество исследователей русского языка, истории и культуры. Двенадцать управлений, общие праздники, совместный поиск смыслов.</p>

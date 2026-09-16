@@ -238,3 +238,44 @@ body{ background: var(--surface); color: var(--on-surface); }
 :root[data-theme="dark"] .tema-knop .tema-luna{ display:none; }
 :root[data-theme="dark"] .tema-knop .tema-solnce{ display:block; }
 @media (prefers-reduced-motion: reduce){ .tema-knop{ transition:none; } }
+
+/* ═══ ЗНАК И ИМЯ ЦЕНТРА ══════════════════════════════════════════════════
+   Как в шапке платформы: солнце из двенадцати лучей золотом, имя шрифтом
+   заголовков, подпись мельче и тише — она поясняет род занятия, а не
+   спорит с именем за внимание.
+
+   Знак рисуется currentColor, поэтому цвет задаёт роль: в светлой теме
+   тёплое золото, в тёмной — светлее. Прежняя растровая марка так не умела
+   и оставалась одинаковой в обеих темах.
+   ──────────────────────────────────────────────────────────────────────── */
+.brand .mark{
+  width:26px; height:26px; flex-shrink:0; color:var(--znak);
+  display:inline-flex; align-items:center; justify-content:center;
+  /* Прежняя марка была картинкой с рамкой и радиусом — у вектора их нет. */
+  background:none; border:0; border-radius:0; box-shadow:none;
+}
+.brand .mark svg{ width:100%; height:100%; display:block; }
+/* Ободок прежней марки (1/src/styles.css:131) — у вектора его быть не
+   должно: знак сам себе форма. */
+.brand .mark::before{ content:none; display:none; }
+/* Прежняя марка была тёмным кружком с буквой внутри: гасим и сетку, и
+   шрифтовые остатки, иначе внутри вектора останется место под литеру. */
+.brand .mark{ display:inline-flex; place-items:initial; font-size:0; position:static; }
+
+/* Имя и подпись: те же роли шкалы, что на платформе. */
+.brand .brand-name, .brand .bt b{
+  font:var(--type-title-l); letter-spacing:-.01em; color:var(--on-surface);
+  white-space:nowrap;
+}
+.brand .brand-sub, .brand .bt span{
+  font:var(--type-label-s); letter-spacing:.02em; color:var(--on-surface-variant);
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  /* Строчными, как на платформе: прописные с широкой разрядкой — другой
+     голос, и рядом с той же подписью в приложении это читалось бы как
+     два разных центра. */
+  text-transform:none;
+}
+.brand .brand-text, .brand .bt{
+  display:flex; flex-direction:column; justify-content:center; gap:1px; min-width:0;
+}
+@media (max-width:560px){ .brand .mark{ width:22px; height:22px; } }
