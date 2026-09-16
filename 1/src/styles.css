@@ -411,7 +411,10 @@ section.tight{padding-top:calc(56px * var(--dens));padding-bottom:calc(56px * va
 .cta-banner p{margin:0;font-size:1.02rem;line-height:1.5;color:rgba(255,255,255,.7);max-width:48ch}
 .cta-banner .acts{display:flex;flex-direction:column;gap:14px;align-items:flex-start}
 .cta-banner .btn-primary{background:#A23C24;color:#F3ECE0}
-.cta-banner .btn-ghost{border-color:rgba(255,255,255,.3);color:var(--bg)}
+/* Полоса призыва тёмная в обеих темах (--tyomnaya), поэтому текст на ней
+   берём из --na-tyomnoy. Прежний --bg переворачивается вместе с темой:
+   в тёмной он становился почти чёрным, и кнопка исчезала. */
+.cta-banner .btn-ghost{border-color:rgba(255,255,255,.3);color:var(--na-tyomnoy,var(--bg))}
 
 /* footer */
 footer.foot{padding:64px 0 40px;border-top:1px solid var(--line);margin-top:80px}
