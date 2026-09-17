@@ -222,6 +222,18 @@
     "na_sajte": "https://zolotoj-yasen.ru/src/img/litprosvet-mark.svg",
     "v_repozitorii": "https://raw.githubusercontent.com/Avvacumrechevoi/yasna3/main/src/img/litprosvet-mark.svg"
    },
+   "podproekty": [
+    {
+     "nazvanie": "Теремок Тайн",
+     "emblema": {
+      "fajl": "teremok.png",
+      "na_sajte": "https://zolotoj-yasen.ru/src/img/teremok.png",
+      "v_repozitorii": "https://raw.githubusercontent.com/Avvacumrechevoi/yasna3/main/src/img/teremok.png"
+     },
+     "opisanie": null,
+     "_zametka": "Описание не заполнено: чем занят Теремок Тайн — оргкомитет не называл. Пока на сайте показано только имя и знак."
+    }
+   ],
    "zayavka": "https://zolotoj-yasen.ru/zayavka/?dir=litprosvet",
    "stranica": null,
    "stranica_opisanie": null,
