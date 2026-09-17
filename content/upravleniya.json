@@ -131,29 +131,26 @@
   },
   {
    "nomer": 5,
-   "id": "alexandria",
-   "nazvanie": "Александрия",
+   "id": "granika",
+   "nazvanie": "Граника",
    "temy": [
-    "Раскладки",
-    "теория и практика"
+    "Архитектура",
+    "астрономия"
    ],
-   "opisanie": "Теоретическое ядро Ясны: изучаем построение раскладок — «разложи всё и соедини всё». От медицины до истории.",
-   "rukovoditel": "Фахрутдинов Тимур Михайлович",
-   "format": "Петербург + онлайн",
+   "opisanie": "Читаем язык предков в камне — усадьбы, крепости, монастыри и храмовые комплексы. Русский классицизм и деревянное зодчество.",
+   "rukovoditel": "Акимов Александр Анатольевич",
+   "format": "Москва + онлайн",
    "emblema": {
-    "fajl": "alexandria-emblem.jpg",
-    "na_sajte": "https://zolotoj-yasen.ru/src/img/alexandria-emblem.jpg",
-    "v_repozitorii": "https://raw.githubusercontent.com/Avvacumrechevoi/yasna3/main/src/img/alexandria-emblem.jpg"
+    "fajl": "granika.png",
+    "na_sajte": "https://zolotoj-yasen.ru/src/img/granika.png",
+    "v_repozitorii": "https://raw.githubusercontent.com/Avvacumrechevoi/yasna3/main/src/img/granika.png"
    },
-   "zayavka": "https://zolotoj-yasen.ru/zayavka/?dir=alexandria",
-   "stranica": "https://zolotoj-yasen.ru/upravleniya/alexandria/",
-   "stranica_opisanie": "Александрия — теоретическое управление центра «Золотой Ясень». Изучаем построение раскладок: разложи всё и соедини всё. Петербург и онлайн.",
-   "stranica_istochnik": "https://github.com/Avvacumrechevoi/yasna3/blob/main/upravleniya/alexandria/index.html",
+   "zayavka": "https://zolotoj-yasen.ru/zayavka/?dir=granika",
+   "stranica": "https://zolotoj-yasen.ru/upravleniya/granika/",
+   "stranica_opisanie": "Граника — архитектурное управление центра «Золотой Ясень». Читаем русский классицизм: усадьбы, крепости, монастыри и храмовые комплексы.",
+   "stranica_istochnik": "https://github.com/Avvacumrechevoi/yasna3/blob/main/upravleniya/granika/index.html",
    "kontakty": [
-    "https://t.me/aleksandriya_2026",
-    "https://t.me/mobictas",
-    "https://t.me/yasna_besedy",
-    "mailto:admin@yasna.spb.ru"
+    "https://t.me/russkaya_yasna"
    ]
   },
   {
@@ -265,26 +262,29 @@
   },
   {
    "nomer": 10,
-   "id": "granika",
-   "nazvanie": "Граника",
+   "id": "alexandria",
+   "nazvanie": "Александрия",
    "temy": [
-    "Архитектура",
-    "астрономия"
+    "Раскладки",
+    "теория и практика"
    ],
-   "opisanie": "Читаем язык предков в камне — усадьбы, крепости, монастыри и храмовые комплексы. Русский классицизм и деревянное зодчество.",
-   "rukovoditel": "Акимов Александр Анатольевич",
-   "format": "Москва + онлайн",
+   "opisanie": "Теоретическое ядро Ясны: изучаем построение раскладок — «разложи всё и соедини всё». От медицины до истории.",
+   "rukovoditel": "Фахрутдинов Тимур Михайлович",
+   "format": "Петербург + онлайн",
    "emblema": {
-    "fajl": "granika.png",
-    "na_sajte": "https://zolotoj-yasen.ru/src/img/granika.png",
-    "v_repozitorii": "https://raw.githubusercontent.com/Avvacumrechevoi/yasna3/main/src/img/granika.png"
+    "fajl": "alexandria-emblem.jpg",
+    "na_sajte": "https://zolotoj-yasen.ru/src/img/alexandria-emblem.jpg",
+    "v_repozitorii": "https://raw.githubusercontent.com/Avvacumrechevoi/yasna3/main/src/img/alexandria-emblem.jpg"
    },
-   "zayavka": "https://zolotoj-yasen.ru/zayavka/?dir=granika",
-   "stranica": "https://zolotoj-yasen.ru/upravleniya/granika/",
-   "stranica_opisanie": "Граника — архитектурное управление центра «Золотой Ясень». Читаем русский классицизм: усадьбы, крепости, монастыри и храмовые комплексы.",
-   "stranica_istochnik": "https://github.com/Avvacumrechevoi/yasna3/blob/main/upravleniya/granika/index.html",
+   "zayavka": "https://zolotoj-yasen.ru/zayavka/?dir=alexandria",
+   "stranica": "https://zolotoj-yasen.ru/upravleniya/alexandria/",
+   "stranica_opisanie": "Александрия — теоретическое управление центра «Золотой Ясень». Изучаем построение раскладок: разложи всё и соедини всё. Петербург и онлайн.",
+   "stranica_istochnik": "https://github.com/Avvacumrechevoi/yasna3/blob/main/upravleniya/alexandria/index.html",
    "kontakty": [
-    "https://t.me/russkaya_yasna"
+    "https://t.me/aleksandriya_2026",
+    "https://t.me/mobictas",
+    "https://t.me/yasna_besedy",
+    "mailto:admin@yasna.spb.ru"
    ]
   },
   {
