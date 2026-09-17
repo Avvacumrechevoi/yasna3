@@ -1692,6 +1692,20 @@ html { scroll-padding-top: 74px; }
   box-shadow: 0 0 0 1.5px rgba(185,138,60,.65), 0 4px 18px rgba(0,0,0,.4);
 }
 .reel .letterfly .med img { width: 100%; height: 100%; object-fit: cover; padding: 5px; border-radius: 50%; }
+/* Подпроект управления на кольце сбора. Тринадцатым медальоном он не
+   становится: скрипт расставляет по кольцу элементы .letterfly, а этот
+   знак лежит ВНУТРИ letterfly ЛитПроСвета — значит и летит вместе с ним,
+   и число в кольце остаётся двенадцать.
+   Размеры и смещение — в долях медальона: кольцо на телефоне уже, и
+   пиксельное смещение дало бы наезд вместо касания. */
+.reel .letterfly .med-sub {
+  position: absolute; left: 55.7%; top: -58.9%;
+  width: 72%; aspect-ratio: 1; z-index: 2;
+  border-radius: 50%; overflow: hidden;
+  background: var(--na-tyomnoy, var(--paper));
+  box-shadow: 0 0 0 3px var(--bl-bg, #082F1E), 0 0 0 4.5px rgba(185,138,60,.65);
+}
+.reel .letterfly .med-sub img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
 .reel .center {
   position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
   width: min(320px, calc(84% - 66px)); text-align: center;
