@@ -81,30 +81,25 @@
   },
   {
    "nomer": 3,
-   "id": "alexandria",
-   "nazvanie": "Александрия",
+   "id": "dzhiva",
+   "nazvanie": "Джива",
    "temy": [
-    "Раскладки",
-    "теория и практика"
+    "Здоровье",
+    "тело"
    ],
-   "opisanie": "Теоретическое ядро Ясны: изучаем построение раскладок — «разложи всё и соедини всё». От медицины до истории.",
-   "rukovoditel": "Фахрутдинов Тимур Михайлович",
-   "format": "Петербург + онлайн",
+   "opisanie": "Здоровье и тело в русской традиции. Дыхание, движение, голос, уклад — практики возвращения к себе.",
+   "rukovoditel": "Белова Екатерина Андреевна",
+   "format": "Москва + онлайн",
    "emblema": {
-    "fajl": "alexandria-emblem.jpg",
-    "na_sajte": "https://zolotoj-yasen.ru/src/img/alexandria-emblem.jpg",
-    "v_repozitorii": "https://raw.githubusercontent.com/Avvacumrechevoi/yasna3/main/src/img/alexandria-emblem.jpg"
+    "fajl": "dzhiva.png",
+    "na_sajte": "https://zolotoj-yasen.ru/src/img/dzhiva.png",
+    "v_repozitorii": "https://raw.githubusercontent.com/Avvacumrechevoi/yasna3/main/src/img/dzhiva.png"
    },
-   "zayavka": "https://zolotoj-yasen.ru/zayavka/?dir=alexandria",
-   "stranica": "https://zolotoj-yasen.ru/upravleniya/alexandria/",
-   "stranica_opisanie": "Александрия — теоретическое управление центра «Золотой Ясень». Изучаем построение раскладок: разложи всё и соедини всё. Петербург и онлайн.",
-   "stranica_istochnik": "https://github.com/Avvacumrechevoi/yasna3/blob/main/upravleniya/alexandria/index.html",
-   "kontakty": [
-    "https://t.me/aleksandriya_2026",
-    "https://t.me/mobictas",
-    "https://t.me/yasna_besedy",
-    "mailto:admin@yasna.spb.ru"
-   ]
+   "zayavka": "https://zolotoj-yasen.ru/zayavka/?dir=dzhiva",
+   "stranica": "https://zolotoj-yasen.ru/upravleniya/dzhiva/",
+   "stranica_opisanie": "Джива — медицинское управление центра «Золотой Ясень». Изучаем тело человека сообразно его природному устройству и способы лечения, которыми пользовались предки.",
+   "stranica_istochnik": "https://github.com/Avvacumrechevoi/yasna3/blob/main/upravleniya/dzhiva/index.html",
+   "kontakty": []
   },
   {
    "nomer": 4,
@@ -267,25 +262,30 @@
   },
   {
    "nomer": 10,
-   "id": "dzhiva",
-   "nazvanie": "Джива",
+   "id": "alexandria",
+   "nazvanie": "Александрия",
    "temy": [
-    "Здоровье",
-    "тело"
+    "Раскладки",
+    "теория и практика"
    ],
-   "opisanie": "Здоровье и тело в русской традиции. Дыхание, движение, голос, уклад — практики возвращения к себе.",
-   "rukovoditel": "Белова Екатерина Андреевна",
-   "format": "Москва + онлайн",
+   "opisanie": "Теоретическое ядро Ясны: изучаем построение раскладок — «разложи всё и соедини всё». От медицины до истории.",
+   "rukovoditel": "Фахрутдинов Тимур Михайлович",
+   "format": "Петербург + онлайн",
    "emblema": {
-    "fajl": "dzhiva.png",
-    "na_sajte": "https://zolotoj-yasen.ru/src/img/dzhiva.png",
-    "v_repozitorii": "https://raw.githubusercontent.com/Avvacumrechevoi/yasna3/main/src/img/dzhiva.png"
+    "fajl": "alexandria-emblem.jpg",
+    "na_sajte": "https://zolotoj-yasen.ru/src/img/alexandria-emblem.jpg",
+    "v_repozitorii": "https://raw.githubusercontent.com/Avvacumrechevoi/yasna3/main/src/img/alexandria-emblem.jpg"
    },
-   "zayavka": "https://zolotoj-yasen.ru/zayavka/?dir=dzhiva",
-   "stranica": "https://zolotoj-yasen.ru/upravleniya/dzhiva/",
-   "stranica_opisanie": "Джива — медицинское управление центра «Золотой Ясень». Изучаем тело человека сообразно его природному устройству и способы лечения, которыми пользовались предки.",
-   "stranica_istochnik": "https://github.com/Avvacumrechevoi/yasna3/blob/main/upravleniya/dzhiva/index.html",
-   "kontakty": []
+   "zayavka": "https://zolotoj-yasen.ru/zayavka/?dir=alexandria",
+   "stranica": "https://zolotoj-yasen.ru/upravleniya/alexandria/",
+   "stranica_opisanie": "Александрия — теоретическое управление центра «Золотой Ясень». Изучаем построение раскладок: разложи всё и соедини всё. Петербург и онлайн.",
+   "stranica_istochnik": "https://github.com/Avvacumrechevoi/yasna3/blob/main/upravleniya/alexandria/index.html",
+   "kontakty": [
+    "https://t.me/aleksandriya_2026",
+    "https://t.me/mobictas",
+    "https://t.me/yasna_besedy",
+    "mailto:admin@yasna.spb.ru"
+   ]
   },
   {
    "nomer": 11,
