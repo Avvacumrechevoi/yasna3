@@ -1571,6 +1571,11 @@ a.res-chip:hover { background: var(--ink); color: var(--bg); border-color: var(-
   .dash .panel:has(.about-body)  { order: 1; }
   .dash .panel:has(.res-grid)    { order: 2; }
   .dash .panel:has(.join-body)   { order: 3; }
+  /* Критерии приёма — в ту же ступень, что «Как присоединиться»: всегда
+     рядом с ней, а кто из двух первым, решает разметка страницы. У Граники
+     критерии впереди — это условия входа; у Воспитания позади — они для
+     будущих ведущих, а путь для семей идёт первым. */
+  .dash .panel:has(.krit-body)   { order: 3; }
   .dash .panel:has(.chan-grid)   { order: 4; }
   .dash .panel:has(.coord)       { order: 5; }
   .dash .panel:has(.for-row)     { order: 6; }
